@@ -1,0 +1,16 @@
+@tailwind base;
+
+/*Alert classes*/
+.alert {
+  @apply flex min-h-[70px] h-auto w-full items-center justify-between rounded-md px-6 py-2 
+}
+
+/*Button classes*/
+
+.button {
+  @apply rounded-md transition-all duration-150 ease-linear shadow-md hover:shadow-sm
+}
+
+@tailwind components;
+@tailwind utilities;
+
