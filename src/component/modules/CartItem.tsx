@@ -15,7 +15,7 @@ import {
   decreaseQuantity,
   deleteProduct,
   increaseQuantity,
-} from '@/redux/shoppingSlice';
+} from '@/apps/redux/slice/shoppingSlice';
 
 import FormattedPrice from './FormattedPrice';
 

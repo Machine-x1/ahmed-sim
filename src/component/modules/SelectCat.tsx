@@ -29,8 +29,13 @@ const SelectCat = (props: Props) => {
         fullWidth
         variant="faded"
         size="sm"
+        radius="lg"
         label="Select category"
-        className="max-w-xs"
+        className="max-w-xs "
+        classNames={{
+          label: 'text-black/50 dark:text-white/90',
+          innerWrapper: 'bg-transparent',
+        }}
         onChange={onChange}
         value={value}
       >
