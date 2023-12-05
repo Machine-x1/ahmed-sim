@@ -1,26 +1,16 @@
 @tailwind base;
-
+@tailwind components;
+@tailwind utilities;
 /*Alert classes*/
-.alert {
+/* .alert {
   @apply flex min-h-[70px] h-auto w-full items-center justify-between rounded-md px-6 py-2 
-}
+} */
 
 /*Button classes*/
 
 .button {
   @apply rounded-md transition-all duration-150 ease-linear shadow-md hover:shadow-sm
 }
-@tailwind components;
-@tailwind utilities;
-a {
-  @apply text-blue-700;
-}
-
-a:hover {
-  @apply border-b-2 border-blue-700;
-}
-
-
 .content p {
   @apply my-6;
 }

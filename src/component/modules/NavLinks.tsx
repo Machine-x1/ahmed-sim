@@ -1,16 +1,19 @@
 /* eslint-disable tailwindcss/no-custom-classname */
 /* eslint-disable react/no-array-index-key */
 
-'use client';
+// 'use client';
 
+// import clsx from 'clsx';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import React from 'react';
 
 const NavLinks = () => {
+  const pathname = usePathname();
   const links = [
     { text: 'Home', href: '/' },
     { text: 'Peddals', href: '/products/pedals' },
-    { text: 'Steer-wheels', href: '/products/steer-wheels' },
+    { text: 'Steer-wheels', href: '/products/' },
     { text: 'Accessories', href: '/products/accessories' },
     { text: 'Contact-us', href: '/contactus' },
   ];
@@ -20,10 +23,13 @@ const NavLinks = () => {
         key={index}
         className="hidden w-full flex-row items-center justify-center lg:flex  "
       >
-        <Link href={link.href}>
-          <div className="text-lg font-bold text-white  underline  decoration-transparent transition duration-200 ease-in-out hover:decoration-inherit hover:underline-offset-4 active:text-orange-600">
-            {link.text}
-          </div>
+        <Link
+          href={link.href}
+          className={` ${
+            pathname === link.href ? ' active ' : ''
+          }    text-lg font-bold text-white decoration-transparent duration-200 ease-in-out transition hover:decoration-inherit hover:underline-offset-4 `}
+        >
+          <div className="">{link.text}</div>
         </Link>
         {/* {index !== links.length - 1 && (
           <div className=" mx-auto flex items-center justify-center text-gray-50">

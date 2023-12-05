@@ -1,33 +1,26 @@
-/* eslint-disable react/button-has-type */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable unused-imports/no-unused-vars */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable @next/next/no-img-element */
 /* eslint-disable tailwindcss/no-custom-classname */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable jsx-a11y/no-redundant-roles */
-
-// 'use client';
-
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable react/button-has-type */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable react/jsx-no-undef */
 import {
   BreadcrumbItem,
   Breadcrumbs,
-  Button,
+  Card,
   Image,
   Tab,
   Tabs,
 } from '@nextui-org/react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { IoIosStar, IoMdCart } from 'react-icons/io';
 import { useDispatch } from 'react-redux';
 
 import { addToCart } from '@/apps/redux/slice/shoppingSlice';
 
-// import { addToCart } from '@/redux/shoppingSlice';
 import FormattedPrice from './FormattedPrice';
-// import { error } from 'console';
+
 const ProductPage = ({ product }: any) => {
   const dispatch = useDispatch();
   const startArray = Array.from({ length: product?.rating }, (_, index) => (
@@ -89,26 +82,45 @@ const ProductPage = ({ product }: any) => {
                 </div>
 
                 <div className=" mt-2 w-full   lg:order-1 lg:w-32 lg:shrink-0">
-                  <div className="mx-auto flex w-full items-start   gap-2  sm:flex-col lg:flex-col">
-                    <Button
+                  <div className="flex w-full items-start   justify-center  gap-2 sm:flex-col">
+                    {/* <Button
                       onClick={() => setCurrentImg(2)}
                       radius="lg"
-                      fullWidth
+                      // fullWidth
+                      size="sm"
                       className="flex-0 mb-3 aspect-square h-20 overflow-hidden  border border-transparent text-center"
+                    > */}
+                    <Card
+                      isHoverable
+                      isPressable
+                      radius="lg"
+                      className="border-none"
                     >
                       <Image
+                        className="h-full w-full object-cover object-center"
+                        src={imagesPath[1]}
+                        alt=""
+                        width="100%"
+                        height="100%"
+                      />
+                    </Card>
+
+                    {/* <Image
                         className="h-full w-full  object-cover object-center"
                         src={imagesPath[1]}
                         alt=""
                         width="100%"
                         height="100%"
                       />
-                    </Button>
-                    <Button
-                      onClick={() => setCurrentImg(2)}
+                    </Button> */}
+                    <Card
                       radius="lg"
-                      fullWidth
-                      className="flex-0 mb-3 aspect-square h-20 overflow-hidden  border border-transparent text-center"
+                      className="border-none"
+                      isHoverable
+                      isPressable
+                      onClick={() => setCurrentImg(2)}
+                      // fullWidth
+                      // className="flex-0 mb-3 aspect-square h-20 overflow-hidden  border border-transparent text-center"
                     >
                       <Image
                         className="h-full w-full object-cover object-center"
@@ -117,12 +129,16 @@ const ProductPage = ({ product }: any) => {
                         width="100%"
                         height="100%"
                       />
-                    </Button>
-                    <Button
-                      onClick={() => setCurrentImg(3)}
-                      fullWidth
+                    </Card>
+                    <Card
+                      isHoverable
+                      isPressable
                       radius="lg"
-                      className="flex-0 mb-3 aspect-square h-20 overflow-hidden  border border-transparent text-center"
+                      className="border-none"
+                      onClick={() => setCurrentImg(3)}
+                      // fullWidth
+
+                      // className="flex-0 mb-3 aspect-square h-20 overflow-hidden  border border-transparent text-center"
                     >
                       <Image
                         className="h-full w-full object-cover object-center"
@@ -131,7 +147,7 @@ const ProductPage = ({ product }: any) => {
                         width="100%"
                         height="100%"
                       />
-                    </Button>
+                    </Card>
                   </div>
                 </div>
               </div>

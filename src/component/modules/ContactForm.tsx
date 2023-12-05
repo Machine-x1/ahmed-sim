@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 /* eslint-disable react/no-unescaped-entities */
 import { Button, Input, Textarea } from '@nextui-org/react';
 import React from 'react';
@@ -25,21 +26,36 @@ const ContactForm = () => {
             <p>0429 502 409 (Mon-Fri 9AM-4PM)</p>
             <div>
               <div className="flex items-center gap-x-4">
-                <a href="https://www.youtube.com/@reactjsBD" target="_blank">
-                  <span className="socialLink">
+                <Button
+                  isIconOnly
+                  color="default"
+                  className="hover:bg-hoverTextColor"
+                  aria-label="Like"
+                >
+                  <span className="socialLink  ">
                     <BsTwitter />
                   </span>
-                </a>
-                <a href="https://www.youtube.com/@reactjsBD" target="_blank">
+                </Button>
+                <Button
+                  className="hover:bg-hoverTextColor"
+                  isIconOnly
+                  color="default"
+                  aria-label="Like"
+                >
                   <span className="socialLink">
                     <BsFacebook />
                   </span>
-                </a>
-                <a href="https://www.youtube.com/@reactjsBD" target="_blank">
+                </Button>
+                <Button
+                  className="hover:bg-hoverTextColor"
+                  isIconOnly
+                  color="default"
+                  aria-label="Like"
+                >
                   <span className="socialLink">
                     <BsInstagram />
                   </span>
-                </a>
+                </Button>
               </div>
             </div>
           </div>

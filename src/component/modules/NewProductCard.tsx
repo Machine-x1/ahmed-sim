@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/button-has-type */
 /* eslint-disable no-console */
 /* eslint-disable jsx-a11y/img-redundant-alt */
@@ -17,7 +16,6 @@ import toast, { Toaster } from 'react-hot-toast';
 import { IoMdCart } from 'react-icons/io';
 import { useDispatch } from 'react-redux';
 
-// import { addToCart } from '@/redux/cartSlice';
 import type { Product } from '@/apps/interface/types';
 import { addToCart } from '@/apps/redux/slice/shoppingSlice';
 
@@ -49,7 +47,7 @@ const NewProductCard = ({ item }: { item?: Product | any }) => {
           <div className="mx-auto  flex w-full flex-col items-center justify-center gap-2">
             <div className=" w-fulll flex  items-center justify-between gap-8">
               <h5 className="text-xl tracking-tight text-mainOrange">
-                {item.name}
+                {item?.name}
               </h5>
               <p className=" end-0  flex items-center justify-end">
                 <span className="text-lg font-bold text-mainOrange">

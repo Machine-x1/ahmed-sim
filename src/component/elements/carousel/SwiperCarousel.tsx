@@ -24,7 +24,6 @@ interface SwiperProps<T> {
   swiperContainerClass?: string;
   swiperProps?: SwiperOptions;
 }
-
 export default function SwiperCarousel(props: SwiperProps<{ id: number }>) {
   const {
     item,
@@ -39,7 +38,7 @@ export default function SwiperCarousel(props: SwiperProps<{ id: number }>) {
     swiperProps,
   } = props;
 
-  const cloneItems = item.map((el) => {
+  const cloneItems = item?.map((el) => {
     return (
       <SwiperSlide key={el.id} className={swiperSlideClass}>
         {React.cloneElement(children, {

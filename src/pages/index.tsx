@@ -4,7 +4,6 @@ import Banner from '@/component/modules/Banner';
 import Categories from '@/component/modules/Categories';
 import ContactForm from '@/component/modules/ContactForm';
 import ProductFeatures from '@/component/modules/ProductFeatures';
-import ProductTrending from '@/component/modules/ProductTrending';
 import ReviewsSection from '@/component/modules/ReviewsSection';
 import { Main } from '@/component/templates/Main';
 
@@ -16,7 +15,7 @@ const Index = () => {
         <Banner />
         <Categories />
         <ProductFeatures />
-        <ProductTrending msg="Featured Products" />
+        {/* <ProductTrending msg="Featured Products" /> */}
         <ReviewsSection />
         <AboutUs />
         <ContactForm />

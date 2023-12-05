@@ -150,7 +150,7 @@ const ContactUs = () => {
                   <Button
                     type="submit"
                     radius="none"
-                    className=" w-full bg-mainOrange p-3 text-sm font-semibold uppercase text-white transition  duration-200 hover:bg-hoverTextColor "
+                    className=" w-full bg-mainOrange p-3 text-sm font-semibold uppercase text-white duration-200  transition hover:bg-hoverTextColor "
                   >
                     Send
                   </Button>

@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable tailwindcss/no-custom-classname */
 
-'use client';
+// 'use client';
 
 import Link from 'next/link';
 import { BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs';
@@ -10,17 +10,15 @@ import Logo from './Logo';
 
 const Footer = () => {
   return (
-    <footer className="text- text-c text bg-hoverTextColor lg:text-left">
+    <footer className=" bg-hoverTextColor text-slate-200 lg:text-left">
       <div className="flex items-center justify-center border-b-2 border-orange-500 p-6  lg:justify-between">
         <div className="mr-12 hidden lg:block">
-          <span className="text">
-            Get connected with us on social networks:
-          </span>
+          <span className="text">Get connected with us on social networks</span>
         </div>
         {/* <!-- Social network icons container --> */}
         <div className="flex justify-center gap-4">
           <a href="https://www.youtube.com/@reactjsBD" target="_blank">
-            <span className="socialLink">
+            <span className="socialLink hover:hoverTextColor">
               <BsTwitter />
             </span>
           </a>
