@@ -4,15 +4,19 @@
 /* eslint-disable no-underscore-dangle */
 import { createSlice } from '@reduxjs/toolkit';
 
+import type { Product } from '@/apps/interface/types';
+
 export interface StoreState {
-  productData: any[];
+  productStore: Product[];
   userInfo: null | string;
   orderData: [];
+  productQuantities: { [key: string]: number }; // Object to track quantities by product ID
 }
 
 const initialState: StoreState = {
-  productData: [],
+  productStore: [],
   userInfo: null,
+  productQuantities: {}, // Object to track quantities by product ID
   orderData: [],
 };
 
@@ -21,38 +25,38 @@ export const shoppingSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      const existingProduct = state.productData.find(
-        (item: any) => item._id === action.payload._id
+      const existingProduct = state.productStore.find(
+        (item: Product) => item._id === action.payload._id
       );
       if (existingProduct) {
-        existingProduct.quantity += action.payload.quantity;
+        existingProduct.__v += action.payload.__v;
       } else {
-        state.productData.push(action.payload);
+        state.productStore.push(action.payload);
       }
     },
     increaseQuantity: (state, action) => {
-      const existingProduct = state.productData.find(
-        (item: any) => item._id === action.payload._id
+      const existingProduct = state.productStore.find(
+        (item: Product) => item._id === action.payload._id
       );
-      existingProduct && existingProduct.quantity++;
+      existingProduct && existingProduct.__v++;
     },
     decreaseQuantity: (state, action) => {
-      const existingProduct = state.productData.find(
-        (item: any) => item._id === action.payload._id
+      const existingProduct = state.productStore.find(
+        (item: Product) => item._id === action.payload._id
       );
-      if (existingProduct?.quantity === 1) {
-        existingProduct.quantity === 1;
+      if (existingProduct?.__v === 1) {
+        existingProduct.__v === 1;
       } else {
-        existingProduct && existingProduct.quantity--;
+        existingProduct && existingProduct.__v--;
       }
     },
     deleteProduct: (state, action) => {
-      state.productData = state.productData.filter(
+      state.productStore = state.productStore.filter(
         (item) => item._id !== action.payload
       );
     },
     resetCart: (state) => {
-      state.productData = [];
+      state.productStore = [];
     },
     addUser: (state, action) => {
       state.userInfo = action.payload;

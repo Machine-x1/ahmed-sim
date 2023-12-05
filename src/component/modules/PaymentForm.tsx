@@ -2,7 +2,7 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable array-callback-return */
 
-'use client';
+// 'use client';
 
 import { Button } from '@nextui-org/react';
 import Link from 'next/link';
@@ -22,7 +22,6 @@ const PaymentForm = () => {
     });
     setTotalAmt(amt);
   }, [productData]);
-
   return (
     <div className="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 ">
       <h2 className="mb-2 font-semibold uppercase  ">order summary</h2>

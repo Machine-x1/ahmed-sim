@@ -13,7 +13,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import type { PaginationOptions, SwiperOptions } from 'swiper/types';
 
 interface SwiperProps<T> {
-  item: Array<T>;
+  item?: Array<T>;
   children: ReactElement<{ item: T; key: number }>;
   slidesPerView?: number;
   spaceBetween?: number;

@@ -44,7 +44,7 @@ const withPopup = <P extends object>(
                 className="mx-4 mt-2 flex justify-end  "
               >
                 <Container className="flex  h-8 w-8 cursor-pointer items-center justify-center  bg-white">
-                  <AiOutlineClose className="transition duration-150 hover:rotate-180 hover:scale-110" />
+                  <AiOutlineClose className="duration-150 transition hover:rotate-180 hover:scale-110" />
                 </Container>
               </Container>
               <Container

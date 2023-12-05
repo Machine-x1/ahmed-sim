@@ -11,8 +11,9 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { resetOrder } from '@/redux/shoppingSlice';
+import { resetOrder } from '@/apps/redux/slice/shoppingSlice';
 
+// import { resetOrder } from '@/redux/shoppingSlice';
 import FormattedPrice from './FormattedPrice';
 
 const OrderDetails = () => {

@@ -7,7 +7,7 @@ import { Button, Card, CardBody, CardFooter, Image } from '@nextui-org/react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
-import Container from './Container';
+import Container from '@/component/modules/Container';
 
 const callouts = [
   {
