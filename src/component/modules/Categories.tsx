@@ -3,9 +3,8 @@
 
 'use client';
 
-import { Button, Card, CardBody, CardFooter, Image } from '@nextui-org/react';
-import { motion } from 'framer-motion';
-import Link from 'next/link';
+import { Card, CardBody, CardFooter, Image } from '@nextui-org/react';
+import { useRouter } from 'next/router';
 
 import Container from '@/component/modules/Container';
 
@@ -36,14 +35,15 @@ const callouts = [
 ];
 
 export default function Categories() {
+  const router = useRouter();
   return (
     <div className="">
       <Container className=" ">
         <div className=" flex items-center justify-center gap-2 pb-8 text-2xl font-semibold ">
           <hr className="my-6 flex h-0.5 items-center  justify-center border-t-0 bg-neutral-900 opacity-100  dark:opacity-50 md:w-1/4" />
-          <h1 className=" flex w-fit items-center justify-center text-2xl font-semibold ">
+          <h3 className=" flex w-fit items-center justify-center text-2xl font-semibold ">
             Shop By Category
-          </h1>
+          </h3>
           <hr className="my-6 flex h-0.5 items-center  justify-center border-t-0 bg-neutral-900 opacity-100  dark:opacity-50 md:w-1/4" />
         </div>
         <div className="  grid h-full w-full  grid-cols-1 items-center  justify-center gap-4  md:grid-cols-3   ">
@@ -77,22 +77,15 @@ export default function Categories() {
                   </h2>
                   <hr className=" flex h-0.5 w-1/2  items-center justify-center border-t-0 bg-neutral-900  opacity-100 dark:opacity-50" />
                 </div>
-                <Link href={{ pathname: `${callout.href}` }}>
-                  <motion.button
-                    whileHover={{
-                      scale: 1.2,
-                      transition: { duration: 0.1 },
-                    }}
-                    whileTap={{ scale: 0 }}
-                  >
-                    <Button
-                      radius="none"
-                      className=" overflow-hidden bg-hoverTextColor text-sm font-semibold uppercase  text-white duration-200 "
-                    >
-                      Shop Now
-                    </Button>
-                  </motion.button>
-                </Link>
+                {/* U have to be kidding me  */}
+                {/* You adding button inside a button */}
+                <div
+                  role="presentation"
+                  onClick={() => router.push(callout.href)}
+                  className=" overflow-hidden bg-hoverTextColor text-sm font-semibold uppercase  text-white duration-200 "
+                >
+                  Shop Now
+                </div>
               </CardFooter>
             </Card>
           ))}

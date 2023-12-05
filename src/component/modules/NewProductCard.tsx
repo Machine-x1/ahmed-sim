@@ -58,7 +58,8 @@ const NewProductCard = ({ item }: { item?: Product | any }) => {
                 </span> */}
               </p>
             </div>
-            <button
+            <div
+              role="presentation"
               onClick={(e: any) =>
                 e.preventDefault() &&
                 dispatch(addToCart(item)) &&
@@ -69,8 +70,8 @@ const NewProductCard = ({ item }: { item?: Product | any }) => {
               className="flex h-10 w-full items-center  justify-center border border-transparent bg-hoverTextColor  text-center text-white focus:outline-none focus:ring-4 focus:ring-blue-300"
             >
               <IoMdCart className="text-xl" />
-              <span> Add to cart</span>
-            </button>
+              Add to cart
+            </div>
           </div>
         </CardFooter>
       </Skeleton>

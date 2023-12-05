@@ -1,5 +1,8 @@
 import type { ReactNode } from 'react';
 
+import Footer from '../modules/Footer';
+import Header from '../modules/Header';
+
 type IMainProps = {
   meta: ReactNode;
   children: ReactNode;
@@ -8,7 +11,9 @@ type IMainProps = {
 const Main = (props: IMainProps) => (
   <div className="">
     {props.meta}
+    <Header />
     <div>{props.children}</div>
+    <Footer />
   </div>
 );
 
