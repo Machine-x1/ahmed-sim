@@ -9,7 +9,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/no-redundant-roles */
 
-'use client';
+// 'use client';
 
 import {
   BreadcrumbItem,
@@ -20,12 +20,12 @@ import {
   Tabs,
 } from '@nextui-org/react';
 import React, { useState } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
 import { IoIosStar, IoMdCart } from 'react-icons/io';
 import { useDispatch } from 'react-redux';
 
-import { addToCart } from '@/redux/shoppingSlice';
+import { addToCart } from '@/apps/redux/slice/shoppingSlice';
 
+// import { addToCart } from '@/redux/shoppingSlice';
 import FormattedPrice from './FormattedPrice';
 // import { error } from 'console';
 const ProductPage = ({ product }: any) => {
@@ -190,11 +190,11 @@ const ProductPage = ({ product }: any) => {
                   </p>
                 </div>
                 <div
-                  onClick={() =>
-                    dispatch(addToCart(product)) &&
-                    toast.success(
-                      `${product?.title.substring(0, 15)} added successfully!`,
-                    )
+                  onClick={
+                    () => dispatch(addToCart(product))
+                    // toast.success(
+                    //   `${product?.title.substring(0, 15)} added successfully!`
+                    // )
                   }
                   className="group flex cursor-pointer items-center"
                 >
@@ -291,7 +291,7 @@ const ProductPage = ({ product }: any) => {
             </div>
           </div>
         </div>
-        <Toaster />
+        {/* <Toaster /> */}
       </section>
     </div>
   );

@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable no-console */
 
-'use client';
-
 import React, { useState } from 'react';
 
 import Container from './Container';
@@ -19,7 +17,9 @@ const CatSection = () => {
         <div className="   flex w-full items-center justify-center gap-2 ">
           <SelectCat
             // value={value}
-            onChange={(value) => {
+            onChange={(value: {
+              target: { value: React.SetStateAction<string> };
+            }) => {
               setValue(value.target.value);
               console.log('hi', value.target.value);
             }}

@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable tailwindcss/no-custom-classname */
 /* eslint-disable no-return-assign */
 /* eslint-disable array-callback-return */
@@ -7,47 +9,35 @@
 'use client';
 
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
-import { FiSearch } from 'react-icons/fi';
+import React from 'react';
 import { IoMdCart } from 'react-icons/io';
-import { useDispatch, useSelector } from 'react-redux';
 
-// import { addUser, deleteUser } from '@/redux/shoppingSlice';
 import Container from './Container';
 import FormattedPrice from './FormattedPrice';
 import Logo from './Logo';
 import NavLinks from './NavLinks';
+import SearchBar from './SearchBar';
 
 const Header = () => {
-  const dispatch = useDispatch();
-  const { productData, orderData } = useSelector(
-    (state: any) => state.shopping
-  );
-
-  const [totalAmt, setTotalAmt] = useState(0);
-
-  useEffect(() => {
-    let amt = 0;
-    productData.map((item: any) => {
-      return (amt += item.price * item.quantity);
-    });
-    setTotalAmt(amt);
-  }, [productData]);
+  // const dispatch = useDispatch();
+  // const { productStore, orderData } = useSelector(
+  //   (state: any) => state.shopping
+  // );
+  // const [totalAmt, setTotalAmt] = useState(0);
+  // useEffect(() => {
+  //   let amt = 0;
+  //   productStore.map((item: Product) => {
+  //     return (amt += item.price * item.__v);
+  //   });
+  //   setTotalAmt(amt);
+  // }, [productStore]);
 
   return (
     <div className="flex-no-wrap  sticky  top-0  z-50 flex h-20  w-full items-center justify-between  bg-hoverTextColor">
       {/* <div className="sticky top-0  z-50 flex h-20 w-full  bg-hoverTextColor "> */}
       <Container className="flex  h-full w-full items-center justify-between md:justify-start md:gap-x-5">
         <Logo />
-        {/* Search Field */}
-        <div className="group  hidden w-1/2 items-center gap-x-1 rounded-full border-[1px] border-lightText/50 bg-white px-4 py-1.5 focus-within:border-white md:flex">
-          <FiSearch className="text-gray-500 duration-200 group-focus-within:text-darkText" />
-          <input
-            type="text"
-            placeholder="Search for products"
-            className="flex-1 outline-none placeholder:text-sm"
-          />
-        </div>
+        <SearchBar />
         <NavLinks />
         <Link href="/cart">
           <div className="relative flex items-center justify-center gap-x-1 rounded-full border-[1px] border-hoverTextColor bg-hoverTextColor px-3 py-1.5 text-slate-100 duration-200 hover:border-orange-600 ">
