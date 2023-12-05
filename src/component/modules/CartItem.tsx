@@ -9,8 +9,9 @@ import Image from 'next/image';
 import React from 'react';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { IoMdClose } from 'react-icons/io';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
+import { productData } from '@/apps/constants/data';
 import {
   decreaseQuantity,
   deleteProduct,
@@ -20,7 +21,7 @@ import {
 import FormattedPrice from './FormattedPrice';
 
 const CartItem = () => {
-  const { productData } = useSelector((state: any) => state?.shopping);
+  // const { productData } = useSelector((state: any) => state?.shopping);
   const dispatch = useDispatch();
   return (
     <div className="mx-auto max-h-screen w-full  overflow-auto ">

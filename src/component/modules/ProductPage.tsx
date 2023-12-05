@@ -83,13 +83,6 @@ const ProductPage = ({ product }: any) => {
 
                 <div className=" mt-2 w-full   lg:order-1 lg:w-32 lg:shrink-0">
                   <div className="flex w-full items-start   justify-center  gap-2 sm:flex-col">
-                    {/* <Button
-                      onClick={() => setCurrentImg(2)}
-                      radius="lg"
-                      // fullWidth
-                      size="sm"
-                      className="flex-0 mb-3 aspect-square h-20 overflow-hidden  border border-transparent text-center"
-                    > */}
                     <Card
                       isHoverable
                       isPressable
@@ -105,14 +98,6 @@ const ProductPage = ({ product }: any) => {
                       />
                     </Card>
 
-                    {/* <Image
-                        className="h-full w-full  object-cover object-center"
-                        src={imagesPath[1]}
-                        alt=""
-                        width="100%"
-                        height="100%"
-                      />
-                    </Button> */}
                     <Card
                       radius="lg"
                       className="border-none"

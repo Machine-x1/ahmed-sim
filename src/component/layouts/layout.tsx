@@ -22,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="">
-      <body className="w-full overflow-x-hidden">
+      <body className="mx-auto w-full max-w-[1920px] overflow-x-hidden">
         <Transition>
           <I18nextProvider i18n={i18n}>
             <NextUIProvider>

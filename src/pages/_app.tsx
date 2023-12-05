@@ -9,15 +9,14 @@ import '../styles/global.css';
 
 import type { AppProps } from 'next/app';
 
-// eslint-disable-next-line import/no-extraneous-dependencies
 import Layout from '@/component/layouts/layout';
+
+// eslint-disable-next-line import/no-extraneous-dependencies
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <Layout>
-      <main id="" className="mx-auto w-full max-w-[1920px]">
-        <Component {...pageProps} />
-      </main>
+      <Component {...pageProps} />
     </Layout>
   );
 };

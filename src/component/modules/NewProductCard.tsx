@@ -33,7 +33,7 @@ const NewProductCard = ({ item }: { item?: Product | any }) => {
     >
       <Skeleton isLoaded className="rounded-lg">
         <CardBody className=" flex  w-full items-center justify-center rounded-xl">
-          <Link href={`/product/ ${item?._id}`}>
+          <Link href={`/products/ ${item?._id}`}>
             <Image
               className=" h-full w-full overflow-hidden object-cover  object-center"
               src="/images/pr1.jpeg"

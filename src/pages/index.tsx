@@ -10,16 +10,13 @@ import { Main } from '@/component/templates/Main';
 const Index = () => {
   return (
     <Main meta={<Meta title="BitsByets" description="BitsByets." />}>
-      <main id="home" className="mx-auto w-full max-w-[1920px] ">
-        {/* <NavLinks /> */}
-        <Banner />
-        <Categories />
-        <ProductFeatures />
-        {/* <ProductTrending msg="Featured Products" /> */}
-        <ReviewsSection />
-        <AboutUs />
-        <ContactForm />
-      </main>
+      <Banner />
+      <Categories />
+      <ProductFeatures />
+      {/* <ProductTrending msg="Featured Products" /> */}
+      <ReviewsSection />
+      <AboutUs />
+      <ContactForm />
     </Main>
   );
 };
