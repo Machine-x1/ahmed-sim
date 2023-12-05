@@ -2,12 +2,11 @@
 /* eslint-disable unused-imports/no-unused-vars */
 /* eslint-disable no-underscore-dangle */
 
-import BannerProduct from '@/components/BannerProduct';
-import CatSection from '@/components/CatSection';
-import ContainerBanner from '@/components/ContainerBanner';
-import NewProductCard from '@/components/NewProductCard';
-import PaginationProducts from '@/components/Pagination';
-import { getProducts } from '@/helpers';
+import { getProducts } from '@/apps/helpers';
+import BannerProduct from '@/component/modules/BannerProduct';
+import CatSection from '@/component/modules/CatSection';
+import ContainerBanner from '@/component/modules/ContainerBanner';
+import NewProductCard from '@/component/modules/NewProductCard';
 
 const SteerWheelsPage = async ({
   searchParams,
@@ -40,7 +39,7 @@ const SteerWheelsPage = async ({
         </div>
       </section>
       <div className="mt-5 flex w-full justify-center">
-        <PaginationProducts totalPages={2} />
+        {/* <PaginationProducts totalPages={2} /> */}
       </div>
     </div>
   );

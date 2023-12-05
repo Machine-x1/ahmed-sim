@@ -5,18 +5,16 @@
 import { Divider } from '@nextui-org/react';
 
 import { productData } from '@/apps/constants/data';
-import BannerProduct from '@/component/modules/BannerProduct';
 import CatSection from '@/component/modules/CatSection';
-import ContainerBanner from '@/component/modules/ContainerBanner';
 import NewProductCard from '@/component/modules/NewProductCard';
 import PaginationProducts from '@/component/modules/Pagination';
 
 const ProductsPage = () => {
   return (
     <div className="h-full w-full">
-      <ContainerBanner className="w-full">
+      {/* <ContainerBanner className="w-full">
         <BannerProduct />
-      </ContainerBanner>
+      </ContainerBanner> */}
       <section className="flex w-full ">
         <div className=" mx-auto flex w-full max-w-screen-2xl flex-col py-10 ">
           <div className=" w-full ">

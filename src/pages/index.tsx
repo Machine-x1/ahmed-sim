@@ -10,7 +10,7 @@ import { Main } from '@/component/templates/Main';
 const Index = () => {
   return (
     <Main meta={<Meta title="BitsByets" description="BitsByets." />}>
-      <main id="home" className="mx-auto w-full max-w-[1920px] ">
+      <div id="home" className="mx-auto w-full max-w-[1920px] ">
         {/* <NavLinks /> */}
         <Banner />
         <Categories />
@@ -19,7 +19,7 @@ const Index = () => {
         <ReviewsSection />
         <AboutUs />
         <ContactForm />
-      </main>
+      </div>
     </Main>
   );
 };

@@ -1,24 +1,26 @@
-/* eslint-disable tailwindcss/no-custom-classname */
 /* eslint-disable import/no-extraneous-dependencies */
-
-// import 'slick-carousel/slick/slick.css';
-// import 'slick-carousel/slick/slick-theme.css';
-// import './css/transition.css';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import '../styles/global.css';
 
-import type { AppProps } from 'next/app';
-
+import { NextUIProvider } from '@nextui-org/react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import Layout from '@/component/layouts/layout';
+import i18n from 'i18next';
+import type { AppProps } from 'next/app';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { I18nextProvider } from 'react-i18next';
+import { Provider } from 'react-redux';
+
+import store from '@/apps/redux/store';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
-    <Layout>
-      <main id="" className="mx-auto w-full max-w-[1920px]">
-        <Component {...pageProps} />
-      </main>
-    </Layout>
+    <Provider store={store}>
+      <I18nextProvider i18n={i18n}>
+        <NextUIProvider>
+          <Component {...pageProps} />
+        </NextUIProvider>
+      </I18nextProvider>
+    </Provider>
   );
 };
+
 export default MyApp;

@@ -7,6 +7,16 @@ module.exports = withBundleAnalyzer({
   eslint: {
     dirs: ['.'],
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        pathname: '/**',
+      },
+    ],
+  },
+
   poweredByHeader: false,
   trailingSlash: true,
   basePath: '',
