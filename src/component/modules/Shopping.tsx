@@ -61,7 +61,7 @@ const Shopping = () => {
                       <div className="absolute right-0 top-0 flex sm:bottom-0 sm:top-auto">
                         <button
                           type="button"
-                          className="flex rounded p-2 text-center text-gray-500 transition-all duration-200 ease-in-out hover:text-gray-900 focus:shadow"
+                          className="flex rounded p-2 text-center text-gray-500 duration-200 ease-in-out transition-all hover:text-gray-900 focus:shadow"
                         >
                           <svg
                             className="h-5 w-5"
@@ -126,7 +126,7 @@ const Shopping = () => {
                       </div>
 
                       <div className="absolute right-0 top-0 flex sm:bottom-0 sm:top-auto">
-                        <Button className="flex rounded p-2 text-center text-gray-500 transition-all duration-200 ease-in-out hover:text-gray-900 focus:shadow">
+                        <Button className="flex rounded p-2 text-center text-gray-500 duration-200 ease-in-out transition-all hover:text-gray-900 focus:shadow">
                           <svg
                             className="block h-5 w-5"
                             xmlns="http://www.w3.org/2000/svg"
@@ -168,7 +168,7 @@ const Shopping = () => {
               </div>
 
               <div className="mt-6 text-center">
-                <Button className="group inline-flex w-full items-center justify-center rounded-md bg-gray-900 px-6 py-4 text-lg font-semibold text-white transition-all duration-200 ease-in-out hover:bg-gray-800 focus:shadow">
+                <Button className="group inline-flex w-full items-center justify-center rounded-md bg-gray-900 px-6 py-4 text-lg font-semibold text-white duration-200 ease-in-out transition-all hover:bg-gray-800 focus:shadow">
                   Checkout
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

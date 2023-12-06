@@ -20,7 +20,7 @@ const Banner = () => {
         direction="horizontal"
         pagination
         autoplay={{
-          delay: 1500,
+          delay: 3500,
           disableOnInteraction: false,
         }}
       >
@@ -43,7 +43,7 @@ const Banner = () => {
           <div className=" relative h-full w-full">
             <Image
               // radius="none"
-              src="/images/3.jpg"
+              src="/images/R9-wheel-base.png"
               width={1920}
               height={720}
               alt="bannertwo"

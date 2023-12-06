@@ -18,14 +18,14 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
 import { Divider } from '@nextui-org/react';
-import React, { useEffect, useState } from 'react';
-import { Autoplay, Navigation, Pagination } from 'swiper';
+import React from 'react';
+import { Autoplay, Navigation } from 'swiper';
 // Import Swiper React components
 // import { A11y, Navigation, Pagination, Scrollbar } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { productData } from '@/apps/constants/data';
-import type { Product } from '@/apps/interface/types';
+import type { ProductType } from '@/apps/interface/types';
 
 import Container from './Container';
 import NewProductCard from './NewProductCard';
@@ -35,15 +35,8 @@ const ProductTrending = ({
   products,
 }: {
   msg?: string;
-  products?: Product;
+  products?: ProductType;
 }) => {
-  const [data, setData] = useState<any>();
-
-  useEffect(() => {
-    productData.map((item: Product) => {
-      return setData(item);
-    });
-  }, []);
   return (
     <Container className=" h-full w-full">
       <div className="h-full w-full ">
@@ -63,12 +56,11 @@ const ProductTrending = ({
             slidesPerView={4}
             spaceBetween={30}
             navigation
-            pagination
             loop
             direction="horizontal"
-            modules={[Navigation, Pagination, Autoplay]}
+            modules={[Navigation, Autoplay]}
             autoplay={{
-              delay: 1500,
+              delay: 2500,
               disableOnInteraction: false,
             }}
             breakpoints={{
@@ -89,7 +81,6 @@ const ProductTrending = ({
                 spaceBetween: 10,
               },
             }}
-            className={' '}
           >
             {productData.map((item: any) => (
               <SwiperSlide key={item._id}>
