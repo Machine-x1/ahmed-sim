@@ -2,18 +2,21 @@
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import 'swiper/css/bundle';
+import 'swiper/css/scrollbar';
 
 // import '@/styles/global.css';
 import type { ReactElement } from 'react';
 import React from 'react';
 // import required modules
+// import type { SwiperOptions } from 'swiper';
 import { Navigation, Pagination } from 'swiper';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { PaginationOptions, SwiperOptions } from 'swiper/types';
 
 interface SwiperProps<T> {
-  item?: Array<T>;
+  item?: Array<T> | undefined | any;
   children: ReactElement<{ item: T; key: number }>;
   slidesPerView?: number;
   spaceBetween?: number;
@@ -26,7 +29,7 @@ interface SwiperProps<T> {
 }
 export default function SwiperCarousel(props: SwiperProps<{ id: number }>) {
   const {
-    item,
+    // item,
     children,
     slidesPerView,
     spaceBetween,
@@ -38,16 +41,14 @@ export default function SwiperCarousel(props: SwiperProps<{ id: number }>) {
     swiperProps,
   } = props;
 
-  const cloneItems = item?.map((el) => {
-    return (
-      <SwiperSlide key={el.id} className={swiperSlideClass}>
-        {React.cloneElement(children, {
-          item: el,
-          key: el.id,
-        })}
-      </SwiperSlide>
-    );
-  });
+  // const cloneItems = item.map((el: any) => {
+  //   return (
+  //     <SwiperSlide key={el.id} className={swiperSlideClass}>
+  //       {React.cloneElement(children, { item: el, key: el.id })}
+  //     </SwiperSlide>
+  //   );
+  // });
+
   return (
     <Swiper
       slidesPerView={slidesPerView || 4}
@@ -59,7 +60,9 @@ export default function SwiperCarousel(props: SwiperProps<{ id: number }>) {
       className={swiperContainerClass}
       {...swiperProps}
     >
-      {cloneItems}
+      {/* {cloneItems} */}
+
+      <SwiperSlide className={swiperSlideClass}>{children}</SwiperSlide>
     </Swiper>
   );
 }

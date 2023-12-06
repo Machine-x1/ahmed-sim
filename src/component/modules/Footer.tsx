@@ -10,7 +10,7 @@ import Logo from './Logo';
 
 const Footer = () => {
   return (
-    <div className="">
+    <div className=" mx-auto max-w-[1920px]">
       <footer className=" bg-hoverTextColor text-slate-200 lg:text-left">
         <div className="flex items-center justify-center border-b-2 border-orange-500 p-6  lg:justify-between">
           <div className="mr-12 hidden lg:block">
