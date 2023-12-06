@@ -13,8 +13,8 @@ const categories = [
     value: 'steer-wheels',
   },
   {
-    label: 'paddels',
-    value: 'paddels',
+    label: 'paddle',
+    value: 'paddle',
   },
   {
     label: 'accessories',
@@ -24,7 +24,7 @@ const categories = [
 const SelectCat = (props: Props) => {
   const { onChange, value } = props;
   return (
-    <div className=" flex w-full items-center justify-center">
+    <div className=" flex w-full justify-end">
       <Select
         fullWidth
         variant="faded"

@@ -1,20 +1,21 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import type { AxiosRequestConfig } from 'axios';
 import axios from 'axios';
 
-import { endpoints } from './endPoints';
+import { endpoints } from '../helpers/endPoints';
 
-async function requestHandler(
+async function localRequestHandler(
   endpoint: keyof typeof endpoints,
   method: 'GET' | 'POST' | 'PUT' | 'DELETE',
   data?: any,
   headers?: Record<string, any>,
-  params?: Record<string, string> | any
+  params?: Record<string, string>
 ): Promise<any> {
   const queryString = params
     ? `?${new URLSearchParams(params).toString()}`
     : '';
-  const requestUrl = `http://localhost:8000/${endpoints[endpoint]}${queryString}`;
-  console.log(requestUrl);
+  const requestUrl = `http://localhost:3000/${endpoints[endpoint]}${queryString}`;
+
   const axiosConfig: AxiosRequestConfig = {
     method,
     headers: headers || {},
@@ -36,4 +37,4 @@ async function requestHandler(
   }
 }
 
-export default requestHandler;
+export default localRequestHandler;

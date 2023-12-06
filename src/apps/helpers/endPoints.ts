@@ -5,6 +5,7 @@ const endpoints = {
 
   // next api
   init: 'api/init',
+  apiProduct: 'api/product/',
 };
 
 export { endpoints };
