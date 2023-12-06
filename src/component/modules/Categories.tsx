@@ -15,7 +15,7 @@ const callouts = [
     imageSrc: '/images/R9-wheel-base.png',
     imageAlt:
       'Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug.',
-    href: 'steeelwheels',
+    href: '/products',
   },
   {
     name: 'accessories',
@@ -23,14 +23,14 @@ const callouts = [
     imageSrc: '/images/R9-wheel-base.png',
     imageAlt:
       'Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant.',
-    href: '/accessories',
+    href: '/products',
   },
   {
     name: 'pedals',
     description: 'Daily commute essentials',
     imageSrc: '/images/R9-wheel-base.png',
     imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
-    href: '/pedals',
+    href: '/products',
   },
 ];
 

@@ -9,6 +9,8 @@ import { useEffect, useState } from 'react';
 import internalrequestHandler from '@/apps/helpers/InternalrequestHandler';
 import getProducts from '@/apps/server/products/getProducts';
 import { Meta } from '@/component/layouts/Meta';
+import BannerProduct from '@/component/modules/BannerProduct';
+import Container from '@/component/modules/Container';
 import NewProductCard from '@/component/modules/NewProductCard';
 import PaginationProducts from '@/component/modules/Pagination';
 import SearchBar from '@/component/modules/SearchBar';
@@ -66,9 +68,9 @@ const ProductsPage = ({ products, meta }: { products: any; meta: any }) => {
     <Main meta={<Meta title="BitsByets" description="BitsByets." />}>
       <div id="home" className="mx-auto w-full max-w-[1920px] ">
         <div className="h-full w-full">
-          {/* <ContainerBanner className="w-full">
-        <BannerProduct />
-      </ContainerBanner> */}
+          <Container className="w-full">
+            <BannerProduct />
+          </Container>
           <div className="top-0 h-full w-full" />
           <section className="flex w-full ">
             <div className=" mx-auto flex w-full max-w-screen-xl flex-col py-10 ">
@@ -99,7 +101,7 @@ const ProductsPage = ({ products, meta }: { products: any; meta: any }) => {
                 </h2>
               </div>
 
-              <div className=" grid w-full grid-cols-1 gap-4 md:grid-cols-3 xl:grid-cols-5">
+              <div className=" grid w-full grid-cols-1 gap-4 md:grid-cols-3 xl:grid-cols-4">
                 {productsData.length > 0 ? (
                   productsData.map((item: any) => (
                     <NewProductCard key={item._id} item={item} />
@@ -121,7 +123,7 @@ const ProductsPage = ({ products, meta }: { products: any; meta: any }) => {
 
 export default ProductsPage;
 
-export const getServerSideProps = async (context: any) => {
+export const getServerSideProps = async (_context: any) => {
   const data = await getProducts();
   return {
     props: {
