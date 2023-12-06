@@ -1,3 +1,7 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { getCookie } from 'cookies-next';
+
+import createTokenAndUser from '@/apps/server/CreateToken';
 import { Meta } from '@/component/layouts/Meta';
 import AboutUs from '@/component/modules/AboutUs';
 import Banner from '@/component/modules/Banner';
@@ -26,3 +30,14 @@ const Index = () => {
 };
 
 export default Index;
+export const getServerSideProps = async (context: any) => {
+  const { req, res } = context;
+  const getToken = getCookie('token', { req, res });
+  if (!getToken) {
+    await createTokenAndUser({ req, res });
+  }
+
+  return {
+    props: {},
+  };
+};
