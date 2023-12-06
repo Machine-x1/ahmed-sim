@@ -10,7 +10,7 @@ import BannerText from './BannerText';
 
 const Banner = () => {
   return (
-    <div className=" relative max-h-[700px] max-w-full  md:block md:w-full">
+    <div className=" relative max-h-[750px] max-w-full  md:block md:w-full">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         slidesPerView={1}
@@ -18,7 +18,7 @@ const Banner = () => {
         loop
         spaceBetween={0}
         direction="horizontal"
-        pagination
+        // pagination
         autoplay={{
           delay: 3500,
           disableOnInteraction: false,
@@ -32,7 +32,7 @@ const Banner = () => {
               height={720}
               alt="bannerone"
               // radius="none"
-              className="relative   max-h-[700px]  w-full   object-cover object-center "
+              className="relative   max-h-[750px]  w-full   object-cover object-center "
               priority
             />
 
@@ -43,17 +43,17 @@ const Banner = () => {
           <div className=" relative h-full w-full">
             <Image
               // radius="none"
-              src="/images/R9-wheel-base.png"
+              src="/images/3.jpg"
               width={1920}
               height={720}
               alt="bannertwo"
-              className=" relative    max-h-[700px]   w-full object-cover object-center"
+              className=" relative    max-h-[750px]   w-full object-cover object-center"
             />
             <BannerText title="Simulators fx pro" />
           </div>
         </SwiperSlide>
       </Swiper>
-      <div className="absolute bottom-0 left-0 z-10 h-44 w-full bg-gradient-to-t from-gray-800 to-transparent" />
+      <div className="absolute bottom-0  left-0 z-20 h-32 w-full bg-gradient-to-t from-gray-800 to-transparent" />
     </div>
   );
 };
