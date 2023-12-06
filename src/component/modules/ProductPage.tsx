@@ -23,26 +23,12 @@ import FormattedPrice from './FormattedPrice';
 
 const ProductPage = ({ product }: any) => {
   const dispatch = useDispatch();
-  const startArray = Array.from({ length: product?.rating }, (_, index) => (
-    <span key={index} className="text-yellow-400">
-      <IoIosStar />
-    </span>
-  ));
+  // const startArray = Array.from({ length: product?.rating }, (_, index) => (
+  //   <span key={index} className="text-yellow-400">
+  //     <IoIosStar />
+  //   </span>
+  // ));
 
-  const tabs = [
-    {
-      id: 'photos',
-      label: 'Photos',
-      content:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    },
-    {
-      id: 'music',
-      label: 'Music',
-      content:
-        'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-    },
-  ];
   type ImagesPath = {
     [key: number]: string;
   };
@@ -81,12 +67,13 @@ const ProductPage = ({ product }: any) => {
                   </div>
                 </div>
 
-                <div className=" mt-2 w-full   lg:order-1 lg:w-32 lg:shrink-0">
-                  <div className="flex w-full items-start   justify-center  gap-2 sm:flex-col">
+                <div className=" mt-2 w-full    lg:order-1 lg:w-32 lg:shrink-0">
+                  <div className="flex w-full items-start   justify-center  gap-2 lg:flex-col">
                     <Card
                       isHoverable
                       isPressable
                       radius="lg"
+                      onClick={() => setCurrentImg(1)}
                       className="border-none"
                     >
                       <Image
@@ -119,15 +106,12 @@ const ProductPage = ({ product }: any) => {
                       isHoverable
                       isPressable
                       radius="lg"
+                      onClick={() => setCurrentImg(2)}
                       className="border-none"
-                      onClick={() => setCurrentImg(3)}
-                      // fullWidth
-
-                      // className="flex-0 mb-3 aspect-square h-20 overflow-hidden  border border-transparent text-center"
                     >
                       <Image
                         className="h-full w-full object-cover object-center"
-                        src={imagesPath[3]}
+                        src={imagesPath[2]}
                         alt=""
                         width="100%"
                         height="100%"
@@ -139,15 +123,21 @@ const ProductPage = ({ product }: any) => {
             </div>
             <div className="lg:col-span-2 lg:row-span-2 lg:row-end-2">
               <h1 className="md: text-2xl font-bold text-gray-900 md:text-3xl">
-                {product?.title}
+                {product?.title}dsadafa
               </h1>
-              <div className="mt-5 flex items-center">
-                <div className="flex items-center">{startArray}</div>
-                {/* <p className="text-md ml-2 font-medium text-gray-500">
-                  1,209 Reviews
-                </p> */}
+              <div className="mt-5 flex  flex-col  ">
+                <p className="text-md  font-medium text-gray-500">
+                  mini description
+                </p>
+                {/* <div className="flex items-center">{startArray}</div> */}
+                <span className="flex text-yellow-400">
+                  <IoIosStar />
+                  <IoIosStar />
+                  <IoIosStar />
+                  <IoIosStar />
+                </span>
               </div>
-              <h2 className="mt-8 text-base text-gray-900">model Type</h2>
+              {/* <h2 className="mt-8 text-base text-gray-900">model Type</h2>
               <div className="mt-3 flex select-none flex-wrap items-center gap-1">
                 <label className="">
                   <input
@@ -183,7 +173,7 @@ const ProductPage = ({ product }: any) => {
                     Groud
                   </p>
                 </label>
-              </div>
+              </div> */}
               <div className="mt-10 flex flex-col items-center justify-between space-y-4 border-y py-4 md:flex-row md:space-y-0">
                 <div className="flex items-end">
                   <p className="text-xl font-semibold">
@@ -269,14 +259,13 @@ const ProductPage = ({ product }: any) => {
                     tab: 'max-w-fit px-0  h-12',
                     tabContent: 'group-data-[selected=true]:text-lightText',
                   }}
-                  items={tabs}
                 >
                   <Tab
                     key="Description"
                     title={
                       <div className="flex w-full items-center space-x-2">
                         <span className="text-md  font-medium text-gray-900  hover:text-gray-800">
-                          Description
+                          Item details
                         </span>
                       </div>
                     }
