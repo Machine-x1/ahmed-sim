@@ -6,13 +6,13 @@
 import { Divider } from '@nextui-org/react';
 import { useState } from 'react';
 
-import { productData } from '@/apps/constants/data';
+import getProducts from '@/apps/server/products/getProducts';
 import NewProductCard from '@/component/modules/NewProductCard';
 import PaginationProducts from '@/component/modules/Pagination';
 import SearchBar from '@/component/modules/SearchBar';
 import SelectCat from '@/component/modules/SelectCat';
 
-const ProductsPage = () => {
+const ProductsPage = ({ products, meta }: { products: any; meta: any }) => {
   const [value, setValue] = useState('steer-wheels');
 
   return (
@@ -52,7 +52,7 @@ const ProductsPage = () => {
           </div>
 
           <div className=" grid w-full grid-cols-1 gap-4 md:grid-cols-3 xl:grid-cols-5">
-            {productData.map((item: any) => (
+            {products.map((item: any) => (
               <NewProductCard key={item._id} item={item} />
             ))}
           </div>
@@ -66,3 +66,13 @@ const ProductsPage = () => {
 };
 
 export default ProductsPage;
+
+export const getServerSideProps = async (context: any) => {
+  const data = await getProducts();
+  return {
+    props: {
+      products: data.products,
+      meta: data.meta,
+    },
+  };
+};
