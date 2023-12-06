@@ -3,7 +3,7 @@
 
 'use client';
 
-import { Card, CardBody, CardFooter, Image } from '@nextui-org/react';
+import { Card, CardBody, CardFooter, Divider, Image } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 
 import Container from '@/component/modules/Container';
@@ -39,12 +39,19 @@ export default function Categories() {
   return (
     <div className="">
       <Container className=" ">
-        <div className=" flex items-center justify-center gap-2 pb-8 text-2xl font-semibold ">
+        {/* <div className=" flex items-center justify-center gap-2 pb-8 text-2xl font-semibold ">
           <hr className="my-6 flex h-0.5 items-center  justify-center border-t-0 bg-neutral-900 opacity-100  dark:opacity-50 md:w-1/4" />
           <h3 className=" flex w-fit items-center justify-center text-2xl font-semibold ">
             Shop By Category
           </h3>
           <hr className="my-6 flex h-0.5 items-center  justify-center border-t-0 bg-neutral-900 opacity-100  dark:opacity-50 md:w-1/4" />
+        </div> */}
+        <div className="mb-4 flex w-full items-center justify-center  ">
+          <h2 className=" flex w-1/2  items-center  justify-center text-center font-['Poppins']  text-2xl   font-semibold leading-tight text-mainOrange">
+            <Divider className=" mx-auto  w-1/3" />
+            Shop By Category
+            <Divider className=" mx-auto w-1/3  " />
+          </h2>
         </div>
         <div className="  grid h-full w-full  grid-cols-1 items-center  justify-center gap-4  md:grid-cols-3   ">
           {callouts.map((callout) => (

@@ -100,7 +100,7 @@ const Header = () => {
             pathname === '/contact-us' && 'active font-bold text-white '
           }`}
         >
-          <Link href="#" className="text-slate-200">
+          <Link href="/contact-us" className="text-slate-200">
             Contact-us
           </Link>
         </NavbarItem>

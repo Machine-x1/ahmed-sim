@@ -11,6 +11,8 @@ import { Provider } from 'react-redux';
 
 import store from '@/apps/redux/store';
 
+// eslint-disable-next-line import/no-extraneous-dependencies
+
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <Provider store={store}>
