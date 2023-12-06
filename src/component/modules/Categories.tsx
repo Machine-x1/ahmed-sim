@@ -39,15 +39,8 @@ export default function Categories() {
   return (
     <div className="">
       <Container className=" ">
-        {/* <div className=" flex items-center justify-center gap-2 pb-8 text-2xl font-semibold ">
-          <hr className="my-6 flex h-0.5 items-center  justify-center border-t-0 bg-neutral-900 opacity-100  dark:opacity-50 md:w-1/4" />
-          <h3 className=" flex w-fit items-center justify-center text-2xl font-semibold ">
-            Shop By Category
-          </h3>
-          <hr className="my-6 flex h-0.5 items-center  justify-center border-t-0 bg-neutral-900 opacity-100  dark:opacity-50 md:w-1/4" />
-        </div> */}
-        <div className="mb-4 flex w-full items-center justify-center  ">
-          <h2 className=" flex w-1/2  items-center  justify-center text-center font-['Poppins']  text-2xl   font-semibold leading-tight text-mainOrange">
+        <div className="mb-4 flex w-full items-center justify-center py-4  ">
+          <h2 className=" flex w-11/12  items-center  justify-center text-center font-['Poppins']  text-2xl   font-semibold leading-tight text-mainOrange">
             <Divider className=" mx-auto  w-1/3" />
             Shop By Category
             <Divider className=" mx-auto w-1/3  " />
@@ -89,7 +82,7 @@ export default function Categories() {
                 <div
                   role="presentation"
                   onClick={() => router.push(callout.href)}
-                  className=" overflow-hidden bg-hoverTextColor text-sm font-semibold uppercase  text-white duration-200 "
+                  className=" overflow-hidden rounded bg-hoverTextColor px-4 py-2 text-sm font-bold uppercase text-white duration-200 hover:bg-orange-400 hover:transition"
                 >
                   Shop Now
                 </div>

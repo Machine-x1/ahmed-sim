@@ -4,6 +4,7 @@
 
 import Container from '@/component/modules/Container';
 import ProductPage from '@/component/modules/ProductPage';
+import ProductTrending from '@/component/modules/ProductTrending';
 
 const index = () => {
   return (
@@ -11,7 +12,7 @@ const index = () => {
       <Container>
         <ProductPage />
         <div className="w-full">
-          {/* <ProductTrending msg="check another products" /> */}
+          <ProductTrending msg="check another products" />
         </div>
       </Container>
     </div>

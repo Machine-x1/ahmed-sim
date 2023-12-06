@@ -45,6 +45,8 @@ const SearchBar = () => {
       isClearable
       radius="lg"
       size="sm"
+      fullWidth
+      className=""
       onChange={(e) => {
         console.log('object', e.target.value);
         // handleSearch(e.target.value);
