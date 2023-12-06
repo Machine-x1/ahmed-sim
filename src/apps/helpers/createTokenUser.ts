@@ -8,6 +8,7 @@ const createToken = async () => {
   const timestamp = Date.now();
   const finalLocalToken = secretKey + timestamp;
   const hashed = bcrypt.hashSync(finalLocalToken, 10, (err: any, hash: any) => {
+    console.log(err);
     return hash;
   });
   // console.log();

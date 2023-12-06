@@ -33,11 +33,7 @@ const CtaCard = () => {
                 stroke="currentColor"
                 stroke-width="2"
               >
-                <path
-                  strokeLinejoin="round"
-                  strokeLinejoin="round"
-                  d="M14 5l7 7m0 0l-7 7m7-7H3"
-                />
+                <path strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
             </a>
           </div>

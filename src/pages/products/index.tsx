@@ -19,7 +19,9 @@ import { Main } from '@/component/templates/Main';
 
 const ProductsPage = ({ products, meta }: { products: any; meta: any }) => {
   const [value, setValue] = useState('All Products');
-  const [serverData, setServerData] = useState(products);
+  console.log(meta);
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  const [serverData] = useState(products);
   const [productsData, setProductsData] = useState(serverData);
   const [searchValue, setSearchValue] = useState('');
   console.log(searchValue, 'searchValue');

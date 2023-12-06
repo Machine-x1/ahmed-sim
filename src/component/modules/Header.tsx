@@ -25,6 +25,9 @@ import { usePathname } from 'next/navigation';
 // import Link from 'next/link';
 import React from 'react';
 import { IoMdCart } from 'react-icons/io';
+import { useSelector } from 'react-redux';
+
+import type { RootState } from '@/apps/redux/store';
 
 import FormattedPrice from './FormattedPrice';
 import Logo from './Logo';
@@ -74,6 +77,7 @@ const Header = () => {
   // 'cart',
   // 'products',
   const pathname = usePathname();
+  const { cart } = useSelector((state: RootState) => state.cart);
 
   return (
     <Navbar
@@ -143,7 +147,7 @@ const Header = () => {
                 <FormattedPrice amount={0} />
               </p>
               <span className="absolute -right-2 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-white text-xs font-semibold text-orange-600 shadow-xl shadow-black">
-                {0}
+                {cart.products.length}
               </span>
             </div>
           </Link>

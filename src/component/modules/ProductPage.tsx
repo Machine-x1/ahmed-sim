@@ -21,7 +21,7 @@ import { IoMdCart } from 'react-icons/io';
 import { useDispatch } from 'react-redux';
 
 import type { ProductType } from '@/apps/interface/types';
-import { addToCart } from '@/apps/redux/slice/shoppingSlice';
+import { setProdctCart } from '@/apps/redux/slice/cartSlice';
 
 import FormattedPrice from './FormattedPrice';
 
@@ -117,12 +117,7 @@ const ProductPage = ({ product }: { product: ProductType }) => {
                   </p>
                 </div>
                 <div
-                  onClick={
-                    () => dispatch(addToCart(product))
-                    // toast.success(
-                    //   `${product?.title.substring(0, 15)} added successfully!`
-                    // )
-                  }
+                  onClick={() => dispatch(setProdctCart(product))}
                   className="group flex cursor-pointer items-center"
                 >
                   <button className="flex items-center border-r-[1px] border-r-slate-500 bg-darkText px-6 py-3 text-sm uppercase text-slate-100">

@@ -1,21 +1,16 @@
 /* eslint-disable no-constant-condition */
 /* eslint-disable react/button-has-type */
 
-import { Divider } from '@nextui-org/react';
-import Link from 'next/link';
-
 import { Meta } from '@/component/layouts/Meta';
-import CartItem from '@/component/modules/CartItem';
-import PaymentForm from '@/component/modules/PaymentForm';
 import { Main } from '@/component/templates/Main';
 
-const index = () => {
-  // const { productStore } = useSelector((state: any) => state?.shopping);
+const Index = () => {
+  // const { cart } = useSelector((state: RootState) => state.cart);
   // const dispatch = useDispatch();
   return (
     <Main meta={<Meta title="BitsByets" description="BitsByets." />}>
       <div className="mx-auto h-full  max-w-screen-xl   px-4 py-8 pb-24 xl:px-0">
-        {1 ? (
+        {/* {cart.products.length > 0 ? (
           <div className=" w-full  xl:px-0">
             <div className="flex w-full  items-center justify-center gap-y-2 pb-8  ">
               <Divider className=" mx-auto  w-1/3" />
@@ -29,7 +24,6 @@ const index = () => {
               <div className="flex lg:h-[600px] lg:w-2/3">
                 <CartItem />
               </div>
-              {/* Payment Form */}
               <div className=" lg:h-1/2 lg:w-1/3   ">
                 <PaymentForm />
               </div>
@@ -46,10 +40,10 @@ const index = () => {
               </button>
             </Link>
           </div>
-        )}
+        )} */}
       </div>
     </Main>
   );
 };
 
-export default index;
+export default Index;

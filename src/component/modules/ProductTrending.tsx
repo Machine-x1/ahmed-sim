@@ -37,6 +37,7 @@ const ProductTrending = ({
   msg?: string;
   products?: ProductType;
 }) => {
+  console.log(products);
   return (
     <Container className=" h-full w-full">
       <div className="h-full w-full ">

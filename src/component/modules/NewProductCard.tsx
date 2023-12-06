@@ -12,17 +12,20 @@
 import { Card, CardBody, CardFooter, Image, Skeleton } from '@nextui-org/react';
 import Link from 'next/link';
 // import product from 'next-seo/lib/jsonld/product';
-import toast, { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 import { IoMdCart } from 'react-icons/io';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import type { Product } from '@/apps/interface/types';
-import { addToCart } from '@/apps/redux/slice/shoppingSlice';
+import type { ProductType } from '@/apps/interface/types';
+import { setProdctCart } from '@/apps/redux/slice/cartSlice';
+import type { RootState } from '@/apps/redux/store';
 
 import FormattedPrice from './FormattedPrice';
 
-const NewProductCard = ({ item }: { item?: Product | any }) => {
+const NewProductCard = ({ item }: { item?: ProductType | any }) => {
   const dispatch = useDispatch();
+  const { cart } = useSelector((state: RootState) => state.cart);
+  console.log(cart, 'cart');
   return (
     <Card
       shadow="none"
@@ -60,13 +63,7 @@ const NewProductCard = ({ item }: { item?: Product | any }) => {
             </div>
             <div
               role="presentation"
-              onClick={(e: any) =>
-                e.preventDefault() &&
-                dispatch(addToCart(item)) &&
-                toast.success(
-                  `${item?.name.substring(0, 15)} added successfully!`
-                )
-              }
+              onClick={() => dispatch(setProdctCart(item))}
               className="flex h-10 w-full items-center  justify-center border border-transparent bg-hoverTextColor  text-center text-white focus:outline-none focus:ring-4 focus:ring-blue-300"
             >
               <IoMdCart className="text-xl" />

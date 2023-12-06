@@ -6,7 +6,7 @@ import { Input } from '@nextui-org/react';
 import { FiSearch } from 'react-icons/fi';
 // import { useDebouncedCallback } from 'use-debounce';
 
-const SearchBar = ({ setSearchValue }: { setSearchValue: any }) => {
+const SearchBar = ({ setSearchValue }: { setSearchValue?: any }) => {
   return (
     <Input
       label="Search"
