@@ -44,7 +44,35 @@ const Header = () => {
   // }, [productStore]);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-  const menuItems = ['Dashboard', 'Help & Feedback', 'cart', 'products'];
+  const menuItems = [
+    {
+      name: 'Home',
+      href: '/',
+    },
+    {
+      name: 'Dashboard',
+      href: '/dashboard',
+    },
+    {
+      name: 'Accessories',
+      href: '/accessories',
+    },
+    {
+      name: 'steer-wheels',
+      href: '/products',
+    },
+    {
+      name: 'peddals',
+      href: '/peddals',
+    },
+  ];
+  // 'Home',
+  // 'Dashboard',
+  // 'Accessories',
+  // 'steer-wheels',
+  // 'peddals',
+  // 'cart',
+  // 'products',
   const pathname = usePathname();
 
   return (
@@ -58,7 +86,7 @@ const Header = () => {
     >
       {/* <div className="sticky top-0  z-50 flex h-20 w-full  bg-hoverTextColor "> */}
 
-      <NavbarContent className="text-slate-200 sm:hidden" justify="start">
+      <NavbarContent className="text-slate-200 lg:hidden " justify="start">
         <NavbarMenuToggle
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
         />
@@ -133,17 +161,11 @@ const Header = () => {
           <NavbarMenuItem key={`${item}-${index}`}>
             <Link
               className="w-full"
-              color={
-                index === 2
-                  ? 'warning'
-                  : index === menuItems.length - 1
-                  ? 'danger'
-                  : 'foreground'
-              }
-              href="#"
+              color={pathname === item.href ? 'warning' : 'foreground'}
+              href={item.href}
               size="lg"
             >
-              {item}
+              {item.name}
             </Link>
           </NavbarMenuItem>
         ))}

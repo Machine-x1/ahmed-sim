@@ -11,7 +11,7 @@ const CatSection = () => {
   const [value, setValue] = useState('steer-wheels');
   return (
     <Container className="">
-      <div className="  flex w-full ">
+      <div className="  flex w-full gap-4 ">
         <h2 className=" flex w-full  items-center  justify-center text-center font-['Poppins']  text-2xl   font-semibold leading-tight text-mainOrange">
           {value}
         </h2>
