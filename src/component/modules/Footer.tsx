@@ -154,7 +154,7 @@ const Footer = () => {
             className="font-semibold text-neutral-600 dark:text-neutral-400"
             href="https://tailwind-elements.com/"
           >
-            Nova-tech
+            BitsBytes
           </a>
         </div>
       </footer>

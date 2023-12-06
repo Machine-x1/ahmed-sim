@@ -4,8 +4,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-underscore-dangle */
-import { Divider } from '@nextui-org/react';
-import Image from 'next/image';
+import { Divider, Image } from '@nextui-org/react';
 import React from 'react';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { IoMdClose } from 'react-icons/io';
@@ -24,7 +23,7 @@ const CartItem = () => {
   // const { productData } = useSelector((state: any) => state?.shopping);
   const dispatch = useDispatch();
   return (
-    <div className="mx-auto max-h-screen w-full  overflow-auto ">
+    <div className="mx-auto max-h-full w-full  overflow-auto ">
       <div className="mb-6 flex h-full flex-col justify-center gap-y-2 overflow-auto rounded-lg bg-white p-6   shadow-md sm:flex sm:justify-start ">
         {productData?.map((item: any) => (
           <div
@@ -33,11 +32,12 @@ const CartItem = () => {
           >
             <div className="relative flex  w-full items-center gap-x-3  ">
               <Image
-                src={item?.image}
-                width={100}
-                height={100}
-                alt="product image"
-                className=" object-cover  object-center"
+                src="/images/3.jpg"
+                width="100%"
+                height="100%"
+                alt=""
+                radius="lg"
+                className=" h-24 w-24 object-cover  object-center"
                 loading="lazy"
               />
               <div className="absolute end-12 top-2 flex  ">
@@ -48,33 +48,31 @@ const CartItem = () => {
                   <IoMdClose />
                 </span>
               </div>
-              <div className="flex flex-col justify-between gap-2 text-base font-medium text-gray-900">
-                <h3>
-                  <a href={item?.href}>{item?.title}</a>
-                </h3>
+              <div className="flex flex-col flex-wrap items-center justify-center gap-4 font-medium text-gray-900 sm:flex-row">
+                <h3>{item?.title}wefwef</h3>
                 <p className="ml-4">
                   <FormattedPrice amount={item.price} />
                 </p>
-                <p className="mt-1 text-sm text-gray-500">{item?.color}</p>
-                <div className="flex  items-end justify-between text-sm">
-                  <p className="text-gray-500">Qty: {item?.quantity}</p>
+                <p className=" text-sm text-gray-500">{item?.color}</p>
+                <div className="flex  items-center justify-between text-sm">
+                  <p className="text-gray-500">Qty: 32{item?.quantity}</p>
                 </div>
               </div>
               {/* quantity */}
-              <div className=" absolute end-1/2  flex  w-full   border border-slate-300 p-2 md:w-auto">
+              <div className=" absolute  end-1/4 top-auto flex w-20 items-center  justify-center  border border-slate-300 p-2 ">
                 <div className="flex w-10 items-center  justify-center ">
                   <span
                     onClick={() => dispatch(decreaseQuantity(item))}
                     className="cursor-pointer"
                   >
-                    <FiChevronLeft />
+                    <FiChevronLeft size={25} />
                   </span>
                   <span>{item?.quantity}</span>
                   <span
                     onClick={() => dispatch(increaseQuantity(item))}
                     className="cursor-pointer"
                   >
-                    <FiChevronRight />
+                    <FiChevronRight size={25} />
                   </span>
                 </div>
               </div>
