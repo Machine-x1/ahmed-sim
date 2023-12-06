@@ -1,3 +1,5 @@
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable no-console */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable tailwindcss/no-custom-classname */
 /* eslint-disable jsx-a11y/label-has-associated-control */
@@ -13,38 +15,58 @@ import {
   Tab,
   Tabs,
 } from '@nextui-org/react';
+import type { Key } from 'react';
 import { useState } from 'react';
-import { IoIosStar, IoMdCart } from 'react-icons/io';
+import { IoMdCart } from 'react-icons/io';
 import { useDispatch } from 'react-redux';
 
+import type { ProductType } from '@/apps/interface/types';
 import { addToCart } from '@/apps/redux/slice/shoppingSlice';
 
 import FormattedPrice from './FormattedPrice';
 
-const ProductPage = ({ product }: any) => {
+const ProductPage = ({ product }: { product: ProductType }) => {
   const dispatch = useDispatch();
-  // const startArray = Array.from({ length: product?.rating }, (_, index) => (
-  //   <span key={index} className="text-yellow-400">
-  //     <IoIosStar />
-  //   </span>
-  // ));
+  function getCharactersBeforeDot(text: string) {
+    const match = text.match(/([^.]*)\./);
+    return match ? match[1] : ''; // Returns the characters before the dot or an empty string if there's no match
+  }
+  const subDescription = getCharactersBeforeDot(product?.description);
+  const [currentImg, setCurrentImg] = useState<any>(0);
 
-  type ImagesPath = {
-    [key: number]: string;
+  const renderImageCards = () => {
+    if (!product?.images || !Array.isArray(product.images)) {
+      return null;
+    }
+
+    return product.images.slice(1).map((imageSrc: string, index: Key) => {
+      if (!imageSrc) {
+        return null;
+      }
+
+      const handleClick = () => setCurrentImg(Number(index) + 1);
+
+      return (
+        <Card
+          key={index}
+          isHoverable
+          isPressable
+          radius="lg"
+          fullWidth
+          onClick={handleClick}
+          className="h-32 w-32 border-none"
+        >
+          <Image
+            className="h-32 w-full object-cover object-center"
+            src={imageSrc}
+            alt=""
+            width="100%"
+            height="100%"
+          />
+        </Card>
+      );
+    });
   };
-
-  type CurrentImgState = number;
-  const imagesPath: ImagesPath = {
-    0: '/images/scaled.jpg',
-    1: '/images/steer2.jpg',
-    2: '/images/scaled.jpg',
-    3: '/images/scale2.jpg',
-  };
-
-  const [currentImg, setCurrentImg] = useState<CurrentImgState>(0);
-  // if (product?.id === undefined) {
-  //   <Error statusCode={404} title="id not available" withDarkMode />;
-  // }
   return (
     <div>
       <section className="py-12 md:py-16">
@@ -52,16 +74,18 @@ const ProductPage = ({ product }: any) => {
           <Breadcrumbs isDisabled>
             <BreadcrumbItem>Home</BreadcrumbItem>
             <BreadcrumbItem>product</BreadcrumbItem>
-            <BreadcrumbItem> {product?.title}</BreadcrumbItem>
+            <BreadcrumbItem> {product?.name}</BreadcrumbItem>
           </Breadcrumbs>
           <div className="lg:col-gap-12  xl:col-gap-16 mt-8  grid grid-cols-1 gap-8  lg:mt-12 lg:grid-cols-5 lg:gap-16">
             <div className=" lg:col-span-3 lg:row-end-1">
               <div className=" lg:flex lg:items-start">
                 <div className="lg:order-2 lg:ml-5">
-                  <div className="max-w-xl overflow-hidden rounded-lg">
+                  <div className="h-96 max-w-xl overflow-hidden rounded-lg">
                     <Image
                       className="h-full w-full max-w-full object-cover"
-                      src={imagesPath[currentImg]}
+                      src={product?.images[currentImg]}
+                      width="100%"
+                      height="100%"
                       alt=""
                     />
                   </div>
@@ -69,111 +93,23 @@ const ProductPage = ({ product }: any) => {
 
                 <div className=" mt-2 w-full    lg:order-1 lg:w-32 lg:shrink-0">
                   <div className="flex w-full items-start   justify-center  gap-2 lg:flex-col">
-                    <Card
-                      isHoverable
-                      isPressable
-                      radius="lg"
-                      onClick={() => setCurrentImg(1)}
-                      className="border-none"
-                    >
-                      <Image
-                        className="h-full w-full object-cover object-center"
-                        src={imagesPath[1]}
-                        alt=""
-                        width="100%"
-                        height="100%"
-                      />
-                    </Card>
-
-                    <Card
-                      radius="lg"
-                      className="border-none"
-                      isHoverable
-                      isPressable
-                      onClick={() => setCurrentImg(2)}
-                      // fullWidth
-                      // className="flex-0 mb-3 aspect-square h-20 overflow-hidden  border border-transparent text-center"
-                    >
-                      <Image
-                        className="h-full w-full object-cover object-center"
-                        src={imagesPath[2]}
-                        alt=""
-                        width="100%"
-                        height="100%"
-                      />
-                    </Card>
-                    <Card
-                      isHoverable
-                      isPressable
-                      radius="lg"
-                      onClick={() => setCurrentImg(2)}
-                      className="border-none"
-                    >
-                      <Image
-                        className="h-full w-full object-cover object-center"
-                        src={imagesPath[2]}
-                        alt=""
-                        width="100%"
-                        height="100%"
-                      />
-                    </Card>
+                    {renderImageCards()}
                   </div>
                 </div>
               </div>
             </div>
             <div className="lg:col-span-2 lg:row-span-2 lg:row-end-2">
               <h1 className="md: text-2xl font-bold text-gray-900 md:text-3xl">
-                {product?.title}dsadafa
+                {product?.name}
               </h1>
               <div className="mt-5 flex  flex-col  ">
                 <p className="text-md  font-medium text-gray-500">
-                  mini description
+                  {/* {product?.description} */}
+                  here is the sub description before first full stop
+                  {subDescription}
                 </p>
-                {/* <div className="flex items-center">{startArray}</div> */}
-                <span className="flex text-yellow-400">
-                  <IoIosStar />
-                  <IoIosStar />
-                  <IoIosStar />
-                  <IoIosStar />
-                </span>
               </div>
-              {/* <h2 className="mt-8 text-base text-gray-900">model Type</h2>
-              <div className="mt-3 flex select-none flex-wrap items-center gap-1">
-                <label className="">
-                  <input
-                    type="radio"
-                    name="type"
-                    value="Powder"
-                    className="peer sr-only"
-                    checked
-                  />
-                  <p className="rounded-lg border border-black px-6 py-2 font-bold peer-checked:bg-black peer-checked:text-white">
-                    Powder
-                  </p>
-                </label>
-                <label className="">
-                  <input
-                    type="radio"
-                    name="type"
-                    value="Whole Bean"
-                    className="peer sr-only"
-                  />
-                  <p className="rounded-lg border border-black px-6 py-2 font-bold peer-checked:bg-black peer-checked:text-white">
-                    Whole Bean
-                  </p>
-                </label>
-                <label className="">
-                  <input
-                    type="radio"
-                    name="type"
-                    value="Groud"
-                    className="peer sr-only"
-                  />
-                  <p className="rounded-lg border border-black px-6 py-2 font-bold peer-checked:bg-black peer-checked:text-white">
-                    Groud
-                  </p>
-                </label>
-              </div> */}
+
               <div className="mt-10 flex flex-col items-center justify-between space-y-4 border-y py-4 md:flex-row md:space-y-0">
                 <div className="flex items-end">
                   <p className="text-xl font-semibold">
@@ -270,7 +206,7 @@ const ProductPage = ({ product }: any) => {
                       </div>
                     }
                   >
-                    <div className="mt-8 flow-root md:mt-12">
+                    <div className="flow-root ">
                       <p className="text-lightText">{product?.description}</p>
                     </div>
                   </Tab>
