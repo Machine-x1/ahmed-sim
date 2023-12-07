@@ -1,86 +1,49 @@
+/* eslint-disable tailwindcss/no-custom-classname */
+/* eslint-disable tailwindcss/no-custom-classNamename */
 /* eslint-disable unused-imports/no-unused-vars */
 /* eslint-disable @next/next/no-img-element */
 
 import { Button } from '@nextui-org/react';
+import Image from 'next/image';
 
-const features = [
-  { name: 'Origin', description: 'Designed by Good Goods, Inc.' },
-  {
-    name: 'Material',
-    description:
-      'Solid walnut base with rare earth magnets and powder coated steel card cover',
-  },
-  { name: 'Dimensions', description: '6.25" x 3.55" x 1.15"' },
-  { name: 'Finish', description: 'Hand sanded and finished with natural oil' },
-  { name: 'Includes', description: 'Wood card tray and 3 refill packs' },
-  {
-    name: 'Considerations',
-    description:
-      'Made from natural materials. Grain and color vary with each item.',
-  },
-];
-
-export default function ProductFeatures({ products }: { products?: any[] }) {
-  console.log(products);
+export default function ProductFeatures() {
   return (
-    <div className="bg-white">
-      <div className="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 overflow-visible px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
-        <div>
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Technical Specifications
-          </h2>
-          <p className="mt-4 text-gray-500">hiiiiiii</p>
-          <div />
-          <dl className="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
-            {features.map((feature) => (
-              <div key={feature.name} className="border-t border-gray-200 pt-4">
-                <dt className="font-medium text-gray-900">{feature.name}</dt>
-                <dd className="mt-2 text-sm text-gray-500">
-                  {feature.description}
-                </dd>
+    <div className="bg-secondaryBlack">
+      <main className="relative h-[600px] overflow-hidden bg-white dark:bg-gray-800">
+        <div className="relative z-20 flex items-center overflow-hidden bg-white dark:bg-gray-800">
+          <div className="container relative mx-auto flex px-6 py-16">
+            <div className="relative z-20 flex flex-col sm:w-2/3 lg:w-2/5">
+              <span className="mb-12 h-2 w-20 bg-gray-800 dark:bg-white" />
+              <h1 className="font-bebas-neue flex flex-col text-6xl font-black uppercase leading-none text-gray-800 dark:text-white sm:text-8xl">
+                Be on
+                <span className="text-5xl sm:text-7xl">Time</span>
+              </h1>
+              <p className="text-sm text-gray-700 dark:text-white sm:text-base">
+                Dimension of reality that makes change possible and
+                understandable. An indefinite and homogeneous environment in
+                which natural events and human existence take place.
+              </p>
+              <div className="mt-8 flex items-center justify-center gap-6">
+                <Button className="text-md  rounded-lg border-2 border-transparent bg-orange-500 px-4 py-2 uppercase text-white hover:bg-orange-400">
+                  Get started
+                </Button>
+                <Button className="text-md rounded-lg border-2 border-orange-500 bg-transparent px-4 py-2 uppercase text-orange-500 hover:bg-orange-500 hover:text-white dark:text-white">
+                  Read more
+                </Button>
               </div>
-            ))}
-          </dl>
+            </div>
+            <div className="relative hidden sm:block sm:w-1/3 lg:w-3/5">
+              <Image
+                alt="Product image"
+                width={1000}
+                height={1000}
+                src="/images/RSV2R9.webp"
+                className="m-auto max-w-xs md:max-w-sm"
+              />
+            </div>
+          </div>
         </div>
-
-        {/* <div className="grid grid-cols-2 grid-rows-2 gap-4 sm:gap-6 lg:gap-8"> */}
-        <div className="">
-          <img
-            src="/images/R9-wheel-base.png"
-            alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
-            className="rounded-lg bg-gray-100"
-          />
-          {/* <img
-            src="/images/R9-wheel-base.png"
-            alt="Top down view of walnut card tray with embedded magnets and card groove."
-            className="rounded-lg bg-gray-100"
-          />
-          <img
-            src="/images/R9-wheel-base.png"
-            alt="Side of walnut card tray with card groove and recessed card area."
-            className="rounded-lg bg-gray-100"
-          />
-          <img
-            src="/images/R9-wheel-base.png"
-            alt="Walnut card tray filled with cards and card angled in dedicated groove."
-            className="rounded-lg bg-gray-100"
-          /> */}
-        </div>
-        <div className="flex items-center justify-center gap-4 ">
-          <Button
-            radius="none"
-            className="bg-hoverTextColor px-6 py-3  text-sm font-semibold uppercase  text-white duration-200 "
-          >
-            Learn more
-          </Button>
-          <Button
-            radius="none"
-            className="bg-hoverTextColor px-6 py-3 text-sm font-semibold  uppercase  text-white duration-200 "
-          >
-            Shop Now
-          </Button>
-        </div>
-      </div>
+      </main>
     </div>
   );
 }

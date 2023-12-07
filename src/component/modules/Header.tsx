@@ -53,20 +53,41 @@ const Header = () => {
       href: '/',
     },
     {
-      name: 'Dashboard',
+      name: ' DASHBOARD',
       href: '/dashboard',
     },
     {
-      name: 'Accessories',
+      name: 'ACCESSORIES',
       href: '/accessories',
     },
     {
-      name: 'steer-wheels',
+      name: 'STEER-WHEELS',
       href: '/products',
     },
     {
-      name: 'peddals',
+      name: 'PEDDALS',
       href: '/peddals',
+    },
+    {
+      name: ' BUNDLES',
+      href: '/products',
+    },
+
+    {
+      name: 'WHEEL BASIS',
+      href: '/about-us',
+    },
+    {
+      name: 'CONTACT-US',
+      href: '/contact-us',
+    },
+    {
+      name: 'CART',
+      href: '/cart',
+    },
+    {
+      name: 'Digital Dashes',
+      href: '/Digital-Dashes',
     },
   ];
   // 'Home',
@@ -86,7 +107,7 @@ const Header = () => {
       shouldHideOnScroll
       onMenuOpenChange={setIsMenuOpen}
       position="sticky"
-      className="w-full  bg-hoverTextColor "
+      className="z-50 flex h-20 w-full bg-hoverTextColor "
     >
       {/* <div className="sticky top-0  z-50 flex h-20 w-full  bg-hoverTextColor "> */}
 
@@ -104,27 +125,72 @@ const Header = () => {
       </NavbarContent>
 
       <NavbarContent
-        className="hidden items-center  gap-4 sm:flex"
+        className="hidden items-center  gap-4 capitalize sm:flex"
         justify="center"
       >
         <NavbarBrand className=" ">
-          <Logo />
-          {/* <p className="font-bold text-inherit"></p> */}
+          <Link href="/" className="text-slate-200">
+            <Logo />
+            {/* <p className="font-bold text-inherit"></p> */}
+          </Link>
         </NavbarBrand>
         <NavbarItem
           className={`${
-            pathname === '/products/' && 'active texr-white font-bold  '
+            pathname === '/WheelBases' && 'active texr-white font-bold  '
           }`}
         >
-          <Link href="/products" className="text-slate-200">
-            Products
+          <Link href="/WheelBases" className="text-slate-200">
+            WHEEL BASES
           </Link>
         </NavbarItem>
         <NavbarItem
-          className={`${pathname === '/' && 'active texr-white font-bold  '}`}
+          className={`${
+            pathname === '/products' && 'active texr-white font-bold  '
+          }`}
         >
-          <Link href="/" className="text-slate-200" aria-current="page">
-            Home
+          <Link
+            href="/products"
+            className=" text-slate-200  "
+            aria-current="page"
+          >
+            BUNDLES
+          </Link>
+        </NavbarItem>
+
+        <NavbarItem
+          className={`${
+            pathname === '/SteerWheels' && 'active font-bold text-white '
+          }`}
+        >
+          <Link href="/SteerWheels" className="text-slate-200">
+            STEERING WHEELS
+          </Link>
+        </NavbarItem>
+        <NavbarItem
+          className={`${
+            pathname === '/pedals' && 'active font-bold text-white '
+          }`}
+        >
+          <Link href="/pedals" className="text-slate-200">
+            PEDALS
+          </Link>
+        </NavbarItem>
+        <NavbarItem
+          className={`${
+            pathname === '/accessories' && 'active font-bold text-white '
+          }`}
+        >
+          <Link href="/accessories" className="text-slate-200">
+            ACCESSORIES
+          </Link>
+        </NavbarItem>
+        <NavbarItem
+          className={`${
+            pathname === '/accessories' && 'active font-bold text-white '
+          }`}
+        >
+          <Link href="/Digital-Dashes" className="text-slate-200">
+            Digital Dashes
           </Link>
         </NavbarItem>
         <NavbarItem
@@ -133,7 +199,7 @@ const Header = () => {
           }`}
         >
           <Link href="/contact-us" className="text-slate-200">
-            Contact-us
+            CONTACT-US
           </Link>
         </NavbarItem>
       </NavbarContent>
