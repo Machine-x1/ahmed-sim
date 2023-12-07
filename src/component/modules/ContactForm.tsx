@@ -8,7 +8,7 @@ import Container from './Container';
 
 const ContactForm = () => {
   return (
-    <div className="w-full">
+    <div className="w-full bg-bodyColor">
       <Container className="flex w-[80%] flex-col ">
         <div className="flex flex-col items-center  justify-center  py-8 text-2xl font-semibold ">
           Contact Form

@@ -9,7 +9,7 @@ type IMainProps = {
 };
 
 const Main = (props: IMainProps) => (
-  <div className="">
+  <div className="bg-main-bg">
     {props.meta}
     <Header />
     <div>{props.children}</div>

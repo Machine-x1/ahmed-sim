@@ -9,8 +9,7 @@ import { useEffect, useState } from 'react';
 import internalrequestHandler from '@/apps/helpers/InternalrequestHandler';
 import getProducts from '@/apps/server/products/getProducts';
 import { Meta } from '@/component/layouts/Meta';
-import BannerProduct from '@/component/modules/BannerProduct';
-import Container from '@/component/modules/Container';
+import Categories from '@/component/modules/Categories';
 import NewProductCard from '@/component/modules/NewProductCard';
 import PaginationProducts from '@/component/modules/Pagination';
 import SearchBar from '@/component/modules/SearchBar';
@@ -68,11 +67,13 @@ const ProductsPage = ({ products, meta }: { products: any; meta: any }) => {
   }, [searchValue]);
   return (
     <Main meta={<Meta title="BitsByets" description="BitsByets." />}>
+      <Categories />
       <div id="home" className="mx-auto w-full max-w-[1920px] ">
         <div className="h-full w-full">
-          <Container className="w-full">
-            <BannerProduct />
-          </Container>
+          {/* <div className="mx-auto w-full max-w-screen-xl   px-4 py-10 xl:px-0 ">
+            <Categories />
+          </div> */}
+
           <div className="top-0 h-full w-full" />
           <section className="flex w-full ">
             <div className=" mx-auto flex w-full max-w-screen-xl flex-col py-10 ">

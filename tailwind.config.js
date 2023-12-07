@@ -23,7 +23,9 @@ module.exports = {
         darkText: '#242424',
         lightText: '#48464c',
         mainOrange: '#48464c',
+        secondaryBlack: '#1C1C1C',
         hoverTextColor: '#ec6302',
+        greyColor: '#F5F5F5',
       },
       screens: {
         sm: '640px',
