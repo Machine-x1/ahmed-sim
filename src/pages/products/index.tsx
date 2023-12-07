@@ -13,7 +13,6 @@ import Categories from '@/component/modules/Categories';
 import NewProductCard from '@/component/modules/NewProductCard';
 import PaginationProducts from '@/component/modules/Pagination';
 import SearchBar from '@/component/modules/SearchBar';
-import SelectCat from '@/component/modules/SelectCat';
 import { Main } from '@/component/templates/Main';
 
 const ProductsPage = ({ products, meta }: { products: any; meta: any }) => {
@@ -67,22 +66,28 @@ const ProductsPage = ({ products, meta }: { products: any; meta: any }) => {
   }, [searchValue]);
   return (
     <Main meta={<Meta title="BitsByets" description="BitsByets." />}>
-      <Categories />
+      <Categories // value={value}
+        onChange={(value: {
+          target: { value: React.SetStateAction<string> };
+        }) => {
+          setValue(value.target.value);
+          console.log('hi', value.target.value);
+        }}
+      />
       <div id="home" className="mx-auto w-full max-w-[1920px] ">
         <div className="h-full w-full">
           {/* <div className="mx-auto w-full max-w-screen-xl   px-4 py-10 xl:px-0 ">
             <Categories />
           </div> */}
-
           <div className="top-0 h-full w-full" />
           <section className="flex w-full ">
             <div className=" mx-auto flex w-full max-w-screen-xl flex-col py-10 ">
               <div className=" w-full ">
                 <div className=" flex w-full justify-between gap-2 pb-5  ">
-                  <div className="w-1/2">
+                  <div className="w-full">
                     <SearchBar setSearchValue={setSearchValue} />
                   </div>
-                  <div className="   w-1/3 ">
+                  {/* <div className="   w-1/3 ">
                     <SelectCat
                       // value={value}
                       onChange={(value: {
@@ -92,7 +97,7 @@ const ProductsPage = ({ products, meta }: { products: any; meta: any }) => {
                         console.log('hi', value.target.value);
                       }}
                     />
-                  </div>
+                  </div> */}
                 </div>
               </div>
               <div className="mb-4 flex w-full items-center justify-center  ">

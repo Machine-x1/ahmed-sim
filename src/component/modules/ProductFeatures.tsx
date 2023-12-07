@@ -1,5 +1,4 @@
 /* eslint-disable tailwindcss/no-custom-classname */
-/* eslint-disable tailwindcss/no-custom-classNamename */
 /* eslint-disable unused-imports/no-unused-vars */
 /* eslint-disable @next/next/no-img-element */
 
@@ -9,7 +8,13 @@ import Image from 'next/image';
 export default function ProductFeatures() {
   return (
     <div className="bg-secondaryBlack">
-      <main className="relative h-[600px] overflow-hidden bg-white dark:bg-gray-800">
+      <main className="relative h-screen overflow-hidden bg-white dark:bg-gray-800 lg:h-[650px]">
+        {/* <header>
+          <h1 className="font-bebas-neue flex flex-col text-6xl font-black uppercase leading-none text-gray-800 dark:text-white sm:text-8xl">
+            Be on
+            <span className="text-5xl sm:text-7xl">Time</span>
+          </h1>
+        </header> */}
         <div className="relative z-20 flex items-center overflow-hidden bg-white dark:bg-gray-800">
           <div className="container relative mx-auto flex px-6 py-16">
             <div className="relative z-20 flex flex-col sm:w-2/3 lg:w-2/5">

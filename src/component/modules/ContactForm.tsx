@@ -1,6 +1,6 @@
 /* eslint-disable tailwindcss/no-custom-classname */
 /* eslint-disable react/no-unescaped-entities */
-import { Button, Input, Textarea } from '@nextui-org/react';
+import { Button, Divider, Input, Textarea } from '@nextui-org/react';
 import React from 'react';
 import { BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs';
 
@@ -12,7 +12,7 @@ const ContactForm = () => {
       <Container className="flex w-[80%] flex-col ">
         <div className="flex flex-col items-center  justify-center  py-8 text-2xl font-semibold ">
           Contact Form
-          <hr className="my-6 flex h-0.5 w-1/2  items-center justify-center border-t-0 bg-neutral-900  opacity-100 dark:opacity-50" />
+          <Divider className="mx-auto mt-3 w-1/3" />
         </div>
         <div className=" mx-auto grid w-full grid-cols-1 items-center justify-center gap-4 md:grid-cols-2  xl:grid-cols-2">
           <div className="mx-auto flex h-full w-1/2 flex-col items-center justify-center gap-8">

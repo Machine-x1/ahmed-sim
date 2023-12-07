@@ -54,7 +54,8 @@ const callouts = [
   },
 ];
 
-export default function Categories() {
+export default function Categories(props: any) {
+  const { onChange, value } = props;
   // const router = useRouter();
   return (
     <div className=" bg-hoverTextColor ">
@@ -75,6 +76,9 @@ export default function Categories() {
                   className="h-auto w-auto cursor-default data-[hover]:bg-foreground/10"
                   radius="full"
                   variant="light"
+                  color="secondary"
+                  onClick={onChange}
+                  value={value}
                 >
                   <Image
                     isZoomed

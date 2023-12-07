@@ -8,6 +8,7 @@ import Banner from '@/component/modules/Banner';
 import ContactForm from '@/component/modules/ContactForm';
 import ProductFeatures from '@/component/modules/ProductFeatures';
 import ProductDataSwiper from '@/component/modules/ProductsData';
+import Sponsors from '@/component/modules/Sponsors';
 import { Main } from '@/component/templates/Main';
 
 const Index = () => {
@@ -20,11 +21,13 @@ const Index = () => {
         <Banner />
         {/* <Categories /> */}
         <ProductFeatures />
+        {/* <Vidiooo /> */}
+
         {/* <ProductTrending msg="Featured Products" /> */}
         <ProductDataSwiper msg="Featured Products" />
         <AboutUs />
         <ContactForm />
-        {/* <Sponsors /> */}
+        <Sponsors />
       </div>
     </Main>
   );
@@ -37,7 +40,6 @@ export const getServerSideProps = async (context: any) => {
   if (!getToken) {
     await createTokenAndUser({ req, res });
   }
-
   return {
     props: {},
   };

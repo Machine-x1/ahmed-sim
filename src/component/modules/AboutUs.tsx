@@ -76,7 +76,6 @@ const AboutUs = () => {
               </div>
             </div>
           </div>
-          {/* <Vidiooo /> */}
           {/* // */}
         </section>
       </div>

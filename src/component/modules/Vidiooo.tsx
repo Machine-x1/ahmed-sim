@@ -2,18 +2,18 @@ import ReactPlayer from 'react-player';
 
 const Vidiooo = () => {
   return (
-    <div>
-      <main className="flex min-h-screen flex-col items-center justify-between p-24">
-        {/* <ReactPlayer
-          url="https://giistyxelor.s3.amazonaws.com/giists/video/video0cP3w019TiZYYcUy22WY.mp4"
-          controls={false}
-        /> */}
+    <div className="bg-secondaryBlack ">
+      <main className="flex min-h-screen  flex-col  items-center justify-between xl:h-full xl:px-0">
         <ReactPlayer
-          url="https://giistyxelor.s3.amazonaws.com/giists/video/video0cP3w019TiZYYcUy22WY.mp4"
+          url="images/pexels-cottonbro-5767772 (1080p).mp4"
           controls={false}
+          playing
+          muted
+          loop
           width="100%"
           height="100%"
-          playing
+          className="object-cover object-center"
+          playsinline
         />
       </main>
     </div>
