@@ -37,7 +37,6 @@ const ProductDataSwiper = ({
   msg?: string;
   products?: ProductType;
 }) => {
-  console.log(products);
   return (
     <div className="w-full bg-secondaryBlack">
       <Container className=" h-full w-full">

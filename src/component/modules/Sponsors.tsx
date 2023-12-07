@@ -1,26 +1,74 @@
-import Image from 'next/image';
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable jsx-a11y/no-redundant-roles */
 
+import { Divider } from '@nextui-org/react';
+
+/* eslint-disable tailwindcss/no-custom-classname */
 const Sponsors = () => (
-  <div className="border-collapse">
-    <div className="flex items-center justify-center">
-      <a href="https://clerk.com?utm_source=github&utm_medium=sponsorship&utm_campaign=nextjs-boilerplate">
-        <Image
-          src="/assets/images/clerk.png"
-          alt="Clerk – Authentication & User Management for Next.js"
-          width={260}
-          height={224}
-        />
-      </a>
-      <a href="https://turso.tech/?utm_source=nextjsstarterbp">
-        <Image
-          src="/assets/images/turso.png"
-          alt="SQLite Developer Experience"
-          width={260}
-          height={224}
-        />
-      </a>
+  <div className="h-full w-full bg-bodyColor ">
+    {/* <div className="py-8" /> */}
+    <div className="mx-4 rounded-xl  pt-8 sm:mx-8 sm:max-w-5xl md:mx-auto">
+      <div className="mx-auto mb-10 w-11/12 sm:w-2/3">
+        <h1 className="pt-4 text-center text-3xl font-extrabold text-gray-800 focus:outline-none xl:text-4xl">
+          OUR PREMIUM SPONSORS
+        </h1>
+        <Divider className="mx-auto mt-3 " />
+      </div>
+      <div className="sm:24 flex flex-wrap items-center justify-center px-8 sm:py-6">
+        <div className="inset-0 flex w-full items-center justify-center pb-16 contrast-75 drop-shadow-xl duration-300  transition hover:scale-75 hover:contrast-100 sm:w-1/6 xl:pb-10">
+          <img
+            className="w-12 focus:outline-none sm:w-16 "
+            src="/images/simagiclogo.webp"
+            alt="Adidas"
+            role="img"
+          />
+        </div>
+        <div className="inset-0 flex w-1/3 items-center justify-center pb-16 contrast-75 drop-shadow-xl duration-300  transition hover:scale-75 hover:contrast-100 sm:w-1/6 xl:pb-10">
+          <img
+            className="w-12 focus:outline-none sm:w-16"
+            src="/images/方形logo黑.webp"
+            alt="Chanel"
+            role="img"
+          />
+        </div>
+        {/* <div className="inset-0 flex w-1/3 items-center justify-center pb-16 contrast-75 drop-shadow-xl duration-300  transition hover:scale-75 hover:contrast-100 sm:w-1/6 xl:pb-10">
+          <img
+            className="w-12 focus:outline-none sm:w-16"
+            src="https://cdn-icons-png.flaticon.com/128/3845/3845877.png"
+            alt="Nike"
+            role="img"
+          />
+        </div> */}
+        {/* <div className="inset-0 flex w-1/3 items-center justify-center pb-16 contrast-75 drop-shadow-xl duration-300  transition hover:scale-75 hover:contrast-100 sm:w-1/6 xl:pb-10">
+          <img
+            className="w-12 focus:outline-none sm:w-16"
+            src="https://cdn-icons-png.flaticon.com/128/732/732242.png"
+            alt="Toyota"
+            role="img"
+          />
+        </div> */}
+        {/* <div className="inset-0 flex w-1/3 items-center justify-center pb-16 contrast-75 drop-shadow-xl duration-300  transition hover:scale-75 hover:contrast-100 sm:w-1/6 xl:pb-10">
+          <img
+            className="w-12 focus:outline-none sm:w-16"
+            src="https://cdn-icons-png.flaticon.com/128/187/187868.png"
+            alt="Toyota"
+            role="img"
+          />
+        </div> */}
+        {/* <div className="inset-0 flex w-1/3 items-center justify-center pb-16 contrast-75 drop-shadow-xl duration-300  transition hover:scale-75 hover:contrast-100 sm:w-1/6 xl:pb-10">
+          <img
+            className="w-12 focus:outline-none sm:w-16"
+            src="https://cdn-icons-png.flaticon.com/128/685/685680.png"
+            alt="Toyota"
+            role="img"
+          />
+        </div> */}
+      </div>
     </div>
+    <style>
+      @import
+      url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+    </style>
   </div>
 );
-
 export default Sponsors;
