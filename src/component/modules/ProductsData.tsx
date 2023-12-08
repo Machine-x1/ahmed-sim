@@ -45,7 +45,7 @@ const ProductDataSwiper = ({
             <div className="mb-4 flex w-full ">
               <div className="flex w-full flex-col justify-start gap-4">
                 <h2 className="  text-4xl  font-semibold capitalize text-slate-100 ">
-                  {msg || 'Featured Products'}
+                  {msg || 'Introducing Our Latest Products'}
                 </h2>
                 <Divider className="  w-1/2 bg-hoverTextColor " />
               </div>

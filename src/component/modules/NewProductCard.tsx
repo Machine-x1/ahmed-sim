@@ -7,13 +7,13 @@
 /* eslint-disable unused-imports/no-unused-vars */
 /* eslint-disable tailwindcss/no-custom-classname */
 
-// 'use client';
-
 import { Card, CardBody, CardFooter, Image, Skeleton } from '@nextui-org/react';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { useState } from 'react';
 // import product from 'next-seo/lib/jsonld/product';
 import { Toaster } from 'react-hot-toast';
-import { IoMdCart } from 'react-icons/io';
+import { BiCart } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
 
 import type { ProductType } from '@/apps/interface/types';
@@ -24,56 +24,76 @@ import FormattedPrice from './FormattedPrice';
 
 const NewProductCard = ({ item }: { item?: ProductType | any }) => {
   const dispatch = useDispatch();
+  const [isHovered, setIsHovered] = useState(false);
   const { cart } = useSelector((state: RootState) => state.cart);
   console.log(cart, 'cart');
   return (
-    <Card
-      shadow="none"
-      isPressable
-      onPress={() => console.log('item pressed')}
-      fullWidth
-      className=" flex h-full w-full flex-col overflow-hidden  "
-    >
-      <Skeleton isLoaded className="rounded-lg">
-        <CardBody className=" flex  w-full items-center justify-center rounded-xl">
-          <Link href={`/products/${item?.slug}`}>
-            <Image
-              className=" h-full w-full overflow-hidden object-cover  object-center"
-              src="/images/R16-1.avif"
-              alt="product image"
-              removeWrapper
-            />
-          </Link>
-        </CardBody>
-
-        <CardFooter className=" mb-2 ">
-          <div className="mx-auto  flex w-full flex-col items-center justify-center gap-2">
-            <div className=" w-fulll flex  items-center justify-between gap-8">
-              <h5 className="text-xl tracking-tight text-mainOrange">
-                {item?.name}
-              </h5>
-              <p className=" end-0  flex items-center justify-end">
-                <span className="text-lg font-bold text-mainOrange">
-                  <FormattedPrice amount={item?.price} />
-                </span>
-                {/* <span className="text-sm text-mainOrange line-through">
-                  <FormattedPrice amount={item?.oldprice} />{' '}
-                </span> */}
-              </p>
-            </div>
-            <div
-              role="presentation"
-              onClick={() => dispatch(setProdctCart(item))}
-              className="flex h-10 w-full items-center  justify-center border border-transparent bg-hoverTextColor  text-center text-white focus:outline-none focus:ring-4 focus:ring-blue-300"
+    <div className="relative">
+      <motion.div
+        className=""
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <Card
+          shadow="none"
+          // isPressable
+          // onPress={() => console.log('item pressed')}
+          fullWidth
+          className=" relative flex h-full w-full flex-col overflow-hidden  "
+        >
+          {isHovered && (
+            <motion.button
+              whileHover={{ scale: 1.1 }} // Framer Motion animation on hover
+              className="  absolute left-2 top-1  z-20 flex items-center justify-center duration-300 transition-opacity hover:opacity-100"
+              onClick={() => {
+                // Handle button click event
+                console.log('Button clicked!');
+              }}
             >
-              <IoMdCart className="text-xl" />
-              Add to cart
-            </div>
-          </div>
-        </CardFooter>
-      </Skeleton>
-      <Toaster position="top-center" reverseOrder={false} />
-    </Card>
+              <button
+                // role="presentation"
+                onClick={() => dispatch(setProdctCart(item))}
+                className=" flex w-full flex-col items-center justify-center "
+              >
+                <BiCart size={40} className="text-xl text-hoverTextColor" />
+                <span className="text-sm  uppercase text-secondaryBlack">
+                  Add to cart
+                </span>
+              </button>
+            </motion.button>
+          )}
+          <Skeleton isLoaded className="rounded-lg">
+            <CardBody className=" relative flex  w-full items-center justify-center rounded-xl">
+              <Link href={`/products/${item?.slug}`}>
+                <Image
+                  className=" h-full w-full overflow-hidden object-cover  object-center"
+                  src="/images/R16-1.avif"
+                  alt="product image"
+                  removeWrapper
+                />
+              </Link>
+            </CardBody>
+
+            <CardFooter className="  mb-2 flex flex-col ">
+              <div className="mx-auto  flex w-full flex-col items-center justify-center gap-2">
+                <div className=" w-fulll flex flex-col  items-center justify-between ">
+                  <h5 className="text-xl tracking-tight text-mainOrange">
+                    {item?.name}
+                  </h5>
+                  <p className="  flex items-center justify-end">
+                    <span className="text-lg font-bold text-orange-500">
+                      <FormattedPrice amount={item?.price} />
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </CardFooter>
+          </Skeleton>
+
+          <Toaster position="top-center" reverseOrder={false} />
+        </Card>
+      </motion.div>
+    </div>
   );
 };
 

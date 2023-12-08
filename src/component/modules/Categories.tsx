@@ -5,8 +5,6 @@
 /* eslint-disable no-console */
 /* eslint-disable tailwindcss/no-custom-classname */
 
-'use client';
-
 import { Button, Card, Image } from '@nextui-org/react';
 import Link from 'next/link';
 
@@ -14,7 +12,7 @@ import Container from '@/component/modules/Container';
 
 const callouts = [
   {
-    name: 'steering wheels',
+    name: 'STEERING WHEELS    ',
     description: 'Work from home accessories',
     imageSrc: '/images/RSV2R9.webp',
     imageAlt:
@@ -22,7 +20,7 @@ const callouts = [
     href: '#steerWheels',
   },
   {
-    name: 'accessories',
+    name: 'ACCESSORIES    ',
     description: 'Journals and note-taking',
     imageSrc: '/images/Wireless-Technology.webp',
     imageAlt:
@@ -30,28 +28,28 @@ const callouts = [
     href: '#accessories',
   },
   {
-    name: 'pedals',
+    name: 'PEDALS    ',
     description: 'Daily commute essentials',
     imageSrc: '/images/RSV2R9.webp',
     imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
     href: '#pedals',
   },
   {
-    name: ' bundels',
+    name: ' BUNDLES',
     description: 'Daily commute essentials',
     imageSrc: '/images/R5-Bundle-1_1000x.webp',
     imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
     href: '#Bundles',
   },
   {
-    name: 'wheelBasis',
+    name: 'WHEEL BASES    ',
     description: 'Daily commute essentials',
     imageSrc: '/images/R16-1.avif',
     imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
     href: '#wheelBasis',
   },
   {
-    name: 'Digital Dashes',
+    name: 'DIGITAL DASHES    ',
     description: 'Daily commute essentials',
     imageSrc: '/images/IMG_0815.webp',
     imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
