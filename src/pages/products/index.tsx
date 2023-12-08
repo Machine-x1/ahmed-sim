@@ -3,15 +3,14 @@
 /* eslint-disable unused-imports/no-unused-vars */
 /* eslint-disable no-underscore-dangle */
 
-import { Divider } from '@nextui-org/react';
 import { useEffect, useState } from 'react';
 
 import internalrequestHandler from '@/apps/helpers/InternalrequestHandler';
 import getProducts from '@/apps/server/products/getProducts';
 import { Meta } from '@/component/layouts/Meta';
 import Categories from '@/component/modules/Categories';
-import NewProductCard from '@/component/modules/NewProductCard';
 import PaginationProducts from '@/component/modules/Pagination';
+import { ProductSection } from '@/component/modules/ProductSection';
 import SearchBar from '@/component/modules/SearchBar';
 import { Main } from '@/component/templates/Main';
 
@@ -64,9 +63,21 @@ const ProductsPage = ({ products, meta }: { products: any; meta: any }) => {
 
     getSearch(); // Call the async function
   }, [searchValue]);
+
+  const categories = [
+    { title: 'Steer Wheels', key: 'steerWheels', id: 'steerWheels' },
+    { title: 'Pedals', key: 'pedals', id: 'pedals' },
+    { title: 'Bundles', key: 'Bundles', id: 'Bundles' },
+    { title: 'Wheel Basis', key: 'wheelBasis', id: 'wheelBasis' },
+    { title: 'Accessories', key: 'accessories', id: 'accessories' },
+    { title: 'cockfits', key: 'cockfits', id: 'cockfits' },
+    { title: 'Digital Dashes ', key: 'DigitalDashes', id: 'DigitalDashes' },
+  ];
+
   return (
     <Main meta={<Meta title="BitsByets" description="BitsByets." />}>
       <Categories // value={value}
+        onClick={(value: string) => setValue(value)}
         onChange={(value: {
           target: { value: React.SetStateAction<string> };
         }) => {
@@ -76,9 +87,6 @@ const ProductsPage = ({ products, meta }: { products: any; meta: any }) => {
       />
       <div id="home" className="mx-auto w-full max-w-[1920px] ">
         <div className="h-full w-full">
-          {/* <div className="mx-auto w-full max-w-screen-xl   px-4 py-10 xl:px-0 ">
-            <Categories />
-          </div> */}
           <div className="top-0 h-full w-full" />
           <section className="flex w-full ">
             <div className=" mx-auto flex w-full max-w-screen-xl flex-col py-10 ">
@@ -87,37 +95,16 @@ const ProductsPage = ({ products, meta }: { products: any; meta: any }) => {
                   <div className="w-full">
                     <SearchBar setSearchValue={setSearchValue} />
                   </div>
-                  {/* <div className="   w-1/3 ">
-                    <SelectCat
-                      // value={value}
-                      onChange={(value: {
-                        target: { value: React.SetStateAction<string> };
-                      }) => {
-                        setValue(value.target.value);
-                        console.log('hi', value.target.value);
-                      }}
-                    />
-                  </div> */}
                 </div>
               </div>
-              <div className="mb-4 flex w-full items-center justify-center  ">
-                <h2 className=" flex w-11/12  items-center  justify-center text-center font-['Poppins']  text-2xl   font-semibold leading-tight text-mainOrange">
-                  <Divider className=" mx-auto  w-1/3" />
-                  {value}
-
-                  <Divider className=" mx-auto w-1/3  " />
-                </h2>
-              </div>
-
-              <div className=" grid w-full grid-cols-1 gap-4 md:grid-cols-3 xl:grid-cols-4">
-                {productsData.length > 0 ? (
-                  productsData.map((item: any) => (
-                    <NewProductCard key={item._id} item={item} />
-                  ))
-                ) : (
-                  <div>No Data For Now</div>
-                )}
-              </div>
+              {categories.map((category) => (
+                <ProductSection
+                  key={category.key}
+                  id={category.id}
+                  title={category.title}
+                  productsData={productsData} // Pass specific product data for each category
+                />
+              ))}
             </div>
           </section>
           <div className="mt-5 flex w-full justify-center">
