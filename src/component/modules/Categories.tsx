@@ -24,7 +24,7 @@ const callouts = [
   {
     name: 'accessories',
     description: 'Journals and note-taking',
-    imageSrc: '/images/steercat.webp',
+    imageSrc: '/images/Wireless-Technology.webp',
     imageAlt:
       'Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant.',
     href: '#accessories',
@@ -39,56 +39,52 @@ const callouts = [
   {
     name: ' bundels',
     description: 'Daily commute essentials',
-    imageSrc: '/images/steercat.webp',
+    imageSrc: '/images/R5-Bundle-1_1000x.webp',
     imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
     href: '#Bundles',
   },
   {
     name: 'wheelBasis',
     description: 'Daily commute essentials',
-    imageSrc: '/images/RSV2R9.webp',
+    imageSrc: '/images/R16-1.avif',
     imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
     href: '#wheelBasis',
   },
   {
     name: 'Digital Dashes',
     description: 'Daily commute essentials',
-    imageSrc: '/images/simagic-p1000-sim-racing-pedal-set-side.jpg',
+    imageSrc: '/images/IMG_0815.webp',
     imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
     href: '#DigitalDashes',
     // href: '#cockfits',
   },
-  {
-    name: 'cockfits',
-    description: 'Daily commute essentials',
-    imageSrc: '/images/simagic-p1000-sim-racing-pedal-set-side.jpg',
-    imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
-    href: '#cockfits',
-  },
+  // {
+  //   name: 'cockfits',
+  //   description: 'Daily commute essentials',
+  //   imageSrc: '/images/RSV2_R16_RM_280x315@2x.webp',
+  //   imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
+  //   href: '#cockfits',
+  // },
 ];
 export default function Categories(props: any) {
   const { onChange, value, onClick } = props;
   // const router = useRouter();
   return (
-    <div className=" bg-hoverTextColor ">
-      <Container className=" ">
-        <div className="  grid h-full w-full  grid-cols-3 items-center justify-center  gap-4 md:grid-cols-7  ">
+    <div className=" bg-bodyColor pt-6 ">
+      <Container className="px-4 ">
+        <div className="  grid h-full w-full  grid-cols-3 items-center justify-center  gap-4 md:grid-cols-6 ">
           {callouts.map((callout) => (
             <div
               key={callout.name}
               className="flex flex-col items-center justify-center"
             >
-              <Card
-                shadow="sm"
-                fullWidth
-                className="h-28 w-28  cursor-default rounded-full "
-              >
+              <Card shadow="sm" fullWidth className="h-28 w-28   rounded-full ">
                 <Button
                   isIconOnly
-                  className="h-auto w-auto cursor-default data-[hover]:bg-foreground/10"
+                  className="h-28 w-28 "
+                  color="default"
                   radius="full"
-                  variant="light"
-                  color="secondary"
+                  variant="flat"
                   onClick={onClick}
                   onChange={onChange}
                   value={value}
@@ -107,7 +103,7 @@ export default function Categories(props: any) {
                 </Button>
               </Card>
               {/* <a onClick={() => setActiveSection('steerWheels')}> */}
-              <span className="mt-2 text-white">{callout.name}</span>
+              <span className="mt-2 ">{callout.name}</span>
               {/* </a> */}
             </div>
           ))}

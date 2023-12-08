@@ -18,7 +18,7 @@ module.exports = {
       //   bodyFont: ['Urbanist', ...defaultTheme.fontFamily.sans],
       // },
       colors: {
-        bodyColor: '#fbfaf7',
+        bodyColor: '#F5F5F5',
         bgLight: '#1010100d',
         darkText: '#242424',
         lightText: '#48464c',
