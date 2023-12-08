@@ -103,11 +103,16 @@ const Header = () => {
   return (
     <Navbar
       isBordered
+      isBlurred
+      disableAnimation
+      disableScrollHandler
       isMenuOpen={isMenuOpen}
       shouldHideOnScroll
       onMenuOpenChange={setIsMenuOpen}
+      maxWidth="2xl"
+      height="90px"
       position="sticky"
-      className="z-50 flex h-20 w-full bg-hoverTextColor "
+      className="z-50 flex w-full bg-hoverTextColor "
     >
       {/* <div className="sticky top-0  z-50 flex h-20 w-full  bg-hoverTextColor "> */}
 
@@ -117,7 +122,7 @@ const Header = () => {
         />
       </NavbarContent>
 
-      <NavbarContent className="pr-3 sm:hidden" justify="center">
+      <NavbarContent className=" pr-3" justify="center">
         <NavbarBrand>
           <Logo />
           <p className="font-bold text-inherit" />
@@ -125,32 +130,31 @@ const Header = () => {
       </NavbarContent>
 
       <NavbarContent
-        className="hidden items-center  gap-4 capitalize sm:flex"
+        className="hidden items-center gap-10  text-xl capitalize   lg:flex "
         justify="center"
       >
-        <NavbarBrand className=" ">
+        {/* <NavbarBrand className=" ">
           <Link href="/" className="text-slate-200">
             <Logo />
-            {/* <p className="font-bold text-inherit"></p> */}
           </Link>
-        </NavbarBrand>
+        </NavbarBrand> */}
         <NavbarItem
-          className={`${
-            pathname === '/WheelBases' && 'active texr-white font-bold  '
+          className={` ${
+            pathname === '/WheelBases' && 'active font-bold text-white  '
           }`}
         >
-          <Link href="/WheelBases" className="text-slate-200">
+          <Link href="/WheelBases" className=" text-xl text-slate-200  ">
             WHEEL BASES
           </Link>
         </NavbarItem>
         <NavbarItem
           className={`${
-            pathname === '/products' && 'active texr-white font-bold  '
+            pathname === '/products' && 'active font-bold  text-white  '
           }`}
         >
           <Link
             href="/products"
-            className=" text-slate-200  "
+            className=" text-xl text-slate-200  "
             aria-current="page"
           >
             BUNDLES
@@ -162,7 +166,7 @@ const Header = () => {
             pathname === '/SteerWheels' && 'active font-bold text-white '
           }`}
         >
-          <Link href="/SteerWheels" className="text-slate-200">
+          <Link href="/SteerWheels" className="text-xl  text-slate-200">
             STEERING WHEELS
           </Link>
         </NavbarItem>
@@ -171,7 +175,7 @@ const Header = () => {
             pathname === '/pedals' && 'active font-bold text-white '
           }`}
         >
-          <Link href="/pedals" className="text-slate-200">
+          <Link href="/pedals" className="text-xl text-slate-200 ">
             PEDALS
           </Link>
         </NavbarItem>
@@ -180,7 +184,7 @@ const Header = () => {
             pathname === '/accessories' && 'active font-bold text-white '
           }`}
         >
-          <Link href="/accessories" className="text-slate-200">
+          <Link href="/accessories" className="text-xl text-slate-200  ">
             ACCESSORIES
           </Link>
         </NavbarItem>
@@ -189,7 +193,7 @@ const Header = () => {
             pathname === '/accessories' && 'active font-bold text-white '
           }`}
         >
-          <Link href="/Digital-Dashes" className="text-slate-200">
+          <Link href="/Digital-Dashes" className="text-xl text-slate-200 ">
             Digital Dashes
           </Link>
         </NavbarItem>
@@ -198,7 +202,7 @@ const Header = () => {
             pathname === '/contact-us' && 'active font-bold text-white '
           }`}
         >
-          <Link href="/contact-us" className="text-slate-200">
+          <Link href="/contact-us" className="text-xl text-slate-200 ">
             CONTACT-US
           </Link>
         </NavbarItem>
