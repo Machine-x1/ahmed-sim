@@ -18,7 +18,7 @@ const BannerText = ({ title, message, shopbtn }: Props) => {
           initial={{ y: 30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className=" text-xl font-bold text-hoverTextColor   md:text-5xl"
+          className=" text-xl font-bold text-white  md:text-5xl"
         >
           {title}
         </motion.h2>
@@ -26,10 +26,10 @@ const BannerText = ({ title, message, shopbtn }: Props) => {
           initial={{ y: 40, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6 }}
-          className="hidden text-lg text-slate-100 md:block "
+          className=" hidden w-96 px-4 text-lg text-slate-100 md:block "
         >
           {message ||
-            ' MOZA Racing is determined to create innovative and professional'}
+            ' MOZA Racing is determined to create innovative and professional Dimension of reality that makes change possible and understandable.'}
         </motion.p>
         <motion.div
           initial={{ y: 50, opacity: 0 }}
@@ -41,7 +41,7 @@ const BannerText = ({ title, message, shopbtn }: Props) => {
             <Button
               radius="none"
               size="sm"
-              className="bg-hoverTextColor text-sm font-semibold uppercase text-white duration-200  md:px-6 md:py-3 "
+              className="bg-hoverTextColor px-4 py-2 text-sm font-semibold uppercase text-white duration-200 hover:bg-orange-500 hover:text-white "
             >
               Shop Now
             </Button>
@@ -49,9 +49,9 @@ const BannerText = ({ title, message, shopbtn }: Props) => {
           <Button
             radius="none"
             size="sm"
-            className="bg-hoverTextColor  text-sm font-semibold  uppercase text-white duration-200  md:px-6 md:py-3"
+            className=" rounded-lg border-2 border-orange-500 bg-transparent px-4 py-2 uppercase text-orange-500 hover:bg-orange-500 hover:text-white"
           >
-            Learn more
+            Read more
           </Button>
         </motion.div>
         {/* </div> */}

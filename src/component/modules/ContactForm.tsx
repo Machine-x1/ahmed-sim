@@ -10,8 +10,8 @@ const ContactForm = () => {
   return (
     <div className="w-full bg-bodyColor">
       <Container className="flex w-[80%] flex-col ">
-        <div className="flex flex-col items-center  justify-center  py-8 text-2xl font-semibold ">
-          Contact Form
+        <div className="flex flex-col  items-center justify-center  py-8  text-2xl font-semibold uppercase ">
+          Contact Us
           <Divider className="mx-auto mt-3 w-1/3" />
         </div>
         <div className=" mx-auto grid w-full grid-cols-1 items-center justify-center gap-4 md:grid-cols-2  xl:grid-cols-2">
@@ -60,16 +60,18 @@ const ContactForm = () => {
             </div>
           </div>
           <div className="mx-auto flex h-full w-1/2 flex-col  items-center  justify-center gap-8">
-            <Input type="email" variant="underlined" label="Email" />
+            <Input type="email" variant="underlined" size="md" label="Email" />
             <Textarea
               key=""
               variant="underlined"
               // label="Description"
+
               placeholder="Enter your description"
               disableAnimation
               disableAutosize
+              size="md"
               classNames={{
-                base: 'max-w-xs',
+                // base: 'max-w-xs',
                 input: 'resize-y min-h-[40px]',
               }}
             />

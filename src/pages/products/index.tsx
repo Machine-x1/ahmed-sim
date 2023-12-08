@@ -65,13 +65,13 @@ const ProductsPage = ({ products, meta }: { products: any; meta: any }) => {
   }, [searchValue]);
 
   const categories = [
-    { title: 'Steer Wheels', key: 'steerWheels', id: 'steerWheels' },
-    { title: 'Pedals', key: 'pedals', id: 'pedals' },
-    { title: 'Bundles', key: 'Bundles', id: 'Bundles' },
-    { title: 'Wheel Basis', key: 'wheelBasis', id: 'wheelBasis' },
-    { title: 'Accessories', key: 'accessories', id: 'accessories' },
+    { title: 'STEERING WHEELS', key: 'steerWheels', id: 'steerWheels' },
+    { title: 'PEDALS', key: 'pedals', id: 'pedals' },
+    { title: 'BUNDLES', key: 'Bundles', id: 'Bundles' },
+    { title: 'WHEEL BASES', key: 'wheelBasis', id: 'wheelBasis' },
+    { title: 'ACCESSORIES', key: 'accessories', id: 'accessories' },
     // { title: 'cockfits', key: 'cockfits', id: 'cockfits' },
-    { title: 'Digital Dashes ', key: 'DigitalDashes', id: 'DigitalDashes' },
+    { title: 'DIGITAL DASHES', key: 'DigitalDashes', id: 'DigitalDashes' },
   ];
 
   return (

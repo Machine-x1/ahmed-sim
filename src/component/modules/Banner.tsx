@@ -10,7 +10,7 @@ import BannerText from './BannerText';
 
 const Banner = () => {
   return (
-    <div className=" relative max-h-[750px] max-w-full  md:block md:w-full">
+    <div className=" relative h-screen max-w-full md:block  md:w-full lg:h-[800px]">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         slidesPerView={1}
@@ -32,7 +32,7 @@ const Banner = () => {
               height={720}
               alt="bannerone"
               // radius="none"
-              className="relative   max-h-[750px]  w-full   object-cover object-center "
+              className="relative  h-screen   w-full object-cover   object-center lg:h-[800px] "
               priority
             />
 
@@ -47,7 +47,7 @@ const Banner = () => {
               width={1920}
               height={720}
               alt="bannertwo"
-              className=" relative    max-h-[750px]   w-full object-cover object-center"
+              className=" relative    h-screen   w-full object-cover object-center lg:h-[800px]"
             />
             <BannerText title="Simulators fx pro" />
           </div>

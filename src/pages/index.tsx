@@ -16,14 +16,10 @@ const Index = () => {
     <Main meta={<Meta title="BitsByets" description="BitsByets." />}>
       <div
         id="home"
-        className="mx-auto w-full   max-w-[1920px] bg-mainOrange  "
+        className="mx-auto w-full    max-w-[1920px] bg-mainOrange  "
       >
         <Banner />
-        {/* <Categories /> */}
         <ProductFeatures />
-        {/* <Vidiooo /> */}
-
-        {/* <ProductTrending msg="Featured Products" /> */}
         <ProductDataSwiper msg="Featured Products" />
         <AboutUs />
         <ContactForm />
