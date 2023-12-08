@@ -39,7 +39,7 @@ const NewProductCard = ({ item }: { item?: ProductType | any }) => {
           <Link href={`/products/${item?.slug}`}>
             <Image
               className=" h-full w-full overflow-hidden object-cover  object-center"
-              src="/images/pr1.jpeg"
+              src="/images/R16-1.avif"
               alt="product image"
               removeWrapper
             />

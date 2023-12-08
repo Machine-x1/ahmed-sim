@@ -70,7 +70,7 @@ const ProductsPage = ({ products, meta }: { products: any; meta: any }) => {
     { title: 'Bundles', key: 'Bundles', id: 'Bundles' },
     { title: 'Wheel Basis', key: 'wheelBasis', id: 'wheelBasis' },
     { title: 'Accessories', key: 'accessories', id: 'accessories' },
-    { title: 'cockfits', key: 'cockfits', id: 'cockfits' },
+    // { title: 'cockfits', key: 'cockfits', id: 'cockfits' },
     { title: 'Digital Dashes ', key: 'DigitalDashes', id: 'DigitalDashes' },
   ];
 
