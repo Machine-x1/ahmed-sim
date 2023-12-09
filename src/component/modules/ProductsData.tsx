@@ -25,18 +25,11 @@ import { Autoplay, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { productData } from '@/apps/constants/data';
-import type { ProductType } from '@/apps/interface/types';
 
 import Container from './Container';
 import NewProductCard from './NewProductCard';
 
-const ProductDataSwiper = ({
-  msg,
-  products,
-}: {
-  msg?: string;
-  products?: ProductType;
-}) => {
+const ProductDataSwiper = ({ msg }: { msg?: string }) => {
   return (
     <div className="w-full bg-secondaryBlack">
       <Container className=" h-full w-full">

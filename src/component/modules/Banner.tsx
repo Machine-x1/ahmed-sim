@@ -10,7 +10,7 @@ import BannerText from './BannerText';
 
 const Banner = () => {
   return (
-    <div className=" relative h-screen max-w-full md:block  md:w-full lg:h-[800px]">
+    <div className=" relative h-screen max-h-[1080px] max-w-full md:block  md:w-full lg:h-[800px]">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         slidesPerView={1}
