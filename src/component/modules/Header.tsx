@@ -22,6 +22,7 @@ import {
   NavbarMenuToggle,
 } from '@nextui-org/react';
 import { usePathname } from 'next/navigation';
+import { useRouter } from 'next/router';
 // import Link from 'next/link';
 import React from 'react';
 import { IoMdCart } from 'react-icons/io';
@@ -99,7 +100,7 @@ const Header = () => {
   // 'products',
   const pathname = usePathname();
   const { cart } = useSelector((state: RootState) => state.cart);
-
+  const router = useRouter();
   return (
     <Navbar
       isBordered
@@ -143,59 +144,28 @@ const Header = () => {
             pathname === '/WheelBases' && 'active font-bold text-white  '
           }`}
         >
-          <Link href="/WheelBases" className=" text-xl text-slate-200  ">
-            WHEEL BASES
-          </Link>
+          {/* <Link href="products" className="text-slate-200"> */}
+          {/* Products
+          </Link> */}
+          <div
+            onClick={() => router.push('products')}
+            className="cursor-pointer text-slate-200"
+          >
+            Products
+          </div>
         </NavbarItem>
         <NavbarItem
           className={`${
             pathname === '/products' && 'active font-bold  text-white  '
           }`}
         >
-          <Link
-            href="/products"
-            className=" text-xl text-slate-200  "
-            aria-current="page"
+          <div
+            onClick={() => router.push('/')}
+            className="cursor-pointer text-slate-200"
           >
-            BUNDLES
-          </Link>
-        </NavbarItem>
-
-        <NavbarItem
-          className={`${
-            pathname === '/SteerWheels' && 'active font-bold text-white '
-          }`}
-        >
-          <Link href="/SteerWheels" className="text-xl  text-slate-200">
-            STEERING WHEELS
-          </Link>
-        </NavbarItem>
-        <NavbarItem
-          className={`${
-            pathname === '/pedals' && 'active font-bold text-white '
-          }`}
-        >
-          <Link href="/pedals" className="text-xl text-slate-200 ">
-            PEDALS
-          </Link>
-        </NavbarItem>
-        <NavbarItem
-          className={`${
-            pathname === '/accessories' && 'active font-bold text-white '
-          }`}
-        >
-          <Link href="/accessories" className="text-xl text-slate-200  ">
-            ACCESSORIES
-          </Link>
-        </NavbarItem>
-        <NavbarItem
-          className={`${
-            pathname === '/accessories' && 'active font-bold text-white '
-          }`}
-        >
-          <Link href="/Digital-Dashes" className="text-xl text-slate-200 ">
-            Digital Dashes
-          </Link>
+            {' '}
+            Home
+          </div>
         </NavbarItem>
         <NavbarItem
           className={`${
@@ -210,7 +180,7 @@ const Header = () => {
 
       <NavbarContent justify="end">
         <NavbarItem className="hidden sm:flex">
-          <Link href="/cart">
+          <div onClick={() => router.push('cart')}>
             <div className="relative flex items-center justify-center gap-x-1 rounded-full border-[1px] border-hoverTextColor bg-hoverTextColor px-3 py-1.5 text-slate-100 duration-200 hover:border-orange-600 ">
               <IoMdCart className="text-xl" />
               <p className="text-sm font-semibold">
@@ -220,7 +190,7 @@ const Header = () => {
                 {cart.products.length}
               </span>
             </div>
-          </Link>
+          </div>
           {/* {orderData?.order?.length > 0 && (
             <Link href="/order" className=" cursor-pointer gap-x-1 px-2">
               <BsBookmarks className="text-2xl" />
