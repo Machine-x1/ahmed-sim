@@ -65,14 +65,15 @@ const ProductsPage = ({ products, meta }: { products: any; meta: any }) => {
   }, [searchValue]);
 
   const categories = [
-    { title: 'STEERING WHEELS', key: 'steerWheels', id: 'steerWheels' },
-    { title: 'PEDALS', key: 'pedals', id: 'pedals' },
+    { title: 'STEERING WHEELS', key: 'steer-wheels', id: 'steerWheels' },
+    { title: 'PEDALS', key: 'paddle', id: 'pedals' },
     { title: 'BUNDLES', key: 'Bundles', id: 'Bundles' },
     { title: 'WHEEL BASES', key: 'wheelBasis', id: 'wheelBasis' },
     { title: 'ACCESSORIES', key: 'accessories', id: 'accessories' },
     // { title: 'cockfits', key: 'cockfits', id: 'cockfits' },
     { title: 'DIGITAL DASHES', key: 'DigitalDashes', id: 'DigitalDashes' },
   ];
+  // console.log(productsData.filter((d) => d.key === category.key), "asd")
 
   return (
     <Main meta={<Meta title="BitsByets" description="BitsByets." />}>
@@ -85,7 +86,7 @@ const ProductsPage = ({ products, meta }: { products: any; meta: any }) => {
           console.log('hi', value.target.value);
         }}
       />
-      <div id="home" className="mx-auto w-full max-w-[1920px] ">
+      <div id="home" className="mx-auto w-full max-w-[1920px] bg-bodyColor ">
         <div className="h-full w-full">
           <div className="top-0 h-full w-full" />
           <section className="flex w-full ">
@@ -102,7 +103,9 @@ const ProductsPage = ({ products, meta }: { products: any; meta: any }) => {
                   key={category.key}
                   id={category.id}
                   title={category.title}
-                  productsData={productsData} // Pass specific product data for each category
+                  productsData={productsData.filter(
+                    (d: any) => d.category === category.key
+                  )}
                 />
               ))}
             </div>

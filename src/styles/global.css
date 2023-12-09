@@ -18,3 +18,7 @@
 .content ul {
   @apply my-6;
 }
+
+html{
+  @apply scroll-smooth
+}

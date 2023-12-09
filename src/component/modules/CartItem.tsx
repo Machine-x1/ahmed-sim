@@ -8,18 +8,19 @@ import { Divider, Image } from '@nextui-org/react';
 import React from 'react';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { IoMdClose } from 'react-icons/io';
+import { useSelector } from 'react-redux';
 
-import { productData } from '@/apps/constants/data';
+import type { RootState } from '@/apps/redux/store';
 
 import FormattedPrice from './FormattedPrice';
 
 const CartItem = () => {
-  // const { cart } = useSelector((state: RootState) => state.cart);
+  const { cart } = useSelector((state: RootState) => state.cart);
   // const dispatch = useDispatch();
   return (
-    <div className="mx-auto max-h-full w-full ">
-      <div className="mb-6 flex h-full flex-col justify-center gap-y-2  rounded-lg bg-white p-6   shadow-md sm:flex sm:justify-start ">
-        {productData.map((item: any) => (
+    <div className="mx-auto max-h-full w-full  overflow-auto ">
+      <div className="mb-6 flex h-full flex-col justify-center gap-y-2 overflow-auto rounded-lg bg-white p-6   shadow-md sm:flex sm:justify-start ">
+        {cart.products.map((item: any) => (
           <div
             key={item._id}
             className="relative flex w-full flex-col items-center justify-between gap-4 bg-white p-4 "
@@ -40,7 +41,7 @@ const CartItem = () => {
                 </span>
               </div>
               <div className="flex flex-col flex-wrap items-center justify-center gap-4 font-medium text-gray-900 sm:flex-row">
-                <h3>{item?.title}wefwef</h3>
+                <h3>{item?.name}</h3>
                 <p className="ml-4">
                   <FormattedPrice amount={item.price} />
                 </p>

@@ -6,7 +6,6 @@ import { Divider, Image } from '@nextui-org/react';
 /* eslint-disable tailwindcss/no-custom-classname */
 const Sponsors = () => (
   <div className="h-full w-full bg-bodyColor ">
-    {/* <div className="py-8" /> */}
     <div className="mx-4 rounded-xl  pt-8 sm:mx-8 sm:max-w-5xl md:mx-auto">
       <div className="mx-auto mb-10 w-11/12 sm:w-2/3">
         <h1 className="pt-4 text-center text-3xl font-extrabold text-gray-800 focus:outline-none xl:text-4xl">
