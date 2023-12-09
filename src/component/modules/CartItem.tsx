@@ -17,8 +17,8 @@ const CartItem = () => {
   // const { cart } = useSelector((state: RootState) => state.cart);
   // const dispatch = useDispatch();
   return (
-    <div className="mx-auto max-h-full w-full  overflow-auto ">
-      <div className="mb-6 flex h-full flex-col justify-center gap-y-2 overflow-auto rounded-lg bg-white p-6   shadow-md sm:flex sm:justify-start ">
+    <div className="mx-auto max-h-full w-full ">
+      <div className="mb-6 flex h-full flex-col justify-center gap-y-2  rounded-lg bg-white p-6   shadow-md sm:flex sm:justify-start ">
         {productData.map((item: any) => (
           <div
             key={item._id}

@@ -66,7 +66,7 @@ const Header = () => {
     },
     {
       name: 'PEDDALS',
-      href: '/peddals',
+      href: '/products/#peddals',
     },
     {
       name: ' BUNDLES',
@@ -90,13 +90,7 @@ const Header = () => {
       href: '/Digital-Dashes',
     },
   ];
-  // 'Home',
-  // 'Dashboard',
-  // 'Accessories',
-  // 'steer-wheels',
-  // 'peddals',
-  // 'cart',
-  // 'products',
+
   const pathname = usePathname();
   const { cart } = useSelector((state: RootState) => state.cart);
 
@@ -130,7 +124,7 @@ const Header = () => {
       </NavbarContent>
 
       <NavbarContent
-        className="hidden items-center gap-10  text-xl capitalize   lg:flex "
+        className="hidden items-center gap-10  text-xl capitalize   xl:flex "
         justify="center"
       >
         {/* <NavbarBrand className=" ">
@@ -166,7 +160,7 @@ const Header = () => {
             pathname === '/SteerWheels' && 'active font-bold text-white '
           }`}
         >
-          <Link href="/SteerWheels" className="text-xl  text-slate-200">
+          <Link href="/products/#peddals" className="text-xl  text-slate-200">
             STEERING WHEELS
           </Link>
         </NavbarItem>
@@ -175,13 +169,13 @@ const Header = () => {
             pathname === '/pedals' && 'active font-bold text-white '
           }`}
         >
-          <Link href="/pedals" className="text-xl text-slate-200 ">
+          <Link href="/products/#peddals" className="text-xl text-slate-200 ">
             PEDALS
           </Link>
         </NavbarItem>
         <NavbarItem
           className={`${
-            pathname === '/accessories' && 'active font-bold text-white '
+            pathname === '/products/#peddals' && 'active font-bold text-white '
           }`}
         >
           <Link href="/accessories" className="text-xl text-slate-200  ">
