@@ -1,4 +1,6 @@
 export interface ProductType {
+  length: number;
+  map(arg0: (item: { _id: import("react").Key | null | undefined; }) => import("react").JSX.Element): import("react").ReactNode;
   _id: string;
   name: string;
   description: string;

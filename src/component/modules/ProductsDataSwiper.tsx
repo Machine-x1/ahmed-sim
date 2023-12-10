@@ -2,7 +2,7 @@
 /* eslint-disable unused-imports/no-unused-vars */
 /* eslint-disable react/jsx-key */
 /* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable tailwindcss/no-custom-classname */
+/* eslint-disable tailwindcss/no-custom-classname */ 
 /* eslint-disable no-console */
 /* eslint-disable react/jsx-no-undef */
 /* eslint-disable array-callback-return */
@@ -16,20 +16,17 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-
 import { Divider } from '@nextui-org/react';
-import React from 'react';
 import { Autoplay, Navigation } from 'swiper';
-// Import Swiper React components
-// import { A11y, Navigation, Pagination, Scrollbar } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-import { productData } from '@/apps/constants/data';
-
 import Container from './Container';
 import NewProductCard from './NewProductCard';
+import { productData } from '@/apps/constants/data';
+;
 
-const ProductDataSwiper = ({ msg }: { msg?: string }) => {
+const ProductDataSwiper = ({ msg  }: { msg?: string }) => {
+
+
   return (
     <div className="w-full bg-secondaryBlack">
       <Container className=" h-full w-full">
@@ -75,11 +72,9 @@ const ProductDataSwiper = ({ msg }: { msg?: string }) => {
                 },
               }}
             >
-              {productData.map((item: any) => (
-                <SwiperSlide key={item._id}>
-                  {/* <div className="mx-auto flex flex-row"> */}
+              {productData.map((item) => (
+                <SwiperSlide key={item._id} >
                   <NewProductCard item={item} />
-                  {/* </div> */}
                 </SwiperSlide>
               ))}
             </Swiper>

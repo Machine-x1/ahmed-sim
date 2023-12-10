@@ -3,7 +3,7 @@ import React from 'react';
 
 import { getTrendingProducts } from '@/apps/helpers';
 
-import ProductsData from './ProductsData';
+import ProductsData from './ProductsDataSwiper';
 
 const FeaturedProducts = async () => {
   const data = await getTrendingProducts();

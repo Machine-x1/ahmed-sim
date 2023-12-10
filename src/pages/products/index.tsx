@@ -70,7 +70,6 @@ const ProductsPage = ({ products, meta }: { products: any; meta: any }) => {
     { title: 'BUNDLES', key: 'Bundles', id: 'Bundles' },
     { title: 'WHEEL BASES', key: 'wheelBasis', id: 'wheelBasis' },
     { title: 'ACCESSORIES', key: 'accessories', id: 'accessories' },
-    // { title: 'cockfits', key: 'cockfits', id: 'cockfits' },
     { title: 'DIGITAL DASHES', key: 'DigitalDashes', id: 'DigitalDashes' },
   ];
   // console.log(productsData.filter((d) => d.key === category.key), "asd")

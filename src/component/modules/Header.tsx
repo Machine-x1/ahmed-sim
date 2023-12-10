@@ -67,7 +67,7 @@ const Header = () => {
     },
     {
       name: 'PEDDALS',
-      href: '/peddals',
+      href: '/products/#peddals',
     },
     {
       name: ' BUNDLES',
@@ -91,13 +91,7 @@ const Header = () => {
       href: '/Digital-Dashes',
     },
   ];
-  // 'Home',
-  // 'Dashboard',
-  // 'Accessories',
-  // 'steer-wheels',
-  // 'peddals',
-  // 'cart',
-  // 'products',
+
   const pathname = usePathname();
   const { cart } = useSelector((state: RootState) => state.cart);
   const router = useRouter();
@@ -131,7 +125,7 @@ const Header = () => {
       </NavbarContent>
 
       <NavbarContent
-        className="hidden items-center gap-10  text-xl capitalize   lg:flex "
+        className="hidden items-center gap-10  text-xl capitalize   xl:flex "
         justify="center"
       >
         {/* <NavbarBrand className=" ">

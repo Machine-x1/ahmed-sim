@@ -7,7 +7,7 @@ import AboutUs from '@/component/modules/AboutUs';
 import Banner from '@/component/modules/Banner';
 import ContactForm from '@/component/modules/ContactForm';
 import ProductFeatures from '@/component/modules/ProductFeatures';
-import ProductDataSwiper from '@/component/modules/ProductsData';
+import ProductDataSwiper from '@/component/modules/ProductsDataSwiper';
 import Sponsors from '@/component/modules/Sponsors';
 import { Main } from '@/component/templates/Main';
 
@@ -15,9 +15,7 @@ const Index = () => {
   return (
     <Main meta={<Meta title="BitsByets" description="BitsByets." />}>
       <div
-        id="home"
-        className="mx-auto w-full    max-w-[1920px] bg-mainOrange  "
-      >
+        id="home" className="mx-auto w-full max-w-[1920px] bg-mainOrange ">
         <Banner />
         <ProductFeatures />
         <ProductDataSwiper msg="Featured Products" />
@@ -40,3 +38,4 @@ export const getServerSideProps = async (context: any) => {
     props: {},
   };
 };
+

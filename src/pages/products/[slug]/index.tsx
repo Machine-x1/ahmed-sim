@@ -6,7 +6,7 @@ import type { ProductType } from '@/apps/interface/types';
 import { Meta } from '@/component/layouts/Meta';
 import Container from '@/component/modules/Container';
 import ProductPage from '@/component/modules/ProductPage';
-import ProductTrending from '@/component/modules/ProductTrending';
+import ProductDataSwiper from '@/component/modules/ProductsDataSwiper';
 import { Main } from '@/component/templates/Main';
 
 const index = ({ product }: { product: ProductType }) => {
@@ -16,7 +16,7 @@ const index = ({ product }: { product: ProductType }) => {
         <Container>
           <ProductPage product={product} />
           <div className="w-full">
-            <ProductTrending msg="check another products" />
+            <ProductDataSwiper msg="check another products" />
           </div>
         </Container>
       </div>
