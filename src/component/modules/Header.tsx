@@ -135,30 +135,74 @@ const Header = () => {
         </NavbarBrand> */}
         <NavbarItem
           className={` ${
-            pathname === '/WheelBases' && 'active font-bold text-white  '
+            pathname === '/products/Accessories' && 'active font-bold text-white  '
           }`}
         >
-          {/* <Link href="products" className="text-slate-200"> */}
-          {/* Products
-          </Link> */}
           <div
-            onClick={() => router.push('products')}
-            className="cursor-pointer text-slate-200"
+            onClick={() => router.push('products/#accessories')}
+            className="cursor-pointer text-lg uppercase text-slate-200"
           >
-            Products
+            ACCESSORIES
+          </div>
+        </NavbarItem>
+        <NavbarItem
+          className={` ${
+            pathname === '/products/wheelBasis' && 'active font-bold text-white  '
+          }`}
+        >
+          <div
+            onClick={() => router.push('products/#wheelBases')}
+            className="cursor-pointer text-lg text-slate-200"
+          >
+            WHEEL BASES
+          </div>
+        </NavbarItem>
+        <NavbarItem
+          className={` ${
+            pathname === '/products/#steerWheels' && 'active font-bold text-white  '
+          }`}
+        >
+          <div
+            onClick={() => router.push('products/#steerWheels')}
+            className="cursor-pointer text-lg text-slate-200"
+          >
+            STEERING WHEELS
+          </div>
+        </NavbarItem>
+        <NavbarItem
+          className={` ${
+            pathname === '/products/pedals' && 'active font-bold text-white  '
+          }`}
+        >
+          <div
+            onClick={() => router.push('products/#pedals')}
+            className="cursor-pointer text-lg text-slate-200"
+          >
+            PEDALS
           </div>
         </NavbarItem>
         <NavbarItem
           className={`${
-            pathname === '/products' && 'active font-bold  text-white  '
+            pathname === '/products/DigitalDashes' && 'active font-bold  text-white  '
           }`}
         >
           <div
-            onClick={() => router.push('/')}
-            className="cursor-pointer text-slate-200"
+            onClick={() => router.push('/products/#DigitalDashes')}
+            className="cursor-pointer text-lg text-slate-200"
           >
-            {' '}
-            Home
+            DIGITAL DASHES
+          </div>
+        </NavbarItem>
+        <NavbarItem
+          className={`${
+            pathname === '/products/Bundles' && 'active font-bold  text-white  '
+          }`}
+        >
+          <div
+            onClick={() => router.push('/products/#DigitalDashes')}
+            className="cursor-pointer text-lg text-slate-200"
+          >
+             BUNDLES
           </div>
         </NavbarItem>
         <NavbarItem
@@ -166,7 +210,7 @@ const Header = () => {
             pathname === '/contact-us' && 'active font-bold text-white '
           }`}
         >
-          <Link href="/contact-us" className="text-xl text-slate-200 ">
+          <Link href="/contact-us" className="text-lg text-slate-200 ">
             CONTACT-US
           </Link>
         </NavbarItem>
