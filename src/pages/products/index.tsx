@@ -68,7 +68,7 @@ const ProductsPage = ({ products, meta }: { products: any; meta: any }) => {
     { title: 'STEERING WHEELS', key: 'steer-wheels', id: 'steerWheels' },
     { title: 'PEDALS', key: 'paddle', id: 'pedals' },
     { title: 'BUNDLES', key: 'Bundles', id: 'Bundles' },
-    { title: 'WHEEL BASES', key: 'wheelBasis', id: 'wheelBasis' },
+    { title: 'WHEEL BASES', key: 'wheelBasis', id: 'wheelBases' },
     { title: 'ACCESSORIES', key: 'accessories', id: 'accessories' },
     { title: 'DIGITAL DASHES', key: 'DigitalDashes', id: 'DigitalDashes' },
   ];
