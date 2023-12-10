@@ -3,15 +3,16 @@ import { Divider } from '@nextui-org/react';
 import type { Key } from 'react';
 
 import NewProductCard from './NewProductCard';
+import { ProductType } from '@/apps/interface/types';
 
 export const ProductSection = ({
   title,
   productsData,
   id,
 }: {
-  id: string | any;
+  id: string  | undefined;
   title: string;
-  productsData: any;
+  productsData: ProductType;
 }) => {
   return (
     <div className="">
@@ -25,7 +26,7 @@ export const ProductSection = ({
             </h2>
           </div>
           <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-3 xl:grid-cols-4">
-            {productsData.map((item: { _id: Key | null | undefined }) => (
+            {productsData.map((item: { _id: Key | null | undefined; }) => (
               <NewProductCard key={item._id} item={item} />
             ))}
           </div>

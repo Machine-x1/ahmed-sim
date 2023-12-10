@@ -15,14 +15,12 @@ import { useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { BiCart } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
-
 import type { ProductType } from '@/apps/interface/types';
 import { setProdctCart } from '@/apps/redux/slice/cartSlice';
 import type { RootState } from '@/apps/redux/store';
-
 import FormattedPrice from './FormattedPrice';
 
-const NewProductCard = ({ item }: { item?: ProductType | any }) => {
+const NewProductCard = ({ item }: { item?: ProductType  }) => {
   const dispatch = useDispatch();
   const [isHovered, setIsHovered] = useState(false);
   const { cart } = useSelector((state: RootState) => state.cart);

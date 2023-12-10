@@ -13,6 +13,7 @@ import { useSelector } from 'react-redux';
 import type { RootState } from '@/apps/redux/store';
 
 import FormattedPrice from './FormattedPrice';
+import { ProductType } from '@/apps/interface/types';
 
 const CartItem = () => {
   const { cart } = useSelector((state: RootState) => state.cart);
@@ -20,7 +21,7 @@ const CartItem = () => {
   return (
     <div className="mx-auto max-h-full w-full  overflow-auto ">
       <div className="mb-6 flex h-full flex-col justify-center gap-y-2 overflow-auto rounded-lg bg-white p-6   shadow-md sm:flex sm:justify-start ">
-        {cart.products.map((item: any) => (
+        {cart.products.map((item: ProductType) => (
           <div
             key={item._id}
             className="relative flex w-full flex-col items-center justify-between gap-4 bg-white p-4 "
@@ -45,9 +46,9 @@ const CartItem = () => {
                 <p className="ml-4">
                   <FormattedPrice amount={item.price} />
                 </p>
-                <p className=" text-sm text-gray-500">{item?.color}</p>
+                {/* <p className=" text-sm text-gray-500">{item?.color}</p> */}
                 <div className="flex  items-center justify-between text-sm">
-                  <p className="text-gray-500">Qty: 32{item?.quantity}</p>
+                  {/* <p className="text-gray-500">Qty: 32{item?.quantity}</p> */}
                 </div>
               </div>
               {/* quantity */}
@@ -56,7 +57,7 @@ const CartItem = () => {
                   <span className="cursor-pointer">
                     <FiChevronLeft size={25} />
                   </span>
-                  <span>{item?.quantity}</span>
+                  {/* <span>{item?}</span> */}
                   <span className="cursor-pointer">
                     <FiChevronRight size={25} />
                   </span>
