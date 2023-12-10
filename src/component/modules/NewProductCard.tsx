@@ -37,12 +37,12 @@ const NewProductCard = ({ item }: { item?: ProductType  }) => {
           // isPressable
           // onPress={() => console.log('item pressed')}
           fullWidth
-          className=" relative flex h-full w-full flex-col overflow-hidden  "
+          className=" relative flex   w-full flex-col overflow-hidden  "
         >
           {isHovered && (
             <motion.button
               whileHover={{ scale: 1.1 }} // Framer Motion animation on hover
-              className="  absolute left-2 top-1  z-20 flex items-center justify-center duration-300 transition-opacity hover:opacity-100"
+              className="  absolute left-2 top-1   z-20 flex items-center justify-center duration-300 transition-opacity hover:opacity-100"
               onClick={() => {
                 // Handle button click event
                 console.log('Button clicked!');
@@ -61,18 +61,18 @@ const NewProductCard = ({ item }: { item?: ProductType  }) => {
             </motion.button>
           )}
           <Skeleton isLoaded className="rounded-lg">
-            <CardBody className=" relative flex  w-full items-center justify-center rounded-xl">
+            <CardBody className=" relative flex h-72   overflow-hidden w-full items-center justify-center rounded-xl">
               <Link href={`/products/${item?.slug}`}>
                 <Image
-                  className=" h-full w-full overflow-hidden object-cover  object-center"
-                  src="/images/R16-1.avif"
+                  className=" h-72 w-full  object-cover  object-center"
+                  src="/images/simagic-p1000-sim-racing-pedal-set-side.jpg"
                   alt="product image"
                   removeWrapper
                 />
               </Link>
             </CardBody>
 
-            <CardFooter className="  mb-2 flex flex-col ">
+            <CardFooter className=" mb-2 flex flex-col ">
               <div className="mx-auto  flex w-full flex-col items-center justify-center gap-2">
                 <div className=" w-fulll flex flex-col  items-center justify-between ">
                   <h5 className="text-xl tracking-tight text-mainOrange">
