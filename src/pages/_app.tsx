@@ -10,19 +10,20 @@ import { I18nextProvider } from 'react-i18next';
 import { Provider } from 'react-redux';
 
 import store from '@/apps/redux/store';
+import { appWithTranslation } from 'next-i18next';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <Provider store={store}>
-      <I18nextProvider i18n={i18n}>
+      {/* <I18nextProvider i18n={i18n}> */}
         <NextUIProvider>
           <Component {...pageProps} />
         </NextUIProvider>
-      </I18nextProvider>
+      {/* </I18nextProvider> */}
     </Provider>
   );
 };
 
-export default MyApp;
+export default appWithTranslation(MyApp);

@@ -10,8 +10,11 @@ import ProductFeatures from '@/component/modules/ProductFeatures';
 import ProductDataSwiper from '@/component/modules/ProductsDataSwiper';
 import Sponsors from '@/component/modules/Sponsors';
 import { Main } from '@/component/templates/Main';
+// import { useTranslation } from 'react-i18next';
 
 const Index = () => {
+// const { t } = useTranslation();
+
   return (
     <Main meta={<Meta title="BitsByets" description="BitsByets." />}>
       <div
