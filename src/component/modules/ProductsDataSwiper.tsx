@@ -72,7 +72,7 @@ const ProductDataSwiper = ({ msg  }: { msg?: string }) => {
                 },
               }}
             >
-              {productData.map((item) => (
+              {productData.map((item:any) => (
                 <SwiperSlide key={item._id} >
                   <NewProductCard item={item} />
                 </SwiperSlide>
