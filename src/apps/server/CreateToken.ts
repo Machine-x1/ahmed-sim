@@ -28,6 +28,7 @@ const createTokenAndUser = async ({ req, res }: { req: any; res: any }) => {
     token: hashed,
     timestamp,
   });
+  console.log(handleCreateTokenRequest)
   const { user } = handleCreateTokenRequest.data;
   const { token } = handleCreateTokenRequest.data.user;
   setCookie('token', token, { req, res });
