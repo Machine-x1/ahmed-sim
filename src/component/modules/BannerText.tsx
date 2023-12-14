@@ -2,6 +2,7 @@ import { Button } from '@nextui-org/react';
 import { motion } from 'framer-motion';
 
 import Container from './Container';
+import { useRouter } from 'next/router';
 
 interface Props {
   title?: string;
@@ -9,7 +10,8 @@ interface Props {
   shopbtn?: boolean;
 }
 
-const BannerText = ({ title, message, shopbtn }: Props) => {
+const BannerText = ({ title, message }: Props) => {
+  const router = useRouter();
   return (
     <div className="absolute left-0 top-0 flex h-full w-full flex-col flex-wrap items-center justify-center py-8 md:w-1/2 md:py-4 ">
       <Container className="flex w-full flex-col items-center justify-center gap-y-4">
@@ -18,7 +20,7 @@ const BannerText = ({ title, message, shopbtn }: Props) => {
           initial={{ y: 30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className=" text-xl font-bold text-white  md:text-5xl"
+          className=" text-xl font-bold text-slate-300  md:text-5xl"
         >
           {title}
         </motion.h2>
@@ -29,7 +31,7 @@ const BannerText = ({ title, message, shopbtn }: Props) => {
           className=" hidden w-96 px-4 text-lg text-slate-100 md:block "
         >
           {message ||
-            ' MOZA Racing is determined to create innovative and professional Dimension of reality that makes change possible and understandable.'}
+            ' '}
         </motion.p>
         <motion.div
           initial={{ y: 50, opacity: 0 }}
@@ -37,22 +39,21 @@ const BannerText = ({ title, message, shopbtn }: Props) => {
           transition={{ duration: 0.7 }}
           className="mt-2 flex  items-center justify-center gap-x-4"
         >
-          {!shopbtn && (
             <Button
+              onClick={() => {router.push('/products')}} 
               radius="none"
               size="sm"
-              className="bg-hoverTextColor px-4 py-2 text-sm font-semibold uppercase text-white duration-200 hover:bg-orange-500 hover:text-white "
+              className="bg-orange-500  px-4 py-2 text-sm font-semibold uppercase text-white duration-200 hover:bg-orange-500 hover:text-white "
             >
               Shop Now
             </Button>
-          )}
-          <Button
+          {/* <Button
             radius="none"
             size="sm"
-            className=" rounded-lg border-2 border-orange-500 bg-transparent px-4 py-2 uppercase text-orange-500 hover:bg-orange-500 hover:text-white"
-          >
+            className="bg-hoverTextColor px-4 py-2 text-sm font-semibold uppercase text-white duration-200 hover:bg-orange-500 hover:text-white "
+            >
             Read more
-          </Button>
+          </Button> */}
         </motion.div>
         {/* </div> */}
       </Container>

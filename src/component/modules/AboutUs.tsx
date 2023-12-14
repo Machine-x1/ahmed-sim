@@ -12,25 +12,24 @@ const AboutUs = () => {
           id="features"
           className="relative block  px-6 py-10 text-white md:px-10 md:py-20 "
         >
-          <div className="relative mx-auto flex  max-w-5xl flex-col text-center">
-            <span className=" flex items-center justify-center font-medium uppercase tracking-wider">
-              Why choose us
-            </span>
-            <h2 className="block  text-3xl font-bold text-slate-200 sm:text-4xl">
-              Build a Website That Your Customers Love
-            </h2>
+          <div className="relative mx-auto gap-4 flex  max-w-5xl flex-col text-center">
+            <span>Ultimate Destination for Sim Racing Enthusiasts!</span>
+            <h1 className="block  text-3xl font-bold text-slate-200 sm:text-4xl">
+            Why Choose  Sim Racing Corner?   </h1>
             <p className="mx-auto  w-full max-w-xl bg-transparent text-center font-medium leading-relaxed tracking-wide">
-              Our templates allow for maximum customization. No technical skills
-              required – our intuitive design tools let you get the job done
-              easily.
+            Quality Assurance: We prioritize quality and reliability, offering products from industry-leading brands known for their durability and performance.
             </p>
+            <p className="mx-auto  w-full max-w-xl bg-transparent text-center font-medium leading-relaxed tracking-wide">
+            Expert Guidance: Our knowledgeable team is passionate about sim racing and is here to guide you, providing expert advice and recommendations tailored to your racing needs.
+            </p>
+             
           </div>
           <div className="gap flex w-full flex-col items-center justify-center  gap-20 pt-4 text-white md:flex-row ">
             <div className="inline-flex h-[230px] w-[270px] items-center justify-center  px-[35px] py-8 shadow">
               <div className="flex h-[161px] w-64 flex-col items-center justify-center gap-4 ">
                 <MdOutlineDeliveryDining className="h-12 w-12" />
-                <p className="text-white-600">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                <p className=" text-center text-white-600">
+                QuickDrop: Your Fastest Delivery Solution
                 </p>
               </div>
             </div>
@@ -50,8 +49,7 @@ const AboutUs = () => {
                   />
                 </svg>
                 <p className="text-white-600">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </p>
+                Expert Guidance                </p>
               </div>
             </div>
 
@@ -71,8 +69,7 @@ const AboutUs = () => {
                   />
                 </svg>
                 <p className="text-white-600">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </p>
+                Quality Assurance                </p>
               </div>
             </div>
           </div>

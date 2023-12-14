@@ -83,6 +83,9 @@ const Footer = () => {
               </Link>
               <p className="cursor-pointer duration-200">Newsletter</p>
               <p className="cursor-pointer duration-200">Contact</p>
+              <p className="cursor-pointer duration-200">FAQ</p>
+              <Link href="https://www.freepik.com/free-photo/car-racing-video-game-arcade_12187496.htm#query=racing%20simulator&position=1&from_view=search&track=ais&uuid=8bdc8df3-3134-4adb-9fbd-3b46a84dd8e3">Image by rawpixel.com</Link> on Freepik
+              <Link href="http://www.freepik.com">Designed by Freepik</Link>
             </div>
             {/* <!-- Contact section --> */}
             <div>
@@ -157,6 +160,7 @@ const Footer = () => {
             BitsBytes
           </a>
         </div>
+        
       </footer>
     </div>
   );

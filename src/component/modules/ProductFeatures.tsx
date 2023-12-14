@@ -4,8 +4,10 @@
 
 import { Button } from '@nextui-org/react';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 export default function ProductFeatures() {
+  const router = useRouter();
   return (
     <div className="bg-secondaryBlack   ">
       <main className=" relative  h-auto overflow-hidden bg-white dark:bg-gray-800">
@@ -19,16 +21,17 @@ export default function ProductFeatures() {
             <div className="relative z-20 flex flex-col sm:w-2/3 lg:w-2/5">
               <span className="mb-12 h-2 w-20 bg-gray-800 dark:bg-white" />
               <h1 className="font-bebas-neue flex flex-col text-6xl font-black uppercase leading-none text-gray-800 dark:text-white sm:text-8xl">
-                Be on
-                <span className="text-5xl sm:text-7xl">Time</span>
+              Let's Race
+
+<span className="text-5xl sm:text-7xl"> Together</span>
               </h1>
               <p className="text-sm text-gray-700 dark:text-white sm:text-base">
-                Dimension of reality that makes change possible and
-                understandable. An indefinite and homogeneous environment in
-                which natural events and human existence take place.
+              Ready to elevate your sim racing experience? Dive into our collection, explore the possibilities, and gear up for an adrenaline-fueled journey into the world of virtual racing.
+
+Join us at Sim Racing Corner and let's rev up the excitement together!
               </p>
               <div className="mt-8 flex items-center justify-center gap-6">
-                <Button className="text-md rounded-lg border-2 border-orange-500 bg-transparent px-4 py-2 uppercase text-orange-500 hover:bg-orange-500 hover:text-white dark:text-white">
+                <Button onClick={() => {router.push('/products')}}  className="text-md rounded-lg border-2 border-orange-500 bg-transparent px-4 py-2 uppercase text-orange-500 hover:bg-orange-500 hover:text-white dark:text-white">
                   Read more
                 </Button>
               </div>
@@ -38,7 +41,7 @@ export default function ProductFeatures() {
                 alt="Product image"
                 width={1000}
                 height={1000}
-                src="/images/RSV2R9.webp"
+                src="/images/0-88041800-1663588519-800x800.jpg"
                 className="m-auto max-w-xs md:max-w-sm"
               />
             </div>
