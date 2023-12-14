@@ -10,7 +10,7 @@ import BannerText from './BannerText';
 
 const Banner = () => {
   return (
-    <div className=" relative h-screen max-h-[1080px] max-w-full md:block  md:w-full lg:h-[800px]">
+    <div className=" relative h-screen max-h-[1080px] max-w-full md:block  md:w-full lg:h-[750px]">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         slidesPerView={1}
@@ -27,35 +27,34 @@ const Banner = () => {
         <SwiperSlide>
           <div className=" relative h-full w-full   ">
             <Image
-              src="/images/3.jpg"
-              width={1920}
-              height={720}
+              src="/images/car-racing-video-game-arcade.jpg"
+              width={4000}
+              height={2666}
               alt="bannerone"
               // radius="none"
-              className="relative  h-screen   w-full object-cover   object-center lg:h-[800px] "
+              className="relative  h-screen   w-full object-cover   object-center lg:h-[750px] "
               priority
             />
 
-            <BannerText title="MOZA Racing ES" />
+            <BannerText title="Welcome to Sim Racing Corner"  />
           </div>
         </SwiperSlide>
-        <SwiperSlide>
+        {/* <SwiperSlide>
           <div className=" relative h-full w-full">
             <Image
               // radius="none"
               src="/images/3.jpg"
-              width={1920}
-              height={720}
+              width={2000}
+              height={2000}
               alt="bannertwo"
-              className=" relative    h-screen   w-full object-cover object-center lg:h-[800px]"
+              className=" relative    h-screen   w-full object-cover object-center lg:h-[750px]"
             />
-            <BannerText title="Simulators fx pro" />
+            <BannerText title="Explore the Thrill of Sim Racing" />
           </div>
-        </SwiperSlide>
+        </SwiperSlide> */}
       </Swiper>
       <div className="absolute bottom-0  left-0 z-20 h-32 w-full bg-gradient-to-t from-gray-800 to-transparent" />
     </div>
   );
 };
-
 export default Banner;
