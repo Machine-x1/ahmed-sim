@@ -6,9 +6,9 @@
 /* eslint-disable no-underscore-dangle */
 import { Divider, Image } from '@nextui-org/react';
 import React from 'react';
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+// import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { IoMdClose } from 'react-icons/io';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import type { RootState } from '@/apps/redux/store';
 
@@ -37,7 +37,7 @@ const CartItem = () => {
                 loading="lazy"
               />
               <div className="absolute end-12 top-2 flex  ">
-                <span className="cursor-pointer text-lg duration-200 hover:text-red-600">
+                <span  className="cursor-pointer text-lg duration-200 hover:text-red-600">
                   <IoMdClose />
                 </span>
               </div>
@@ -62,7 +62,6 @@ const CartItem = () => {
                   </span>
                 </div>
               </div> */}
-
             </div>
             <Divider className="my-4" />
           </div>
