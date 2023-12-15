@@ -14,10 +14,11 @@ import type { RootState } from '@/apps/redux/store';
 
 import FormattedPrice from './FormattedPrice';
 import { ProductType } from '@/apps/interface/types';
+import { deleteProductCart } from '@/apps/redux/slice/cartSlice';
 
 const CartItem = () => {
   const { cart } = useSelector((state: RootState) => state.cart);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   return (
     <div className="mx-auto max-h-full w-full ">
       <div className="mb-6 flex h-full flex-col justify-center gap-y-2 overflow-auto rounded-lg bg-white p-6   shadow-md sm:flex sm:justify-start ">
@@ -36,7 +37,7 @@ const CartItem = () => {
                 className=" h-24 w-24 object-cover  object-center"
                 loading="lazy"
               />
-              <div className="absolute end-12 top-2 flex  ">
+              <div onClick={() => dispatch(deleteProductCart(item._id))} className="absolute end-12 top-2 flex  ">
                 <span  className="cursor-pointer text-lg duration-200 hover:text-red-600">
                   <IoMdClose />
                 </span>
