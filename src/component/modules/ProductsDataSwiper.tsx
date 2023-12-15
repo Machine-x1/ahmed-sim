@@ -24,17 +24,17 @@ import NewProductCard from './NewProductCard';
 import { productData } from '@/apps/constants/data';
 ;
 
-const ProductDataSwiper = ({ msg  }: { msg?: string }) => {
+const ProductDataSwiper = ({ msg , textcolor }: { msg?: string,textcolor?:string }) => {
 
 
   return (
-    <div className="w-full bg-secondaryBlack">
+    <div className="w-full ">
       <Container className=" h-full w-full">
         <div className="h-full w-full ">
           <Container className=" flex w-full gap-2 ">
             <div className="mb-4 flex w-full ">
               <div className="flex w-full flex-col justify-start gap-4">
-                <h2 className="  text-4xl  font-semibold capitalize text-slate-100 ">
+                <h2 className={`text-4xl  font-semibold capitalize text-${textcolor}`}>
                   {msg || 'Introducing Our Latest Products'}
                 </h2>
                 <Divider className="  w-1/2 bg-hoverTextColor " />

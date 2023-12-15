@@ -61,11 +61,11 @@ const NewProductCard = ({ item }: { item?: ProductType  }) => {
             </motion.button>
           )}
           <Skeleton isLoaded className="rounded-lg">
-            <CardBody className=" relative flex h-72   overflow-hidden w-full items-center justify-center rounded-xl">
+            <CardBody className=" relative flex h-80   overflow-hidden w-full items-center justify-center rounded-xl">
               <Link href={`/products/${item?.slug}`}>
                 <Image
-                  className=" h-72 w-full  object-cover  object-center"
-                  src="/images/simagic-p1000-sim-racing-pedal-set-side.jpg"
+                  className=" h-89 w-full  object-cover  object-center"
+                  src={item?.images[0]}
                   alt="product image"
                   removeWrapper
                 />
