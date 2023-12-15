@@ -24,6 +24,7 @@ import type { ProductType } from '@/apps/interface/types';
 import { setProdctCart } from '@/apps/redux/slice/cartSlice';
 
 import FormattedPrice from './FormattedPrice';
+import toast, { Toaster } from 'react-hot-toast';
 
 const ProductPage = ({ product }: { product: ProductType }) => {
   const dispatch = useDispatch();
@@ -117,12 +118,12 @@ const ProductPage = ({ product }: { product: ProductType }) => {
                   </p>
                 </div>
                 <div
-                  onClick={() => dispatch(setProdctCart(product))}
+                  onClick={() =>dispatch(setProdctCart(product)) &&  toast.success('Added to cart')}
                   className="group flex cursor-pointer items-center"
                 >
-                  <button className="flex items-center border-r-[1px] border-r-slate-500 bg-darkText px-6 py-3 text-sm uppercase text-slate-100">
+                  <div className="flex items-center border-r-[1px] border-r-slate-500 bg-darkText px-6 py-3 text-sm uppercase text-slate-100">
                     add to cart
-                  </button>
+                  </div>
                   <span className="flex w-12 items-center justify-center bg-hoverTextColor py-3 text-xl text-slate-100 duration-200 group-hover:bg-orange-500">
                     <IoMdCart />
                   </span>
@@ -210,7 +211,7 @@ const ProductPage = ({ product }: { product: ProductType }) => {
             </div>
           </div>
         </div>
-        {/* <Toaster /> */}
+        <Toaster />
       </section>
     </div>
   );

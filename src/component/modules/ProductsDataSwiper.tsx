@@ -21,10 +21,10 @@ import { Autoplay, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Container from './Container';
 import NewProductCard from './NewProductCard';
-import { productData } from '@/apps/constants/data';
+import { ProductType } from '@/apps/interface/types';
 ;
 
-const ProductDataSwiper = ({ msg , textcolor }: { msg?: string,textcolor?:string }) => {
+const ProductDataSwiper = ({ msg , textcolor ,product}: { msg?: string,textcolor?:string ,product?: ProductType}) => {
 
 
   return (
@@ -72,7 +72,7 @@ const ProductDataSwiper = ({ msg , textcolor }: { msg?: string,textcolor?:string
                 },
               }}
             >
-              {productData.map((item:any) => (
+              {product?.map((item:any) => (
                 <SwiperSlide key={item._id} >
                   <NewProductCard item={item} />
                 </SwiperSlide>
