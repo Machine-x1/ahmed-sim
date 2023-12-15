@@ -7,14 +7,16 @@ import { Meta } from '@/component/layouts/Meta';
 import CartItem from '@/component/modules/CartItem';
 import PaymentForm from '@/component/modules/PaymentForm';
 import { Main } from '@/component/templates/Main';
+import { RootState } from '@/apps/redux/store';
+import { useSelector } from 'react-redux';
 
 const Index = () => {
-  // const { cart } = useSelector((state: RootState) => state.cart);
+  const { cart } = useSelector((state: RootState) => state.cart);
   // const dispatch = useDispatch();
   return (
     <Main meta={<Meta title="BitsByets" description="BitsByets." />}>
       <div className="mx-auto h-full  max-w-screen-xl   px-4 py-8 pb-24 xl:px-0">
-        {true ? (
+        {cart.products.length ? (
           <div className=" w-full  xl:px-0">
             <div className="flex w-full  items-center justify-center gap-y-2 pb-8  ">
               <Divider className=" mx-auto  w-1/3" />

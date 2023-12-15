@@ -11,14 +11,12 @@ import { Main } from '@/component/templates/Main';
 
 const index = ({ product }: { product: ProductType }) => {
   return (
+
     <Main meta={<Meta title="BitsByets" description="BitsByets." />}>
-      <div>
         <Container>
           <ProductPage product={product} />
             <ProductDataSwiper msg="check another products" textcolor='secondary-black' />
-        </Container>
-      </div>
-    </Main>
+        </Container>   </Main>
   );
 };
 export default index;

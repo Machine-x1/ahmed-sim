@@ -12,7 +12,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useState } from 'react';
 // import product from 'next-seo/lib/jsonld/product';
-import { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 import { BiCart } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
 import type { ProductType } from '@/apps/interface/types';
@@ -50,7 +50,7 @@ const NewProductCard = ({ item }: { item?: ProductType  }) => {
             >
               <button
                 // role="presentation"
-                onClick={() => dispatch(setProdctCart(item))}
+                onClick={() => dispatch(setProdctCart(item)) &&  toast.success('Added to cart')              }
                 className=" flex w-full flex-col items-center justify-center "
               >
                 <BiCart size={40} className="text-xl text-hoverTextColor" />

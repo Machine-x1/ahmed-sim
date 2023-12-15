@@ -31,9 +31,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       {/* <I18nextProvider i18n={i18n}> */}
       <Transition>
         <NextUIProvider>
-          {/* <Suspense fallback={<SpinnerLoader/>}> */}
           <Component {...pageProps} />
-          {/* </Suspense> */}
         </NextUIProvider>
         </Transition>
       {/* </I18nextProvider> */}
