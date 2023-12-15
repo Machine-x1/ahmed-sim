@@ -25,7 +25,7 @@ const Index = () => {
             </div>
 
             <div className="flex h-full w-full flex-col  justify-center gap-5 lg:flex-row">
-              <div className="flex lg:h-[600px] lg:w-2/3">
+              <div className="  flex lg:h-[600px] lg:w-2/3">
                 <CartItem />
               </div>
               <div className=" lg:h-1/2 lg:w-1/3   ">

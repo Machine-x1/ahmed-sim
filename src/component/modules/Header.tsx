@@ -49,21 +49,23 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const menuItems = [
+
+    // {
+    //   name: ' DASHBOARD',
+    //   // href: '/',
+    // },
     {
       name: 'Home',
       href: '/',
     },
-    {
-      name: ' DASHBOARD',
-      href: '/dashboard',
-    },
+   
     {
       name: 'ACCESSORIES',
-      href: '/accessories',
+      href: '/products/#accessories',
     },
     {
       name: 'STEER-WHEELS',
-      href: '/products',
+      href: '/products/#steerWheels',
     },
     {
       name: 'PEDDALS',
@@ -71,12 +73,12 @@ const Header = () => {
     },
     {
       name: ' BUNDLES',
-      href: '/products',
+      href: '/products/#Bundles',
     },
 
     {
       name: 'WHEEL BASIS',
-      href: '/about-us',
+      href: '/products/#wheelBases',
     },
     {
       name: 'CONTACT-US',
@@ -88,7 +90,7 @@ const Header = () => {
     },
     {
       name: 'Digital Dashes',
-      href: '/Digital-Dashes',
+      href: '/products/#DigitalDashes',
     },
   ];
 
@@ -135,7 +137,7 @@ const Header = () => {
         </NavbarBrand> */}
         <NavbarItem
           className={` ${
-            pathname === '/products/Accessories' && 'active font-bold text-white  '
+            pathname === '/products/#Accessories' && 'active font-bold text-white  '
           }`}
         >
           <div
@@ -147,7 +149,7 @@ const Header = () => {
         </NavbarItem>
         <NavbarItem
           className={` ${
-            pathname === '/products/wheelBasis' && 'active font-bold text-white  '
+            pathname === '/products/#wheelBasis' && 'active font-bold text-white  '
           }`}
         >
           <div
@@ -171,7 +173,7 @@ const Header = () => {
         </NavbarItem>
         <NavbarItem
           className={` ${
-            pathname === '/products/pedals' && 'active font-bold text-white  '
+            pathname === '/products/#pedals' && 'active font-bold text-white  '
           }`}
         >
           <div
@@ -183,7 +185,7 @@ const Header = () => {
         </NavbarItem>
         <NavbarItem
           className={`${
-            pathname === '/products/DigitalDashes' && 'active font-bold  text-white  '
+            pathname === '/products/#DigitalDashes' && 'active font-bold  text-white  '
           }`}
         >
           <div
@@ -195,11 +197,11 @@ const Header = () => {
         </NavbarItem>
         <NavbarItem
           className={`${
-            pathname === '/products/Bundles' && 'active font-bold  text-white  '
+            pathname === '/products/#Bundles' && 'active font-bold  text-white  '
           }`}
         >
           <div
-            onClick={() => router.push('/products/#DigitalDashes')}
+            onClick={() => router.push('/products/#Bundles')}
             className="cursor-pointer text-lg text-slate-200"
           >
              BUNDLES
@@ -207,12 +209,15 @@ const Header = () => {
         </NavbarItem>
         <NavbarItem
           className={`${
-            pathname === '/contact-us' && 'active font-bold text-white '
+            pathname === '/contact-us/' && 'active font-bold   text-white '
           }`}
         >
-          <Link href="/contact-us" className="text-lg text-slate-200 ">
-            CONTACT-US
-          </Link>
+          <div
+            onClick={() => router.push('/contact-us')}
+            className="cursor-pointer text-lg text-slate-200"
+          >
+      CONTACT-US
+          </div>
         </NavbarItem>
       </NavbarContent>
 
@@ -243,7 +248,7 @@ const Header = () => {
           <NavbarMenuItem key={`${item}-${index}`}>
             <Link
               className="w-full"
-              color={pathname === item.href ? 'warning' : 'foreground'}
+              color={pathname === item.href ? 'primary' : 'foreground'}
               href={item.href}
               size="lg"
             >

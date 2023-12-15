@@ -15,9 +15,7 @@ const index = ({ product }: { product: ProductType }) => {
       <div>
         <Container>
           <ProductPage product={product} />
-          <div className="w-full">
-            <ProductDataSwiper msg="check another products" />
-          </div>
+            <ProductDataSwiper msg="check another products" textcolor='secondary-black' />
         </Container>
       </div>
     </Main>
@@ -34,6 +32,7 @@ export async function getServerSideProps(context: {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
+      Accept: 'application/json',
     },
   });
   const product = await res.json();

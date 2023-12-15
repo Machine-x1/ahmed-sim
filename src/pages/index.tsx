@@ -18,10 +18,10 @@ const Index = () => {
   return (
     <Main meta={<Meta title="BitsByets" description="BitsByets." />}>
       <div
-        id="home" className="mx-auto w-full max-w-[1920px] bg-mainOrange ">
+        id="home" className="mx-auto w-full max-w-[1920px] bg-secondaryBlack ">
         <Banner />
         <ProductFeatures />
-        <ProductDataSwiper msg="Featured Products" />
+        <ProductDataSwiper msg="Featured Products" textcolor='slate-100'  />
         <AboutUs />
         <ContactForm />
         <Sponsors />

@@ -19,7 +19,7 @@ const CartItem = () => {
   const { cart } = useSelector((state: RootState) => state.cart);
   // const dispatch = useDispatch();
   return (
-    <div className="mx-auto max-h-full w-full  overflow-auto ">
+    <div className="mx-auto max-h-full w-full ">
       <div className="mb-6 flex h-full flex-col justify-center gap-y-2 overflow-auto rounded-lg bg-white p-6   shadow-md sm:flex sm:justify-start ">
         {cart.products.map((item: ProductType) => (
           <div
@@ -28,7 +28,7 @@ const CartItem = () => {
           >
             <div className="relative flex  w-full items-center gap-x-3  ">
               <Image
-                src="/images/3.jpg"
+                src={item?.images[0]}
                 width="100%"
                 height="100%"
                 alt=""
@@ -52,17 +52,17 @@ const CartItem = () => {
                 </div>
               </div>
               {/* quantity */}
-              <div className=" absolute  end-1/4 top-auto flex w-20 items-center  justify-center  border border-slate-300 p-2 ">
+              {/* <div className=" absolute  end-1/4 top-auto flex w-20 items-center  justify-center  border border-slate-300 p-2 ">
                 <div className="flex w-10 items-center  justify-center ">
                   <span className="cursor-pointer">
                     <FiChevronLeft size={25} />
                   </span>
-                  {/* <span>{item?}</span> */}
                   <span className="cursor-pointer">
                     <FiChevronRight size={25} />
                   </span>
                 </div>
-              </div>
+              </div> */}
+
             </div>
             <Divider className="my-4" />
           </div>
