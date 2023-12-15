@@ -83,7 +83,6 @@ const ProductsPage = ({ products, meta }: { products: any; meta: any }) => {
           target: { value: React.SetStateAction<string> };
         }) => {
           setValue(value.target.value);
-          console.log('hi', value.target.value);
         }}
       />
       <div id="home" className="mx-auto w-full max-w-[1920px] bg-bodyColor ">
