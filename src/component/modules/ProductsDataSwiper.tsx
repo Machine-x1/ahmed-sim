@@ -22,6 +22,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import Container from './Container';
 import NewProductCard from './NewProductCard';
 import { ProductType } from '@/apps/interface/types';
+import { Toaster } from 'react-hot-toast';
 ;
 
 const ProductDataSwiper = ({ msg , textcolor ,product}: { msg?: string,textcolor?:string ,product?: ProductType}) => {
@@ -74,13 +75,15 @@ const ProductDataSwiper = ({ msg , textcolor ,product}: { msg?: string,textcolor
             >
               {product?.map((item:any) => (
                 <SwiperSlide key={item._id} >
-                  <NewProductCard item={item} />
+                  <NewProductCard item={item}/>
+                  
                 </SwiperSlide>
               ))}
             </Swiper>
           </div>
         </div>
       </Container>
+      <Toaster position="top-center" reverseOrder={false} />
     </div>
   );
 };
