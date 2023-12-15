@@ -13,6 +13,7 @@ import PaginationProducts from '@/component/modules/Pagination';
 import { ProductSection } from '@/component/modules/ProductSection';
 import SearchBar from '@/component/modules/SearchBar';
 import { Main } from '@/component/templates/Main';
+import { Toaster } from 'react-hot-toast';
 
 const ProductsPage = ({ products, meta }: { products: any; meta: any }) => {
   const [value, setValue] = useState('All Products');
@@ -113,6 +114,7 @@ const ProductsPage = ({ products, meta }: { products: any; meta: any }) => {
             <PaginationProducts />
           </div>
         </div>
+        <Toaster />
       </div>
     </Main>
   );

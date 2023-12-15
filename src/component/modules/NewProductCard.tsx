@@ -88,9 +88,10 @@ const NewProductCard = ({ item }: { item?: ProductType  }) => {
             </CardFooter>
           </Skeleton>
 
-          <Toaster position="top-center" reverseOrder={false} />
         </Card>
+        
       </motion.div>
+      {/* <Toaster /> */}
     </div>
   );
 };
