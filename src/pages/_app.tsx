@@ -18,7 +18,6 @@ import SpinnerLoader from '@/component/modules/SpinnerLoader';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const { locale } = useRouter();
-  console.log(locale)
   const dir = locale === "ar" ? "rtl" : "ltr";
 
   useEffect(() => {
