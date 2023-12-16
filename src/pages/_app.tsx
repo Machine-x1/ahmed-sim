@@ -9,10 +9,9 @@ import { Provider } from 'react-redux';
 
 import store from '@/apps/redux/store';
 import { appWithTranslation } from 'next-i18next';
-import { Suspense, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Transition from '@/component/modules/Transition';
-import SpinnerLoader from '@/component/modules/SpinnerLoader';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 

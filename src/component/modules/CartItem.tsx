@@ -4,7 +4,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-underscore-dangle */
-import { Divider, Image } from '@nextui-org/react';
+import { Button, Divider, Image } from '@nextui-org/react';
 import React from 'react';
 // import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { IoMdClose } from 'react-icons/io';
@@ -14,7 +14,8 @@ import type { RootState } from '@/apps/redux/store';
 
 import FormattedPrice from './FormattedPrice';
 import { ProductType } from '@/apps/interface/types';
-import { deleteProductCart } from '@/apps/redux/slice/cartSlice';
+import { decreaseQuantity, deleteProductCart, increaseQuantity } from '@/apps/redux/slice/cartSlice';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 const CartItem = () => {
   const { cart } = useSelector((state: RootState) => state.cart);
@@ -49,18 +50,22 @@ const CartItem = () => {
                 </p>
                 {/* <p className=" text-sm text-gray-500">{item?.color}</p> */}
                 <div className="flex  items-center justify-between text-sm">
-                  {/* <p className="text-gray-500">Qty: 32{item?.quantity}</p> */}
+                  <p className="text-gray-500">Qty: {item?.quantity}</p>
                 </div>
               </div>
               {/* quantity */}
               {/* <div className=" absolute  end-1/4 top-auto flex w-20 items-center  justify-center  border border-slate-300 p-2 ">
                 <div className="flex w-10 items-center  justify-center ">
-                  <span className="cursor-pointer">
+                    <Button onClick={() => dispatch(decreaseQuantity(item._id))}>
+                 <span  className="cursor-pointer">
                     <FiChevronLeft size={25} />
                   </span>
-                  <span className="cursor-pointer">
+               </Button>
+                  <Button onClick={() => dispatch(increaseQuantity(item._id))}>
+                  <span  className="cursor-pointer">
                     <FiChevronRight size={25} />
                   </span>
+                  </Button>
                 </div>
               </div> */}
             </div>

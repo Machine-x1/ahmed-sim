@@ -75,8 +75,7 @@ const ProductDataSwiper = ({ msg , textcolor ,product}: { msg?: string,textcolor
             >
               {product?.map((item:any) => (
                 <SwiperSlide key={item._id} >
-                  <NewProductCard item={item}/>
-                  
+                  <NewProductCard item={item}/>          
                 </SwiperSlide>
               ))}
             </Swiper>

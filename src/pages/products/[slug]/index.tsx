@@ -9,13 +9,13 @@ import ProductPage from '@/component/modules/ProductPage';
 import ProductDataSwiper from '@/component/modules/ProductsDataSwiper';
 import { Main } from '@/component/templates/Main';
 
-const index = ({ product ,productsData }: { product: ProductType,productsData: ProductType }) => {
+const index = ({ singleProduct ,allproducts }: { singleProduct:ProductType ,allproducts: ProductType }) => {
   return (
 
     <Main meta={<Meta title="BitsByets" description="BitsByets." />}>
         <Container>
-          <ProductPage product={product} />
-            <ProductDataSwiper msg="check another products" textcolor='secondary-black' product={productsData}  />
+          <ProductPage singleProduct={singleProduct  } />
+            <ProductDataSwiper msg="check another products" textcolor='secondary-black' product={allproducts}  />
         </Container>
         </Main>
   );
@@ -48,8 +48,8 @@ export async function getServerSideProps(context: {
 
   return {
     props: {
-      product: product.data.product,
-      productsData: productsData.data.products,
+      singleProduct: product.data.product?? null ,
+      allproducts: productsData.data.products,
 
     },
   };

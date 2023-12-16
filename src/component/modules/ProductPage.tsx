@@ -26,21 +26,21 @@ import { setProdctCart } from '@/apps/redux/slice/cartSlice';
 import FormattedPrice from './FormattedPrice';
 import toast, { Toaster } from 'react-hot-toast';
 
-const ProductPage = ({ product }: { product: ProductType }) => {
+const ProductPage = ({ singleProduct }: { singleProduct: ProductType }) => {
   const dispatch = useDispatch();
   function getCharactersBeforeDot(text: string) {
     const match = text.match(/([^.]*)\./);
     return match ? match[1] : ''; // Returns the characters before the dot or an empty string if there's no match
   }
-  const subDescription = getCharactersBeforeDot(product?.description);
+  const subDescription = getCharactersBeforeDot(singleProduct?.description);
   const [currentImg, setCurrentImg] = useState<any>(0);
 
   const renderImageCards = () => {
-    if (!product?.images || !Array.isArray(product.images)) {
+    if (!singleProduct?.images || !Array.isArray(singleProduct.images)) {
       return null;
     }
 
-    return product.images.slice(1).map((imageSrc: string, index: Key) => {
+    return singleProduct.images.slice(1).map((imageSrc: string, index: Key) => {
       if (!imageSrc) {
         return null;
       }
@@ -75,7 +75,7 @@ const ProductPage = ({ product }: { product: ProductType }) => {
           <Breadcrumbs isDisabled>
             <BreadcrumbItem>Home</BreadcrumbItem>
             <BreadcrumbItem>product</BreadcrumbItem>
-            <BreadcrumbItem> {product?.name}</BreadcrumbItem>
+            <BreadcrumbItem> {singleProduct?.name}</BreadcrumbItem>
           </Breadcrumbs>
           <div className="lg:col-gap-12  xl:col-gap-16 mt-8  grid grid-cols-1 gap-8  lg:mt-12 lg:grid-cols-5 lg:gap-16">
             <div className=" lg:col-span-3 lg:row-end-1">
@@ -84,7 +84,7 @@ const ProductPage = ({ product }: { product: ProductType }) => {
                   <div className="h-96 max-w-xl overflow-hidden rounded-lg">
                     <Image
                       className="h-full w-full max-w-full object-cover"
-                      src={product?.images[currentImg]}
+                      src={singleProduct?.images[currentImg]}
                       width="100%"
                       height="100%"
                       alt=""
@@ -101,7 +101,7 @@ const ProductPage = ({ product }: { product: ProductType }) => {
             </div>
             <div className="lg:col-span-2 lg:row-span-2 lg:row-end-2">
               <h1 className="md: text-2xl font-bold text-gray-900 md:text-3xl">
-                {product?.name}
+                {singleProduct?.name}
               </h1>
               <div className="mt-5 flex  flex-col  ">
                 <p className="text-md  font-medium text-gray-500">
@@ -114,11 +114,11 @@ const ProductPage = ({ product }: { product: ProductType }) => {
               <div className="mt-10 flex flex-col items-center justify-between space-y-4 border-y py-4 md:flex-row md:space-y-0">
                 <div className="flex items-end">
                   <p className="text-xl font-semibold">
-                    <FormattedPrice amount={product?.price} />
+                    <FormattedPrice amount={singleProduct?.price} />
                   </p>
                 </div>
                 <div
-                  onClick={() =>dispatch(setProdctCart(product)) &&  toast.success('Added to cart')}
+                  onClick={() =>dispatch(setProdctCart(singleProduct)) &&  toast.success('Added to cart')}
                   className="group flex cursor-pointer items-center"
                 >
                   <div className="flex items-center border-r-[1px] border-r-slate-500 bg-darkText px-6 py-3 text-sm uppercase text-slate-100">
@@ -129,14 +129,13 @@ const ProductPage = ({ product }: { product: ProductType }) => {
                   </span>
                 </div>
               </div>
-
               <div className="flex gap-4  text-sm text-lightText">
                 <span>
-                  SKU: <span className="text-darkText">{product?._id}</span>
+                  SKU: <span className="text-darkText">{singleProduct?._id}</span>
                 </span>
                 <span>
                   Category:
-                  <span className="text-darkText">{product?.category}</span>
+                  <span className="text-darkText">{singleProduct?.category}</span>
                 </span>
               </div>
               <ul className="mt-8 space-y-2">
@@ -203,7 +202,7 @@ const ProductPage = ({ product }: { product: ProductType }) => {
                     }
                   >
                     <div className="flow-root ">
-                      <p className="text-lightText">{product?.description}</p>
+                      <p className="text-lightText">{singleProduct?.description}</p>
                     </div>
                   </Tab>
                 </Tabs>

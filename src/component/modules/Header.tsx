@@ -223,7 +223,7 @@ const Header = () => {
 
       <NavbarContent justify="end">
         <NavbarItem className="hidden sm:flex">
-          <div onClick={() => router.push('cart')}>
+          <div onClick={() => router.replace('cart')}>
             <div className="relative flex items-center justify-center gap-x-1 rounded-full border-[1px] border-hoverTextColor bg-hoverTextColor hover:border-white  px-3 py-1.5 text-slate-100 duration-200  hover:cursor-pointer ">
               <IoMdCart className="text-xl  " />
               <p className="text-sm font-semibold">

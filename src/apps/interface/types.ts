@@ -11,6 +11,7 @@ export interface ProductType {
   createdAt: string;
   updatedAt: string;
   slug: string;
+  quantity?: number;
 }
 
 export interface ItemProps {
