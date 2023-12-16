@@ -9,19 +9,18 @@ import { useRouter } from 'next/router';
 export default function ProductFeatures() {
   const router = useRouter();
   return (
-    <div className="bg-secondaryBlack h-auto lg:h-[700px]  ">
+    <div className="bg-secondaryBlack h-auto max-w-full lg:h-[700px]  ">
       <main className=" relative flex items-center flex-col h-auto  lg:h-[700px] overflow-hidden bg-white dark:bg-gray-800">
         <header className="mt-12 ">
-          <h2 className=" flex flex-col text-center items-center  text-6xl font-black uppercase leading-none text-gray-800 dark:text-white ">
+          <h2 className=" w-full flex flex-col text-center items-center  text-6xl font-black uppercase  text-gray-800 dark:text-white ">
           Experience the Thrill of Sim Racing!      </h2>
         </header>
-        <div className="relative z-20 justify-center flex items-center  overflow-hidden bg-white dark:bg-gray-800">
+        <div className="relative z-20 justify-center flex items-center w-full  overflow-hidden bg-white dark:bg-gray-800">
           <div className="container relative mx-auto flex px-6 py-16">
             <div className="relative z-20 flex flex-col sm:w-2/3 lg:w-2/5">
               <span className="mb-12 h-2 w-20 bg-gray-800 dark:bg-white" />
               <h1 className="font-bebas-neue flex flex-col text-6xl font-black uppercase leading-none text-gray-800 dark:text-white sm:text-8xl">
               Let's Race
-
 <span className="text-5xl sm:text-7xl"> Together</span>
               </h1>
               <p className="text-sm text-gray-700 dark:text-white sm:text-base">
@@ -29,8 +28,8 @@ export default function ProductFeatures() {
 
 Join us at Sim Racing Corner and let's rev up the excitement together!
               </p>
-              <div className="mt-8 flex items-center justify-center gap-6">
-                <Button onClick={() => {router.push('/products')}}  className="text-md rounded-lg border-2 border-orange-500 bg-transparent px-4 py-2 uppercase text-orange-500 hover:bg-orange-500 hover:text-white dark:text-white">
+              <div className="mt-8 flex   gap-4">
+                <Button variant='flat' radius='lg' size='md' onClick={() => {router.push('/products')}}  className=" text-xs md:text-base border-2 border-orange-500 bg-transparent  uppercase text-orange-500 hover:bg-orange-500 hover:text-white dark:text-white">
                 Shop Now for the Ultimate Racing Experience!
                 </Button>
               </div>
