@@ -12,7 +12,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useState } from 'react';
 // import product from 'next-seo/lib/jsonld/product';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import { BiCart } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
 import type { ProductType } from '@/apps/interface/types';

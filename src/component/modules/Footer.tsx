@@ -33,7 +33,7 @@ const Footer = () => {
               </h6>
               <p className="mb-4 flex items-center justify-center md:justify-start">
               Follow Us on Social Media: Get instant updates, behind-the-scenes content, and interact with fellow racers. Find us on [Facebook, Twitter, Instagram, etc.] for a dose of sim racing excitement.</p>
-             <div className='flex justify-center  gap-6 '>
+             <div className='flex justify-center gap-6 '>
               <Link href="/">
                 <p className="cursor-pointer duration-200 "><BsFacebook /></p>
               </Link>
