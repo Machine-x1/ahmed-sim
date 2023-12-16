@@ -48,16 +48,15 @@ const NewProductCard = ({ item }: { item?: ProductType  }) => {
                 console.log('Button clicked!');
               }}
             >
-              <button
-                // role="presentation"
-                onClick={() => dispatch(setProdctCart(item)) &&  toast.success('Added to cart')              }
+              <div
+                onClick={() => dispatch(setProdctCart(item))&& toast.success('Added to cart')              }
                 className=" flex w-full flex-col items-center justify-center "
               >
                 <BiCart size={40} className="text-xl text-hoverTextColor" />
                 <span className="text-sm  uppercase text-secondaryBlack">
                   Add to cart
                 </span>
-              </button>
+              </div>
             </motion.button>
           )}
           <Skeleton isLoaded className="rounded-lg">
