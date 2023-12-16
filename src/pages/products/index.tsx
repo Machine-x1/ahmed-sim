@@ -61,6 +61,7 @@ const ProductsPage = ({
           {},
           { search: searchValue }
         );
+        console.log(data.data, 'asc');
         setProductsData(data.data); // Add the data to the productsData state
       } else {
         setProductsData(serverData);
@@ -73,10 +74,10 @@ const ProductsPage = ({
   const categories = [
     { title: 'STEERING WHEELS', key: 'steer-wheels', id: 'steerWheels' },
     { title: 'PEDALS', key: 'paddle', id: 'pedals' },
-    { title: 'BUNDLES', key: 'Bundles', id: 'Bundles' },
-    { title: 'WHEEL BASES', key: 'wheelBasis', id: 'wheelBases' },
+    { title: 'BUNDLES', key: 'bundles', id: 'bundles' },
+    { title: 'WHEEL BASES', key: 'wheel-bases', id: 'wheelBases' },
     { title: 'ACCESSORIES', key: 'accessories', id: 'accessories' },
-    { title: 'DIGITAL DASHES', key: 'DigitalDashes', id: 'DigitalDashes' },
+    { title: 'DIGITAL DASHES', key: 'digital-dashes', id: 'digital-dashes' },
   ];
 
   return (

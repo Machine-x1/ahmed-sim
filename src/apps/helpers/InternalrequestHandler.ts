@@ -13,7 +13,7 @@ async function internalrequestHandler(
   const queryString = params
     ? `?${new URLSearchParams(params).toString()}`
     : '';
-  const requestUrl = `${process.env.API_INTERNAL}/${endpoints[endpoint]}${queryString}`;
+  const requestUrl = `${process.env.NEXT_PUBLIC_API_INTERNAL}/${endpoints[endpoint]}${queryString}`;
   const axiosConfig: AxiosRequestConfig = {
     method,
     headers: headers || {},
