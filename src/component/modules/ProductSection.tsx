@@ -1,15 +1,16 @@
 /* eslint-disable no-underscore-dangle */
 import { Divider } from '@nextui-org/react';
 
+import type { ProductType } from '@/apps/interface/types';
+
 import NewProductCard from './NewProductCard';
-import { ProductType } from '@/apps/interface/types';
 
 export const ProductSection = ({
   title,
   productsData,
   id,
 }: {
-  id: string  | undefined;
+  id: string | undefined;
   title: string;
   productsData: ProductType;
 }) => {

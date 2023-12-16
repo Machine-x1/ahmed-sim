@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable jsx-a11y/anchor-is-valid */
@@ -8,8 +9,6 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-
-'use client';
 
 import {
   Link,
@@ -23,6 +22,7 @@ import {
 } from '@nextui-org/react';
 import { usePathname } from 'next/navigation';
 import { useRouter } from 'next/router';
+import useTranslation from 'next-translate/useTranslation';
 // import Link from 'next/link';
 import React from 'react';
 import { IoMdCart } from 'react-icons/io';
@@ -49,54 +49,38 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const menuItems = [
-
-    // {
-    //   name: ' DASHBOARD',
-    //   // href: '/',
-    // },
     {
-      name: 'Home',
-      href: '/',
-    },
-   
-    {
-      name: 'ACCESSORIES',
+      name: 'accessories',
       href: '/products/#accessories',
     },
     {
-      name: 'STEER-WHEELS',
+      name: 'steerWheels',
       href: '/products/#steerWheels',
     },
     {
-      name: 'PEDDALS',
+      name: 'peddals',
       href: '/products/#peddals',
     },
     {
-      name: ' BUNDLES',
+      name: 'bundles',
       href: '/products/#Bundles',
     },
 
     {
-      name: 'WHEEL BASIS',
+      name: 'wheelBases',
       href: '/products/#wheelBases',
     },
     {
-      name: 'CONTACT-US',
-      href: '/contact-us',
-    },
-    {
-      name: 'CART',
-      href: '/cart',
-    },
-    {
-      name: 'Digital Dashes',
+      name: 'digitalDashes',
       href: '/products/#DigitalDashes',
     },
   ];
-
   const pathname = usePathname();
   const { cart } = useSelector((state: RootState) => state.cart);
   const router = useRouter();
+  const lang = router.locale;
+  const { t } = useTranslation('navbar');
+  console.log(t('profile'), 'lang');
   return (
     <Navbar
       isBordered
@@ -130,101 +114,27 @@ const Header = () => {
         className="hidden items-center gap-10  text-xl capitalize   xl:flex "
         justify="center"
       >
-        {/* <NavbarBrand className=" ">
-          <Link href="/" className="text-slate-200">
-            <Logo />
-          </Link>
-        </NavbarBrand> */}
-        <NavbarItem
-          className={` ${
-            pathname === '/products/#Accessories' && 'active font-bold text-white  '
-          }`}
-        >
-          <div
-            onClick={() => router.push('products/#accessories')}
-            className="cursor-pointer text-lg uppercase text-slate-200"
+        {menuItems.map((item) => (
+          <NavbarItem
+            key={item.name}
+            className={`${
+              pathname === '/contact-us/' && 'active font-bold   text-white '
+            }`}
           >
-            ACCESSORIES
-          </div>
-        </NavbarItem>
-        <NavbarItem
-          className={` ${
-            pathname === '/products/#wheelBasis' && 'active font-bold text-white  '
-          }`}
-        >
-          <div
-            onClick={() => router.push('products/#wheelBases')}
-            className="cursor-pointer text-lg text-slate-200"
-          >
-            WHEEL BASES
-          </div>
-        </NavbarItem>
-        <NavbarItem
-          className={` ${
-            pathname === '/products/#steerWheels' && 'active font-bold text-white  '
-          }`}
-        >
-          <div
-            onClick={() => router.push('products/#steerWheels')}
-            className="cursor-pointer text-lg text-slate-200"
-          >
-            STEERING WHEELS
-          </div>
-        </NavbarItem>
-        <NavbarItem
-          className={` ${
-            pathname === '/products/#pedals' && 'active font-bold text-white  '
-          }`}
-        >
-          <div
-            onClick={() => router.push('products/#pedals')}
-            className="cursor-pointer text-lg text-slate-200"
-          >
-            PEDALS
-          </div>
-        </NavbarItem>
-        <NavbarItem
-          className={`${
-            pathname === '/products/#DigitalDashes' && 'active font-bold  text-white  '
-          }`}
-        >
-          <div
-            onClick={() => router.push('/products/#DigitalDashes')}
-            className="cursor-pointer text-lg text-slate-200"
-          >
-            DIGITAL DASHES
-          </div>
-        </NavbarItem>
-        <NavbarItem
-          className={`${
-            pathname === '/products/#Bundles' && 'active font-bold  text-white  '
-          }`}
-        >
-          <div
-            onClick={() => router.push('/products/#Bundles')}
-            className="cursor-pointer text-lg text-slate-200"
-          >
-             BUNDLES
-          </div>
-        </NavbarItem>
-        <NavbarItem
-          className={`${
-            pathname === '/contact-us/' && 'active font-bold   text-white '
-          }`}
-        >
-          <div
-            onClick={() => router.push('/contact-us')}
-            className="cursor-pointer text-lg text-slate-200"
-          >
-      CONTACT-US
-          </div>
-        </NavbarItem>
+            <div
+              onClick={() => router.push(item.href)}
+              className="cursor-pointer text-lg text-slate-200"
+            >
+              {t(item.name)}
+            </div>
+          </NavbarItem>
+        ))}
       </NavbarContent>
 
       <NavbarContent justify="end">
         <NavbarItem className="hidden sm:flex">
-          <div onClick={() => router.push('cart')}>
-            <div className="relative flex items-center justify-center gap-x-1 rounded-full border-[1px] border-hoverTextColor bg-hoverTextColor hover:border-white  px-3 py-1.5 text-slate-100 duration-200  hover:cursor-pointer ">
+          <div onClick={() => router.push('/cart')}>
+            <div className="relative flex items-center justify-center gap-x-1 rounded-full border-[1px] border-hoverTextColor bg-hoverTextColor px-3  py-1.5 text-slate-100 duration-200 hover:cursor-pointer  hover:border-white ">
               <IoMdCart className="text-xl  " />
               <p className="text-sm font-semibold">
                 <FormattedPrice amount={0} />
@@ -240,6 +150,21 @@ const Header = () => {
               <p className="text-sm font-semibold">Orders</p>
             </Link>
           )} */}
+        </NavbarItem>
+        <NavbarItem className="hidden sm:flex">
+          <div onClick={() => router.push('/cart')}>
+            <div className="relative flex items-center justify-center gap-x-1 rounded-full border-[1px] border-white bg-hoverTextColor  px-3 py-1.5  text-slate-100 duration-200 hover:cursor-pointer hover:bg-white  hover:text-hoverTextColor ">
+              {lang === 'ar' ? (
+                <a href="/en">
+                  <h2 className="font-poppins"> الإنجليزية</h2>
+                </a>
+              ) : (
+                <a href="/ar">
+                  <h2 className="font-somar">Arabic</h2>
+                </a>
+              )}{' '}
+            </div>
+          </div>
         </NavbarItem>
       </NavbarContent>
 

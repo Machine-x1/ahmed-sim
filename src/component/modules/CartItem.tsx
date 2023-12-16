@@ -10,11 +10,11 @@ import React from 'react';
 import { IoMdClose } from 'react-icons/io';
 import { useDispatch, useSelector } from 'react-redux';
 
+import type { ProductType } from '@/apps/interface/types';
+import { deleteProductCart } from '@/apps/redux/slice/cartSlice';
 import type { RootState } from '@/apps/redux/store';
 
 import FormattedPrice from './FormattedPrice';
-import { ProductType } from '@/apps/interface/types';
-import { deleteProductCart } from '@/apps/redux/slice/cartSlice';
 
 const CartItem = () => {
   const { cart } = useSelector((state: RootState) => state.cart);
@@ -37,8 +37,11 @@ const CartItem = () => {
                 className=" h-24 w-24 object-cover  object-center"
                 loading="lazy"
               />
-              <div onClick={() => dispatch(deleteProductCart(item._id))} className="absolute end-12 top-2 flex  ">
-                <span  className="cursor-pointer text-lg duration-200 hover:text-red-600">
+              <div
+                onClick={() => dispatch(deleteProductCart(item._id))}
+                className="absolute end-12 top-2 flex  "
+              >
+                <span className="cursor-pointer text-lg duration-200 hover:text-red-600">
                   <IoMdClose />
                 </span>
               </div>

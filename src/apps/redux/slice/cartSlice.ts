@@ -32,7 +32,7 @@ const cartSlice = createSlice({
       }
     },
     // deleteProductCart: (state, action: PayloadAction<any>) => {
-      
+
     // },
     deleteProductCart: (state, action: PayloadAction<string>) => {
       const productIdToDelete = action.payload;

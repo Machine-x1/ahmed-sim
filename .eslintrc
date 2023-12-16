@@ -87,17 +87,7 @@
       "parserOptions": {
         "project": "./cypress/tsconfig.json"
       }
-    },
-    // Configuration for Storybook
-    {
-      "rules": {
-        "import/no-extraneous-dependencies": [
-          "error",
-          {
-            "devDependencies": true
-          }
-        ]
-      }
     }
+    // Configuration for Storybook
   ]
 }

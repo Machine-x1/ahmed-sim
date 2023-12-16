@@ -2,7 +2,7 @@
 /* eslint-disable unused-imports/no-unused-vars */
 /* eslint-disable react/jsx-key */
 /* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable tailwindcss/no-custom-classname */ 
+/* eslint-disable tailwindcss/no-custom-classname */
 /* eslint-disable no-console */
 /* eslint-disable react/jsx-no-undef */
 /* eslint-disable array-callback-return */
@@ -16,18 +16,26 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+
 import { Divider } from '@nextui-org/react';
+import { Toaster } from 'react-hot-toast';
 import { Autoplay, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+
+import type { ProductType } from '@/apps/interface/types';
+
 import Container from './Container';
 import NewProductCard from './NewProductCard';
-import { ProductType } from '@/apps/interface/types';
-import { Toaster } from 'react-hot-toast';
-;
 
-const ProductDataSwiper = ({ msg , textcolor ,product}: { msg?: string,textcolor?:string ,product?: ProductType}) => {
-
-
+const ProductDataSwiper = ({
+  msg,
+  textcolor,
+  product,
+}: {
+  msg?: string;
+  textcolor?: string;
+  product?: ProductType;
+}) => {
   return (
     <div className="w-full ">
       <Container className=" h-full w-full">
@@ -35,7 +43,9 @@ const ProductDataSwiper = ({ msg , textcolor ,product}: { msg?: string,textcolor
           <Container className=" flex w-full gap-2 ">
             <div className="mb-4 flex w-full ">
               <div className="flex w-full flex-col justify-start gap-4">
-                <h2 className={`text-4xl  font-semibold capitalize text-${textcolor}`}>
+                <h2
+                  className={`text-  text-4xl font-semibold capitalize${textcolor}`}
+                >
                   {msg || 'Introducing Our Latest Products'}
                 </h2>
                 <Divider className="  w-1/2 bg-hoverTextColor " />
@@ -73,10 +83,9 @@ const ProductDataSwiper = ({ msg , textcolor ,product}: { msg?: string,textcolor
                 },
               }}
             >
-              {product?.map((item:any) => (
-                <SwiperSlide key={item._id} >
-                  <NewProductCard item={item}/>
-                  
+              {product?.map((item: any) => (
+                <SwiperSlide key={item._id}>
+                  <NewProductCard item={item} />
                 </SwiperSlide>
               ))}
             </Swiper>

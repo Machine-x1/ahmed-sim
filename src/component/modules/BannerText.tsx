@@ -1,20 +1,22 @@
 import { Button } from '@nextui-org/react';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/router';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import useTranslation from 'next-translate/useTranslation';
 
 import Container from './Container';
-import { useRouter } from 'next/router';
 
 interface Props {
   title?: string;
   message?: string;
-  shopbtn?: boolean;
 }
 
 const BannerText = ({ title, message }: Props) => {
   const router = useRouter();
+  const { t } = useTranslation('common');
   return (
-    <div className="absolute left-0 top-0 flex h-full w-full flex-col flex-wrap items-center justify-center py-8 md:w-1/2 md:py-4 ">
-      <Container className="flex w-full flex-col items-center justify-center gap-y-4">
+    <div className=" flex h-full w-full flex-col flex-wrap items-center justify-center py-8 md:w-1/2 md:py-4 ">
+      <Container className="flex  w-full flex-col items-center justify-center gap-y-4">
         {/* <div className=" flex flex-col  "> */}
         <motion.h2
           initial={{ y: 30, opacity: 0 }}
@@ -30,8 +32,7 @@ const BannerText = ({ title, message }: Props) => {
           transition={{ duration: 0.6 }}
           className=" hidden w-96 px-4 text-lg text-slate-100 md:block "
         >
-          {message ||
-            ' '}
+          {message || ' '}
         </motion.p>
         <motion.div
           initial={{ y: 50, opacity: 0 }}
@@ -39,14 +40,16 @@ const BannerText = ({ title, message }: Props) => {
           transition={{ duration: 0.7 }}
           className="mt-2 flex  items-center justify-center gap-x-4"
         >
-            <Button
-              onClick={() => {router.push('/products')}} 
-              radius="none"
-              size="sm"
-              className="bg-orange-500  px-4 py-2 text-sm font-semibold uppercase text-white duration-200 hover:bg-orange-500 hover:text-white "
-            >
-              Shop Now
-            </Button>
+          <Button
+            onClick={() => {
+              router.push('/products');
+            }}
+            radius="none"
+            size="sm"
+            className="bg-orange-500  px-4 py-2 text-sm font-semibold uppercase text-white duration-200 hover:bg-orange-500 hover:text-white "
+          >
+            {t('shop-now')}
+          </Button>
           {/* <Button
             radius="none"
             size="sm"

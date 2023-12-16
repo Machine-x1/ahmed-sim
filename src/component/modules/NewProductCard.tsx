@@ -12,19 +12,19 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useState } from 'react';
 // import product from 'next-seo/lib/jsonld/product';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import { BiCart } from 'react-icons/bi';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+
 import type { ProductType } from '@/apps/interface/types';
 import { setProdctCart } from '@/apps/redux/slice/cartSlice';
-import type { RootState } from '@/apps/redux/store';
+
 import FormattedPrice from './FormattedPrice';
 
-const NewProductCard = ({ item }: { item?: ProductType  }) => {
+const NewProductCard = ({ item }: { item?: ProductType }) => {
   const dispatch = useDispatch();
   const [isHovered, setIsHovered] = useState(false);
-  const { cart } = useSelector((state: RootState) => state.cart);
-  console.log(cart, 'cart');
+  // const { cart } = useSelector((state: RootState) => state.cart);
   return (
     <div className="relative">
       <motion.div
@@ -35,7 +35,6 @@ const NewProductCard = ({ item }: { item?: ProductType  }) => {
         <Card
           shadow="none"
           // isPressable
-          // onPress={() => console.log('item pressed')}
           fullWidth
           className=" relative flex   w-full flex-col overflow-hidden  "
         >
@@ -43,14 +42,13 @@ const NewProductCard = ({ item }: { item?: ProductType  }) => {
             <motion.button
               whileHover={{ scale: 1.1 }} // Framer Motion animation on hover
               className="  absolute left-2 top-1   z-20 flex items-center justify-center duration-300 transition-opacity hover:opacity-100"
-              onClick={() => {
-                // Handle button click event
-                console.log('Button clicked!');
-              }}
             >
               <button
                 // role="presentation"
-                onClick={() => dispatch(setProdctCart(item)) &&  toast.success('Added to cart')              }
+                onClick={() =>
+                  dispatch(setProdctCart(item)) &&
+                  toast.success('Added to cart')
+                }
                 className=" flex w-full flex-col items-center justify-center "
               >
                 <BiCart size={40} className="text-xl text-hoverTextColor" />
@@ -61,7 +59,7 @@ const NewProductCard = ({ item }: { item?: ProductType  }) => {
             </motion.button>
           )}
           <Skeleton isLoaded className="rounded-lg">
-            <CardBody className=" relative flex h-80   overflow-hidden w-full items-center justify-center rounded-xl">
+            <CardBody className=" relative flex h-80   w-full items-center justify-center overflow-hidden rounded-xl">
               <Link href={`/products/${item?.slug}`}>
                 <Image
                   className=" h-89 w-full  object-cover  object-center"
@@ -87,9 +85,7 @@ const NewProductCard = ({ item }: { item?: ProductType  }) => {
               </div>
             </CardFooter>
           </Skeleton>
-
         </Card>
-        
       </motion.div>
       {/* <Toaster /> */}
     </div>

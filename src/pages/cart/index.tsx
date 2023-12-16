@@ -3,12 +3,13 @@
 
 import { Divider } from '@nextui-org/react';
 import Link from 'next/link';
+import { useSelector } from 'react-redux';
+
+import type { RootState } from '@/apps/redux/store';
 import { Meta } from '@/component/layouts/Meta';
 import CartItem from '@/component/modules/CartItem';
 import PaymentForm from '@/component/modules/PaymentForm';
 import { Main } from '@/component/templates/Main';
-import { RootState } from '@/apps/redux/store';
-import { useSelector } from 'react-redux';
 
 const Index = () => {
   const { cart } = useSelector((state: RootState) => state.cart);

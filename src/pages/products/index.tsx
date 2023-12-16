@@ -4,6 +4,7 @@
 /* eslint-disable no-underscore-dangle */
 
 import { useEffect, useState } from 'react';
+import { Toaster } from 'react-hot-toast';
 
 import internalrequestHandler from '@/apps/helpers/InternalrequestHandler';
 import getProducts from '@/apps/server/products/getProducts';
@@ -13,16 +14,14 @@ import PaginationProducts from '@/component/modules/Pagination';
 import { ProductSection } from '@/component/modules/ProductSection';
 import SearchBar from '@/component/modules/SearchBar';
 import { Main } from '@/component/templates/Main';
-import { Toaster } from 'react-hot-toast';
 
 const ProductsPage = ({ products, meta }: { products: any; meta: any }) => {
   const [value, setValue] = useState('All Products');
-  console.log(meta);
   // eslint-disable-next-line @typescript-eslint/naming-convention
   const [serverData] = useState(products);
   const [productsData, setProductsData] = useState(serverData);
   const [searchValue, setSearchValue] = useState('');
-  console.log(searchValue, 'searchValue');
+  console.log(meta);
   useEffect(() => {
     const getCaggory = async () => {
       if (value !== 'All Products' && value.length > 1) {
@@ -34,12 +33,10 @@ const ProductsPage = ({ products, meta }: { products: any; meta: any }) => {
           { category: value }
         );
         setProductsData(data.data.products); // Add the data to the productsData state
-        console.log(data.data.products);
       } else {
         setValue('All Products');
         setProductsData(serverData);
       }
-      // console.log(data.data.products);
     };
 
     getCaggory(); // Call the async function
@@ -55,7 +52,6 @@ const ProductsPage = ({ products, meta }: { products: any; meta: any }) => {
           {},
           { search: searchValue }
         );
-        console.log(data);
         setProductsData(data.data); // Add the data to the productsData state
       } else {
         setProductsData(serverData);
@@ -73,7 +69,6 @@ const ProductsPage = ({ products, meta }: { products: any; meta: any }) => {
     { title: 'ACCESSORIES', key: 'accessories', id: 'accessories' },
     { title: 'DIGITAL DASHES', key: 'DigitalDashes', id: 'DigitalDashes' },
   ];
-  // console.log(productsData.filter((d) => d.key === category.key), "asd")
 
   return (
     <Main meta={<Meta title="BitsByets" description="BitsByets." />}>

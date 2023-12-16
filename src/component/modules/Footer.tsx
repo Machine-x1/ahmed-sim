@@ -4,11 +4,13 @@
 // 'use client';
 
 import Link from 'next/link';
+import useTranslation from 'next-translate/useTranslation';
 import { BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs';
 
 import Logo from './Logo';
 
 const Footer = () => {
+  const { t } = useTranslation('common');
   return (
     <div className=" mx-auto max-w-[1920px]">
       <footer className=" bg-hoverTextColor text-slate-200 lg:text-left">
@@ -20,42 +22,39 @@ const Footer = () => {
               <h6 className="mb-4 flex items-center justify-center font-semibold uppercase md:justify-start">
                 <Logo />
               </h6>
-              <p>
-              "Welcome to Sim Racing Corner, your ultimate destination for all things sim racing! Explore a wide selection of high-quality racing simulators, steering wheels, pedals, seats, and accessories to elevate your virtual racing experience. Our commitment to providing top-notch products ensures you get the best gear to fuel your passion for racing. For inquiries, support, or more information, contact us . Join the thrill of virtual racing with SRC today!"
-              </p>
-           
+              <p>{t('footer.body')}</p>
             </div>
-        
+
             {/* <!-- Useful links section --> */}
             <div className="">
               <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
-                Stay Connected with SRC
+                {t('footer.stay-connected')}
               </h6>
               <p className="mb-4 flex items-center justify-center md:justify-start">
-              Follow Us on Social Media: Get instant updates, behind-the-scenes content, and interact with fellow racers. Find us on [Facebook, Twitter, Instagram, etc.] for a dose of sim racing excitement.</p>
-             <div className='flex justify-center  gap-6 '>
-              <Link href="/">
-                <p className="cursor-pointer duration-200 "><BsFacebook /></p>
-              </Link>
-              <Link href="/">
-                <p className="cursor-pointer duration-200"><BsTwitter /></p>
-              </Link>
-              <Link href="/">
-                <p className="cursor-pointer duration-200"><BsInstagram /></p>
-              </Link>
+                {t('footer.stay-connected-body')}
+              </p>
+              <div className="flex justify-center  gap-6 ">
+                <Link href="/">
+                  <p className="cursor-pointer duration-200 ">
+                    <BsFacebook />
+                  </p>
+                </Link>
+                <Link href="/">
+                  <p className="cursor-pointer duration-200">
+                    <BsTwitter />
+                  </p>
+                </Link>
+                <Link href="/">
+                  <p className="cursor-pointer duration-200">
+                    <BsInstagram />
+                  </p>
+                </Link>
               </div>
-              <div className="mt-4">
-              <h6 className="flex justify-center font-semibold uppercase md:justify-start">
-                credits
-              </h6>
-                <Link href="https://www.freepik.com/free-photo/car-racing-video-game-arcade_12187496.htm#query=racing%20simulator&position=1&from_view=search&track=ais&uuid=8bdc8df3-3134-4adb-9fbd-3b46a84dd8e3">Image by rawpixel.com</Link> on Freepik
-              <Link href="http://www.freepik.com">Designed by Freepik</Link>
-            </div>
             </div>
             {/* <!-- Contact section --> */}
-            <div className="" >
+            <div className="">
               <h6 className="mb-4  flex justify-center font-semibold uppercase md:justify-start">
-                Contact
+                {t('contact-us')}
               </h6>
               <p className="mb-4 flex items-center justify-center md:justify-start">
                 <svg
@@ -112,16 +111,14 @@ const Footer = () => {
                 + 01 234 567 89
               </p>
             </div>
-                {/* <!-- Products section --> */}
-                <div className="w-full">
+            {/* <!-- Products section --> */}
+            <div className="w-full">
               <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
-              About Us
+                {t('about-us')}
               </h6>
               <p className="flex items-center justify-center md:justify-start">
-              SRC was founded by passionate sim racing enthusiasts committed to enhancing the virtual racing experience. Our goal is clear: to offer top-notch sim racing equipment and accessories that elevate the gaming experience for all levels of racers.
-
-We meticulously curate our product range, ensuring every item meets rigorous standards of quality, performance, and innovation. From beginners to seasoned racers, we're dedicated to providing cutting-edge gear that resonates with the dynamic needs of the sim racing community.
-</p>
+                {t('footer.about')}
+              </p>
             </div>
           </div>
         </div>
@@ -129,14 +126,10 @@ We meticulously curate our product range, ensuring every item meets rigorous sta
         {/* <!--Copyright section--> */}
         <div className="flex items-center justify-center gap-4 bg-hoverTextColor text-center dark:bg-neutral-700">
           <span>© 2023 Copyright:</span>
-          <a
-            className="font-semibold text-secondaryBlack dark:text-neutral-400"
-            href="https://tailwind-elements.com/"
-          >
+          <a className="font-semibold text-secondaryBlack dark:text-neutral-400">
             BitsBytes
           </a>
         </div>
-        
       </footer>
     </div>
   );

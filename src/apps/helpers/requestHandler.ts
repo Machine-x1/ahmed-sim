@@ -13,8 +13,7 @@ async function requestHandler(
   const queryString = params
     ? `?${new URLSearchParams(params).toString()}`
     : '';
-  const requestUrl = `http://localhost:8000/${endpoints[endpoint]}${queryString}`;
-  console.log(requestUrl);
+  const requestUrl = `${process.env.API_EXTRANL}/${endpoints[endpoint]}${queryString}`;
   const axiosConfig: AxiosRequestConfig = {
     method,
     headers: headers || {},
