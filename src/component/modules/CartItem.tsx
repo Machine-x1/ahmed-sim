@@ -14,8 +14,7 @@ import type { RootState } from '@/apps/redux/store';
 
 import FormattedPrice from './FormattedPrice';
 import { ProductType } from '@/apps/interface/types';
-import { decreaseQuantity, deleteProductCart, increaseQuantity } from '@/apps/redux/slice/cartSlice';
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { deleteProductCart } from '@/apps/redux/slice/cartSlice';
 
 const CartItem = () => {
   const { cart } = useSelector((state: RootState) => state.cart);
