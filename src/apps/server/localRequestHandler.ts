@@ -14,7 +14,7 @@ async function localRequestHandler(
   const queryString = params
     ? `?${new URLSearchParams(params).toString()}`
     : '';
-  const requestUrl = `http://localhost:3000/${endpoints[endpoint]}${queryString}`;
+  const requestUrl = `${process.env.API_INTERNAL}/${endpoints[endpoint]}${queryString}`;
 
   const axiosConfig: AxiosRequestConfig = {
     method,
