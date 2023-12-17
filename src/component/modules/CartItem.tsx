@@ -4,7 +4,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-underscore-dangle */
-import { Button, Divider, Image } from '@nextui-org/react';
+import {  Divider, Image } from '@nextui-org/react';
 import React from 'react';
 // import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { IoMdClose } from 'react-icons/io';
