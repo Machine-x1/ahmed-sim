@@ -1,14 +1,15 @@
+/* eslint-disable import/no-named-as-default */
 import { configureStore } from '@reduxjs/toolkit';
 
+import cartSlice from './slice/cartSlice';
 import counterReducer from './slice/counterSlice';
 import popupSlice from './slice/popupSlice';
-import { shoppingSlice } from './slice/shoppingSlice';
 
 const store = configureStore({
   reducer: {
     counter: counterReducer,
     popup: popupSlice,
-    shoppingSlice,
+    cart: cartSlice,
   },
 });
 

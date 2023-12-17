@@ -1,16 +1,30 @@
 @tailwind base;
-
+@tailwind components;
+@tailwind utilities;
 /*Alert classes*/
-.alert {
+/* .alert {
   @apply flex min-h-[70px] h-auto w-full items-center justify-between rounded-md px-6 py-2 
-}
+} */
 
 /*Button classes*/
 
+ /* body{
+  background-image: url('/images/bg-img.jpeg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+ } */
 .button {
   @apply rounded-md transition-all duration-150 ease-linear shadow-md hover:shadow-sm
 }
+.content p {
+  @apply my-6;
+}
 
-@tailwind components;
-@tailwind utilities;
+.content ul {
+  @apply my-6;
+}
 
+html{
+  @apply scroll-smooth
+}

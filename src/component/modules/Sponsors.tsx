@@ -1,54 +1,43 @@
-import Image from 'next/image';
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable jsx-a11y/no-redundant-roles */
 
-const Sponsors = () => (
-  <table className="border-collapse">
-    <tbody>
-      <tr className="h-56">
-        <td className="border-2 border-gray-300 p-3">
-          <a href="https://clerk.com?utm_source=github&utm_medium=sponsorship&utm_campaign=nextjs-boilerplate">
-            <Image
-              src="/assets/images/clerk.png"
-              alt="Clerk – Authentication & User Management for Next.js"
-              width={260}
-              height={224}
-            />
-          </a>
-        </td>
-        <td className="border-2 border-gray-300 p-3">
-          <a href="https://turso.tech/?utm_source=nextjsstarterbp">
-            <Image
-              src="/assets/images/turso.png"
-              alt="SQLite Developer Experience"
-              width={260}
-              height={224}
-            />
-          </a>
-        </td>
-        <td className="border-2 border-gray-300 p-3">
-          <a href="https://upstash.com/?utm_source=nextjs-boilerplate">
-            <Image
-              src="/assets/images/redis.png"
-              alt="Upstash"
-              width={260}
-              height={224}
-            />
-          </a>
-        </td>
-      </tr>
-      <tr className="h-56">
-        <td className="border-2 border-gray-300 p-3">
-          <a href="https://nextlessjs.com">
-            <Image
-              src="/assets/images/nextlessjs.png"
-              alt="React SaaS Boilerplate Next.js"
-              width={260}
-              height={224}
-            />
-          </a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-);
+import { Divider, Image } from '@nextui-org/react';
+import useTranslation from 'next-translate/useTranslation';
 
-export { Sponsors };
+/* eslint-disable tailwindcss/no-custom-classname */
+const Sponsors = () => {
+  const { t } = useTranslation('common');
+  return (
+    <div className="h-full w-full bg-bodyColor ">
+      <div className="mx-4 rounded-xl  pt-8 sm:mx-8 sm:max-w-5xl md:mx-auto">
+        <div className="mx-auto mb-10 w-11/12 sm:w-2/3">
+          <h1 className="pt-4 text-center text-3xl font-extrabold uppercase text-gray-800 focus:outline-none xl:text-4xl">
+            {t('our-premium-partners')}
+          </h1>
+          <Divider className="mx-auto mt-3 " />
+        </div>
+        <div className="sm:24 flex flex-wrap items-center justify-center px-8 sm:py-6">
+          <div className="inset-0 flex w-full items-center justify-center pb-16 contrast-75 drop-shadow-xl duration-300  transition hover:scale-75 hover:contrast-100 sm:w-1/6 xl:pb-10">
+            <Image
+              className="w-12 focus:outline-none sm:w-28 "
+              src="/images/simagiclogo.webp"
+              alt="Adidas"
+              role="img"
+            />
+          </div>
+          <div className="inset-0 flex w-1/3 items-center justify-center pb-16 contrast-75 drop-shadow-xl duration-300  transition hover:scale-75 hover:contrast-100 sm:w-1/6 xl:pb-10">
+            <Image
+              className="w-12 focus:outline-none sm:w-28"
+              width={200}
+              height={200}
+              src="/images/方形logo黑.webp"
+              alt="Chanel"
+              role="img"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+export default Sponsors;

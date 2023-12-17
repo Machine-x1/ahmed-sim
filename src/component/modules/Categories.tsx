@@ -1,100 +1,109 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-console */
 /* eslint-disable tailwindcss/no-custom-classname */
 
-'use client';
-
-import { Button, Card, CardBody, CardFooter, Image } from '@nextui-org/react';
-import { motion } from 'framer-motion';
+import { Button, Card, Image } from '@nextui-org/react';
 import Link from 'next/link';
 
-import Container from './Container';
+import Container from '@/component/modules/Container';
 
 const callouts = [
   {
-    name: 'steeelwheels',
+    name: 'STEERING WHEELS    ',
     description: 'Work from home accessories',
-    imageSrc: '/images/R9-wheel-base.png',
+    imageSrc: '/images/RSV2R9.webp',
     imageAlt:
       'Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug.',
-    href: 'steeelwheels',
+    href: '#steerWheels',
   },
   {
-    name: 'accessories',
+    name: 'ACCESSORIES    ',
     description: 'Journals and note-taking',
-    imageSrc: '/images/R9-wheel-base.png',
+    imageSrc: '/images/Wireless-Technology.webp',
     imageAlt:
       'Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant.',
-    href: '/accessories',
+    href: '#accessories',
   },
   {
-    name: 'pedals',
+    name: 'PEDALS    ',
     description: 'Daily commute essentials',
-    imageSrc: '/images/R9-wheel-base.png',
+    imageSrc: '/images/RSV2R9.webp',
     imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
-    href: '/pedals',
+    href: '#pedals',
   },
+  {
+    name: ' BUNDLES',
+    description: 'Daily commute essentials',
+    imageSrc: '/images/R5-Bundle-1_1000x.webp',
+    imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
+    href: '#Bundles',
+  },
+  {
+    name: 'WHEEL BASES    ',
+    description: 'Daily commute essentials',
+    imageSrc: '/images/R16-1.avif',
+    imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
+    href: '#wheelBasis',
+  },
+  {
+    name: 'DIGITAL DASHES    ',
+    description: 'Daily commute essentials',
+    imageSrc: '/images/IMG_0815.webp',
+    imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
+    href: '#DigitalDashes',
+    // href: '#cockfits',
+  },
+  // {
+  //   name: 'cockfits',
+  //   description: 'Daily commute essentials',
+  //   imageSrc: '/images/RSV2_R16_RM_280x315@2x.webp',
+  //   imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
+  //   href: '#cockfits',
+  // },
 ];
-
-export default function Categories() {
+export default function Categories(props: any) {
+  const { onChange, value, onClick } = props;
+  // const router = useRouter();
   return (
-    <div className="">
-      <Container className=" ">
-        <div className=" flex items-center justify-center gap-2 pb-8 text-2xl font-semibold ">
-          <hr className="my-6 flex h-0.5 items-center  justify-center border-t-0 bg-neutral-900 opacity-100  dark:opacity-50 md:w-1/4" />
-          <h1 className=" flex w-fit items-center justify-center text-2xl font-semibold ">
-            Shop By Category
-          </h1>
-          <hr className="my-6 flex h-0.5 items-center  justify-center border-t-0 bg-neutral-900 opacity-100  dark:opacity-50 md:w-1/4" />
-        </div>
-        <div className="  grid h-full w-full  grid-cols-1 items-center  justify-center gap-4  md:grid-cols-3   ">
+    <div className=" bg-bodyColor pt-6 ">
+      <Container className="px-4 ">
+        <div className="  grid h-full w-full  grid-cols-3 items-center justify-center  gap-4 md:grid-cols-6 ">
           {callouts.map((callout) => (
-            <Card
-              // isHoverable
-              shadow="sm"
-              isPressable
-              onPress={() => console.log('item pressed')}
-              fullWidth
-              className="group h-full w-full"
+            <div
               key={callout.name}
+              className="flex flex-col items-center justify-center"
             >
-              <CardBody className="  relative w-full overflow-visible  bg-white p-0 group-hover:opacity-75 ">
-                <Image
-                  isZoomed
-                  width="100%"
-                  height="100%"
-                  src={callout.imageSrc}
-                  alt={callout.imageAlt}
-                  className=" object-fit h-full  max-h-[350px] w-full"
-                />
-              </CardBody>
-              <CardFooter
-                hidden
-                className=" absolute  top-40  flex w-full flex-col items-center justify-center gap-2"
-              >
-                <div className="flex h-full w-full flex-col items-center justify-center   ">
-                  <h2 className="text-body-color dark:text-dark-6 text-2xl font-semibold   hover:transition">
-                    {callout.name}
-                  </h2>
-                  <hr className=" flex h-0.5 w-1/2  items-center justify-center border-t-0 bg-neutral-900  opacity-100 dark:opacity-50" />
-                </div>
-                <Link href={{ pathname: `${callout.href}` }}>
-                  <motion.button
-                    whileHover={{
-                      scale: 1.2,
-                      transition: { duration: 0.1 },
-                    }}
-                    whileTap={{ scale: 0 }}
-                  >
-                    <Button
-                      radius="none"
-                      className=" overflow-hidden bg-hoverTextColor text-sm font-semibold uppercase  text-white duration-200 "
-                    >
-                      Shop Now
-                    </Button>
-                  </motion.button>
-                </Link>
-              </CardFooter>
-            </Card>
+              <Card shadow="sm" fullWidth className="h-28 w-28   rounded-full ">
+                <Button
+                  isIconOnly
+                  className="h-28 w-28 "
+                  color="default"
+                  radius="full"
+                  variant="flat"
+                  onClick={onClick}
+                  onChange={onChange}
+                  value={value}
+                >
+                  <Link href={callout.href}>
+                    <Image
+                      isZoomed
+                      removeWrapper
+                      width="100%"
+                      height="100%"
+                      src={callout.imageSrc}
+                      alt={callout.imageAlt}
+                      className=" object-fit h-full w-full"
+                    />
+                  </Link>
+                </Button>
+              </Card>
+              {/* <a onClick={() => setActiveSection('steerWheels')}> */}
+              <span className="mt-2 ">{callout.name}</span>
+              {/* </a> */}
+            </div>
           ))}
         </div>
       </Container>

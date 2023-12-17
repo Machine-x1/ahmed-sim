@@ -2,27 +2,24 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable array-callback-return */
 
-'use client';
+// 'use client';
 
 import { Button } from '@nextui-org/react';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 
 import FormattedPrice from './FormattedPrice';
 
 const PaymentForm = () => {
   // const dispatch = useDispatch();
-  const { productData } = useSelector((state: any) => state?.shopping);
-  const [totalAmt, setTotalAmt] = useState(0);
-  useEffect(() => {
-    let amt = 0;
-    productData.map((item: any) => {
-      amt += item.price * item.quantity;
-    });
-    setTotalAmt(amt);
-  }, [productData]);
-
+  // const { productStore } = useSelector((state: any) => state?.shopping);
+  // const [totalAmt, setTotalAmt] = useState(0);
+  // useEffect(() => {
+  //   let amt = 0;
+  //   productData.map((item: any) => {
+  //     amt += item.price * item.quantity;
+  //   });
+  //   setTotalAmt(amt);
+  // }, [productData]);
   return (
     <div className="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 ">
       <h2 className="mb-2 font-semibold uppercase  ">order summary</h2>
@@ -30,7 +27,7 @@ const PaymentForm = () => {
         <div className="mb-2 flex max-w-lg items-center justify-between">
           <p className="font-light  uppercase">Subtotal</p>
           <p>
-            <FormattedPrice amount={totalAmt} />
+            <FormattedPrice amount={233} />
           </p>
         </div>
       </div>
@@ -46,7 +43,7 @@ const PaymentForm = () => {
         <div className="mb-2 flex max-w-lg items-center justify-between">
           <p className="font-light uppercase">Total Price</p>
           <p>
-            <FormattedPrice amount={totalAmt + 20} />
+            <FormattedPrice amount={233 + 20} />
           </p>
         </div>
       </div>

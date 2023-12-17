@@ -44,7 +44,7 @@ const SelectOption = ({ options, value, onChange }: SelectOptionProps) => {
           onClick={() => setIsOpen(!isOpen)}
           role="button"
           tabIndex={0}
-          className=" flex h-[40px] w-full cursor-pointer items-center justify-between rounded-lg  border-[1px] border-gray-500 pl-6 pr-2 text-sm  text-black transition-all  duration-150 dark:text-white"
+          className=" flex h-[40px] w-full cursor-pointer items-center justify-between rounded-lg  border-[1px] border-gray-500 pl-6 pr-2 text-sm  text-black duration-150  transition-all dark:text-white"
         >
           {/* flex w-full h-[40px] text-xs text-black cursor-pointer items-center justify-between rounded-md border-[1px] border-gray-CD pl-6 pr-2 transition-all duration-150 */}
           {selectedOption?.label || 'Select'}
@@ -67,7 +67,7 @@ const SelectOption = ({ options, value, onChange }: SelectOptionProps) => {
         <div
           className={`${
             isOpen ? 'rotate-180' : ''
-          } pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 transition duration-150`}
+          } pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 duration-150 transition`}
         >
           <AiOutlineArrowDown />
         </div>

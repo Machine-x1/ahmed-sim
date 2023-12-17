@@ -9,14 +9,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import { resetOrder } from '@/redux/shoppingSlice';
-
+// import { resetOrder } from '@/redux/shoppingSlice';
 import FormattedPrice from './FormattedPrice';
 
 const OrderDetails = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const { OrderData } = useSelector((state: any) => state?.shopping);
 
   const [totalAmount, setTotalAmount] = useState(0);
@@ -81,7 +80,7 @@ const OrderDetails = () => {
             </span>
           </p>
           <button
-            onClick={() => dispatch(resetOrder())}
+            // onClick={() => dispatch(resetOrder())}
             className="mt-5 cursor-pointer rounded-md border-[1px] border-gray-500 px-4 py-1 font-medium duration-200 hover:border-orange-600"
           >
             Reset Order

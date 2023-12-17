@@ -8,7 +8,7 @@ async function internalrequestHandler(
   method: 'GET' | 'POST' | 'PUT' | 'DELETE',
   data?: any,
   headers?: Record<string, any>,
-  params?: Record<string, string>,
+  params?: Record<string, string>
 ): Promise<any> {
   const queryString = params
     ? `?${new URLSearchParams(params).toString()}`

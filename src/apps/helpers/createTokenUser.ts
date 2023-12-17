@@ -7,10 +7,13 @@ const createToken = async () => {
   const secretKey = '1231231233721283918273WEB';
   const timestamp = Date.now();
   const finalLocalToken = secretKey + timestamp;
-  const hashed = bcrypt.hashSync(finalLocalToken, 10, (err: any, hash: any) => {
-    return hash;
-  });
-  // console.log();
+  const hashed = bcrypt.hashSync(
+    finalLocalToken,
+    10,
+    (_err: any, hash: any) => {
+      return hash;
+    }
+  );
   return [hashed.split('$')[3], timestamp];
 };
 
