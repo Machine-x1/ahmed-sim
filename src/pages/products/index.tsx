@@ -3,6 +3,7 @@
 /* eslint-disable unused-imports/no-unused-vars */
 /* eslint-disable no-underscore-dangle */
 
+import { Pagination } from '@nextui-org/react';
 import type { GetServerSidePropsContext } from 'next';
 import { useEffect, useState } from 'react';
 import { Toaster } from 'react-hot-toast';
@@ -17,11 +18,11 @@ import { Main } from '@/component/templates/Main';
 
 const ProductsPage = ({
   products,
-  // meta,
+  meta,
   lang,
 }: {
   products: any;
-  // meta: any;
+  meta: any;
   lang: any;
 }) => {
   const [value, setValue] = useState('All Products');
@@ -29,7 +30,10 @@ const ProductsPage = ({
   const [serverData] = useState(products);
   const [productsData, setProductsData] = useState(serverData);
   const [searchValue, setSearchValue] = useState('');
-  // const [metaData, setMetaData] = useState(meta);
+  const [metaData, setMetaData] = useState(meta);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  console.log(meta);
   useEffect(() => {
     const getCaggory = async () => {
       if (value !== 'All Products' && value.length > 1) {
@@ -78,6 +82,37 @@ const ProductsPage = ({
     { title: 'DIGITAL DASHES', key: 'digital-dashes', id: 'digital-dashes' },
   ];
 
+  const fetchPag = async (currentPage: any) => {
+    try {
+      const data = await internalrequestHandler(
+        'apiProduct',
+        'GET',
+        {},
+        {},
+        { page: currentPage, limit: metaData.limit }
+      );
+      setProductsData(data.data.products);
+      setMetaData(data.data.meta);
+      return true;
+    } catch (error) {
+      return error;
+    }
+  };
+  useEffect(() => {
+    const fetchProducts = async () => {
+      await fetchPag(currentPage);
+    };
+    if (currentPage !== 1) {
+      fetchProducts();
+    } else {
+      setProductsData(serverData);
+    }
+  }, [currentPage]);
+
+  const handlePageChange = (newPage: any) => {
+    setCurrentPage(newPage);
+  };
+
   return (
     <Main meta={<Meta />}>
       <Categories // value={value}
@@ -113,13 +148,16 @@ const ProductsPage = ({
               ))}
             </div>
           </section>
-          {/* <div className="mt-5 flex w-full justify-center">
-            <PaginationProducts
-              metaData={metaData}
-              setMetaData={setMetaData}
-              setProductsData={setProductsData}
+          <div className="flex w-full items-center justify-center py-12">
+            <Pagination
+              color="primary"
+              size="lg"
+              showControls
+              total={metaData.totalPages}
+              initialPage={1}
+              onChange={handlePageChange}
             />
-          </div> */}
+          </div>
         </div>
         <Toaster />
       </div>
