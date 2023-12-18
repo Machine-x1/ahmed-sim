@@ -11,6 +11,9 @@ module.exports = withBundleAnalyzer({
     dirs: ['.'],
   },
   i18n,
+  env: {
+    API_INTERNAL: 'http://localhost:3000',
+  },
   images: {
     remotePatterns: [
       {

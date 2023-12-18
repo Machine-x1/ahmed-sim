@@ -7,7 +7,6 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const { search, category } = req.query;
-
   if (search) {
     const searchData = await requestHandler(
       'products',
