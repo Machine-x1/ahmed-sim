@@ -28,11 +28,6 @@ import FormattedPrice from './FormattedPrice';
 
 const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
   const dispatch = useDispatch();
-  // function getCharactersBeforeDot(text: string) {
-  //   const match = text.match(/([^.]*)\./);
-  //   return match ? match[1] : ''; // Returns the characters before the dot or an empty string if there's no match
-  // }
-  // const subDescription = getCharactersBeforeDot(product?.description[lang]);
   const [currentImg, setCurrentImg] = useState<any>(0);
   const { t } = useTranslation('common');
   const renderImageCards = () => {
