@@ -6,7 +6,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { search, category } = req.query;
+  const { search, category, page, limit } = req.query;
   if (search) {
     const searchData = await requestHandler(
       'products',
@@ -26,6 +26,16 @@ export default async function handler(
       { category }
     );
     return res.status(200).json({ ...categoryhData });
+  }
+  if (page && limit) {
+    const pagData = await requestHandler(
+      'products',
+      'GET',
+      {},
+      {},
+      { page, limit }
+    );
+    return res.status(200).json({ ...pagData });
   }
 
   return res.status(200).json({ message: 'Hello from Next.js!' });
