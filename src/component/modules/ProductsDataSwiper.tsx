@@ -18,6 +18,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
 import { Divider } from '@nextui-org/react';
+import type { CookieValueTypes } from 'cookies-next';
 import { Toaster } from 'react-hot-toast';
 import { Autoplay, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -31,10 +32,12 @@ const ProductDataSwiper = ({
   msg,
   textcolor,
   product,
+  lang,
 }: {
   msg?: string;
   textcolor?: string;
   product?: ProductType;
+  lang: CookieValueTypes;
 }) => {
   return (
     <div className="w-full ">
@@ -85,7 +88,7 @@ const ProductDataSwiper = ({
             >
               {product?.map((item: any) => (
                 <SwiperSlide key={item._id}>
-                  <NewProductCard item={item} />
+                  <NewProductCard lang={lang} item={item} />
                 </SwiperSlide>
               ))}
             </Swiper>

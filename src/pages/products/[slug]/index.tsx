@@ -2,6 +2,9 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 
+import type { GetServerSidePropsContext } from 'next';
+import useTranslation from 'next-translate/useTranslation';
+
 import type { ProductType } from '@/apps/interface/types';
 import { Meta } from '@/component/layouts/Meta';
 import Container from '@/component/modules/Container';
@@ -9,19 +12,23 @@ import ProductPage from '@/component/modules/ProductPage';
 import ProductDataSwiper from '@/component/modules/ProductsDataSwiper';
 import { Main } from '@/component/templates/Main';
 
-const index = ({
+const Index = ({
   product,
   productsData,
+  lang,
 }: {
   product: ProductType;
   productsData: ProductType;
+  lang: any;
 }) => {
+  const { t } = useTranslation('common');
   return (
     <Main meta={<Meta title="BitsByets" description="BitsByets." />}>
       <Container>
-        <ProductPage product={product} />
+        <ProductPage lang={lang} product={product} />
         <ProductDataSwiper
-          msg="check another products"
+          lang={lang}
+          msg={t('other-products')}
           textcolor="secondary-black"
           product={productsData}
         />
@@ -29,12 +36,10 @@ const index = ({
     </Main>
   );
 };
-export default index;
+export default Index;
 
-export async function getServerSideProps(context: {
-  params: { slug: { slug: any } };
-}) {
-  const { slug } = context.params;
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const { slug } = context.query;
   const res = await fetch(`${process.env.API_EXTRANL}/products/${slug}`, {
     method: 'GET',
     headers: {
@@ -53,11 +58,13 @@ export async function getServerSideProps(context: {
     },
   });
   const productsData = await res2.json();
+  const getLang = context.locale;
 
   return {
     props: {
       product: product.data.product,
       productsData: productsData.data.products,
+      lang: getLang,
     },
   };
 }

@@ -9,10 +9,12 @@ export const ProductSection = ({
   title,
   productsData,
   id,
+  lang,
 }: {
   id: string | undefined;
   title: string;
   productsData: ProductType;
+  lang: any;
 }) => {
   return (
     <div className="">
@@ -27,7 +29,7 @@ export const ProductSection = ({
           </div>
           <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-3 xl:grid-cols-4">
             {productsData.map((item: any) => (
-              <NewProductCard key={item._id} item={item} />
+              <NewProductCard lang={lang} key={item._id} item={item} />
             ))}
           </div>
         </div>

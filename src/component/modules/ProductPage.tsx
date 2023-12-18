@@ -15,26 +15,26 @@ import {
   Tab,
   Tabs,
 } from '@nextui-org/react';
+import useTranslation from 'next-translate/useTranslation';
 import type { Key } from 'react';
 import { useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { IoMdCart } from 'react-icons/io';
 import { useDispatch } from 'react-redux';
 
-import type { ProductType } from '@/apps/interface/types';
 import { setProdctCart } from '@/apps/redux/slice/cartSlice';
 
 import FormattedPrice from './FormattedPrice';
 
-const ProductPage = ({ product }: { product: ProductType }) => {
+const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
   const dispatch = useDispatch();
-  function getCharactersBeforeDot(text: string) {
-    const match = text.match(/([^.]*)\./);
-    return match ? match[1] : ''; // Returns the characters before the dot or an empty string if there's no match
-  }
-  const subDescription = getCharactersBeforeDot(product?.description);
+  // function getCharactersBeforeDot(text: string) {
+  //   const match = text.match(/([^.]*)\./);
+  //   return match ? match[1] : ''; // Returns the characters before the dot or an empty string if there's no match
+  // }
+  // const subDescription = getCharactersBeforeDot(product?.description[lang]);
   const [currentImg, setCurrentImg] = useState<any>(0);
-
+  const { t } = useTranslation('common');
   const renderImageCards = () => {
     if (!product?.images || !Array.isArray(product.images)) {
       return null;
@@ -75,7 +75,7 @@ const ProductPage = ({ product }: { product: ProductType }) => {
           <Breadcrumbs isDisabled>
             <BreadcrumbItem>Home</BreadcrumbItem>
             <BreadcrumbItem>product</BreadcrumbItem>
-            <BreadcrumbItem> {product?.name}</BreadcrumbItem>
+            <BreadcrumbItem> {product?.name[lang]}</BreadcrumbItem>
           </Breadcrumbs>
           <div className="lg:col-gap-12  xl:col-gap-16 mt-8  grid grid-cols-1 gap-8  lg:mt-12 lg:grid-cols-5 lg:gap-16">
             <div className=" lg:col-span-3 lg:row-end-1">
@@ -101,13 +101,12 @@ const ProductPage = ({ product }: { product: ProductType }) => {
             </div>
             <div className="lg:col-span-2 lg:row-span-2 lg:row-end-2">
               <h1 className="md: text-2xl font-bold text-gray-900 md:text-3xl">
-                {product?.name}
+                {product?.name[lang]}
               </h1>
               <div className="mt-5 flex  flex-col  ">
                 <p className="text-md  font-medium text-gray-500">
                   {/* {product?.description} */}
-                  here is the sub description before first full stop
-                  {subDescription}
+                  {product?.description[lang]}
                 </p>
               </div>
 
@@ -119,13 +118,12 @@ const ProductPage = ({ product }: { product: ProductType }) => {
                 </div>
                 <div
                   onClick={() =>
-                    dispatch(setProdctCart(product)) &&
-                    toast.success('Added to cart')
+                    dispatch(setProdctCart(product)) && toast.success(t('done'))
                   }
                   className="group flex cursor-pointer items-center"
                 >
                   <div className="flex items-center border-r-[1px] border-r-slate-500 bg-darkText px-6 py-3 text-sm uppercase text-slate-100">
-                    add to cart
+                    {t('add-to-cart')}
                   </div>
                   <span className="flex w-12 items-center justify-center bg-hoverTextColor py-3 text-xl text-slate-100 duration-200 group-hover:bg-orange-500">
                     <IoMdCart />
@@ -138,12 +136,12 @@ const ProductPage = ({ product }: { product: ProductType }) => {
                   SKU: <span className="text-darkText">{product?._id}</span>
                 </span>
                 <span>
-                  Category:
+                  {t('category')}:{' '}
                   <span className="text-darkText">{product?.category}</span>
                 </span>
               </div>
-              <ul className="mt-8 space-y-2">
-                <li className="text-md flex items-center text-left font-medium text-gray-600">
+              <ul className="mt-8 space-x-2 space-y-2">
+                <li className="text-md flex items-center gap-2 text-left font-medium text-gray-600">
                   <svg
                     className="mr-2 block h-5 w-5 align-middle text-gray-500"
                     xmlns="http://www.w3.org/2000/svg"
@@ -158,10 +156,10 @@ const ProductPage = ({ product }: { product: ProductType }) => {
                       className=""
                     />
                   </svg>
-                  Free shipping worldwide
+                  {t('free-shipping-worldwide')}
                 </li>
 
-                <li className="text-md flex items-center text-left font-medium text-gray-600">
+                <li className="text-md flex items-center gap-2 text-left font-medium text-gray-600">
                   <svg
                     className="mr-2 block h-5 w-5 align-middle text-gray-500"
                     xmlns="http://www.w3.org/2000/svg"
@@ -176,7 +174,7 @@ const ProductPage = ({ product }: { product: ProductType }) => {
                       className=""
                     />
                   </svg>
-                  Cancel Anytime
+                  {t('cancel-anytime')}
                 </li>
               </ul>
             </div>
@@ -200,13 +198,15 @@ const ProductPage = ({ product }: { product: ProductType }) => {
                     title={
                       <div className="flex w-full items-center space-x-2">
                         <span className="text-md  font-medium text-gray-900  hover:text-gray-800">
-                          Item details
+                          {t('product-details')}
                         </span>
                       </div>
                     }
                   >
                     <div className="flow-root ">
-                      <p className="text-lightText">{product?.description}</p>
+                      <p className="text-lightText">
+                        {product?.description[lang]}
+                      </p>
                     </div>
                   </Tab>
                 </Tabs>

@@ -1,5 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { getCookie } from 'cookies-next';
+import type { CookieValueTypes } from 'cookies-next';
+import { getCookie, setCookie } from 'cookies-next';
+import type { GetServerSidePropsContext } from 'next';
 
 import type { ProductType } from '@/apps/interface/types';
 import createTokenAndUser from '@/apps/server/CreateToken';
@@ -14,7 +16,13 @@ import { Main } from '@/component/templates/Main';
 
 // import { useTranslation } from 'react-i18next';
 
-const Index = ({ productsData }: { productsData: ProductType }) => {
+const Index = ({
+  productsData,
+  lang,
+}: {
+  productsData: ProductType;
+  lang: CookieValueTypes;
+}) => {
   // const { t } = useTranslation();
 
   return (
@@ -29,6 +37,7 @@ const Index = ({ productsData }: { productsData: ProductType }) => {
           msg="Featured Products"
           textcolor="slate-100"
           product={productsData}
+          lang={lang}
         />
         <AboutUs />
         <ContactForm />
@@ -39,9 +48,13 @@ const Index = ({ productsData }: { productsData: ProductType }) => {
 };
 
 export default Index;
-export const getServerSideProps = async (context: any) => {
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
   const { req, res } = context;
   const getToken = getCookie('token', { req, res });
+  const getLang = context.locale;
+  setCookie('lang', getLang, { req, res });
   if (!getToken) {
     await createTokenAndUser({ req, res });
   }
@@ -56,6 +69,7 @@ export const getServerSideProps = async (context: any) => {
   return {
     props: {
       productsData: productsData.data.products,
+      lang: getLang,
     },
   };
 };

@@ -3,6 +3,7 @@
 /* eslint-disable unused-imports/no-unused-vars */
 /* eslint-disable no-underscore-dangle */
 
+import type { GetServerSidePropsContext } from 'next';
 import { useEffect, useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 
@@ -15,7 +16,15 @@ import { ProductSection } from '@/component/modules/ProductSection';
 import SearchBar from '@/component/modules/SearchBar';
 import { Main } from '@/component/templates/Main';
 
-const ProductsPage = ({ products, meta }: { products: any; meta: any }) => {
+const ProductsPage = ({
+  products,
+  meta,
+  lang,
+}: {
+  products: any;
+  meta: any;
+  lang: any;
+}) => {
   const [value, setValue] = useState('All Products');
   // eslint-disable-next-line @typescript-eslint/naming-convention
   const [serverData] = useState(products);
@@ -96,6 +105,7 @@ const ProductsPage = ({ products, meta }: { products: any; meta: any }) => {
                 <ProductSection
                   key={category.key}
                   id={category.id}
+                  lang={lang}
                   title={category.title}
                   productsData={productsData.filter(
                     (d: any) => d.category === category.key
@@ -116,12 +126,17 @@ const ProductsPage = ({ products, meta }: { products: any; meta: any }) => {
 
 export default ProductsPage;
 
-export const getServerSideProps = async (_context: any) => {
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
   const data = await getProducts();
+  const getLang = context.locale;
+
   return {
     props: {
       products: data.products,
       meta: data.meta,
+      lang: getLang,
     },
   };
 };

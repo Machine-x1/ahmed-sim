@@ -7,8 +7,14 @@ export interface ProductType {
     }) => import('react').JSX.Element
   ): import('react').ReactNode;
   _id: string;
-  name: string;
-  description: string;
+  name: {
+    en: string;
+    ar: string;
+  };
+  description: {
+    en: string;
+    ar: string;
+  };
   price: number;
   images: string[];
   category: string;

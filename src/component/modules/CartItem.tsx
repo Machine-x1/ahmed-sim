@@ -46,7 +46,7 @@ const CartItem = () => {
                 </span>
               </div>
               <div className="flex flex-col flex-wrap items-center justify-center gap-4 font-medium text-gray-900 sm:flex-row">
-                <h3>{item?.name}</h3>
+                <h3>{item?.name.en}</h3>
                 <p className="ml-4">
                   <FormattedPrice amount={item.price} />
                 </p>

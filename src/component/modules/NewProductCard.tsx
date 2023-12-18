@@ -16,14 +16,15 @@ import toast from 'react-hot-toast';
 import { BiCart } from 'react-icons/bi';
 import { useDispatch } from 'react-redux';
 
-import type { ProductType } from '@/apps/interface/types';
 import { setProdctCart } from '@/apps/redux/slice/cartSlice';
 
 import FormattedPrice from './FormattedPrice';
 
-const NewProductCard = ({ item }: { item?: ProductType }) => {
+// const NewProductCard = ({ item, lang }: { item?: ProductType; lang: any }) => {
+const NewProductCard = ({ item, lang }: { item?: any; lang: any }) => {
   const dispatch = useDispatch();
   const [isHovered, setIsHovered] = useState(false);
+
   // const { cart } = useSelector((state: RootState) => state.cart);
   return (
     <div className="relative">
@@ -74,7 +75,7 @@ const NewProductCard = ({ item }: { item?: ProductType }) => {
               <div className="mx-auto  flex w-full flex-col items-center justify-center gap-2">
                 <div className=" w-fulll flex flex-col  items-center justify-between ">
                   <h5 className="text-xl tracking-tight text-mainOrange">
-                    {item?.name}
+                    {item?.name[lang] || item?.name.en}
                   </h5>
                   <p className="  flex items-center justify-end">
                     <span className="text-lg font-bold text-orange-500">
