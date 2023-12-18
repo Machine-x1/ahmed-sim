@@ -3,7 +3,7 @@
 import { Button, Divider, Input, Textarea } from '@nextui-org/react';
 import useTranslation from 'next-translate/useTranslation';
 import React from 'react';
-import { BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs';
+import { BsInstagram } from 'react-icons/bs';
 
 import Container from './Container';
 
@@ -19,10 +19,27 @@ const ContactForm = () => {
         <div className=" mx-auto grid w-full grid-cols-1 items-center justify-center gap-4 md:grid-cols-2  xl:grid-cols-2">
           <div className="mx-auto flex h-full w-1/2 flex-col items-center justify-center gap-8">
             <p className="">{t('contact-body')}</p>
-            <p>0429 502 409</p>
+            <p>+ 965 6939 9851</p>
+            <div className="flex  items-center justify-center gap-2  ">
+              <span className="  ">
+                Connect with us on social media for the latest updates, events,
+                and exclusive content.
+              </span>
+              <Button
+                className="hover:bg-hoverTextColor"
+                isIconOnly
+                color="default"
+                aria-label="Like"
+              >
+                <span className="socialLink">
+                  <BsInstagram />
+                </span>
+              </Button>
+            </div>
+
             <div>
-              <div className="flex items-center gap-x-4">
-                <Button
+              <div className="">
+                {/* <Button
                   isIconOnly
                   color="default"
                   className="hover:bg-hoverTextColor"
@@ -31,8 +48,8 @@ const ContactForm = () => {
                   <span className="socialLink  ">
                     <BsTwitter />
                   </span>
-                </Button>
-                <Button
+                </Button> */}
+                {/* <Button
                   className="hover:bg-hoverTextColor"
                   isIconOnly
                   color="default"
@@ -41,17 +58,7 @@ const ContactForm = () => {
                   <span className="socialLink">
                     <BsFacebook />
                   </span>
-                </Button>
-                <Button
-                  className="hover:bg-hoverTextColor"
-                  isIconOnly
-                  color="default"
-                  aria-label="Like"
-                >
-                  <span className="socialLink">
-                    <BsInstagram />
-                  </span>
-                </Button>
+                </Button> */}
               </div>
             </div>
           </div>

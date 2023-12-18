@@ -15,7 +15,7 @@ const Index = () => {
   const { cart } = useSelector((state: RootState) => state.cart);
   // const dispatch = useDispatch();
   return (
-    <Main meta={<Meta title="BitsByets" description="BitsByets." />}>
+    <Main meta={<Meta />}>
       <div className="mx-auto h-full  max-w-screen-xl   px-4 py-8 pb-24 xl:px-0">
         {cart.products.length ? (
           <div className=" w-full  xl:px-0">

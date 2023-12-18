@@ -17,11 +17,11 @@ import { Main } from '@/component/templates/Main';
 
 const ProductsPage = ({
   products,
-  meta,
+  // meta,
   lang,
 }: {
   products: any;
-  meta: any;
+  // meta: any;
   lang: any;
 }) => {
   const [value, setValue] = useState('All Products');
@@ -79,7 +79,7 @@ const ProductsPage = ({
   ];
 
   return (
-    <Main meta={<Meta title="BitsByets" description="BitsByets." />}>
+    <Main meta={<Meta />}>
       <Categories // value={value}
         onClick={(value: string) => setValue(value)}
         onChange={(value: {

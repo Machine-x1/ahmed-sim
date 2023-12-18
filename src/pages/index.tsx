@@ -26,7 +26,7 @@ const Index = ({
   // const { t } = useTranslation();
 
   return (
-    <Main meta={<Meta title="BitsByets" description="BitsByets." />}>
+    <Main meta={<Meta />}>
       <div
         id="home"
         className="mx-auto w-full max-w-[1920px] bg-secondaryBlack "
