@@ -10,7 +10,6 @@ import React from 'react';
 import { IoMdClose } from 'react-icons/io';
 import { useDispatch, useSelector } from 'react-redux';
 
-import type { ProductType } from '@/apps/interface/types';
 import { deleteProductCart } from '@/apps/redux/slice/cartSlice';
 import type { RootState } from '@/apps/redux/store';
 
@@ -22,7 +21,7 @@ const CartItem = () => {
   return (
     <div className="mx-auto max-h-full w-full ">
       <div className="mb-6 flex h-full flex-col justify-center gap-y-2 overflow-auto rounded-lg bg-white p-6   shadow-md sm:flex sm:justify-start ">
-        {cart.products.map((item: ProductType) => (
+        {cart.products.map((item: any) => (
           <div
             key={item._id}
             className="relative flex w-full flex-col items-center justify-between gap-4 bg-white p-4 "
@@ -52,18 +51,22 @@ const CartItem = () => {
                 </p>
                 {/* <p className=" text-sm text-gray-500">{item?.color}</p> */}
                 <div className="flex  items-center justify-between text-sm">
-                  {/* <p className="text-gray-500">Qty: 32{item?.quantity}</p> */}
+                  <p className="text-gray-500">Qty: {item?.quantity}</p>
                 </div>
               </div>
               {/* quantity */}
               {/* <div className=" absolute  end-1/4 top-auto flex w-20 items-center  justify-center  border border-slate-300 p-2 ">
                 <div className="flex w-10 items-center  justify-center ">
-                  <span className="cursor-pointer">
+                    <Button onClick={() => dispatch(decreaseQuantity(item._id))}>
+                 <span  className="cursor-pointer">
                     <FiChevronLeft size={25} />
                   </span>
-                  <span className="cursor-pointer">
+               </Button>
+                  <Button onClick={() => dispatch(increaseQuantity(item._id))}>
+                  <span  className="cursor-pointer">
                     <FiChevronRight size={25} />
                   </span>
+                  </Button>
                 </div>
               </div> */}
             </div>

@@ -21,19 +21,17 @@ const cartSlice = createSlice({
   reducers: {
     setProdctCart: (state, action: PayloadAction<any>) => {
       const { products } = state.cart;
-      const index = products.findIndex(
+      const existingProduct = products.find(
         (product) => product._id === action.payload._id
       );
-
-      if (index === -1) {
-        state.cart.products.push(action.payload);
+      if (existingProduct) {
+        existingProduct.quantity += 1;
       } else {
-        state.cart.products.splice(index, 1);
+        // state.cart.products.splice(existingProduct, 1);
+        products.push({ ...action.payload, quantity: 1 }); // Assign initial quantity as 1
       }
     },
-    // deleteProductCart: (state, action: PayloadAction<any>) => {
 
-    // },
     deleteProductCart: (state, action: PayloadAction<string>) => {
       const productIdToDelete = action.payload;
       const updatedProducts = state.cart.products.filter(
@@ -41,6 +39,30 @@ const cartSlice = createSlice({
       );
       state.cart.products = updatedProducts;
     },
+
+    // increaseQuantity: (state, action) => {
+    //   const { products } = state.cart;
+
+    //   const { _id } = action.payload;
+    //   const existingProduct = products.find(product => product._id === _id);
+    //   if (existingProduct) {
+    //     state.cart.products = products.map(product =>
+    //       product._id === _id ? { ...product, quantity: product.quantity + 1 } : product
+    //     );
+    //   }
+    // },
+
+    // decreaseQuantity: (state, action) => {
+    //   const { products } = state.cart;
+
+    //   const { _id } = action.payload;
+    //   const existingProduct = products.find(product => product._id === _id);
+    //   if (existingProduct && existingProduct.quantity > 1) {
+    //     state.cart.products = products.map(product =>
+    //       product._id === _id ? { ...product, quantity: product.quantity - 1 } : product
+    //     );
+    //   }
+    // },
   },
 });
 export const { setProdctCart, deleteProductCart } = cartSlice.actions;

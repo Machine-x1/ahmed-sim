@@ -10,6 +10,7 @@
 import { Card, CardBody, CardFooter, Image, Skeleton } from '@nextui-org/react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import useTranslation from 'next-translate/useTranslation';
 import { useState } from 'react';
 // import product from 'next-seo/lib/jsonld/product';
 import toast from 'react-hot-toast';
@@ -24,7 +25,7 @@ import FormattedPrice from './FormattedPrice';
 const NewProductCard = ({ item, lang }: { item?: any; lang: any }) => {
   const dispatch = useDispatch();
   const [isHovered, setIsHovered] = useState(false);
-
+  const { t } = useTranslation('common');
   // const { cart } = useSelector((state: RootState) => state.cart);
   return (
     <div className="relative">
@@ -48,7 +49,7 @@ const NewProductCard = ({ item, lang }: { item?: any; lang: any }) => {
                 // role="presentation"
                 onClick={() =>
                   dispatch(setProdctCart(item)) &&
-                  toast.success('Added to cart')
+                  toast.success(t('add-to-cart'))
                 }
                 className=" flex w-full flex-col items-center justify-center "
               >

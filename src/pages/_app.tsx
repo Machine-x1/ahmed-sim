@@ -8,8 +8,10 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
-import store from '@/apps/redux/store';
+import { persistor, store } from '@/apps/redux/store';
+import SpinnerLoader from '@/component/modules/SpinnerLoader';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 
@@ -24,10 +26,12 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <Provider store={store}>
       {/* <I18nextProvider i18n={i18n}> */}
-      <NextUIProvider>
-        <Component {...pageProps} />
-      </NextUIProvider>
-      {/* </I18nextProvider> */}
+      <PersistGate loading={<SpinnerLoader />} persistor={persistor}>
+        <NextUIProvider>
+          <Component {...pageProps} />
+        </NextUIProvider>
+        {/* </I18nextProvider> */}
+      </PersistGate>
     </Provider>
   );
 };
