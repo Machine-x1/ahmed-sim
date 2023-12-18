@@ -115,7 +115,7 @@ const ProductsPage = ({
             </div>
           </section>
           <div className="mt-5 flex w-full justify-center">
-            <PaginationProducts />
+            <PaginationProducts meta={meta} setProductsData={setProductsData} />
           </div>
         </div>
         <Toaster />
