@@ -11,7 +11,6 @@ import internalrequestHandler from '@/apps/helpers/InternalrequestHandler';
 import getProducts from '@/apps/server/products/getProducts';
 import { Meta } from '@/component/layouts/Meta';
 import Categories from '@/component/modules/Categories';
-import PaginationProducts from '@/component/modules/Pagination';
 import { ProductSection } from '@/component/modules/ProductSection';
 import SearchBar from '@/component/modules/SearchBar';
 import { Main } from '@/component/templates/Main';
@@ -30,6 +29,7 @@ const ProductsPage = ({
   const [serverData] = useState(products);
   const [productsData, setProductsData] = useState(serverData);
   const [searchValue, setSearchValue] = useState('');
+  const [metaData, setMetaData] = useState(meta);
   console.log(meta);
   useEffect(() => {
     const getCaggory = async () => {
@@ -115,9 +115,13 @@ const ProductsPage = ({
               ))}
             </div>
           </section>
-          <div className="mt-5 flex w-full justify-center">
-            <PaginationProducts />
-          </div>
+          {/* <div className="mt-5 flex w-full justify-center">
+            <PaginationProducts
+              metaData={metaData}
+              setMetaData={setMetaData}
+              setProductsData={setProductsData}
+            />
+          </div> */}
         </div>
         <Toaster />
       </div>

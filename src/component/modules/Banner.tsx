@@ -13,23 +13,18 @@ const Banner = () => {
     <div
       // edit that image style plz @ahmed
       // i have remoed swiper bcz it was useless
-      className="h-screen max-h-[1080px] max-w-full bg-red-500 md:block md:w-full lg:h-[750px]"
+      className="h-screen  w-full max-w-full bg-cover lg:h-[750px]"
       style={{
+        backgroundImage: "url('/images/banner-img.jpg')",
         objectFit: 'cover',
         objectPosition: 'center center',
-        backgroundImage: "url('/images/car-racing-video-game-arcade.jpg')",
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed',
+        backgroundPosition: 'center',
       }}
     >
       <div className="h-full w-full">
-        {/* <Image
-      src="/images/car-racing-video-game-arcade.jpg"
-      width={1920}
-      height={1080}
-      alt="bannerone"
-      className="h-screen w-full object-cover object-center lg:h-[750px]"
-      priority
-    /> */}
-
         <BannerText title={t('banner')} />
       </div>
     </div>
