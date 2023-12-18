@@ -84,7 +84,7 @@ const Header = () => {
   const router = useRouter();
   const lang = router.locale;
   const { t } = useTranslation('navbar');
-  console.log(t('profile'), 'lang');
+
   return (
     <Navbar
       isBordered

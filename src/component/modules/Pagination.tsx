@@ -13,7 +13,6 @@ const PaginationProducts = ({
   setMetaData: any;
   metaData: any;
 }) => {
-  console.log(metaData, 'xzxzx1zx');
   const fetchProducts = async () => {
     try {
       // Make an API request to fetch products for the specified page
@@ -28,8 +27,6 @@ const PaginationProducts = ({
       // setCurrentPage(response.data.products.meta.current_page);
       // setTotalPages(response.data.products.meta.totalPages);
       // setLimit(response.data.products.meta.limit);
-      // console.log(response.data.products, 'response');
-      console.log(data.data, 'xzxzxzx');
       setProductsData(data.data.products);
       setMetaData(data.data.meta);
     } catch (error) {

@@ -30,7 +30,6 @@ const ProductsPage = ({
   const [productsData, setProductsData] = useState(serverData);
   const [searchValue, setSearchValue] = useState('');
   // const [metaData, setMetaData] = useState(meta);
-  console.log(meta);
   useEffect(() => {
     const getCaggory = async () => {
       if (value !== 'All Products' && value.length > 1) {
@@ -61,7 +60,6 @@ const ProductsPage = ({
           {},
           { search: searchValue }
         );
-        console.log(data.data, 'asc');
         setProductsData(data.data); // Add the data to the productsData state
       } else {
         setProductsData(serverData);
