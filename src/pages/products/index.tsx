@@ -29,7 +29,7 @@ const ProductsPage = ({
   const [serverData] = useState(products);
   const [productsData, setProductsData] = useState(serverData);
   const [searchValue, setSearchValue] = useState('');
-  const [metaData, setMetaData] = useState(meta);
+  // const [metaData, setMetaData] = useState(meta);
   console.log(meta);
   useEffect(() => {
     const getCaggory = async () => {
