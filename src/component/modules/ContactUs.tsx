@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable tailwindcss/migration-from-tailwind-2 */
 /* eslint-disable tailwindcss/no-custom-classname */
@@ -20,9 +21,10 @@ const ContactUs = () => {
                 GET IN TOUCH WITH US
               </h2>
               <p className="text-body-color dark:text-dark-6 mb-9 text-base leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eius tempor incididunt ut labore e dolore magna aliqua. Ut enim
-                adiqua minim veniam quis nostrud exercitation ullamco
+                Welcome to Sim Racing Corner! We're thrilled to connect with
+                fellow sim racing enthusiasts. Whether you have inquiries about
+                our products, need assistance, or simply want to share your
+                racing experiences, we're here to help.
               </p>
               <div className="mb-8 flex w-full max-w-[370px]">
                 <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary/5 text-primary sm:h-[70px] sm:max-w-[70px]">
@@ -44,7 +46,7 @@ const ContactUs = () => {
                     Our Location
                   </h4>
                   <p className="text-body-color dark:text-dark-6 text-base">
-                    99 S.t Jomblo Park Pekanbaru 28292. Indonesia
+                    Lulu Mall, Salem Al Mubarak Street 30 Ln, Salmiya, Kuwait
                   </p>
                 </div>
               </div>
@@ -84,7 +86,7 @@ const ContactUs = () => {
                     Phone Number
                   </h4>
                   <p className="text-body-color dark:text-dark-6 text-base">
-                    (+62)81 414 257 9980
+                    + 965 6939 9851
                   </p>
                 </div>
               </div>
@@ -109,7 +111,7 @@ const ContactUs = () => {
                     Email Address
                   </h4>
                   <p className="text-body-color dark:text-dark-6 text-base">
-                    info@yourdomain.com
+                    Creative.amer.87@gmail.com
                   </p>
                 </div>
               </div>

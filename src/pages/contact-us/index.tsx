@@ -7,7 +7,7 @@ import { Main } from '@/component/templates/Main';
 
 const index = () => {
   return (
-    <Main meta={<Meta title="BitsByets" description="BitsByets." />}>
+    <Main meta={<Meta />}>
       <div>
         <Container className="w-full">
           <ContactUs />

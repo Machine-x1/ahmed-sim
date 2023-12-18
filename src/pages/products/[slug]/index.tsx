@@ -23,7 +23,7 @@ const Index = ({
 }) => {
   const { t } = useTranslation('common');
   return (
-    <Main meta={<Meta title="BitsByets" description="BitsByets." />}>
+    <Main meta={<Meta />}>
       <Container>
         <ProductPage lang={lang} product={product} />
         <ProductDataSwiper
