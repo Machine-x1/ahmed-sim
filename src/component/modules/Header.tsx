@@ -50,6 +50,10 @@ const Header = () => {
 
   const menuItems = [
     {
+      name: 'cart',
+      href: '/cart',
+    },
+    {
       name: 'accessories',
       href: '/products/#accessories',
     },
@@ -132,7 +136,7 @@ const Header = () => {
       </NavbarContent>
 
       <NavbarContent justify="end">
-        <NavbarItem className="hidden sm:flex">
+        <NavbarItem className=" flex">
           <div onClick={() => router.push('/cart')}>
             <div className="relative flex items-center justify-center gap-x-1 rounded-full border-[1px] border-hoverTextColor bg-hoverTextColor px-3  py-1.5 text-slate-100 duration-200 hover:cursor-pointer  hover:border-white ">
               <IoMdCart className="text-xl  " />
@@ -151,7 +155,7 @@ const Header = () => {
             </Link>
           )} */}
         </NavbarItem>
-        <NavbarItem className="hidden sm:flex">
+        <NavbarItem className="flex">
           <div onClick={() => router.push('/cart')}>
             <div className="relative flex items-center justify-center gap-x-1 rounded-full border-[1px] border-white bg-hoverTextColor  px-3 py-1.5  text-slate-100 duration-200 hover:cursor-pointer hover:bg-white  hover:text-hoverTextColor ">
               {lang === 'ar' ? (
