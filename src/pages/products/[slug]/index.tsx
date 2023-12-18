@@ -29,7 +29,7 @@ const Index = ({
         <ProductDataSwiper
           lang={lang}
           msg={t('other-products')}
-          textcolor="secondary-black"
+          textcolor="text-secondary-black"
           product={productsData}
         />
       </Container>

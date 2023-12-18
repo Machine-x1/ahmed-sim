@@ -12,7 +12,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'main-bg': "url('/bg-img.jpeg')",
+        'main-bg': '',
       },
       // fontFamily: {
       //   bodyFont: ['Urbanist', ...defaultTheme.fontFamily.sans],

@@ -30,7 +30,6 @@ const ProductsPage = ({
   const [productsData, setProductsData] = useState(serverData);
   const [searchValue, setSearchValue] = useState('');
   // const [metaData, setMetaData] = useState(meta);
-  console.log(meta);
   useEffect(() => {
     const getCaggory = async () => {
       if (value !== 'All Products' && value.length > 1) {
@@ -61,7 +60,6 @@ const ProductsPage = ({
           {},
           { search: searchValue }
         );
-        console.log(data.data, 'asc');
         setProductsData(data.data); // Add the data to the productsData state
       } else {
         setProductsData(serverData);
@@ -94,7 +92,7 @@ const ProductsPage = ({
         <div className="h-full w-full">
           <div className="top-0 h-full w-full" />
           <section className="flex w-full ">
-            <div className=" mx-auto flex w-full max-w-screen-xl flex-col py-10 ">
+            <div className=" mx-auto flex w-full max-w-screen-xl flex-col gap-4 py-10 ">
               <div className=" w-full ">
                 <div className=" flex w-full justify-between gap-2 pb-5  ">
                   <div className="w-full">

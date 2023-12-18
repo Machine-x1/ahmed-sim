@@ -16,18 +16,18 @@ const Sponsors = () => {
           </h1>
           <Divider className="mx-auto mt-3 " />
         </div>
-        <div className="sm:24 flex flex-wrap items-center justify-center px-8 sm:py-6">
-          <div className="inset-0 flex w-full items-center justify-center pb-16 contrast-75 drop-shadow-xl duration-300  transition hover:scale-75 hover:contrast-100 sm:w-1/6 xl:pb-10">
+        <div className=" flex w-full items-center justify-center px-4 sm:py-6">
+          <div className="inset-0 flex w-1/4 items-center justify-center pb-16 contrast-75 drop-shadow-xl  duration-300 transition hover:scale-75 hover:contrast-100  xl:pb-10">
             <Image
-              className="w-12 focus:outline-none sm:w-28 "
+              className="w-14  focus:outline-none sm:w-28 "
               src="/images/simagiclogo.webp"
               alt="Adidas"
               role="img"
             />
           </div>
-          <div className="inset-0 flex w-1/3 items-center justify-center pb-16 contrast-75 drop-shadow-xl duration-300  transition hover:scale-75 hover:contrast-100 sm:w-1/6 xl:pb-10">
+          <div className="inset-0 flex w-1/4  items-center justify-center pb-16 contrast-75 drop-shadow-xl  duration-300 transition hover:scale-75 hover:contrast-100 xl:pb-10">
             <Image
-              className="w-12 focus:outline-none sm:w-28"
+              className=" w-14 focus:outline-none sm:w-28"
               width={200}
               height={200}
               src="/images/方形logo黑.webp"
