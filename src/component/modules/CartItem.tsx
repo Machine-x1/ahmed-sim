@@ -5,6 +5,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-underscore-dangle */
 import { Divider, Image } from '@nextui-org/react';
+import { useRouter } from 'next/router';
 import React from 'react';
 // import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { IoMdClose } from 'react-icons/io';
@@ -18,6 +19,8 @@ import FormattedPrice from './FormattedPrice';
 const CartItem = () => {
   const { cart } = useSelector((state: RootState) => state.cart);
   const dispatch = useDispatch();
+  const router = useRouter();
+  const lang: any = router.locale;
   return (
     <div className="mx-auto max-h-full w-full ">
       <div className="mb-6 flex h-full flex-col justify-center gap-y-2 overflow-auto rounded-lg bg-white p-6   shadow-md sm:flex sm:justify-start ">
@@ -45,7 +48,7 @@ const CartItem = () => {
                 </span>
               </div>
               <div className="flex flex-col flex-wrap items-center justify-center gap-4 font-medium text-gray-900 sm:flex-row">
-                <h3>{item?.name.en}</h3>
+                <h3>{item?.name[lang] || item?.name.en}</h3>
                 <p className="ml-4">
                   <FormattedPrice amount={item.price} />
                 </p>
