@@ -5,6 +5,7 @@ export function middleware(request: NextRequest) {
   // Assume a "Cookie:nextjs=fast" header to be present on the incoming request
   // Getting cookies from the request using the `RequestCookies` API
   const token = request.cookies.has('token');
+  console.log(token);
   if (!token) {
     return NextResponse.redirect(new URL('/', request.url));
   }
