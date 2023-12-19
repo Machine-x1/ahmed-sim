@@ -9,12 +9,12 @@ import { FiSearch } from 'react-icons/fi';
 const SearchBar = ({ setSearchValue }: { setSearchValue?: any }) => {
   return (
     <Input
-      label="Search"
+      // label="Search"
       isClearable
       radius="lg"
       size="sm"
       fullWidth
-      className=""
+      className=" "
       onChange={(e) => {
         // handleSearch(e.target.value);
         setSearchValue(e.target.value);
@@ -43,7 +43,7 @@ const SearchBar = ({ setSearchValue }: { setSearchValue?: any }) => {
       placeholder="Type to search..."
       startContent={
         <FiSearch
-          className="pointer-events-none mb-0.5  shrink-0  text-slate-400 duration-200 group-focus-within:text-darkText"
+          className="pointer-events-none  shrink-0  text-slate-400 duration-200 group-focus-within:text-darkText"
           aria-hidden="true"
         />
       }

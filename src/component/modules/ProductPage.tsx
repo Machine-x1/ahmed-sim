@@ -19,7 +19,9 @@ import useTranslation from 'next-translate/useTranslation';
 import type { Key } from 'react';
 import { useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
+import { BiWorld } from 'react-icons/bi';
 import { IoMdCart } from 'react-icons/io';
+import { MdFreeCancellation, MdProductionQuantityLimits } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
 
 import { setProdctCart } from '@/apps/redux/slice/cartSlice';
@@ -135,41 +137,19 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
                   <span className="text-darkText">{product?.category}</span>
                 </span>
               </div>
-              <ul className="mt-8 space-x-2 space-y-2">
+              <ul className="mt-8 flex flex-col gap-4  ">
                 <li className="text-md flex items-center gap-2 text-left font-medium text-gray-600">
-                  <svg
-                    className="mr-2 block h-5 w-5 align-middle text-gray-500"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                      className=""
-                    />
-                  </svg>
+                  <BiWorld className="mr-2 block h-5 w-5 align-middle text-gray-500" />
                   {t('free-shipping-worldwide')}
                 </li>
 
                 <li className="text-md flex items-center gap-2 text-left font-medium text-gray-600">
-                  <svg
-                    className="mr-2 block h-5 w-5 align-middle text-gray-500"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
-                      className=""
-                    />
-                  </svg>
+                  <MdFreeCancellation className="mr-2 block h-5 w-5 align-middle text-gray-500" />
                   {t('cancel-anytime')}
+                </li>
+                <li className="text-md flex items-center gap-2 text-left font-medium text-gray-600">
+                  <MdProductionQuantityLimits className="mr-2 block h-5 w-5 align-middle text-gray-500" />
+                  {t('qunaity-available')}: {product?.quantity}
                 </li>
               </ul>
             </div>

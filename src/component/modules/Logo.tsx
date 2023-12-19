@@ -4,7 +4,12 @@ import React from 'react';
 
 const Logo = () => {
   return (
-    <Link href="/">
+    <Link
+      href="/"
+      rel="noopener noreferrer"
+      aria-label="logo"
+      className="cursor-pointer"
+    >
       <div className="flex h-20 cursor-pointer items-center justify-center   ">
         <Image
           alt="logo"
