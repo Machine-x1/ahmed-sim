@@ -1,13 +1,34 @@
+/* eslint-disable no-console */
 /* eslint-disable tailwindcss/no-custom-classname */
 /* eslint-disable react/no-unescaped-entities */
-import { Button, Divider, Input, Textarea } from '@nextui-org/react';
+import { Button, Divider, Input, Link, Textarea } from '@nextui-org/react';
 import useTranslation from 'next-translate/useTranslation';
-import React from 'react';
+import React, { useState } from 'react';
 import { BsInstagram } from 'react-icons/bs';
+
+import internalrequestHandler from '@/apps/helpers/InternalrequestHandler';
 
 import Container from './Container';
 
 const ContactForm = () => {
+  const [email, setEmail] = useState('');
+  const [description, setDescription] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const te = await internalrequestHandler('apiContact', 'POST', {
+        email,
+        description,
+      });
+      console.log(te, 'sads');
+      setSuccessMessage('Email sent successfully!');
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setErrorMessage('Error sending email. Please try again.');
+    }
+  };
   const { t } = useTranslation('common');
   return (
     <div className="w-full bg-bodyColor">
@@ -25,65 +46,65 @@ const ContactForm = () => {
                 Connect with us on social media for the latest updates, events,
                 and exclusive content.
               </span>
-              <Button
-                className="hover:bg-hoverTextColor"
-                isIconOnly
-                color="default"
-                aria-label="Like"
+              <Link
+                href="https://www.instagram.com/the_simracingcorner/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="follow us in social media"
               >
-                <span className="socialLink">
-                  <BsInstagram />
-                </span>
-              </Button>
-            </div>
-
-            <div>
-              <div className="">
-                {/* <Button
-                  isIconOnly
-                  color="default"
-                  className="hover:bg-hoverTextColor"
-                  aria-label="Like"
-                >
-                  <span className="socialLink  ">
-                    <BsTwitter />
-                  </span>
-                </Button> */}
-                {/* <Button
+                <Button
                   className="hover:bg-hoverTextColor"
                   isIconOnly
                   color="default"
-                  aria-label="Like"
+                  aria-label="instagram"
                 >
                   <span className="socialLink">
-                    <BsFacebook />
+                    <BsInstagram />
                   </span>
-                </Button> */}
-              </div>
+                </Button>
+              </Link>
             </div>
-          </div>
-          <div className="mx-auto flex h-full w-1/2 flex-col  items-center  justify-center gap-8">
-            <Input type="email" variant="underlined" size="md" label="Email" />
-            <Textarea
-              key=""
-              variant="underlined"
-              // label="Description"
 
-              placeholder="Enter your description"
-              disableAnimation
-              disableAutosize
-              size="md"
-              classNames={{
-                // base: 'max-w-xs',
-                input: 'resize-y min-h-[40px]',
-              }}
-            />
-            <Button
-              radius="none"
-              className="  bg-hoverTextColor text-sm font-semibold uppercase text-white  duration-200 hover:bg-lightText "
-            >
-              {t('send')}
-            </Button>
+            <div />
+          </div>
+          <div className="mx-auto flex h-full w-1/2 flex-col   items-center  justify-center gap-4">
+            <form onSubmit={handleSubmit}>
+              <Input
+                type="email"
+                variant="underlined"
+                size="md"
+                label="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <Textarea
+                key=""
+                variant="underlined"
+                placeholder="Enter your description"
+                disableAnimation
+                disableAutosize
+                size="md"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                classNames={{
+                  // base: 'max-w-xs',
+                  input:
+                    'resize-y min-h-[40px] text-base outline-none  max-w-xs w-full  ',
+                }}
+              />
+              <div className="mt-4 flex justify-center">
+                <Button
+                  type="submit"
+                  size="sm"
+                  radius="none"
+                  className="  bg-hoverTextColor text-sm font-semibold uppercase text-white  duration-200 hover:bg-lightText "
+                >
+                  {t('send')}
+                </Button>
+              </div>
+            </form>
+            {errorMessage && <p>{errorMessage}</p>}
+            {successMessage && <p>{successMessage}</p>}
           </div>
         </div>
       </Container>

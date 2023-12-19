@@ -11,13 +11,12 @@ const Banner = () => {
   const { t } = useTranslation('common');
   return (
     <div
-      // edit that image style plz @ahmed
-      // i have remoed swiper bcz it was useless
+      id="banner"
       className="h-screen  w-full max-w-full bg-cover lg:h-[750px]"
       style={{
         backgroundImage: "url('/images/banner-img.jpg')",
         objectFit: 'cover',
-        objectPosition: 'center center',
+        // objectPosition: 'center center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundAttachment: 'fixed',
@@ -25,7 +24,7 @@ const Banner = () => {
       }}
     >
       <div className="h-full w-full">
-        <BannerText title={t('banner')} />
+        <BannerText title={t('banner')} message="A sport, not a game" />
       </div>
     </div>
   );

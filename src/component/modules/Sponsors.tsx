@@ -21,7 +21,9 @@ const Sponsors = () => {
             <Image
               className="w-14  focus:outline-none sm:w-28 "
               src="/images/simagiclogo.webp"
-              alt="Adidas"
+              alt="simagiclogo"
+              width={200}
+              height={200}
               role="img"
             />
           </div>
@@ -31,7 +33,17 @@ const Sponsors = () => {
               width={200}
               height={200}
               src="/images/方形logo黑.webp"
-              alt="Chanel"
+              alt="moza racing logo"
+              role="img"
+            />
+          </div>
+          <div className="inset-0 flex w-1/4  items-center justify-center pb-16 contrast-75 drop-shadow-xl  duration-300 transition hover:scale-75 hover:contrast-100 xl:pb-10">
+            <Image
+              className=" w-14 focus:outline-none sm:w-28"
+              width={200}
+              height={200}
+              src="/images/fanatec.png"
+              alt="fanatec"
               role="img"
             />
           </div>

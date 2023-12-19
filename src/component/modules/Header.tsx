@@ -50,13 +50,14 @@ const Header = () => {
 
   const menuItems = [
     {
-      name: 'cart',
-      href: '/cart',
+      name: 'dashboard',
+      href: '/admin',
     },
     {
       name: 'accessories',
       href: '/products/#accessories',
     },
+
     {
       name: 'steerWheels',
       href: '/products/#steerWheels',
@@ -84,7 +85,9 @@ const Header = () => {
   const router = useRouter();
   const lang = router.locale;
   const { t } = useTranslation('navbar');
-
+  const handleCartClick = () => {
+    router.push('/cart');
+  };
   return (
     <Navbar
       isBordered
@@ -137,13 +140,13 @@ const Header = () => {
 
       <NavbarContent justify="end">
         <NavbarItem className=" flex">
-          <div onClick={() => router.push('/cart')}>
-            <div className="relative flex items-center justify-center gap-x-1 rounded-full border-[1px] border-hoverTextColor bg-hoverTextColor px-3  py-1.5 text-slate-100 duration-200 hover:cursor-pointer  hover:border-white ">
+          <div onClick={handleCartClick}>
+            <div className="relative flex items-center justify-center gap-x-1  rounded-full border-[1px] border-solid border-white bg-hoverTextColor px-3 py-1.5 text-slate-100  duration-200 hover:cursor-pointer hover:bg-white  hover:text-hoverTextColor ">
               <IoMdCart className="text-xl  " />
               <p className="text-sm font-semibold">
                 <FormattedPrice amount={0} />
               </p>
-              <span className="absolute -right-2 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-white text-xs font-semibold text-orange-600 shadow-xl shadow-black">
+              <span className="absolute -right-2 -top-1 flex h-5 w-5 items-center justify-center rounded-full  bg-white text-xs font-semibold text-orange-600 shadow-xl shadow-black">
                 {cart.products.length}
               </span>
             </div>
@@ -156,18 +159,16 @@ const Header = () => {
           )} */}
         </NavbarItem>
         <NavbarItem className="flex">
-          <div onClick={() => router.push('/cart')}>
-            <div className="relative flex items-center justify-center gap-x-1 rounded-full border-[1px] border-white bg-hoverTextColor  px-3 py-1.5  text-slate-100 duration-200 hover:cursor-pointer hover:bg-white  hover:text-hoverTextColor ">
-              {lang === 'ar' ? (
-                <a href="/en">
-                  <h2 className="font-poppins"> الإنجليزية</h2>
-                </a>
-              ) : (
-                <a href="/ar">
-                  <h2 className="font-somar">Arabic</h2>
-                </a>
-              )}{' '}
-            </div>
+          <div className="relative flex items-center justify-center gap-x-1 rounded-full border-[1px] border-solid border-white bg-hoverTextColor  px-3 py-1.5  text-slate-100 duration-200 hover:cursor-pointer hover:bg-white  hover:text-hoverTextColor ">
+            {lang === 'ar' ? (
+              <a href="/en">
+                <h2 className="font-poppins"> الإنجليزية</h2>
+              </a>
+            ) : (
+              <a href="/ar">
+                <h2 className="font-somar">Arabic</h2>
+              </a>
+            )}
           </div>
         </NavbarItem>
       </NavbarContent>

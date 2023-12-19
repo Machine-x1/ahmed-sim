@@ -5,11 +5,24 @@
 // 'use client';
 
 import { Button } from '@nextui-org/react';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import FormattedPrice from './FormattedPrice';
 
 const PaymentForm = () => {
+  const router = useRouter();
+  const handleCheckout = () => {
+    // Your order summary data
+    const subtotal = 233;
+    const shipping = 20;
+    const totalPrice = subtotal + shipping;
+
+    const message = `Order Summary%0ASubtotal: $${subtotal}%0AShipping: $${shipping}%0ATotal Price: $${totalPrice}`;
+
+    const whatsappLink = `https://wa.me/01147871760/?text=${message}`;
+
+    router.push(whatsappLink);
+  };
   // const dispatch = useDispatch();
   // const { productStore } = useSelector((state: any) => state?.shopping);
   // const [totalAmt, setTotalAmt] = useState(0);
@@ -47,14 +60,12 @@ const PaymentForm = () => {
           </p>
         </div>
       </div>
-      <Link href="/checkoutpage">
-        <Button
-          // onClick={() => }
-          className="mt-4 w-full cursor-pointer bg-mainOrange px-6 py-3 text-slate-100 duration-200 "
-        >
-          checkout
-        </Button>
-      </Link>
+      <Button
+        onClick={handleCheckout}
+        className="mt-4 w-full cursor-pointer bg-mainOrange px-6 py-3 text-slate-100 duration-200 "
+      >
+        Checkout via WhatsApp
+      </Button>
     </div>
   );
 };

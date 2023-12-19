@@ -9,7 +9,7 @@ type IMainProps = {
 };
 
 const Main = (props: IMainProps) => (
-  <div className="overflow-hidden bg-main-bg">
+  <div className="overflow-hidden bg-bodyColor">
     {props.meta}
     <Header />
     <div>{props.children}</div>

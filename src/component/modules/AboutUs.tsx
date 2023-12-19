@@ -3,12 +3,12 @@
 /* eslint-disable tailwindcss/no-custom-classname */
 import useTranslation from 'next-translate/useTranslation';
 import React from 'react';
-import { MdOutlineDeliveryDining } from 'react-icons/md';
+import { MdOutlineLocalShipping } from 'react-icons/md';
 
 const AboutUs = () => {
   const { t } = useTranslation('common');
   return (
-    <div className="w-full ">
+    <div id="about-us" className="w-full  ">
       <div className="bg-secondaryBlack">
         <section
           id="features"
@@ -17,7 +17,7 @@ const AboutUs = () => {
           <div className="relative mx-auto flex max-w-5xl  flex-col gap-4 text-center">
             <span>{t('about.destination')}</span>
             <h1 className="block  text-3xl font-bold text-slate-200 sm:text-4xl">
-              {t('about.why')}{' '}
+              {t('about.why')}
             </h1>
             <p className="mx-auto  w-full max-w-xl bg-transparent text-center font-medium leading-relaxed tracking-wide">
               {t('about.quality')}
@@ -29,7 +29,7 @@ const AboutUs = () => {
           <div className="gap flex w-full flex-col items-center justify-center  gap-20 pt-4 text-white md:flex-row ">
             <div className="inline-flex h-[230px] w-[270px] items-center justify-center  px-[35px] py-8 shadow">
               <div className="flex h-[161px] w-64 flex-col items-center justify-center gap-4 ">
-                <MdOutlineDeliveryDining className="h-12 w-12" />
+                <MdOutlineLocalShipping className="h-12 w-12" />
                 <p className=" text-white-600 text-center">
                   {t('about.quick-drop')}
                 </p>
@@ -81,21 +81,3 @@ const AboutUs = () => {
 };
 
 export default AboutUs;
-
-{
-  /* <div className="w-[270px] h-[230px] px-[35px] py-8 bg-red-500 rounded shadow justify-center items-center inline-flex">
-<div className="flex-col justify-start items-center gap-6 inline-flex">
-<div className="w-20 h-20 relative">
-<div className="w-20 h-20 left-0 top-0 absolute">
-<div className="w-20 h-20 left-0 top-0 absolute opacity-30 bg-white rounded-full" />
-<div className="w-[58px] h-[58px] left-[11px] top-[11px] absolute bg-white rounded-full" />
-</div>
-<div className="w-10 h-10 left-[20px] top-[20px] absolute" />
-</div>
-<div className="flex-col justify-start items-center gap-2 flex">
-<div className="text-white text-[32px] font-bold font-['Inter'] leading-[30px] tracking-wider">33k</div>
-<div className="text-white text-base font-normal font-['Poppins'] leading-normal">Mopnthly Produduct Sale</div>
-</div>
-</div>
-</div> */
-}
