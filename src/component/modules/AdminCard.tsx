@@ -37,7 +37,7 @@ const Admincard = ({ item, lang }: { item?: any; lang: any }) => {
               <Image
                 className=" max-h-60  w-full  object-cover  object-center"
                 src={item?.images[0]}
-                alt={item?.name[lang]}
+                alt={item?.name}
                 width="100%"
                 height="100%"
                 removeWrapper

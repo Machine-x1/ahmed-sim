@@ -15,18 +15,7 @@ import FormattedPrice from './FormattedPrice';
 
 const PaymentForm = () => {
   const router = useRouter();
-  const handleCheckout = () => {
-    // Your order summary data
-    const subtotal = 233;
-    const shipping = 20;
-    const totalPrice = subtotal + shipping;
 
-    const message = `Order Summary%0ASubtotal: $${subtotal}%0AShipping: $${shipping}%0ATotal Price: $${totalPrice}`;
-
-    const whatsappLink = `https://wa.me/01147871760/?text=${message}`;
-
-    router.push(whatsappLink);
-  };
   // const dispatch = useDispatch();
   // const { productStore } = useSelector((state: any) => state?.shopping);
   // const [totalAmt, setTotalAmt] = useState(0);
@@ -48,6 +37,18 @@ const PaymentForm = () => {
   };
   const total = calculateTotalPrice();
 
+  const handleCheckout = () => {
+    // Your order summary data
+    // const totalPrice = subtotal + shipping;
+
+    const message = `Order Summary%%0ATotal Price: $${total} %%0AProducts: ${cart.products.map(
+      (product: any) => `${product.name} x ${product.quantity}`
+    )}`;
+
+    const whatsappLink = `https://wa.me/+96569399851/?text=${message}`;
+
+    router.push(whatsappLink);
+  };
   return (
     <div className="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 ">
       <h2 className="mb-2 font-semibold uppercase  ">{t('order-summary')}</h2>
@@ -63,7 +64,8 @@ const PaymentForm = () => {
         <div className="mb-2 flex max-w-lg items-center justify-between">
           <p className="font-light uppercase">{t('shipping')}</p>
           <p>
-            <FormattedPrice amount={10} />
+            {/* <FormattedPrice amount={} /> */}
+            $$
           </p>
         </div>
       </div>
@@ -71,7 +73,7 @@ const PaymentForm = () => {
         <div className="mb-2 flex max-w-lg items-center justify-between">
           <p className="font-light uppercase">{t('total-price')}</p>
           <p>
-            <FormattedPrice amount={total + 10} />
+            <FormattedPrice amount={total} />
           </p>
         </div>
       </div>
