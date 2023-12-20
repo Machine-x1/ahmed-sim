@@ -2,13 +2,16 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 
 import { Button } from '@nextui-org/react';
+import { getCookie } from 'cookies-next';
 import type { GetServerSidePropsContext } from 'next';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { BiAddToQueue } from 'react-icons/bi';
 import { MdEmail } from 'react-icons/md';
 
 import internalrequestHandler from '@/apps/helpers/InternalrequestHandler';
+import { JwtGenerator } from '@/apps/helpers/JwtGenerator';
 import getProducts from '@/apps/server/products/getProducts';
 import AdminNav from '@/component/modules/AdminNav';
 import { AdminProductSection } from '@/component/modules/AdminProductSection';
@@ -60,6 +63,7 @@ const index = ({ products, lang }: any) => {
     getSearch(); // Call the async function
   }, [searchValue]);
 
+  const router = useRouter();
   const categories = [
     { title: 'STEERING WHEELS', key: 'steer-wheels', id: 'steerWheels' },
     { title: 'PEDALS', key: 'paddle', id: 'pedals' },
@@ -152,25 +156,26 @@ const index = ({ products, lang }: any) => {
                   <div className=" mx-auto flex w-full max-w-screen-xl flex-col gap-4 py-10 ">
                     <div className=" w-full ">
                       <div className=" flex w-full items-center justify-center  gap-4 pb-5  ">
-                        {/* <div className="flex w-full items-center justify-center "> */}
                         <SearchBar setSearchValue={setSearchValue} />
                         <Button
-                          onClick={() => setValue('All Products')}
+                          onClick={() => router.push('/admin/create')}
                           // fullWidth
                           color="success"
                           variant="flat"
                           className="flex items-center justify-center "
                         >
-                          <span className="  font-medium  ">Add Product</span>
+                          <button type="button" className="  font-medium  ">
+                            Add Product
+                          </button>
                           <BiAddToQueue size={40} />
                         </Button>
-                        {/* </div> */}
                       </div>
                     </div>
                     {categories.map((category) => (
                       <AdminProductSection
                         key={category.key}
                         id={category.id}
+                        setProductsData={setProductsData}
                         lang={lang}
                         title={category.title}
                         productsData={productsData.filter(
@@ -180,13 +185,6 @@ const index = ({ products, lang }: any) => {
                     ))}
                   </div>
                 </section>
-                {/* <div className="mt-5 flex w-full justify-center">
-         <PaginationProducts
-           metaData={metaData}
-           setMetaData={setMetaData}
-           setProductsData={setProductsData}
-         />
-       </div> */}
               </div>
             </main>
           </div>
@@ -202,8 +200,29 @@ export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
   const data = await getProducts();
+  const { req, res } = context;
   const getLang = context.locale;
-
+  const token = getCookie('ad_token', { req, res });
+  if (!token) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/',
+      },
+      props: {},
+    };
+  }
+  const jwt = new JwtGenerator();
+  const jwtVerify = jwt.jwtTokenVerify(token);
+  if (jwtVerify.verified.user !== 'admin') {
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/',
+      },
+      props: {},
+    };
+  }
   return {
     props: {
       products: data.products,

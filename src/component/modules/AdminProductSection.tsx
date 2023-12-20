@@ -10,11 +10,13 @@ export const AdminProductSection = ({
   productsData,
   id,
   lang,
+  setProductsData,
 }: {
   id: string | undefined;
   title: string;
   productsData: ProductType;
   lang: any;
+  setProductsData: any;
 }) => {
   return (
     <div className="flex w-full py-4 ">
@@ -29,7 +31,12 @@ export const AdminProductSection = ({
           </div>
           <div className="grid w-full grid-cols-1 gap-12 px-8 md:grid-cols-3 md:px-0  xl:grid-cols-4">
             {productsData.map((item: any) => (
-              <Admincard lang={lang} key={item._id} item={item} />
+              <Admincard
+                setProductsData={setProductsData}
+                lang={lang}
+                key={item._id}
+                item={item}
+              />
             ))}
           </div>
         </div>

@@ -18,11 +18,10 @@ const ContactForm = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const te = await internalrequestHandler('apiContact', 'POST', {
+      await internalrequestHandler('apiContact', 'POST', {
         email,
         description,
       });
-      console.log(te, 'sads');
       setSuccessMessage('Email sent successfully!');
     } catch (error) {
       console.error('Error sending email:', error);

@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable react/button-has-type */
 import {
   Button,
@@ -8,26 +9,42 @@ import {
   Skeleton,
 } from '@nextui-org/react';
 import Link from 'next/link';
-import useTranslation from 'next-translate/useTranslation';
 // import product from 'next-seo/lib/jsonld/product';
 import toast from 'react-hot-toast';
-import { BiEdit } from 'react-icons/bi';
 import { MdDelete } from 'react-icons/md';
-import { useDispatch } from 'react-redux';
 
-import { setProdctCart } from '@/apps/redux/slice/cartSlice';
+import internalrequestHandler from '@/apps/helpers/InternalrequestHandler';
 
 // const NewProductCard = ({ item, lang }: { item?: ProductType; lang: any }) => {
-const Admincard = ({ item, lang }: { item?: any; lang: any }) => {
-  const dispatch = useDispatch();
+const Admincard = ({
+  item,
+  lang,
+  setProductsData,
+}: {
+  item?: any;
+  lang: any;
+  setProductsData: any;
+}) => {
   // const [isHovered, setIsHovered] = useState(false);
-  const { t } = useTranslation('common');
+  // const { t } = useTranslation('common');
   // const { cart } = useSelector((state: RootState) => state.cart);
+  const handleDelete = async (product: any) => {
+    await internalrequestHandler('apiDeleteProduct', 'POST', {
+      product,
+    }).then(() => {
+      toast.success('Product deleted successfully');
+      setProductsData((prevProductsData: any) => {
+        const updatedProductsData = prevProductsData.filter(
+          (dataItem: any) => dataItem._id !== product._id
+        );
+        return updatedProductsData;
+      });
+    });
+  };
   return (
     <div className="relative  ">
       <Card
         shadow="none"
-        // isPressable
         fullWidth
         className=" relative flex   w-full flex-col overflow-hidden  "
       >
@@ -43,6 +60,7 @@ const Admincard = ({ item, lang }: { item?: any; lang: any }) => {
                 removeWrapper
               />
             </Link>
+            <h3>{item.name[lang]}</h3>
           </CardBody>
 
           <CardFooter className=" mb-2 flex flex-col ">
@@ -51,30 +69,7 @@ const Admincard = ({ item, lang }: { item?: any; lang: any }) => {
                 <Button
                   radius="lg"
                   type="button"
-                  onClick={() =>
-                    dispatch(setProdctCart(item)) &&
-                    toast.success(t('add-to-cart'))
-                  }
-                  className=" flex w-full flex-col items-center justify-center bg-greyColor  "
-                  aria-label="add to cart"
-                >
-                  <span className=" flex w-full items-center  justify-center text-center    ">
-                    <span className=" w-full   text-lg font-semibold uppercase text-black">
-                      Edit
-                    </span>
-                    <BiEdit
-                      size={20}
-                      className="flex  justify-end text-sm text-hoverTextColor md:text-xl  "
-                    />
-                  </span>
-                </Button>
-                <Button
-                  radius="lg"
-                  type="button"
-                  onClick={() =>
-                    dispatch(setProdctCart(item)) &&
-                    toast.success(t('add-to-cart'))
-                  }
+                  onClick={() => handleDelete(item)}
                   className=" flex w-full flex-col items-center justify-center bg-greyColor  "
                   aria-label="add to cart"
                 >

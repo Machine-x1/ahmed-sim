@@ -55,7 +55,7 @@ const Adminaside = () => {
                   </li>
                   <li>
                     <Link
-                      href="admin/admin-products"
+                      href="admin"
                       className="group flex items-center rounded-lg p-2 text-base font-normal text-gray-900 hover:bg-gray-100 "
                     >
                       <MdEmail className="h-6 w-6 shrink-0 text-gray-500 duration-75 transition group-hover:text-gray-900" />

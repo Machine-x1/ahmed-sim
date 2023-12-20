@@ -11,7 +11,6 @@ import Container from '@/component/modules/Container';
 import SearchBar from '@/component/modules/SearchBar';
 
 const Adminproducts = ({ products, lang }: any) => {
-  console.log(products, 'products');
   const [value, setValue] = useState('All Products');
   // eslint-disable-next-line @typescript-eslint/naming-convention
   const [serverData] = useState(products);
@@ -92,6 +91,7 @@ const Adminproducts = ({ products, lang }: any) => {
               <AdminProductSection
                 key={category.key}
                 id={category.id}
+                setProductsData={setProductsData}
                 lang={lang}
                 title={category.title}
                 productsData={productsData.filter(

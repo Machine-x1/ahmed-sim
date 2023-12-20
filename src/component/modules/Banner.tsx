@@ -24,7 +24,7 @@ const Banner = () => {
       }}
     >
       <div className="h-full w-full">
-        <BannerText title={t('banner')} message="A sport, not a game" />
+        <BannerText title={t('banner')} message={t('theword')} />
       </div>
     </div>
   );

@@ -8,8 +8,11 @@ import {
   TableHeader,
   TableRow,
 } from '@nextui-org/react';
+import { getCookie } from 'cookies-next';
+import type { GetServerSidePropsContext } from 'next';
 import React from 'react';
 
+import { JwtGenerator } from '@/apps/helpers/JwtGenerator';
 import AdminLayout from '@/component/modules/AdminAside';
 import AdminNav from '@/component/modules/AdminNav';
 import Container from '@/component/modules/Container';
@@ -45,27 +48,49 @@ export default function index({ emails }: any) {
     </div>
   );
 }
-// export async function getServerSideProps() {
-//   // Fetch data from the API
-//   const apiUrl = 'http://localhost:8000/contact';
-//   const response = await fetch(apiUrl, {
-//     method: 'GET',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//   });
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  // Fetch data from the API
+  const { req, res } = context;
+  const token = getCookie('ad_token', { req, res });
+  if (!token) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/',
+      },
+      props: {},
+    };
+  }
+  const jwt = new JwtGenerator();
+  const jwtVerify = jwt.jwtTokenVerify(token);
+  if (jwtVerify.verified.user !== 'admin') {
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/',
+      },
+      props: {},
+    };
+  }
+  const apiUrl = `${process.env.API_EXTRANL}/contact`;
+  const response = await fetch(apiUrl, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
 
-//   if (!response.ok) {
-//     return {
-//       notFound: true,
-//     };
-//   }
+  if (!response.ok) {
+    return {
+      notFound: true,
+    };
+  }
 
-//   const data = await response.json();
+  const data = await response.json();
 
-//   return {
-//     props: {
-//       emails: data,
-//     },
-//   };
-// }
+  return {
+    props: {
+      emails: data.data.message,
+    },
+  };
+}

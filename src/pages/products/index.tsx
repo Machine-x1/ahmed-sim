@@ -33,7 +33,6 @@ const ProductsPage = ({
   const [metaData, setMetaData] = useState(meta);
   const [currentPage, setCurrentPage] = useState(1);
 
-  console.log(meta);
   useEffect(() => {
     const getCaggory = async () => {
       if (value !== 'All Products' && value.length > 1) {

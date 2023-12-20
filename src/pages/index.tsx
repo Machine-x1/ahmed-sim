@@ -2,6 +2,7 @@
 import type { CookieValueTypes } from 'cookies-next';
 import { getCookie, setCookie } from 'cookies-next';
 import type { GetServerSidePropsContext } from 'next';
+import useTranslation from 'next-translate/useTranslation';
 
 import type { ProductType } from '@/apps/interface/types';
 import createTokenAndUser from '@/apps/server/CreateToken';
@@ -23,7 +24,7 @@ const Index = ({
   productsData: ProductType;
   lang: CookieValueTypes;
 }) => {
-  // const { t } = useTranslation();
+  const { t } = useTranslation('common');
 
   return (
     <Main meta={<Meta />}>
@@ -34,7 +35,7 @@ const Index = ({
         <Banner />
         <ProductFeatures />
         <ProductDataSwiper
-          msg="Featured Products"
+          msg={t('featured-products')}
           textcolor="text-slate-100"
           product={productsData}
           lang={lang}

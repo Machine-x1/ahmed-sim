@@ -70,7 +70,7 @@ const NewProductCard = ({ item, lang }: { item?: any; lang: any }) => {
                 >
                   <span className=" flex w-full items-center  justify-center text-center    ">
                     <span className=" w-full   text-sm font-semibold uppercase text-black">
-                      Add to cart
+                      {t('add-to-cart')}
                     </span>
                     <BiCartAdd
                       size={20}
