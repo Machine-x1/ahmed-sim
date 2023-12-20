@@ -32,12 +32,22 @@ export default function index({ emails }: any) {
               <TableHeader>
                 <TableColumn>NAME</TableColumn>
                 <TableColumn>Message</TableColumn>
+                {/* <TableColumn>Action</TableColumn> */}
               </TableHeader>
               <TableBody>
                 {emails?.map((user: any) => (
                   <TableRow key={user.id}>
                     <TableCell>{user.email}</TableCell>
                     <TableCell>{user.description}</TableCell>
+                    {/* <TableCell>
+                      <button
+                        className="text-red-500"
+                        type="button"
+                        onClick={() => {}}
+                      >
+                        <FiDelete size={20} />
+                      </button>
+                    </TableCell> */}
                   </TableRow>
                 ))}
               </TableBody>

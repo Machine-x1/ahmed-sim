@@ -4,6 +4,7 @@
 import { Button, Divider, Input, Link, Textarea } from '@nextui-org/react';
 import useTranslation from 'next-translate/useTranslation';
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 import { BsInstagram } from 'react-icons/bs';
 
 import internalrequestHandler from '@/apps/helpers/InternalrequestHandler';
@@ -13,19 +14,26 @@ import Container from './Container';
 const ContactForm = () => {
   const [email, setEmail] = useState('');
   const [description, setDescription] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
+  // const [errorMessage, setErrorMessage] = useState('');
+  // const [successMessage, setSuccessMessage] = useState('');
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!email || !description) {
+      // Display a toast message indicating the fields are required
+      toast.error('Email and description are required fields.');
+      return; // Stop further execution
+    }
     try {
       await internalrequestHandler('apiContact', 'POST', {
         email,
         description,
       });
-      setSuccessMessage('Email sent successfully!');
+      // setSuccessMessage('Email sent successfully!');
+      toast.success('Email sent successfully!');
     } catch (error) {
       console.error('Error sending email:', error);
-      setErrorMessage('Error sending email. Please try again.');
+      // setErrorMessage('Error sending email. Please try again.');
+      toast.error('Error sending email. Please try again.');
     }
   };
   const { t } = useTranslation('common');
@@ -72,6 +80,7 @@ const ContactForm = () => {
                 type="email"
                 variant="underlined"
                 size="md"
+                required
                 label="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -79,10 +88,11 @@ const ContactForm = () => {
               <Textarea
                 key=""
                 variant="underlined"
-                placeholder="Enter your description"
+                placeholder="Enter your Message here"
                 disableAnimation
                 disableAutosize
                 size="md"
+                required
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 classNames={{
@@ -102,8 +112,6 @@ const ContactForm = () => {
                 </Button>
               </div>
             </form>
-            {errorMessage && <p>{errorMessage}</p>}
-            {successMessage && <p>{successMessage}</p>}
           </div>
         </div>
       </Container>

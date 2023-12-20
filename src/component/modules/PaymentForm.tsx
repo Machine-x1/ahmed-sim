@@ -38,14 +38,19 @@ const PaymentForm = () => {
   const total = calculateTotalPrice();
 
   const handleCheckout = () => {
-    // Your order summary data
-    // const totalPrice = subtotal + shipping;
+    // make a whatsapp message with the products and total price
 
-    const message = `Order Summary%%0ATotal Price: $${total} %%0AProducts: ${cart.products.map(
-      (product: any) => `${product.name} x ${product.quantity}`
-    )}`;
+    const totalPrice = total.toFixed(2);
+    const products = cart.products
+      .map((product: any) => `${product.name} x ${product.quantity}`)
+      .join(', ');
+    const message = `Order Summary%0ATotal Price: $${totalPrice}%0AProducts: ${products}`;
+    const phoneNumber = '+96569399851';
+    // const message = `Order Summary%%0ATotal Price: $${total} %%0AProducts: ${cart.products.map(
+    //   (product: any) => `${product.name} x ${product.quantity}`
+    // )}`;
 
-    const whatsappLink = `https://wa.me/+96569399851/?text=${message}`;
+    const whatsappLink = `https://wa.me/${phoneNumber}/?text=${message}`;
 
     router.push(whatsappLink);
   };
