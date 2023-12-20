@@ -57,7 +57,7 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
           <Image
             className="h-32 w-full object-cover object-center"
             src={imageSrc}
-            alt=""
+            alt={product?.name[lang]}
             width="100%"
             height="100%"
           />
@@ -78,13 +78,13 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
             <div className=" lg:col-span-3 lg:row-end-1">
               <div className=" lg:flex lg:items-start">
                 <div className="lg:order-2 lg:ml-5">
-                  <div className="h-96 max-w-xl overflow-hidden rounded-lg">
+                  <div className="h-[450px] max-w-xl overflow-hidden rounded-lg">
                     <Image
-                      className="h-full w-full max-w-full object-cover"
+                      className="h-full w-full max-w-full object-cover object-center"
                       src={product?.images[currentImg]}
                       width="100%"
                       height="100%"
-                      alt=""
+                      alt={product?.name[lang]}
                     />
                   </div>
                 </div>
@@ -100,13 +100,11 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
               <h1 className="md: text-2xl font-bold text-gray-900 md:text-3xl">
                 {product?.name[lang]}
               </h1>
-              <div className="mt-5 flex  flex-col  ">
+              {/* <div className="mt-5 flex  flex-col  ">
                 <p className="text-md  font-medium text-gray-500">
-                  {/* {product?.description} */}
                   {product?.description[lang]}
                 </p>
-              </div>
-
+              </div> */}
               <div className="mt-10 flex flex-col items-center justify-between space-y-4 border-y py-4 md:flex-row md:space-y-0">
                 <div className="flex items-end">
                   <p className="text-xl font-semibold">

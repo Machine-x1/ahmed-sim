@@ -29,7 +29,7 @@ const Index = ({
     <Main meta={<Meta />}>
       <div
         id="home"
-        className="mx-auto w-full max-w-[1920px] bg-secondaryBlack "
+        className="mx-auto w-full max-w-[1920px] scroll-smooth bg-secondaryBlack "
       >
         <Banner />
         <ProductFeatures />

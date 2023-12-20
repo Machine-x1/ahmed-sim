@@ -26,6 +26,7 @@ import useTranslation from 'next-translate/useTranslation';
 // import Link from 'next/link';
 import React from 'react';
 import { IoMdCart } from 'react-icons/io';
+import { MdLanguage } from 'react-icons/md';
 import { useSelector } from 'react-redux';
 
 import type { RootState } from '@/apps/redux/store';
@@ -49,10 +50,6 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const menuItems = [
-    {
-      name: 'dashboard',
-      href: '/admin',
-    },
     {
       name: 'accessories',
       href: '/products/#accessories',
@@ -88,6 +85,14 @@ const Header = () => {
   const handleCartClick = () => {
     router.push('/cart');
   };
+  const calculateTotalPrice = () => {
+    let totalPrice = 0;
+    for (const product of cart.products) {
+      totalPrice += product.price * product.quantity;
+    }
+    return totalPrice;
+  };
+  const total = calculateTotalPrice();
   return (
     <Navbar
       isBordered
@@ -144,7 +149,7 @@ const Header = () => {
             <div className="relative flex items-center justify-center gap-x-1  rounded-full border-[1px] border-solid border-white bg-hoverTextColor px-3 py-1.5 text-slate-100  duration-200 hover:cursor-pointer hover:bg-white  hover:text-hoverTextColor ">
               <IoMdCart className="text-xl  " />
               <p className="text-sm font-semibold">
-                <FormattedPrice amount={0} />
+                <FormattedPrice amount={total} />
               </p>
               <span className="absolute -right-2 -top-1 flex h-5 w-5 items-center justify-center rounded-full  bg-white text-xs font-semibold text-orange-600 shadow-xl shadow-black">
                 {cart.products.length}
@@ -169,6 +174,7 @@ const Header = () => {
                 <h2 className="font-somar">Arabic</h2>
               </a>
             )}
+            <MdLanguage className="text-xl" />
           </div>
         </NavbarItem>
       </NavbarContent>
