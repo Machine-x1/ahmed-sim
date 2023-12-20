@@ -16,7 +16,7 @@ const Footer = () => {
       <footer className=" bg-hoverTextColor text-slate-200 lg:text-left">
         {/* <!-- Main container div: holds the entire content of the footer --> */}
         <div className="mx-6 py-10 text-center md:text-left">
-          <div className="grid-1 grid gap-8 md:grid-cols-2  lg:grid-cols-4 ">
+          <div className="grid-1 grid gap-8 md:grid-cols-2  lg:grid-cols-3 ">
             {/* <!-- Logo section --> */}
             <div className="">
               <h6 className="mb-4 flex items-center justify-center font-semibold uppercase md:justify-start">
@@ -58,7 +58,7 @@ const Footer = () => {
             </div>
             {/* <!-- Contact section --> */}
             <div className="">
-              <h6 className="mb-4  flex justify-center font-semibold uppercase md:justify-start">
+              <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
                 {t('contact-us')}
               </h6>
               <p className="mb-4 flex items-center justify-center md:justify-start">
@@ -73,7 +73,7 @@ const Footer = () => {
                 </svg>
                 Lulu Mall, Salem Al Mubarak Street 30 Ln, Salmiya, Kuwait
               </p>
-              <p className="mb-4 flex items-center justify-center md:justify-start">
+              {/* <p className="mb-4 flex items-center justify-center md:justify-start">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -84,7 +84,7 @@ const Footer = () => {
                   <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
                 </svg>
                 Creative.amer.87@gmail.com
-              </p>
+              </p> */}
               <p className="mb-4 flex items-center justify-center md:justify-start">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -102,14 +102,14 @@ const Footer = () => {
               </p>
             </div>
             {/* <!-- Products section --> */}
-            <div className="w-full">
+            {/* <div className="w-full">
               <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
                 {t('about-us')}
               </h6>
               <p className="flex items-center justify-center md:justify-start">
                 {t('footer.about')}
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
 

@@ -5,7 +5,7 @@ interface Amount {
 const FormattedPrice = ({ amount }: Amount) => {
   const formattedAmount = amount?.toLocaleString('en-US', {
     style: 'currency',
-    currency: 'USD',
+    currency: 'KWD',
     maximumFractionDigits: 2,
   });
   return <span>{formattedAmount}</span>;
