@@ -27,13 +27,13 @@ const Footer = () => {
 
             {/* <!-- Useful links section --> */}
             <div className="">
-              <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
+              <h6 className="mb-4 flex items-center justify-center font-semibold uppercase md:justify-start">
                 {t('footer.stay-connected')}
               </h6>
               <p className="mb-4 flex items-center justify-center md:justify-start">
                 {t('footer.stay-connected-body')}
               </p>
-              <div className="flex justify-start  gap-6 ">
+              <div className="flex justify-center gap-6  md:justify-start ">
                 <Link
                   href="https://www.instagram.com/the_simracingcorner/"
                   target="_blank"

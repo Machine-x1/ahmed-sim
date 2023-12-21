@@ -16,8 +16,6 @@ import ProductDataSwiper from '@/component/modules/ProductsDataSwiper';
 import Sponsors from '@/component/modules/Sponsors';
 import { Main } from '@/component/templates/Main';
 
-// import { useTranslation } from 'react-i18next';
-
 const Index = ({
   productsData,
   lang,
@@ -31,7 +29,7 @@ const Index = ({
     <Main meta={<Meta />}>
       <div
         id="home"
-        className="mx-auto w-full max-w-[1920px] scroll-smooth bg-secondaryBlack "
+        className="mx-auto w-full max-w-[1920px]  bg-secondaryBlack "
       >
         <Banner />
         <ProductFeatures />

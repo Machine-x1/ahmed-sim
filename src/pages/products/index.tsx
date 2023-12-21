@@ -122,7 +122,10 @@ const ProductsPage = ({
           setValue(value.target.value);
         }}
       />
-      <div id="home" className="mx-auto w-full max-w-[1920px] bg-bodyColor ">
+      <div
+        id="products"
+        className="mx-auto w-full max-w-[1920px] bg-bodyColor "
+      >
         <div className="h-full w-full">
           <div className="top-0 h-full w-full" />
           <section className="flex w-full ">
