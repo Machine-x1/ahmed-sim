@@ -1,4 +1,5 @@
 /* eslint-disable react/button-has-type */
+
 import {
   Button,
   Card,
@@ -49,7 +50,7 @@ const NewProductCard = ({ item, lang }: { item?: any; lang?: any }) => {
               <Image
                 className=" max-h-60  w-full  object-cover  object-center"
                 src={item?.images[0]}
-                alt={item?.name.en}
+                alt={item?.name[languageToUse] || 'Product image'}
                 width="100%"
                 height="100%"
                 removeWrapper
