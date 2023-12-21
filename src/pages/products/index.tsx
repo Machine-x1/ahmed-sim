@@ -169,14 +169,28 @@ export default ProductsPage;
 export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
-  const data = await getProducts();
-  const getLang = context.locale;
+  try {
+    const data = await getProducts(); // Assuming getProducts() retrieves data from the API
+    const getLang = context.locale || 'en'; // Set 'en' as default language if not provided
 
-  return {
-    props: {
-      products: data.products,
-      meta: data.meta,
-      lang: getLang,
-    },
-  };
+    if (!data || !data.products || !data.meta) {
+      // Throw an error if data is missing or in an unexpected format
+      throw new Error('Data from API is missing or in an unexpected format');
+    }
+
+    return {
+      props: {
+        products: data.products,
+        meta: data.meta,
+        lang: getLang || 'en',
+      },
+    };
+  } catch (error) {
+    return {
+      redirect: {
+        destination: '/500', // Redirect to a custom 500 error page
+        permanent: false,
+      },
+    };
+  }
 };

@@ -6,7 +6,6 @@ class MyDocument extends Document {
       <Html
         dir={this.props.locale === 'ar' ? 'rtl' : 'ltr'}
         lang={this.props.locale || 'en'}
-        scroll-smooth
       >
         <Head />
 

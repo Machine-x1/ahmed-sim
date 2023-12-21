@@ -19,11 +19,22 @@ import { setProdctCart } from '@/apps/redux/slice/cartSlice';
 import FormattedPrice from './FormattedPrice';
 
 // const NewProductCard = ({ item, lang }: { item?: ProductType; lang: any }) => {
-const NewProductCard = ({ item, lang }: { item?: any; lang: any }) => {
+const NewProductCard = ({ item, lang }: { item?: any; lang?: any }) => {
   const dispatch = useDispatch();
   // const [isHovered, setIsHovered] = useState(false);
   const { t } = useTranslation('common');
   // const { cart } = useSelector((state: RootState) => state.cart);
+  const determineLanguage = (): string => {
+    // Check if the provided 'lang' exists and has a value
+    if (lang && lang !== '') {
+      return lang; // Return the provided 'lang'
+    }
+    return 'en'; // Return 'en' as the default language
+  };
+
+  // Get the language to use
+  const languageToUse = determineLanguage();
+
   return (
     <div className="relative  ">
       <Card
@@ -38,7 +49,7 @@ const NewProductCard = ({ item, lang }: { item?: any; lang: any }) => {
               <Image
                 className=" max-h-60  w-full  object-cover  object-center"
                 src={item?.images[0]}
-                alt={item?.name[lang]}
+                alt={item?.name.en}
                 width="100%"
                 height="100%"
                 removeWrapper
@@ -50,7 +61,7 @@ const NewProductCard = ({ item, lang }: { item?: any; lang: any }) => {
             <div className="mx-auto  flex w-full flex-col items-center justify-center gap-4">
               <div className=" flex w-full flex-col  items-center justify-between ">
                 <h5 className="text-xl tracking-tight text-mainOrange">
-                  {item?.name[lang] || item?.name.en}
+                  {item?.name[languageToUse] || item?.name.en}
                 </h5>
                 <p className="  flex items-center justify-end">
                   <span className="text-lg font-bold text-orange-500">

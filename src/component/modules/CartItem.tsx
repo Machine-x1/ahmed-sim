@@ -57,21 +57,6 @@ const CartItem = () => {
                   <p className="text-gray-500">Qty: {item?.quantity}</p>
                 </div>
               </div>
-              {/* quantity */}
-              {/* <div className=" absolute  end-1/4 top-auto flex w-20 items-center  justify-center  border border-slate-300 p-2 ">
-                <div className="flex w-10 items-center  justify-center ">
-                    <Button onClick={() => dispatch(decreaseQuantity(item._id))}>
-                 <span  className="cursor-pointer">
-                    <FiChevronLeft size={25} />
-                  </span>
-               </Button>
-                  <Button onClick={() => dispatch(increaseQuantity(item._id))}>
-                  <span  className="cursor-pointer">
-                    <FiChevronRight size={25} />
-                  </span>
-                  </Button>
-                </div>
-              </div> */}
             </div>
             <Divider className="my-4" />
           </div>

@@ -57,7 +57,7 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
           <Image
             className="h-32 w-full object-cover object-center"
             src={imageSrc}
-            alt={product?.name[lang]}
+            alt={product?.name.en}
             width="100%"
             height="100%"
           />
@@ -97,7 +97,7 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
               </div>
             </div>
             <div className="lg:col-span-2 lg:row-span-2 lg:row-end-2">
-              <h1 className="md: text-2xl font-bold text-gray-900 md:text-3xl">
+              <h1 className=" text-2xl font-bold text-gray-900 md:text-3xl">
                 {product?.name[lang]}
               </h1>
               {/* <div className="mt-5 flex  flex-col  ">

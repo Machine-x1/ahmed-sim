@@ -79,9 +79,10 @@ const ContactForm = () => {
               <Input
                 type="email"
                 variant="underlined"
-                size="md"
+                size="lg"
                 required
-                label="Email"
+                // label="Email"
+                placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -91,7 +92,7 @@ const ContactForm = () => {
                 placeholder="Enter your Message here"
                 disableAnimation
                 disableAutosize
-                size="md"
+                size="lg"
                 required
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
