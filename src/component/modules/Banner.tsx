@@ -12,11 +12,9 @@ const Banner = () => {
   return (
     <div
       id="banner"
-      className="h-screen  w-full max-w-full bg-cover lg:h-[750px]"
+      className="relative h-screen bg-cover bg-center lg:h-[750px]"
       style={{
         backgroundImage: "url('/images/banner-img.jpg')",
-        objectFit: 'cover',
-        // objectPosition: 'center center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundAttachment: 'fixed',

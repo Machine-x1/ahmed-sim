@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // eslint-disable-next-line import/no-extraneous-dependencies
 import type { CookieValueTypes } from 'cookies-next';
 import { getCookie, setCookie } from 'cookies-next';
@@ -52,25 +53,45 @@ export default Index;
 export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
-  const { req, res } = context;
-  const getToken = getCookie('token', { req, res });
-  const getLang = context.locale;
-  setCookie('lang', getLang, { req, res });
-  if (!getToken) {
-    await createTokenAndUser({ req, res });
+  try {
+    const { req, res } = context;
+    const getToken = getCookie('token', { req, res });
+    const getLang = context.locale || 'en'; // Set 'en' as default language
+
+    setCookie('lang', getLang, { req, res });
+
+    if (!getToken) {
+      await createTokenAndUser({ req, res });
+    }
+
+    const res2 = await fetch(`${process.env.API_EXTRANL}/products`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    });
+
+    if (!res2.ok) {
+      throw new Error(`Failed to fetch products. Status: ${res2.status}`);
+    }
+    const productsData = await res2.json();
+    if (!productsData?.data?.products) {
+      throw new Error('Products data not available or in unexpected format');
+    }
+    return {
+      props: {
+        productsData: productsData.data.products,
+        lang: getLang,
+      },
+    };
+  } catch (error) {
+    // console.error('Error in getServerSideProps:', error.message);
+    return {
+      redirect: {
+        destination: '/500', // Redirect to a custom 500 error page
+        permanent: false,
+      },
+    };
   }
-  const res2 = await fetch(`${process.env.API_EXTRANL}/products`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    },
-  });
-  const productsData = await res2.json();
-  return {
-    props: {
-      productsData: productsData.data.products,
-      lang: getLang,
-    },
-  };
 };

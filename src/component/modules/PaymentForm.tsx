@@ -15,17 +15,6 @@ import FormattedPrice from './FormattedPrice';
 
 const PaymentForm = () => {
   const router = useRouter();
-
-  // const dispatch = useDispatch();
-  // const { productStore } = useSelector((state: any) => state?.shopping);
-  // const [totalAmt, setTotalAmt] = useState(0);
-  // useEffect(() => {
-  //   let amt = 0;
-  //   productData.map((item: any) => {
-  //     amt += item.price * item.quantity;
-  //   });
-  //   setTotalAmt(amt);
-  // }, [productData]);
   const { t } = useTranslation('cart');
   const { cart } = useSelector((state: RootState) => state.cart);
   const calculateTotalPrice = () => {
@@ -46,12 +35,7 @@ const PaymentForm = () => {
       .join(', ');
     const message = `Order Summary%0ATotal Price: $${totalPrice}%0AProducts: ${products}`;
     const phoneNumber = '+96569399851';
-    // const message = `Order Summary%%0ATotal Price: $${total} %%0AProducts: ${cart.products.map(
-    //   (product: any) => `${product.name} x ${product.quantity}`
-    // )}`;
-
     const whatsappLink = `https://wa.me/${phoneNumber}/?text=${message}`;
-
     router.push(whatsappLink);
   };
   return (
@@ -68,10 +52,8 @@ const PaymentForm = () => {
       <div className="border-b-[1px] border-b-slate-300 py-2">
         <div className="mb-2 flex max-w-lg items-center justify-between">
           <p className="font-light uppercase">{t('shipping')}</p>
-          <p>
-            {/* <FormattedPrice amount={} /> */}
-            $$
-          </p>
+          <p>{/* <FormattedPrice amount={} /> */}</p>
+          Shipping fees will be displayed at checkout
         </div>
       </div>
       <div className="border-b-[1px] border-b-slate-300 py-2">

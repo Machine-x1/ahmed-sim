@@ -67,7 +67,7 @@ const Meta = () => {
           {
             property: 'keywords',
             content:
-              'Sim Racing Gear, Racing Wheels, Racing Pedals, Simulated Racing Cockpits, Virtual Racing Equipment, Racing Simulators, Racing Accessories, High-Performance Racing Gear, Sim Racing Enthusiast Supplies, Immersive Racing Experience, Quality Sim Racing Equipment, Virtual Motorsport Gear, Racing Simulation Hardware, Precision Racing Controls, Gaming Racing Peripherals, Competitive Sim Racing Gear, Virtual Track Accessories, Ultimate Sim Racing Setup, Customizable Racing Rigs, Professional-grade Sim Racing Equipment,',
+              ' Racing Wheels,Racing Pedals,Simulated Racing Cockpits,Virtual Racing Equipment,Racing Simulators,Racing Accessories,High-Performance Racing Wheels,High-Performance Racing Pedals,High-Performance Racing Simulators,High-Performance Racing Accessories,Enthusiast Racing Wheels,Enthusiast Racing Pedals,Enthusiast Racing Cockpits,Gaming Racing Wheels,Gaming Racing Pedals,Gaming Racing Cockpits,Virtual Track Setup,Virtual Track Racing Gear,Customizable Racing Gear,Customizable Racing Setups,Sim Racing Gear, Racing Wheels, Racing Pedals, Simulated Racing Cockpits, Virtual Racing Equipment, Racing Simulators, Racing Accessories, High-Performance Racing Gear, Sim Racing Enthusiast Supplies, Immersive Racing Experience, Quality Sim Racing Equipment, Virtual Motorsport Gear, Racing Simulation Hardware, Precision Racing Controls, Gaming Racing Peripherals, Competitive Sim Racing Gear, Virtual Track Accessories, Ultimate Sim Racing Setup, Customizable Racing Rigs, Professional-grade Sim Racing Equipment,',
           },
         ]}
         twitter={{
