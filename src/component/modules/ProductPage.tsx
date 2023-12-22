@@ -19,7 +19,6 @@ import useTranslation from 'next-translate/useTranslation';
 import type { Key } from 'react';
 import { useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
-import { BiWorld } from 'react-icons/bi';
 import { IoMdCart } from 'react-icons/io';
 import { MdFreeCancellation, MdProductionQuantityLimits } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
@@ -136,11 +135,6 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
                 </span>
               </div>
               <ul className="mt-8 flex flex-col gap-4  ">
-                <li className="text-md flex items-center gap-2 text-left font-medium text-gray-600">
-                  <BiWorld className="mr-2 block h-5 w-5 align-middle text-gray-500" />
-                  {t('free-shipping-worldwide')}
-                </li>
-
                 <li className="text-md flex items-center gap-2 text-left font-medium text-gray-600">
                   <MdFreeCancellation className="mr-2 block h-5 w-5 align-middle text-gray-500" />
                   {t('cancel-anytime')}
