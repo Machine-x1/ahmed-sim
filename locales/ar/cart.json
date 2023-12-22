@@ -1,10 +1,10 @@
 {
   "order-summary": "ملخص الطلب",
   "subtotal": "حاصل الجمع",
-  "shipping": "شحن",
+  "Shipping fees will be displayed at checkout": "سيتم عرض رسوم الشحن عند إتمام عملية الشراء",
   "total-price": "السعر الكلي",
   "shopping-cart": "عربة التسوق",
   "empty-cart": "سلة المنتجات الخاصة بك فارغة حاليا",
   "shop-now": "تسوق الأن",
-  "checkout": "ادفع"
+  "checkout": " اتمام عمليه الشراء "
 }

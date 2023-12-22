@@ -95,17 +95,15 @@ const Header = () => {
   const total = calculateTotalPrice();
   return (
     <Navbar
-      isBordered
-      isBlurred
       disableAnimation
       disableScrollHandler
       isMenuOpen={isMenuOpen}
-      shouldHideOnScroll
+      // shouldHideOnScroll
       onMenuOpenChange={setIsMenuOpen}
       maxWidth="2xl"
       height="90px"
-      position="sticky"
-      className="z-50 flex w-full bg-hoverTextColor "
+      // position="static"
+      className="sticky top-0 z-50 flex w-full bg-hoverTextColor "
     >
       {/* <div className="sticky top-0  z-50 flex h-20 w-full  bg-hoverTextColor "> */}
 
