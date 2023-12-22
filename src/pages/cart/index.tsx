@@ -44,7 +44,7 @@ const Index = () => {
             <p className="w-full border-[1px] border-orange-600 p-2 text-center">
               {t('empty-cart')}
             </p>
-            <Link href="/">
+            <Link href="/products">
               <button
                 onClick={() => router.push('/products')}
                 className="rounded-md bg-mainOrange px-6 py-2 text-white duration-200 "

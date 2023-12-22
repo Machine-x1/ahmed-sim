@@ -34,7 +34,7 @@ const CartItem = () => {
                 src={item?.images[0]}
                 width="100%"
                 height="100%"
-                alt=""
+                alt={item?.name[lang] || item?.name.en}
                 radius="lg"
                 className=" h-24 w-24 object-cover  object-center"
                 loading="lazy"

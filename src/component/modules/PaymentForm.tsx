@@ -51,9 +51,11 @@ const PaymentForm = () => {
       </div>
       <div className="border-b-[1px] border-b-slate-300 py-2">
         <div className="mb-2 flex max-w-lg items-center justify-between">
-          <p className="font-light uppercase">{t('shipping')}</p>
+          <p className="font-light uppercase">
+            {t('Shipping fees will be displayed at checkout')}
+          </p>
           <p>{/* <FormattedPrice amount={} /> */}</p>
-          Shipping fees will be displayed at checkout
+          {/* {t("Shipping fees will be displayed at checkout")} */}
         </div>
       </div>
       <div className="border-b-[1px] border-b-slate-300 py-2">

@@ -44,7 +44,7 @@ const callouts = [
   {
     name: 'WHEEL BASES    ',
     description: 'Daily commute essentials',
-    imageSrc: '/images/R16-1.avif',
+    imageSrc: '/images/DD2_prime.png',
     imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
     href: '#wheelBasis',
   },
