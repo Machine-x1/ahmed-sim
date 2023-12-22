@@ -1,8 +1,9 @@
 {
+  "home": "الرئيسية",
+  "steer-Wheels": "عجلات القيادة",
   "accessories": "الإكسسوارات",
-  "steerWheels": "عجلات القيادة",
-  "peddals": "الدواسات",
+  "pedals": "الدواسات",
   "bundles": "الحزم",
-  "wheelBases": "أساس العجلة",
-  "digitalDashes": "لوحات رقمية"
+  "wheel-Bases": "أساس العجلة",
+  "digital-Dashes": "لوحات رقمية"
 }

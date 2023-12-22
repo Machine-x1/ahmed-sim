@@ -17,7 +17,7 @@ export const ProductSection = ({
   lang: any;
 }) => {
   return (
-    <div className="flex w-full py-4 ">
+    <div className=" flex w-full ">
       {productsData.length > 0 ? (
         <div>
           <div id={id} className="my-4 flex w-full items-center justify-center">

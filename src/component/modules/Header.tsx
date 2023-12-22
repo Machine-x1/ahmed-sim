@@ -51,17 +51,20 @@ const Header = () => {
 
   const menuItems = [
     {
-      name: 'accessories',
-      href: '/products/#accessories',
+      name: 'home',
+      href: '/',
     },
-
     {
-      name: 'steerWheels',
+      name: 'steer-Wheels',
       href: '/products/#steerWheels',
     },
     {
-      name: 'peddals',
-      href: '/products/#peddals',
+      name: 'accessories',
+      href: '/products/#accessories',
+    },
+    {
+      name: 'pedals',
+      href: '/products/#pedals',
     },
     {
       name: 'bundles',
@@ -69,11 +72,11 @@ const Header = () => {
     },
 
     {
-      name: 'wheelBases',
+      name: 'wheel-Bases',
       href: '/products/#wheelBases',
     },
     {
-      name: 'digitalDashes',
+      name: 'digital-Dashes',
       href: '/products/#DigitalDashes',
     },
   ];
@@ -95,15 +98,12 @@ const Header = () => {
   const total = calculateTotalPrice();
   return (
     <Navbar
-      disableAnimation
-      disableScrollHandler
       isMenuOpen={isMenuOpen}
-      // shouldHideOnScroll
       onMenuOpenChange={setIsMenuOpen}
       maxWidth="2xl"
-      height="90px"
-      // position="static"
-      className="sticky top-0 z-50 flex w-full bg-hoverTextColor "
+      // height="70px"
+      aria-label="Main Navigation"
+      className="fixed top-0 z-50  flex w-full  bg-hoverTextColor "
     >
       {/* <div className="sticky top-0  z-50 flex h-20 w-full  bg-hoverTextColor "> */}
 
@@ -127,9 +127,7 @@ const Header = () => {
         {menuItems.map((item) => (
           <NavbarItem
             key={item.name}
-            className={`${
-              pathname === '/contact-us/' && 'active font-bold   text-white '
-            }`}
+            className={`${'active font-bold   text-white '}`}
           >
             <div
               onClick={() => router.push(item.href)}

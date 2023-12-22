@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 /* eslint-disable react/button-has-type */
 
 import {
@@ -48,7 +49,7 @@ const NewProductCard = ({ item, lang }: { item?: any; lang?: any }) => {
           <CardBody className=" relative flex w-full  items-center justify-center overflow-hidden rounded-xl md:h-72">
             <Link href={`/products/${item?.slug}`}>
               <Image
-                className=" max-h-60  w-full  object-cover  object-center"
+                className=" max-h-68  w-full  object-cover  object-center"
                 src={item?.images[0]}
                 alt={item?.name[languageToUse] || 'Product image'}
                 width="100%"

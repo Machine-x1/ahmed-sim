@@ -11,7 +11,6 @@ import { Toaster } from 'react-hot-toast';
 import internalrequestHandler from '@/apps/helpers/InternalrequestHandler';
 import getProducts from '@/apps/server/products/getProducts';
 import { Meta } from '@/component/layouts/Meta';
-import Categories from '@/component/modules/Categories';
 import { ProductSection } from '@/component/modules/ProductSection';
 import SearchBar from '@/component/modules/SearchBar';
 import { Main } from '@/component/templates/Main';
@@ -75,10 +74,10 @@ const ProductsPage = ({
   const categories = [
     { title: 'STEERING WHEELS', key: 'steer-wheels', id: 'steerWheels' },
     { title: 'PEDALS', key: 'paddle', id: 'pedals' },
-    { title: 'BUNDLES', key: 'bundles', id: 'bundles' },
+    { title: 'BUNDLES', key: 'bundles', id: 'Bundles' },
     { title: 'WHEEL BASES', key: 'wheel-bases', id: 'wheelBases' },
     { title: 'ACCESSORIES', key: 'accessories', id: 'accessories' },
-    { title: 'DIGITAL DASHES', key: 'digital-dashes', id: 'digital-dashes' },
+    { title: 'DIGITAL DASHES', key: 'digital-dashes', id: 'DigitalDashes' },
   ];
 
   const fetchPag = async (currentPage: any) => {
@@ -114,20 +113,17 @@ const ProductsPage = ({
 
   return (
     <Main meta={<Meta />}>
-      <Categories // value={value}
+      {/* <Categories // value={value}
         onClick={(value: string) => setValue(value)}
         onChange={(value: {
           target: { value: React.SetStateAction<string> };
         }) => {
           setValue(value.target.value);
         }}
-      />
-      <div
-        id="products"
-        className="mx-auto w-full max-w-[1920px] bg-bodyColor "
-      >
+      /> */}
+      <div id="products" className="mx-auto mt-14 w-full max-w-[1920px] ">
         <div className="h-full w-full">
-          <div className="top-0 h-full w-full" />
+          <div className=" h-full w-full" />
           <section className="flex w-full ">
             <div className=" mx-auto flex w-full max-w-screen-xl flex-col gap-4 py-10 ">
               <div className=" w-full ">

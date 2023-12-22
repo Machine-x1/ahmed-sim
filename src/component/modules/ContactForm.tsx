@@ -5,7 +5,9 @@ import { Button, Divider, Input, Link, Textarea } from '@nextui-org/react';
 import useTranslation from 'next-translate/useTranslation';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
-import { BsInstagram } from 'react-icons/bs';
+import { BiHome } from 'react-icons/bi';
+import { FiInstagram } from 'react-icons/fi';
+import { MdWhatsapp } from 'react-icons/md';
 
 import internalrequestHandler from '@/apps/helpers/InternalrequestHandler';
 
@@ -47,29 +49,30 @@ const ContactForm = () => {
         <div className=" mx-auto grid w-full grid-cols-1 items-center justify-center gap-4 md:grid-cols-2  xl:grid-cols-2">
           <div className="mx-auto flex h-full w-1/2 flex-col items-center justify-center gap-8">
             <p className="">{t('contact-body')}</p>
-            <p>+ 965 6939 9851</p>
-            <div className="flex  items-center justify-center gap-2  ">
-              <span className="  ">
-                Connect with us on social media for the latest updates, events,
-                and exclusive content.
-              </span>
-              <Link
-                href="https://www.instagram.com/the_simracingcorner/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="follow us in social media"
-              >
-                <Button
-                  className="hover:bg-hoverTextColor"
-                  isIconOnly
-                  color="default"
-                  aria-label="instagram"
+            <p className=" flex items-center justify-center gap-2 md:justify-start">
+              <BiHome size={30} color="#6a6a6a" />
+              Lulu Mall, Salem Al Mubarak Street 30 Ln, Salmiya, Kuwait
+            </p>
+            <div className="flex w-full gap-6">
+              <p className="flex items-center justify-center gap-2 md:justify-start ">
+                <MdWhatsapp size={30} color="#25D366" /> + 965 6939 9851
+              </p>
+              <p className="flex items-center justify-center gap-2 md:justify-start ">
+                <Link
+                  href="https://www.instagram.com/the_simracingcorner/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="follow us in social media"
+                  className=" "
                 >
-                  <span className="socialLink">
-                    <BsInstagram />
-                  </span>
-                </Button>
-              </Link>
+                  <FiInstagram
+                    size={30}
+                    aria-label="follow us in social media"
+                    className="hover:text-hoverTextColor "
+                    color="#E1306C"
+                  />
+                </Link>
+              </p>
             </div>
 
             <div />
@@ -82,14 +85,14 @@ const ContactForm = () => {
                 size="lg"
                 required
                 // label="Email"
-                placeholder="Enter your email"
+                placeholder={t('enter-email')}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
               <Textarea
                 key=""
                 variant="underlined"
-                placeholder="Enter your Message here"
+                placeholder={t('enter-message')}
                 disableAnimation
                 disableAutosize
                 size="lg"
