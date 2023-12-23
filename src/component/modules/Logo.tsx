@@ -14,9 +14,10 @@ const Logo = () => {
         <Image
           alt="logo"
           src="/images/logo.svg"
-          className=" h-20 "
-          width={200}
-          height={200}
+          className="   h-full w-full object-contain object-center  "
+          width={100}
+          height={100}
+          priority
         />
       </div>
     </Link>

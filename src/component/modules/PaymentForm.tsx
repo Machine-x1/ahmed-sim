@@ -25,17 +25,22 @@ const PaymentForm = () => {
     return totalPrice;
   };
   const total = calculateTotalPrice();
+  console.log(cart.products);
 
   const handleCheckout = () => {
     // make a whatsapp message with the products and total price
-
     const totalPrice = total.toFixed(2);
     const products = cart.products
       .map((product: any) => `${product.name} x ${product.quantity}`)
       .join(', ');
-    const message = `Order Summary%0ATotal Price: $${totalPrice}%0AProducts: ${products}`;
+    const message = `Order Summary \n Total Price: $${totalPrice} \nProducts: ${products}`;
     const phoneNumber = '+96569399851';
-    const whatsappLink = `https://wa.me/${phoneNumber}/?text=${message}`;
+
+    const whatsappLink = `https://wa.me/${phoneNumber}/?text=${encodeURIComponent(
+      message
+    )}`;
+
+    // const whatsappLink = `https://wa.me/${phoneNumber}/?text=${message}`;
     router.push(whatsappLink);
   };
   return (
