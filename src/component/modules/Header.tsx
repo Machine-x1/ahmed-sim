@@ -51,33 +51,38 @@ const Header = () => {
 
   const menuItems = [
     {
-      name: 'Steer Wheels',
+      name: 'home',
+      key: 'home',
+      href: '/',
+    },
+    {
+      name: 'steer-Wheels',
       key: 'steer-Wheels',
       href: '/products/#steerWheels',
     },
     {
-      name: 'Accessories',
+      name: 'accessories',
       key: 'accessories',
       href: '/products/#accessories',
     },
     {
-      name: 'Pedals',
+      name: 'pedals',
       key: 'pedals',
       href: '/products/#pedals',
     },
     {
-      name: 'Bundles',
+      name: 'bundles',
       key: 'bundles',
       href: '/products/#Bundles',
     },
 
     {
-      name: 'Wheel Bases',
+      name: 'wheel-Bases',
       key: 'wheel-Bases',
       href: '/products/#wheelBases',
     },
     {
-      name: 'Digital Dashes',
+      name: 'digital-Dashes',
       key: 'digital-Dashes',
       href: '/products/#DigitalDashes',
     },
@@ -118,7 +123,6 @@ const Header = () => {
       <NavbarContent className=" pr-3" justify="center">
         <NavbarBrand>
           <Logo />
-          <p className="font-bold text-inherit" />
         </NavbarBrand>
       </NavbarContent>
 
@@ -154,12 +158,6 @@ const Header = () => {
               </span>
             </div>
           </div>
-          {/* {orderData?.order?.length > 0 && (
-            <Link href="/order" className=" cursor-pointer gap-x-1 px-2">
-              <BsBookmarks className="text-2xl" />
-              <p className="text-sm font-semibold">Orders</p>
-            </Link>
-          )} */}
         </NavbarItem>
         <NavbarItem className="flex">
           <div className="relative flex items-center justify-center gap-x-1 rounded-full border-[1px] border-solid border-white bg-hoverTextColor  px-3 py-1.5  text-slate-100 duration-200 hover:cursor-pointer hover:bg-white  hover:text-hoverTextColor ">
