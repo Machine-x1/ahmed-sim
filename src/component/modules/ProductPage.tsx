@@ -36,12 +36,12 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
       return null;
     }
 
-    return product.images.slice(1).map((imageSrc: string, index: Key) => {
+    return product.images.slice(0, 3).map((imageSrc: string, index: Key) => {
       if (!imageSrc) {
         return null;
       }
 
-      const handleClick = () => setCurrentImg(Number(index) + 1);
+      const handleClick = () => setCurrentImg(Number(index));
 
       return (
         <Card
@@ -74,8 +74,8 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
             <BreadcrumbItem> {product?.name[lang]}</BreadcrumbItem>
           </Breadcrumbs>
           <div className="lg:col-gap-12  xl:col-gap-16 mt-8  grid grid-cols-1 gap-8  lg:mt-12 lg:grid-cols-5 lg:gap-16">
-            <div className=" lg:col-span-3 lg:row-end-1">
-              <div className=" lg:flex lg:items-start">
+            <div className="  lg:col-span-3 lg:row-end-1 ">
+              <div className=" lg:flex lg:items-start lg:gap-12">
                 <div className="lg:order-2 lg:ml-5">
                   <div className="h-[450px] min-h-[450px] max-w-xl overflow-hidden rounded-lg ">
                     <Image
@@ -88,7 +88,7 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
                   </div>
                 </div>
 
-                <div className=" mt-2 w-full    lg:order-1 lg:w-32 lg:shrink-0">
+                <div className=" mt-4  w-full    lg:order-1 lg:w-32 lg:shrink-0">
                   <div className="flex w-full items-start   justify-center  gap-2 lg:flex-col">
                     {renderImageCards()}
                   </div>

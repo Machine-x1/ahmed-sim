@@ -12,7 +12,7 @@ const Main = (props: IMainProps) => (
   <div className="overflow-hidden bg-bodyColor  ">
     {props.meta}
     <Header />
-    <div>{props.children}</div>
+    <div className=" mt-16  ">{props.children}</div>
     <Footer />
   </div>
 );
