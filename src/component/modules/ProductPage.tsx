@@ -77,9 +77,9 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
             <div className=" lg:col-span-3 lg:row-end-1">
               <div className=" lg:flex lg:items-start">
                 <div className="lg:order-2 lg:ml-5">
-                  <div className="h-[450px] max-w-xl overflow-hidden rounded-lg">
+                  <div className="h-[450px] min-h-[450px] max-w-xl overflow-hidden rounded-lg ">
                     <Image
-                      className="h-full w-full max-w-full object-cover object-center"
+                      className="h-[450px]  w-full max-w-full object-cover object-center"
                       src={product?.images[currentImg]}
                       width="100%"
                       height="100%"

@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable @typescript-eslint/no-shadow */
 
-import { Button } from '@nextui-org/react';
+import { Button, Pagination } from '@nextui-org/react';
 import { getCookie } from 'cookies-next';
 import type { GetServerSidePropsContext } from 'next';
 import Link from 'next/link';
@@ -18,12 +18,15 @@ import { AdminProductSection } from '@/component/modules/AdminProductSection';
 import SearchBar from '@/component/modules/SearchBar';
 
 /* eslint-disable no-underscore-dangle */
-const index = ({ products, lang }: any) => {
+const index = ({ products, lang, meta }: any) => {
   const [value, setValue] = useState('All Products');
   const [serverData] = useState(products);
   const [productsData, setProductsData] = useState(serverData);
   const [searchValue, setSearchValue] = useState('');
   // const [metaData, setMetaData] = useState(meta);
+  const [metaData, setMetaData] = useState(meta);
+  const [currentPage, setCurrentPage] = useState(1);
+
   useEffect(() => {
     const getCaggory = async () => {
       if (value !== 'All Products' && value.length > 1) {
@@ -72,6 +75,37 @@ const index = ({ products, lang }: any) => {
     { title: 'ACCESSORIES', key: 'accessories', id: 'accessories' },
     { title: 'DIGITAL DASHES', key: 'digital-dashes', id: 'digital-dashes' },
   ];
+  const fetchPag = async (currentPage: any) => {
+    try {
+      const data = await internalrequestHandler(
+        'apiProduct',
+        'GET',
+        {},
+        {},
+        { page: currentPage, limit: metaData.limit }
+      );
+      setProductsData(data.data.products);
+      setMetaData(data.data.meta);
+      return true;
+    } catch (error) {
+      return error;
+    }
+  };
+  useEffect(() => {
+    const fetchProducts = async () => {
+      await fetchPag(currentPage);
+    };
+    if (currentPage !== 1) {
+      fetchProducts();
+    } else {
+      setProductsData(serverData);
+    }
+  }, [currentPage]);
+
+  const handlePageChange = (newPage: any) => {
+    setCurrentPage(newPage);
+  };
+
   return (
     <>
       <AdminNav />
@@ -87,25 +121,8 @@ const index = ({ products, lang }: any) => {
                 <div className="flex-1 space-y-1 divide-y bg-white px-3">
                   <ul className="space-y-2 pb-2">
                     <li>
-                      <Link href="/admin" className="">
-                        <span className="group flex items-center rounded-lg p-2 text-base font-normal text-gray-900 hover:bg-gray-100">
-                          <svg
-                            className="h-6 w-6 text-gray-500 duration-75 transition group-hover:text-gray-900"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
-                            <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
-                          </svg>
-                          <span className="ml-3">Dashboard</span>
-                        </span>
-                      </Link>
-                    </li>
-
-                    <li>
                       <Link
-                        href="admin/"
+                        href="/admin"
                         className="group flex items-center rounded-lg p-2 text-base font-normal text-gray-900 hover:bg-gray-100 "
                       >
                         <svg
@@ -185,6 +202,16 @@ const index = ({ products, lang }: any) => {
                     ))}
                   </div>
                 </section>
+                <div className="flex w-full items-center justify-center py-12">
+                  <Pagination
+                    color="primary"
+                    size="lg"
+                    showControls
+                    total={metaData.totalPages}
+                    initialPage={1}
+                    onChange={handlePageChange}
+                  />
+                </div>
               </div>
             </main>
           </div>

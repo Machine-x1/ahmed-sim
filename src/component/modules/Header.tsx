@@ -51,32 +51,34 @@ const Header = () => {
 
   const menuItems = [
     {
-      name: 'home',
-      href: '/',
-    },
-    {
-      name: 'steer-Wheels',
+      name: 'Steer Wheels',
+      key: 'steer-Wheels',
       href: '/products/#steerWheels',
     },
     {
-      name: 'accessories',
+      name: 'Accessories',
+      key: 'accessories',
       href: '/products/#accessories',
     },
     {
-      name: 'pedals',
+      name: 'Pedals',
+      key: 'pedals',
       href: '/products/#pedals',
     },
     {
-      name: 'bundles',
+      name: 'Bundles',
+      key: 'bundles',
       href: '/products/#Bundles',
     },
 
     {
-      name: 'wheel-Bases',
+      name: 'Wheel Bases',
+      key: 'wheel-Bases',
       href: '/products/#wheelBases',
     },
     {
-      name: 'digital-Dashes',
+      name: 'Digital Dashes',
+      key: 'digital-Dashes',
       href: '/products/#DigitalDashes',
     },
   ];

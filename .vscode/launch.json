@@ -8,7 +8,7 @@
       "type": "chrome",
       "request": "launch",
       "name": "Next: Chrome",
-      "url": "https://simrckw.com/",
+      "url": "https://simrckw.com",
       "webRoot": "${workspaceFolder}"
     },
     {
