@@ -19,7 +19,7 @@ const Index = () => {
   const router = useRouter();
   return (
     <Main meta={<Meta />}>
-      <div className="mx-auto h-full  max-w-screen-xl   px-4 py-8 pb-24 xl:px-0">
+      <div className="mx-auto h-screen w-full max-w-screen-xl   px-4   py-8 pb-24 xl:px-0">
         {cart.products.length ? (
           <div className=" w-full  xl:px-0">
             <div className="flex w-full  items-center justify-center gap-y-2 pb-8  ">

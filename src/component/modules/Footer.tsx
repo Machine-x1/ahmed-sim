@@ -9,7 +9,7 @@ import Logo from './Logo';
 const Footer = () => {
   // const { t } = useTranslation('common');
   return (
-    <div className=" mx-auto max-w-[1920px]">
+    <div className="bottom-0 mx-auto max-w-[1920px]">
       <footer className=" bg-hoverTextColor text-slate-200 lg:text-left">
         {/* <!-- Main container div: holds the entire content of the footer --> */}
 
