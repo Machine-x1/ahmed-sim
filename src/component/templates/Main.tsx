@@ -11,7 +11,9 @@ type IMainProps = {
 const Main = (props: IMainProps) => (
   <div className="overflow-hidden bg-bodyColor  ">
     {props.meta}
-    <Header />
+    <div className="bg-hoverTextColor">
+      <Header />
+    </div>
     <div className=" mt-16  ">{props.children}</div>
     <Footer />
   </div>

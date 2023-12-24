@@ -40,7 +40,7 @@ const ProductDataSwiper = ({
   lang: CookieValueTypes;
 }) => {
   return (
-    <div className="w-full ">
+    <div className="w-full  ">
       <Container className=" h-full w-full">
         <div className="h-full w-full ">
           <Container className=" flex w-full gap-2 ">

@@ -35,7 +35,7 @@ const Index = ({
         <ProductFeatures />
         <ProductDataSwiper
           msg={t('featured-products')}
-          textcolor="text-slate-100"
+          textcolor="text-white"
           product={productsData}
           lang={lang}
         />
