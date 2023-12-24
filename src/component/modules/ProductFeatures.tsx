@@ -11,7 +11,7 @@ export default function ProductFeatures() {
   const router = useRouter();
   const { t } = useTranslation('common');
   return (
-    <div className="h-auto max-w-full bg-secondaryBlack lg:h-[700px]  ">
+    <div className="h-auto max-w-full bg-bodyColor  lg:h-[700px]  ">
       <main className=" relative flex h-auto flex-col items-center  overflow-hidden bg-white dark:bg-gray-800 lg:h-[700px]">
         <header className="mt-12 ">
           <h2 className=" flex w-full flex-col items-center text-center  text-6xl font-black uppercase  text-gray-800 dark:text-white ">

@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/migration-from-tailwind-2 */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable no-nested-ternary */
@@ -35,18 +36,6 @@ import FormattedPrice from './FormattedPrice';
 import Logo from './Logo';
 
 const Header = () => {
-  // const dispatch = useDispatch();
-  // const { productStore, orderData } = useSelector(
-  //   (state: any) => state.shopping
-  // );
-  // const [totalAmt, setTotalAmt] = useState(0);
-  // useEffect(() => {
-  //   let amt = 0;
-  //   productStore.map((item: Product) => {
-  //     return (amt += item.price * item.__v);
-  //   });
-  //   setTotalAmt(amt);
-  // }, [productStore]);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const menuItems = [
@@ -108,12 +97,14 @@ const Header = () => {
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
       maxWidth="2xl"
-      // height="70px"
+      disableAnimation
+      isBordered
+      disableScrollHandler
+      isBlurred
+      position="static"
       aria-label="Main Navigation"
-      className="fixed top-0 z-50  flex w-full  bg-hoverTextColor "
+      className="fixed top-0 z-50  flex w-full bg-hoverTextColor   bg-opacity-90 "
     >
-      {/* <div className="sticky top-0  z-50 flex h-20 w-full  bg-hoverTextColor "> */}
-
       <NavbarContent className="text-slate-200 lg:hidden " justify="start">
         <NavbarMenuToggle
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
