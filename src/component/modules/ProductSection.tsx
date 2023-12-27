@@ -1,5 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import { Divider } from '@nextui-org/react';
+import { useTranslation } from 'react-i18next';
 
 import type { ProductType } from '@/apps/interface/types';
 
@@ -16,14 +17,15 @@ export const ProductSection = ({
   productsData: ProductType;
   lang: any;
 }) => {
+  const { t } = useTranslation('common');
   return (
     <div className=" flex w-full ">
       {productsData.length > 0 ? (
         <div>
           <div id={id} className="my-4 flex w-full items-center justify-center">
-            <h2 className="flex w-full items-center justify-center text-3xl font-bold text-mainOrange dark:text-white">
+            <h2 className="flex w-full items-center justify-center text-xl font-bold text-mainOrange dark:text-white md:text-3xl">
               <Divider className="mx-auto w-1/4 md:w-1/3 " />
-              {title}
+              {t(title)}
               <Divider className="mx-auto w-1/4 md:w-1/3" />
             </h2>
           </div>

@@ -99,30 +99,50 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
               <h1 className=" text-2xl font-bold text-gray-900 md:text-3xl">
                 {product?.name[lang]}
               </h1>
-              {/* <div className="mt-5 flex  flex-col  ">
-                <p className="text-md  font-medium text-gray-500">
-                  {product?.description[lang]}
+              <div className="mt-5 flex  flex-col  ">
+                <p className="flex  items-center text-xl  font-medium text-gray-500">
+                  {/* {product?.description[lang]} */}
+                  <span className="mr-2 h-5 w-5  rounded-full  bg-red-500" />
+                  <span className="ml-2"> {t('sold-out')}</span>
                 </p>
-              </div> */}
+              </div>
               <div className="mt-10 flex flex-col items-center justify-between space-y-4 border-y py-4 md:flex-row md:space-y-0">
                 <div className="flex items-end">
                   <p className="text-xl font-semibold">
                     <FormattedPrice amount={product?.price} />
                   </p>
                 </div>
-                <div
-                  onClick={() =>
-                    dispatch(setProdctCart(product)) && toast.success(t('done'))
-                  }
-                  className="group flex cursor-pointer items-center"
-                >
-                  <div className="flex items-center border-r-[1px] border-r-slate-500 bg-darkText px-6 py-3 text-sm uppercase text-slate-100">
-                    {t('add-to-cart')}
+                {product?.quantity > 0 ? (
+                  <div
+                    onClick={() =>
+                      dispatch(setProdctCart(product)) &&
+                      toast.success(t('done'))
+                    }
+                    className="group flex cursor-pointer items-center"
+                  >
+                    <div className="flex items-center border-r-[1px] border-r-slate-500 bg-darkText px-6 py-3 text-sm uppercase text-slate-100">
+                      {t('add-to-cart')}
+                    </div>
+                    <span className="flex w-12 items-center justify-center bg-hoverTextColor py-3 text-xl text-slate-100 duration-200 group-hover:bg-orange-500">
+                      <IoMdCart />
+                    </span>
                   </div>
-                  <span className="flex w-12 items-center justify-center bg-hoverTextColor py-3 text-xl text-slate-100 duration-200 group-hover:bg-orange-500">
-                    <IoMdCart />
-                  </span>
-                </div>
+                ) : (
+                  <div
+                    onClick={() =>
+                      dispatch(setProdctCart(product)) &&
+                      toast.success(t('done'))
+                    }
+                    className="group flex cursor-pointer items-center"
+                  >
+                    <div className="flex items-center border-r-[1px] border-r-slate-500 bg-darkText px-6 py-3 text-sm uppercase text-slate-100">
+                      {t('pre-order')}
+                    </div>
+                    <span className="flex w-12 items-center justify-center bg-hoverTextColor py-3 text-xl text-slate-100 duration-200 group-hover:bg-orange-500">
+                      <IoMdCart />
+                    </span>
+                  </div>
+                )}
               </div>
 
               <div className="flex gap-4  text-sm text-lightText">
@@ -141,7 +161,10 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
                 </li>
                 <li className="text-md flex items-center gap-2 text-left font-medium text-gray-600">
                   <MdProductionQuantityLimits className="mr-2 block h-5 w-5 align-middle text-gray-500" />
-                  {t('qunaity-available')}: {product?.quantity}
+                  {t('quantity-available')}:{' '}
+                  {product?.quantity === 0 || product?.quantity === undefined
+                    ? 'out of stock'
+                    : product?.quantity}
                 </li>
               </ul>
             </div>

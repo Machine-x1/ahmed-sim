@@ -1,9 +1,10 @@
 {
   "home": "الرئيسية",
-  "steer-Wheels": "عجلات القيادة",
-  "accessories": "الإكسسوارات",
-  "pedals": "الدواسات",
   "bundles": "الحزم",
-  "wheel-Bases": "أساس العجلة",
-  "digital-Dashes": "لوحات رقمية"
+  "wheel-Bases": " قاعده الموتور",
+  "steering-Wheels": "عجلات القيادة",
+  "pedals": "الدواسات",
+  "digital-Dashes": "لوحات رقمية",
+  "cockpits": "قمرة القيادة للمحاكاة",
+  "accessories": "إكسسوارات"
 }
