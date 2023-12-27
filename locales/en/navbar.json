@@ -1,9 +1,10 @@
 {
   "home": "Home",
-  "steer-Wheels": "STEER WHEELS",
-  "accessories": "ACCESSORIES",
-  "pedals": "PEDALS",
-  "bundles": "BUNDLES",
-  "wheel-Bases": "WHEEL BASES",
-  "digital-Dashes": "DIGITAL DASHES"
+  "bundles": "Bundles",
+  "wheel-Bases": "Wheel Bases",
+  "steering-Wheels": "Steering Wheels",
+  "pedals": "Pedals",
+  "digital-Dashes": "Digital Dash",
+  "cockpits": "Cockpits",
+  "accessories": "Accessories"
 }

@@ -45,14 +45,19 @@ const Header = () => {
       href: '/',
     },
     {
-      name: 'steer-Wheels',
-      key: 'steer-Wheels',
-      href: '/products/#steerWheels',
+      name: 'bundles',
+      key: 'bundles',
+      href: '/products/#Bundles',
     },
     {
-      name: 'accessories',
-      key: 'accessories',
-      href: '/products/#accessories',
+      name: 'wheel-Bases',
+      key: 'wheel-Bases',
+      href: '/products/#wheelBases',
+    },
+    {
+      name: 'steering-Wheels',
+      key: 'steer-Wheels',
+      href: '/products/#steeringWheels',
     },
     {
       name: 'pedals',
@@ -60,20 +65,19 @@ const Header = () => {
       href: '/products/#pedals',
     },
     {
-      name: 'bundles',
-      key: 'bundles',
-      href: '/products/#Bundles',
-    },
-
-    {
-      name: 'wheel-Bases',
-      key: 'wheel-Bases',
-      href: '/products/#wheelBases',
-    },
-    {
       name: 'digital-Dashes',
       key: 'digital-Dashes',
       href: '/products/#DigitalDashes',
+    },
+    {
+      name: 'cockpits',
+      key: 'cockpits',
+      href: '/products/#cockpits',
+    },
+    {
+      name: 'accessories',
+      key: 'accessories',
+      href: '/products/#accessories',
     },
   ];
   const pathname = usePathname();
@@ -118,7 +122,7 @@ const Header = () => {
       </NavbarContent>
 
       <NavbarContent
-        className="hidden items-center gap-10  text-xl capitalize   xl:flex "
+        className="hidden items-center gap-10  text-xl    xl:flex "
         justify="center"
       >
         {menuItems.map((item) => (
