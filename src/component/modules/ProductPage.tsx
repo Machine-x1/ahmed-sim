@@ -1,3 +1,6 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-return-assign */
+/* eslint-disable no-nested-ternary */
 /* eslint-disable unused-imports/no-unused-vars */
 /* eslint-disable no-promise-executor-return */
 /* eslint-disable @typescript-eslint/no-use-before-define */
@@ -23,6 +26,7 @@ import useTranslation from 'next-translate/useTranslation';
 import type { Key } from 'react';
 import { useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
+import { AiOutlineStock } from 'react-icons/ai';
 import { IoMdCart } from 'react-icons/io';
 import { MdFreeCancellation, MdProductionQuantityLimits } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
@@ -38,13 +42,11 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
 
   const handlePreOrder = async (preOrderProduct: any) => {
     const totalPrice = preOrderProduct?.price;
-    // Here, you would typically trigger an API call to your backend to handle the pre-order logic
-    // For demonstration purposes, let's simulate an API call delay
+
     setPreOrderStatus('Processing...');
 
     try {
-      // Simulating an API call delay of 2 seconds (replace this with your actual API call)
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      // await new Promise((resolve) => setTimeout(resolve, 1000));
 
       // make a whatsapp message with the products and total price
       // const totalPrice = total.toFixed(2);
@@ -56,14 +58,11 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
         message
       )}`;
 
-      // const whatsappLink = `https://wa.me/${phoneNumber}/?text=${message}`;
       router.push(whatsappLink);
-      // After the delay, update the button status to show successful pre-order
       setPreOrderStatus('Pre-Ordered');
       toast.success(t(`toast-pre-order`));
     } catch (error) {
       console.error('Error:', error);
-      // Handle error cases if the API call fails
       // setPreOrderStatus('Failed');
       toast.error(t(`toast-pre-order-error`));
     }
@@ -112,6 +111,7 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
             <BreadcrumbItem>product</BreadcrumbItem>
             <BreadcrumbItem> {product?.name[lang]}</BreadcrumbItem>
           </Breadcrumbs>
+
           <div className="lg:col-gap-12  xl:col-gap-16 mt-8  grid grid-cols-1 gap-8  lg:mt-12 lg:grid-cols-5 lg:gap-16">
             <div className="  lg:col-span-3 lg:row-end-1 ">
               <div className=" lg:flex lg:items-start lg:gap-12">
@@ -138,20 +138,22 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
               <h1 className=" text-2xl font-bold text-gray-900 md:text-3xl">
                 {product?.name[lang]}
               </h1>
-              <div className="mt-5 flex  flex-col  ">
-                <p className="flex  items-center text-xl  font-medium text-gray-500">
-                  {/* {product?.description[lang]} */}
-                  <span className="mr-2 h-5 w-5  rounded-full  bg-red-500" />
-                  <span className="ml-2"> {t('sold-out')}</span>
-                </p>
-              </div>
+              {product?.status === 'out-of-stock' && (
+                <div className="mt-5 flex  flex-col  ">
+                  <p className="flex  items-center text-xl  font-medium text-gray-500">
+                    <span className="mr-2 h-5 w-5  rounded-full  bg-red-500" />
+                    <span className="ml-2"> {t('sold-out')}</span>
+                  </p>
+                </div>
+              )}
+
               <div className="mt-10 flex flex-col items-center justify-between space-y-4 border-y py-4 md:flex-row md:space-y-0">
                 <div className="flex items-end">
                   <p className="text-xl font-semibold">
                     <FormattedPrice amount={product?.price} />
                   </p>
                 </div>
-                {product?.quantity > 0 ? (
+                {product?.status === 'in-stock' ? (
                   <div
                     onClick={() =>
                       dispatch(setProdctCart(product)) &&
@@ -166,7 +168,7 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
                       <IoMdCart />
                     </span>
                   </div>
-                ) : (
+                ) : product?.status === 'pre-order' ? (
                   <button
                     onClick={() => handlePreOrder(product)}
                     disabled={preOrderStatus !== 'Pre-Order'}
@@ -179,6 +181,14 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
                       <IoMdCart />
                     </span>
                   </button>
+                ) : (
+                  product?.status === 'out-of-stock' && (
+                    <div className="group flex cursor-pointer items-center">
+                      <div className="flex items-center border-r-[1px] border-r-slate-500 bg-greyColor  px-6 py-3 text-sm uppercase text-secondaryBlack">
+                        {t('out-of-stock')}
+                      </div>
+                    </div>
+                  )
                 )}
               </div>
 
@@ -202,6 +212,15 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
                   {product?.quantity === 0 || product?.quantity === undefined
                     ? t(`out-of-stock`)
                     : product?.quantity}
+                </li>
+                <li className="text-md flex items-center gap-2 text-left font-medium text-gray-600">
+                  <AiOutlineStock className="mr-2 block h-5 w-5 align-middle text-gray-500" />
+                  {t('status')}:
+                  {product?.status === 'in-stock'
+                    ? t(`in-stock`)
+                    : product?.status === 'pre-order'
+                    ? t('pre-order')
+                    : t('out-of-stock')}
                 </li>
               </ul>
             </div>

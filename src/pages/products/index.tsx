@@ -127,29 +127,25 @@ const ProductsPage = ({
         className="mx-auto mt-14 h-full min-h-screen w-full  max-w-[1920px] "
       >
         <div className="h-full w-full">
-          <section className="h-full w-full ">
-            <div className=" mx-auto flex h-full w-full max-w-screen-xl flex-col gap-4 py-10 ">
-              <div className=" w-full ">
-                <div className=" flex w-full justify-between gap-2 pb-5  ">
-                  <div className=" w-full  ">
-                    <SearchBar setSearchValue={setSearchValue} />
-                  </div>
-                </div>
-              </div>
-              {categories.map((category) => (
-                <ProductSection
-                  key={category.key}
-                  id={category.id}
-                  lang={lang}
-                  title={category.title}
-                  productsData={productsData.filter(
-                    (d: any) => d.category === category.key
-                  )}
-                />
-              ))}
+          <section className="mx-auto flex  max-w-screen-xl flex-col  justify-center gap-4 py-10 ">
+            {/* <div className=" mx-auto flex h-full w-full max-w-screen-xl flex-col  justify-center gap-4 py-10 "> */}
+            <div className="mx-auto flex w-1/2 items-center justify-center">
+              <SearchBar setSearchValue={setSearchValue} />
             </div>
+            {categories.map((category) => (
+              <ProductSection
+                key={category.key}
+                id={category.id}
+                lang={lang}
+                title={category.title}
+                productsData={productsData.filter(
+                  (d: any) => d.category === category.key
+                )}
+              />
+            ))}
+            {/* </div> */}
           </section>
-          <div className="flex w-full  items-center justify-center ">
+          <div className="flex w-full items-center  justify-center pb-12 ">
             <Pagination
               color="primary"
               size="lg"

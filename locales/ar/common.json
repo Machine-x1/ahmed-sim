@@ -28,7 +28,9 @@
   "out-of-stock": "غير متوفرة",
   "enter-email": "أدخل بريدك الإلكتروني",
   "enter-message": "أدخل رسالتك",
-
+  "in-stock": "متوفر",
+  "status": "الحالة",
+  "pre-order": "الطلب المسبق",
   "Pre-Order": "الطلب المسبق",
   "Pre-Ordered": "تم الطلب المسبق",
   "Processing...": "قيد المعالجة...",
