@@ -21,7 +21,7 @@ export const ProductSection = ({
   return (
     <div className=" flex w-full ">
       {productsData.length > 0 ? (
-        <div>
+        <div className="mx-auto h-full w-full  ">
           <div id={id} className="my-4 flex w-full items-center justify-center">
             <h2 className="flex w-full items-center justify-center text-xl font-bold text-mainOrange dark:text-white md:text-3xl">
               <Divider className="mx-auto w-1/4 md:w-1/3 " />
