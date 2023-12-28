@@ -86,9 +86,12 @@ const NewProductCard = ({ item, lang }: { item?: any; lang?: any }) => {
                     
                   )} */}
                 <div className="flex items-center justify-between">
-                  <div className="absolute  right-2 top-2 rounded-full  border-[0.5px] border-orange-600 px-4 py-1 text-xs">
-                    <p>{calculatePercentage(2, item?.price)}%off</p>
-                  </div>
+                  {item?.oldPrice && (
+                    <div className="absolute  right-2 top-2 rounded-full  border-[0.5px] border-orange-600 px-4 py-1 text-xs">
+                      <p>{calculatePercentage(2, item?.price)}%off</p>
+                    </div>
+                  )}
+
                   <div className="flex items-center gap-x-2">
                     <p className="text-sm text-slate-500 line-through">
                       <FormattedPrice amount={item?.oldPrice} />
