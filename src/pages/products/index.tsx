@@ -122,14 +122,16 @@ const ProductsPage = ({
           setValue(value.target.value);
         }}
       /> */}
-      <div id="products" className="mx-auto mt-14 w-full max-w-[1920px] ">
+      <div
+        id="products"
+        className="mx-auto mt-14 h-full min-h-screen w-full  max-w-[1920px] "
+      >
         <div className="h-full w-full">
-          <div className=" h-full w-full" />
-          <section className="flex w-full ">
-            <div className=" mx-auto flex w-full max-w-screen-xl flex-col gap-4 py-10 ">
+          <section className="h-full w-full ">
+            <div className=" mx-auto flex h-full w-full max-w-screen-xl flex-col gap-4 py-10 ">
               <div className=" w-full ">
                 <div className=" flex w-full justify-between gap-2 pb-5  ">
-                  <div className="w-full">
+                  <div className=" w-full  ">
                     <SearchBar setSearchValue={setSearchValue} />
                   </div>
                 </div>
@@ -147,7 +149,7 @@ const ProductsPage = ({
               ))}
             </div>
           </section>
-          <div className="flex w-full items-center justify-center py-12">
+          <div className="flex w-full  items-center justify-center ">
             <Pagination
               color="primary"
               size="lg"

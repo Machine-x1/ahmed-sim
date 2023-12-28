@@ -9,10 +9,9 @@ import Logo from './Logo';
 const Footer = () => {
   // const { t } = useTranslation('common');
   return (
-    <div className="bottom-0 mx-auto max-w-[1920px]">
+    <div className="bottom-0 mx-auto max-w-full bg-hoverTextColor">
       <footer className=" bg-hoverTextColor text-slate-200 lg:text-left">
         {/* <!-- Main container div: holds the entire content of the footer --> */}
-
         <div className=" text-center md:text-left">
           <div className="grid-1 grid  grid-cols-1 md:grid-cols-1 ">
             {/* <!-- Logo section --> */}
@@ -20,12 +19,6 @@ const Footer = () => {
               <h6 className=" flex items-center justify-center font-semibold uppercase md:justify-start">
                 <Logo />
               </h6>
-              {/* <div className="flex items-center justify-center gap-2">
-                <p className="flex items-center">
-                  Connect with us on social media for the latest updates.{' '}
-                 
-                </p>
-              </div> */}
             </div>
           </div>
         </div>
