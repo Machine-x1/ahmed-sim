@@ -1,3 +1,5 @@
+/* eslint-disable no-promise-executor-return */
+/* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable no-console */
 /* eslint-disable no-underscore-dangle */
@@ -28,6 +30,28 @@ import { setProdctCart } from '@/apps/redux/slice/cartSlice';
 import FormattedPrice from './FormattedPrice';
 
 const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
+  const [preOrderStatus, setPreOrderStatus] = useState('Pre-Order'); // Initial button text
+
+  const handlePreOrder = async () => {
+    // Here, you would typically trigger an API call to your backend to handle the pre-order logic
+    // For demonstration purposes, let's simulate an API call delay
+    setPreOrderStatus('Processing...');
+
+    try {
+      // Simulating an API call delay of 2 seconds (replace this with your actual API call)
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
+      // After the delay, update the button status to show successful pre-order
+      setPreOrderStatus('Pre-Ordered');
+      toast.success(
+        "Thank you for your pre-order! We'll notify you once the product is available."
+      );
+    } catch (error) {
+      console.error('Error:', error);
+      // Handle error cases if the API call fails
+      setPreOrderStatus('Failed');
+    }
+  };
   const dispatch = useDispatch();
   const [currentImg, setCurrentImg] = useState<any>(0);
   const { t } = useTranslation('common');
@@ -128,20 +152,18 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
                     </span>
                   </div>
                 ) : (
-                  <div
-                    onClick={() =>
-                      dispatch(setProdctCart(product)) &&
-                      toast.success(t('done'))
-                    }
+                  <button
+                    onClick={handlePreOrder}
+                    disabled={preOrderStatus !== 'Pre-Order'}
                     className="group flex cursor-pointer items-center"
                   >
                     <div className="flex items-center border-r-[1px] border-r-slate-500 bg-darkText px-6 py-3 text-sm uppercase text-slate-100">
-                      {t('pre-order')}
+                      {t(preOrderStatus)}
                     </div>
                     <span className="flex w-12 items-center justify-center bg-hoverTextColor py-3 text-xl text-slate-100 duration-200 group-hover:bg-orange-500">
                       <IoMdCart />
                     </span>
-                  </div>
+                  </button>
                 )}
               </div>
 
