@@ -25,10 +25,10 @@ const cartSlice = createSlice({
         (product) => product._id === action.payload._id
       );
       if (existingProduct) {
-        existingProduct.quantity += 1;
+        existingProduct.purchased_quantity += 1;
       } else {
         // state.cart.products.splice(existingProduct, 1);
-        products.push({ ...action.payload, quantity: 1 }); // Assign initial quantity as 1
+        products.push({ ...action.payload, purchased_quantity: 1 }); // Assign initial quantity as 1
       }
     },
 

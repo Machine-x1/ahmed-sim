@@ -91,7 +91,7 @@ const Header = () => {
   const calculateTotalPrice = () => {
     let totalPrice = 0;
     for (const product of cart.products) {
-      totalPrice += product.price * product.quantity;
+      totalPrice += product.price * product.purchased_quantity;
     }
     return totalPrice;
   };

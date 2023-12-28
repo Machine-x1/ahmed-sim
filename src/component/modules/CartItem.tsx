@@ -54,7 +54,9 @@ const CartItem = () => {
                 </p>
                 {/* <p className=" text-sm text-gray-500">{item?.color}</p> */}
                 <div className="flex  items-center justify-between text-sm">
-                  <p className="text-gray-500">Qty: {item?.quantity}</p>
+                  <p className="text-gray-500">
+                    Qty: {item?.purchased_quantity}
+                  </p>
                 </div>
               </div>
             </div>

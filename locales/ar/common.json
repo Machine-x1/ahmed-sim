@@ -25,8 +25,15 @@
   "featured-products": "منتجات مميزة",
   "read": "المزيد",
   "qunaity-available": "الكمية متاحة",
+  "out-of-stock": "غير متوفرة",
   "enter-email": "أدخل بريدك الإلكتروني",
   "enter-message": "أدخل رسالتك",
+
+  "Pre-Order": "الطلب المسبق",
+  "Pre-Ordered": "تم الطلب المسبق",
+  "Processing...": "قيد المعالجة...",
+  "toast-pre-order": " تم الطلب بنجاح",
+  "toast-pre-order-error": "حدث خطأ في الطلب",
 
   "feature": {
     "header": "استمتع بتجربة سباقات SIM المثيرة!",

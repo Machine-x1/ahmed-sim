@@ -20,7 +20,7 @@ const PaymentForm = () => {
   const calculateTotalPrice = () => {
     let totalPrice = 0;
     for (const product of cart.products) {
-      totalPrice += product.price * product.quantity;
+      totalPrice += product.price * product.purchased_quantity;
     }
     return totalPrice;
   };
@@ -31,7 +31,7 @@ const PaymentForm = () => {
     // make a whatsapp message with the products and total price
     const totalPrice = total.toFixed(2);
     const products = cart.products
-      .map((product: any) => `${product.name} x ${product.quantity}`)
+      .map((product: any) => `${product.name} x ${product.purchased_quantity}`)
       .join(', ');
     const message = `Order Summary \n Total Price: $${totalPrice} \nProducts: ${products}`;
     const phoneNumber = '+96569399851';

@@ -16,6 +16,7 @@ import toast from 'react-hot-toast';
 import { BiCartAdd } from 'react-icons/bi';
 import { useDispatch } from 'react-redux';
 
+import { calculatePercentage } from '@/apps/helpers';
 import { setProdctCart } from '@/apps/redux/slice/cartSlice';
 
 import FormattedPrice from './FormattedPrice';
@@ -47,6 +48,18 @@ const NewProductCard = ({ item, lang }: { item?: any; lang?: any }) => {
       >
         <Skeleton isLoaded className="rounded-lg">
           <CardBody className=" relative flex w-full  items-center justify-center overflow-hidden rounded-xl md:h-72">
+            {item?.quantity === 0 ||
+              (item?.quantity === undefined && (
+                <div className="absolute left-2 top-2 flex   rounded-full ">
+                  <Image
+                    src="/images/sold-out.png"
+                    alt="sold-out"
+                    width="100%"
+                    className="h-16 w-16 object-contain object-center"
+                    height="100%"
+                  />
+                </div>
+              ))}
             <Link href={`/products/${item?.slug}`}>
               <Image
                 className=" max-h-68  w-full  object-cover  object-center"
@@ -65,11 +78,27 @@ const NewProductCard = ({ item, lang }: { item?: any; lang?: any }) => {
                 <h5 className="text-xl tracking-tight text-mainOrange">
                   {item?.name[languageToUse] || item?.name.en}
                 </h5>
-                <p className="  flex items-center justify-end">
-                  <span className="text-lg font-bold text-orange-500">
+                {/* <p className="  flex items-center justify-end"> */}
+                {/* <span className="text-lg font-bold text-orange-500">
                     <FormattedPrice amount={item?.price} />
-                  </span>
-                </p>
+                  </span> */}
+                {/* {item?.discount > 0 ? (
+                    
+                  )} */}
+                <div className="flex items-center justify-between">
+                  <div className="absolute  right-2 top-2 rounded-full  border-[0.5px] border-orange-600 px-4 py-1 text-xs">
+                    <p>{calculatePercentage(2, item?.price)}%off</p>
+                  </div>
+                  <div className="flex items-center gap-x-2">
+                    <p className="text-sm text-slate-500 line-through">
+                      <FormattedPrice amount={item?.oldPrice} />
+                    </p>
+                    <p className="font-semibold text-orange-600  ">
+                      <FormattedPrice amount={item?.price} />
+                    </p>
+                  </div>
+                </div>
+                {/* </p> */}
                 <Button
                   fullWidth
                   radius="lg"

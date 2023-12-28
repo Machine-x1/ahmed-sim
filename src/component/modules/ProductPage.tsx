@@ -30,6 +30,8 @@ import { setProdctCart } from '@/apps/redux/slice/cartSlice';
 import FormattedPrice from './FormattedPrice';
 
 const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
+  const { t } = useTranslation('common');
+
   const [preOrderStatus, setPreOrderStatus] = useState('Pre-Order'); // Initial button text
 
   const handlePreOrder = async () => {
@@ -43,18 +45,16 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
 
       // After the delay, update the button status to show successful pre-order
       setPreOrderStatus('Pre-Ordered');
-      toast.success(
-        "Thank you for your pre-order! We'll notify you once the product is available."
-      );
+      toast.success(t(`toast-preOrder`));
     } catch (error) {
       console.error('Error:', error);
       // Handle error cases if the API call fails
-      setPreOrderStatus('Failed');
+      // setPreOrderStatus('Failed');
+      toast.error(t(`toast-pre-order-error`));
     }
   };
   const dispatch = useDispatch();
   const [currentImg, setCurrentImg] = useState<any>(0);
-  const { t } = useTranslation('common');
   const renderImageCards = () => {
     if (!product?.images || !Array.isArray(product.images)) {
       return null;
@@ -185,7 +185,7 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
                   <MdProductionQuantityLimits className="mr-2 block h-5 w-5 align-middle text-gray-500" />
                   {t('quantity-available')}:{' '}
                   {product?.quantity === 0 || product?.quantity === undefined
-                    ? 'out of stock'
+                    ? t(`out-of-stock`)
                     : product?.quantity}
                 </li>
               </ul>
