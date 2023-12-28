@@ -23,8 +23,15 @@
   "read": "Read More",
   "featured-products": "Featured Products",
   "qunaity-available": "Qunaity Available",
+  "out-of-stock": "Out of Stock",
+
   "enter-email": "Enter your email",
   "enter-message": "Enter your message",
+  "Pre-Order": "Pre-Order",
+  "Pre-Ordered": "Pre-Ordered",
+  "Processing...": "Processing...",
+  "toast-pre-order": "Thank you for your pre-order! We'll notify you once the product is available.",
+  "toast-pre-order-error": "Sorry, something went wrong. Please try again.",
 
   "feature": {
     "header": "EXPERIENCE THE THRILL OF SIM RACING!",

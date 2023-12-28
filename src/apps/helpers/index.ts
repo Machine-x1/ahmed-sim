@@ -5,7 +5,3 @@ export const calculatePercentage = (oldPrice: any, price: any) => {
     ? (100 - (oldPrice / price) * 100).toFixed(0)
     : 0;
 };
-
-// export const getUserToken = async () => {
-//   const zxc = await internalrequestHandler('init', 'GET');
-// };

@@ -20,20 +20,21 @@ const PaymentForm = () => {
   const calculateTotalPrice = () => {
     let totalPrice = 0;
     for (const product of cart.products) {
-      totalPrice += product.price * product.quantity;
+      totalPrice += product.price * product.purchased_quantity;
     }
     return totalPrice;
   };
   const total = calculateTotalPrice();
-  console.log(cart.products);
+  // console.log(cart.products.map((product: any) => product.name.en));
 
   const handleCheckout = () => {
     // make a whatsapp message with the products and total price
     const totalPrice = total.toFixed(2);
-    const products = cart.products
-      .map((product: any) => `${product.name} x ${product.quantity}`)
-      .join(', ');
-    const message = `Order Summary \n Total Price: $${totalPrice} \nProducts: ${products}`;
+    const purchasedProducts = cart.products.map(
+      (product: any) => `${product.name.en} x ${product.purchased_quantity}`
+    ); // Add product name and quantity
+
+    const message = `Order Summary \n Total Price: $${totalPrice} \nProducts: ${purchasedProducts}`;
     const phoneNumber = '+96569399851';
 
     const whatsappLink = `https://wa.me/${phoneNumber}/?text=${encodeURIComponent(
@@ -56,7 +57,7 @@ const PaymentForm = () => {
       </div>
       <div className="border-b-[1px] border-b-slate-300 py-2">
         <div className="mb-2 flex max-w-lg items-center justify-between">
-          <p className="font-light uppercase">{t('Shipping')}</p>
+          <p className="font-light ">{t('shipping')}</p>
         </div>
       </div>
       <div className="border-b-[1px] border-b-slate-300 py-2">

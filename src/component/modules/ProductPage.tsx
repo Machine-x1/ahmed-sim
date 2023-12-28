@@ -1,3 +1,4 @@
+/* eslint-disable unused-imports/no-unused-vars */
 /* eslint-disable no-promise-executor-return */
 /* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable react/no-array-index-key */
@@ -17,6 +18,7 @@ import {
   Tab,
   Tabs,
 } from '@nextui-org/react';
+import router from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 import type { Key } from 'react';
 import { useState } from 'react';
@@ -30,9 +32,12 @@ import { setProdctCart } from '@/apps/redux/slice/cartSlice';
 import FormattedPrice from './FormattedPrice';
 
 const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
+  const { t } = useTranslation('common');
+
   const [preOrderStatus, setPreOrderStatus] = useState('Pre-Order'); // Initial button text
 
-  const handlePreOrder = async () => {
+  const handlePreOrder = async (preOrderProduct: any) => {
+    const totalPrice = preOrderProduct?.price;
     // Here, you would typically trigger an API call to your backend to handle the pre-order logic
     // For demonstration purposes, let's simulate an API call delay
     setPreOrderStatus('Processing...');
@@ -41,20 +46,30 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
       // Simulating an API call delay of 2 seconds (replace this with your actual API call)
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
+      // make a whatsapp message with the products and total price
+      // const totalPrice = total.toFixed(2);
+      const purchasedProducts = preOrderProduct?.name.en;
+
+      const message = `pre-order Summary \n Total Price: $${totalPrice} \nProducts: ${purchasedProducts}`;
+      const phoneNumber = '+96569399851';
+      const whatsappLink = `https://wa.me/${phoneNumber}/?text=${encodeURIComponent(
+        message
+      )}`;
+
+      // const whatsappLink = `https://wa.me/${phoneNumber}/?text=${message}`;
+      router.push(whatsappLink);
       // After the delay, update the button status to show successful pre-order
       setPreOrderStatus('Pre-Ordered');
-      toast.success(
-        "Thank you for your pre-order! We'll notify you once the product is available."
-      );
+      toast.success(t(`toast-pre-order`));
     } catch (error) {
       console.error('Error:', error);
       // Handle error cases if the API call fails
-      setPreOrderStatus('Failed');
+      // setPreOrderStatus('Failed');
+      toast.error(t(`toast-pre-order-error`));
     }
   };
   const dispatch = useDispatch();
   const [currentImg, setCurrentImg] = useState<any>(0);
-  const { t } = useTranslation('common');
   const renderImageCards = () => {
     if (!product?.images || !Array.isArray(product.images)) {
       return null;
@@ -153,7 +168,7 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
                   </div>
                 ) : (
                   <button
-                    onClick={handlePreOrder}
+                    onClick={() => handlePreOrder(product)}
                     disabled={preOrderStatus !== 'Pre-Order'}
                     className="group flex cursor-pointer items-center"
                   >
@@ -172,7 +187,7 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
                   SKU: <span className="text-darkText">{product?._id}</span>
                 </span>
                 <span>
-                  {t('category')}:{' '}
+                  {t('category')}:
                   <span className="text-darkText">{product?.category}</span>
                 </span>
               </div>
@@ -183,9 +198,9 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
                 </li>
                 <li className="text-md flex items-center gap-2 text-left font-medium text-gray-600">
                   <MdProductionQuantityLimits className="mr-2 block h-5 w-5 align-middle text-gray-500" />
-                  {t('quantity-available')}:{' '}
+                  {t('quantity-available')}:
                   {product?.quantity === 0 || product?.quantity === undefined
-                    ? 'out of stock'
+                    ? t(`out-of-stock`)
                     : product?.quantity}
                 </li>
               </ul>
@@ -226,7 +241,16 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
             </div>
           </div>
         </div>
-        <Toaster />
+        <Toaster
+          toastOptions={{
+            style: {
+              fontSize: '1rem',
+              fontWeight: 'bold',
+              padding: '0.5rem',
+              width: '20rem',
+            },
+          }}
+        />
       </section>
     </div>
   );
