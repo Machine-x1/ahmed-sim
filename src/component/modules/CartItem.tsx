@@ -31,7 +31,7 @@ const CartItem = () => {
           >
             <div className="relative flex  w-full items-center gap-x-3  ">
               <Image
-                src={item?.images[0]}
+                src={`https://simrckw.s3.eu-north-1.amazonaws.com/${item?.images[0]}`}
                 width="100%"
                 height="100%"
                 alt={item?.name[lang] || item?.name.en}
