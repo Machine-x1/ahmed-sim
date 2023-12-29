@@ -42,7 +42,7 @@ const ProductDataSwiper = ({
   return (
     <div className="w-full  ">
       <Container className=" h-full w-full">
-        <div className="h-full w-full ">
+        <div className=" h-full w-full ">
           <Container className=" flex w-full gap-2 ">
             <div className="mb-4 flex w-full ">
               <div className="flex w-full flex-col justify-start gap-4">
@@ -55,7 +55,7 @@ const ProductDataSwiper = ({
               </div>
             </div>
           </Container>
-          <div className=" relative h-full w-full   ">
+          <div className=" relative mx-auto w-full   ">
             <Swiper
               slidesPerView={4}
               spaceBetween={30}
