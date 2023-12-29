@@ -93,7 +93,7 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
         >
           <Image
             className="h-32 w-full object-cover object-center"
-            src={imageSrc}
+            src={`https://simrckw.s3.eu-north-1.amazonaws.com/${imageSrc}`}
             alt={product?.name.en}
             width="100%"
             height="100%"
@@ -119,7 +119,7 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
                   <div className="h-[450px] min-h-[450px] max-w-xl overflow-hidden rounded-lg ">
                     <Image
                       className="h-[450px]  w-full max-w-full object-cover object-center"
-                      src={product?.images[currentImg]}
+                      src={`https://simrckw.s3.eu-north-1.amazonaws.com/${product?.images[currentImg]}`}
                       width="100%"
                       height="100%"
                       alt={product?.name[lang]}

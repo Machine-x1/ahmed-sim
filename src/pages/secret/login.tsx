@@ -11,12 +11,13 @@ const Login = () => {
   const router = useRouter();
   const handleLogin = async (e: any) => {
     e.preventDefault(); // Prevent default form submission behavior
+    console.log(email, password);
     const req = await internalrequestHandler('apiLogin', 'POST', {
       email,
       password,
     });
     if (req.status === 200) {
-      router.push('/');
+      router.push('/admin');
     } else {
       toast.error('wrong creds');
     }

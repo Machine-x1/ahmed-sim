@@ -53,7 +53,7 @@ const Admincard = ({
             <Link href={`/products/${item?.slug}`}>
               <Image
                 className=" max-h-60  w-full  object-cover  object-center"
-                src={item?.images[0]}
+                src={`https://simrckw.s3.eu-north-1.amazonaws.com/${item?.images[0]}`}
                 alt={item?.name}
                 width="100%"
                 height="100%"
