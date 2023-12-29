@@ -55,7 +55,7 @@ const ProductDataSwiper = ({
               </div>
             </div>
           </Container>
-          <div className=" relative mx-auto w-full   ">
+          <div className=" relative h-full w-full   ">
             <Swiper
               slidesPerView={4}
               spaceBetween={30}
