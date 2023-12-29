@@ -9,9 +9,9 @@ import {
   Skeleton,
 } from '@nextui-org/react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 // import product from 'next-seo/lib/jsonld/product';
 import toast from 'react-hot-toast';
-import { MdDelete } from 'react-icons/md';
 
 import internalrequestHandler from '@/apps/helpers/InternalrequestHandler';
 
@@ -28,6 +28,7 @@ const Admincard = ({
   // const [isHovered, setIsHovered] = useState(false);
   // const { t } = useTranslation('common');
   // const { cart } = useSelector((state: RootState) => state.cart);
+  const router = useRouter();
   const handleDelete = async (product: any) => {
     await internalrequestHandler('apiDeleteProduct', 'POST', {
       product,
@@ -70,17 +71,22 @@ const Admincard = ({
                   radius="lg"
                   type="button"
                   onClick={() => handleDelete(item)}
-                  className=" flex w-full flex-col items-center justify-center bg-greyColor  "
+                  className=" flex w-full flex-col items-center justify-center bg-red-500  "
                   aria-label="add to cart"
                 >
-                  <span className=" flex w-full items-center  justify-center text-center    ">
-                    <span className=" w-full  text-lg font-semibold uppercase text-black">
-                      Delete
-                    </span>
-                    <MdDelete
-                      size={20}
-                      className="flex justify-end text-sm text-red-600 md:text-xl  "
-                    />
+                  <span className=" flex w-full items-center  justify-center text-center text-white    ">
+                    Delete
+                  </span>
+                </Button>
+                <Button
+                  radius="lg"
+                  type="button"
+                  onClick={() => router.push(`/admin/product/${item.slug}`)}
+                  className=" flex w-full flex-col items-center justify-center bg-blue-500  "
+                  aria-label="add to cart"
+                >
+                  <span className=" flex w-full items-center  justify-center text-center text-white    ">
+                    Update
                   </span>
                 </Button>
               </div>

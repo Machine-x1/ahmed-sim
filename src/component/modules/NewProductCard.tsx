@@ -62,8 +62,8 @@ const NewProductCard = ({ item, lang }: { item?: any; lang?: any }) => {
 
             <Link href={`/products/${item?.slug}`}>
               <Image
-                className=" h-68  w-96 object-cover  object-center"
-                src={item?.images[0]}
+                className=" h-52 max-h-52  w-96 object-cover  object-center"
+                src={`https://simrckw.s3.eu-north-1.amazonaws.com/${item?.images[0]}`}
                 alt={item?.name[languageToUse] || 'Product image'}
                 width="100%"
                 height="100%"
@@ -79,15 +79,19 @@ const NewProductCard = ({ item, lang }: { item?: any; lang?: any }) => {
                   {item?.name[languageToUse] || item?.name.en}
                 </h5>
                 <div className="flex items-center justify-between">
-                  {item?.oldPrice && (
-                    <div className="absolute  right-2 top-2 rounded-full  border-[0.5px] border-orange-600 px-4 py-1 text-xs">
-                      <p>{calculatePercentage(2, item?.price)}%off</p>
+                  {item?.old_price !== 0 && (
+                    <div className="absolute  right-1 top-1 z-50  rounded-full border-[0.5px] bg-orange-600 px-4 py-1 text-xs text-white">
+                      <p>
+                        {calculatePercentage(item.old_price, item?.price)}% off
+                      </p>
                     </div>
                   )}
                   <div className="flex items-center gap-x-2">
-                    <p className="text-sm text-slate-500 line-through">
-                      <FormattedPrice amount={item?.oldPrice} />
-                    </p>
+                    {item.old_price !== 0 ? (
+                      <p className="text-sm text-slate-500 line-through">
+                        <FormattedPrice amount={item?.old_price} />
+                      </p>
+                    ) : null}
                     <p className="font-semibold text-orange-600  ">
                       <FormattedPrice amount={item?.price} />
                     </p>

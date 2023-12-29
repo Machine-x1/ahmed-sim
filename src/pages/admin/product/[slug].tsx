@@ -1,31 +1,37 @@
-/* eslint-disable prefer-destructuring */
-/* eslint-disable react/no-array-index-key */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import axios from 'axios';
-import { getCookie } from 'cookies-next';
 import { useFormik } from 'formik';
 import type { GetServerSidePropsContext } from 'next';
 import React, { useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import * as Yup from 'yup';
 
-import { JwtGenerator } from '@/apps/helpers/JwtGenerator';
 import { Meta } from '@/component/layouts/Meta';
 import { Main } from '@/component/templates/Main';
 
-const AddProduct = () => {
+const UpdateProduct = ({ product }: { product: any }) => {
   const [loading, setloading] = useState(false);
+  const getChangedValues = (values, initialValues) => {
+    return Object.entries(values).reduce((acc, [key, value]) => {
+      const hasChanged = initialValues[key] !== value;
+
+      if (hasChanged) {
+        acc[key] = value;
+      }
+
+      return acc;
+    }, {});
+  };
+
   const formik: any = useFormik({
     initialValues: {
-      name: { en: '', ar: '' },
-      description: { en: '', ar: '' },
-      price: 0,
-      quantity: 0,
-      images: ['', '', '', '', ''], // Initialize with five empty strings
-      category: 'paddle',
-      status: 'in-stock',
-      oldPrice: 0,
+      name: { en: product.name.en, ar: product.name.ar },
+      description: { en: product.description.en, ar: product.description.en },
+      price: product.price,
+      quantity: product.quantity,
+      category: product.category,
+      status: product.status,
+      oldPrice: product.old_price,
     },
     validationSchema: Yup.object({
       name: Yup.object().shape({
@@ -52,36 +58,12 @@ const AddProduct = () => {
     }),
     onSubmit: async (values: any) => {
       setloading(true);
+      const sendThis = getChangedValues(values, product);
       try {
-        const formData = new FormData();
-
-        // Append images to the FormData
-        values.images.forEach((image: any) => {
-          formData.append('files', image);
-        });
-
-        // Add other form fields to the FormData
-        formData.append('name[en]', values.name.en);
-        formData.append('name[ar]', values.name.ar);
-        formData.append('description[en]', values.description.en);
-        formData.append('description[ar]', values.description.ar);
-        formData.append('price', values.price);
-        formData.append('old_price', values.oldPrice);
-        formData.append('quantity', values.quantity);
-        formData.append('category', values.category);
-        formData.append('status', values.status);
-
-        console.log(formData);
-
-        // Make the API request with axios
-        const response = await axios.post(
-          'http://localhost:3000/api/admin/product/create',
-          formData,
-          {
-            headers: {
-              'Content-Type': 'multipart/form-data',
-            },
-          }
+        // const formData = {};
+        const response = await axios.put(
+          `http://localhost:3000/api/admin/product/${product.slug}`,
+          sendThis
         );
 
         // Check the response status and handle it accordingly
@@ -95,28 +77,13 @@ const AddProduct = () => {
           // Handle errors, e.g., show an error message
         }
       } catch (error) {
+        console.log(error);
         console.error('Error during API request:', error);
         // Handle errors, e.g., show an error message
       }
     },
   });
 
-  const handleImageChange = (index: any, files: any) => {
-    const updatedImages = [...formik.values.images];
-    updatedImages[index] = files[0];
-    formik.setFieldValue(`images-${index}`, files[0]);
-    formik.setFieldValue('images', updatedImages);
-  };
-
-  const removeImageInput = (index: any) => {
-    const updatedImages = [...formik.values.images];
-    updatedImages.splice(index, 1);
-    formik.setFieldValue('images', updatedImages);
-  };
-
-  const addImageInput = () => {
-    formik.setFieldValue('images', [...formik.values.images, null]);
-  };
   return (
     <Main meta={<Meta />}>
       <div className="relative mx-auto flex flex-col items-center justify-center px-6 py-8 md:h-auto lg:py-4">
@@ -302,96 +269,6 @@ const AddProduct = () => {
                   </div>
                 )}
               </div>
-              {/* 
-              <div>
-                <label
-                  htmlFor="images"
-                  className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Images
-                </label>
-                {formik.values.images.map((_, index) => (
-                  <div key={index} className="mb-2 flex items-center space-x-2">
-                    <input
-                      type="text"
-                      id={`images-${index}`}
-                      name={`images-${index}`}
-                      onChange={(e) => handleImageChange(index, e.target.value)}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.images[index]}
-                      className="block flex-1 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-primary-600 focus:ring-primary-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-sm"
-                      placeholder={`Image URL ${index + 1}`}
-                    />
-                    {index > 4 && (
-                      <button
-                        type="button"
-                        onClick={() => removeImageInput(index)}
-                        className="font-medium text-red-500 focus:outline-none"
-                      >
-                        Remove
-                      </button>
-                    )}
-                  </div>
-                ))}
-                {formik.values.images.length < 5 && (
-                  <button
-                    type="button"
-                    onClick={addImageInput}
-                    className="font-medium text-primary-600 focus:outline-none"
-                  >
-                    Add Image
-                  </button>
-                )}
-                {formik.touched.images && formik.errors.images && (
-                  <div className="text-sm text-red-500">
-                    {formik.errors.images}
-                  </div>
-                )}
-              </div> */}
-
-              <div>
-                <label
-                  htmlFor="images"
-                  className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Images
-                </label>
-                {formik.values.images.map((_: any, index: any) => (
-                  <div key={index} className="mb-2 flex items-center space-x-2">
-                    <input
-                      type="file"
-                      id={`images-${index}`}
-                      name={`images-${index}`}
-                      onChange={(e) => handleImageChange(index, e.target.files)}
-                      onBlur={formik.handleBlur}
-                      className="block flex-1 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-primary-600 focus:ring-primary-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-sm"
-                    />
-                    {index > 4 && (
-                      <button
-                        type="button"
-                        onClick={() => removeImageInput(index)}
-                        className="font-medium text-red-500 focus:outline-none"
-                      >
-                        Remove
-                      </button>
-                    )}
-                  </div>
-                ))}
-                {formik.values.images.length < 5 && (
-                  <button
-                    type="button"
-                    onClick={addImageInput}
-                    className="font-medium text-primary-600 focus:outline-none"
-                  >
-                    Add Image
-                  </button>
-                )}
-                {formik.touched.images && formik.errors.images && (
-                  <div className="text-sm text-red-500">
-                    {formik.errors.images}
-                  </div>
-                )}
-              </div>
 
               <div>
                 <label
@@ -451,7 +328,7 @@ const AddProduct = () => {
                 type="submit"
                 className="w-full rounded-lg bg-primary-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               >
-                Add Product
+                Update Product
               </button>
             </form>
           </div>
@@ -462,33 +339,21 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
-export const getServerSideProps = async (
-  context: GetServerSidePropsContext
-) => {
-  const { req, res } = context;
-  const token = getCookie('ad_token', { req, res });
-  if (!token) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: '/',
-      },
-      props: {},
-    };
-  }
-  const jwt = new JwtGenerator();
-  const jwtVerify = jwt.jwtTokenVerify(token);
-  if (jwtVerify.verified.user !== 'admin') {
-    return {
-      redirect: {
-        permanent: false,
-        destination: '/',
-      },
-      props: {},
-    };
-  }
+export default UpdateProduct;
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const { slug } = context.query;
+  const res = await fetch(`${process.env.API_EXTRANL}/products/${slug}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+  });
+  const product = await res.json();
+  console.log(product);
   return {
-    props: {},
+    props: {
+      product: product.data.product,
+    },
   };
-};
+}
