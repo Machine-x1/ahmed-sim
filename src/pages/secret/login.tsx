@@ -11,7 +11,7 @@ const Login = () => {
   const router = useRouter();
   const handleLogin = async (e: any) => {
     e.preventDefault(); // Prevent default form submission behavior
-    console.log(email, password);
+    // console.log(email, password);
     const req = await internalrequestHandler('apiLogin', 'POST', {
       email,
       password,

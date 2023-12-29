@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable jsx-a11y/label-has-associated-control */
@@ -71,7 +72,7 @@ const AddProduct = () => {
         formData.append('category', values.category);
         formData.append('status', values.status);
 
-        console.log(formData);
+        // console.log(formData);
 
         // Make the API request with axios
         const response = await axios.post(
@@ -85,7 +86,7 @@ const AddProduct = () => {
         );
 
         // Check the response status and handle it accordingly
-        console.log(response.status);
+        // console.log(response.status);
         if (response.status === 200) {
           setloading(false);
           toast.success('Done');
