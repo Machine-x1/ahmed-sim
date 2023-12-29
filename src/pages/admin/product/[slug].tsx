@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import axios from 'axios';
 import { useFormik } from 'formik';
@@ -11,8 +12,11 @@ import { Main } from '@/component/templates/Main';
 
 const UpdateProduct = ({ product }: { product: any }) => {
   const [loading, setloading] = useState(false);
-  const getChangedValues = (values, initialValues) => {
-    return Object.entries(values).reduce((acc, [key, value]) => {
+  const getChangedValues = (
+    values: { [s: string]: unknown } | ArrayLike<unknown>,
+    initialValues: { [x: string]: unknown }
+  ) => {
+    return Object.entries(values).reduce((acc: any, [key, value]) => {
       const hasChanged = initialValues[key] !== value;
 
       if (hasChanged) {
@@ -67,7 +71,7 @@ const UpdateProduct = ({ product }: { product: any }) => {
         );
 
         // Check the response status and handle it accordingly
-        console.log(response.status);
+        // console.log(response.status);
         if (response.status === 200) {
           setloading(false);
           toast.success('Done');
@@ -77,7 +81,7 @@ const UpdateProduct = ({ product }: { product: any }) => {
           // Handle errors, e.g., show an error message
         }
       } catch (error) {
-        console.log(error);
+        // console.log(error);
         console.error('Error during API request:', error);
         // Handle errors, e.g., show an error message
       }
