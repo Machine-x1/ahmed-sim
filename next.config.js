@@ -12,7 +12,7 @@ module.exports = withBundleAnalyzer({
   },
   i18n,
   env: {
-    API_INTERNAL: 'http://localhost:3000',
+    API_INTERNAL: 'https://simrckw.com',
   },
   images: {
     remotePatterns: [
