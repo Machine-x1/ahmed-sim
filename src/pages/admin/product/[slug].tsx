@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import axios from 'axios';
 import { useFormik } from 'formik';
@@ -8,15 +7,11 @@ import toast, { Toaster } from 'react-hot-toast';
 import * as Yup from 'yup';
 
 import { Meta } from '@/component/layouts/Meta';
-import SpinnerLoader from '@/component/modules/SpinnerLoader';
 import { Main } from '@/component/templates/Main';
 
 const UpdateProduct = ({ product }: { product: any }) => {
   const [loading, setloading] = useState(false);
-  const getChangedValues = (
-    values: { [s: string]: unknown } | ArrayLike<unknown>,
-    initialValues: { [x: string]: unknown }
-  ) => {
+  const getChangedValues = (values: any, initialValues: any) => {
     return Object.entries(values).reduce((acc: any, [key, value]) => {
       const hasChanged = initialValues[key] !== value;
 
@@ -58,12 +53,14 @@ const UpdateProduct = ({ product }: { product: any }) => {
         'bundles',
         'wheel-bases',
         'digital-dashes',
+        'cockpits',
       ]),
       status: Yup.string().oneOf(['in-stock', 'out-of-stock', 'pre-order']),
     }),
     onSubmit: async (values: any) => {
       setloading(true);
       const sendThis = getChangedValues(values, product);
+
       try {
         // const formData = {};
         const response = await axios.put(
@@ -71,18 +68,14 @@ const UpdateProduct = ({ product }: { product: any }) => {
           sendThis
         );
 
-        // Check the response status and handle it accordingly
-        // console.log(response.status);
         if (response.status === 200) {
           setloading(false);
           toast.success('Done');
         } else {
           setloading(false);
-          console.error('API request failed:', response.statusText);
           // Handle errors, e.g., show an error message
         }
       } catch (error) {
-        // console.log(error);
         console.error('Error during API request:', error);
         // Handle errors, e.g., show an error message
       }
@@ -94,9 +87,7 @@ const UpdateProduct = ({ product }: { product: any }) => {
       <div className="relative mx-auto flex flex-col items-center justify-center px-6 py-8 md:h-auto lg:py-4">
         {loading ? (
           <div className="fixed left-0 top-0 flex h-screen w-screen items-center justify-center bg-black/70">
-            <div className="">
-              <SpinnerLoader />
-            </div>
+            <div className="text-white">Loading</div>
           </div>
         ) : null}
         <Toaster />
@@ -298,6 +289,7 @@ const UpdateProduct = ({ product }: { product: any }) => {
                   <option value="bundles">Bundles</option>
                   <option value="wheel-bases">Wheel Bases</option>
                   <option value="digital-dashes">Digital Dashes</option>
+                  <option value="cockpits">Cockpits</option>
                 </select>
                 {formik.touched.category && formik.errors.category && (
                   <div className="text-sm text-red-500">
@@ -357,7 +349,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     },
   });
   const product = await res.json();
-  console.log(product);
   return {
     props: {
       product: product.data.product,

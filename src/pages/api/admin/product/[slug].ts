@@ -1,5 +1,4 @@
-// pages/api/addProduct.js
-
+/* eslint-disable unused-imports/no-unused-vars */
 import axios from 'axios';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
@@ -9,18 +8,16 @@ export default async function handler(
 ) {
   if (req.method === 'PUT') {
     try {
-      // const { product } = req.body;
       const { slug } = req.query;
-      console.log(req.body, 'ASQ');
+      const { oldPrice, ...rest } = req.body;
+      const updatedBody = { old_price: oldPrice, ...rest };
       const updateProduct = await axios.put(
         `${process.env.API_EXTRANL}/products/${slug}`,
-        req.body
+        updatedBody
       );
-      // await axios.delete(`${process.env.API_EXTRANL}/products/${product.slug}`);
-      console.log(updateProduct.data);
+
       res.status(200).json({ message: 'Success' });
     } catch (error) {
-      console.log(error, 'from api');
       res
         .status(500)
         .json({ success: false, message: 'Internal Server Error' });

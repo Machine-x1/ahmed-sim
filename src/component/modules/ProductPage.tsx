@@ -112,7 +112,7 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
             <BreadcrumbItem> {product?.name[lang]}</BreadcrumbItem>
           </Breadcrumbs>
 
-          <div className="lg:col-gap-12  xl:col-gap-16 mt-8  grid grid-cols-1 gap-8  lg:mt-12 lg:grid-cols-5 lg:gap-16">
+          <div className="lg:col-gap-12   xl:col-gap-16 mt-8  grid grid-cols-1 gap-8  lg:mt-12 lg:grid-cols-5 lg:gap-16">
             <div className="  lg:col-span-3 lg:row-end-1 ">
               <div className=" lg:flex lg:items-start lg:gap-12">
                 <div className=" lg:order-2 lg:ml-5">

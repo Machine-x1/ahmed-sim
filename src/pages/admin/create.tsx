@@ -23,7 +23,7 @@ const AddProduct = () => {
       description: { en: '', ar: '' },
       price: 0,
       quantity: 0,
-      images: ['', '', '', '', ''], // Initialize with five empty strings
+      images: ['', '', ''],
       category: 'paddle',
       status: 'in-stock',
       oldPrice: 0,
@@ -48,6 +48,7 @@ const AddProduct = () => {
         'bundles',
         'wheel-bases',
         'digital-dashes',
+        'cockpits',
       ]),
       status: Yup.string().oneOf(['in-stock', 'out-of-stock', 'pre-order']),
     }),
@@ -115,9 +116,6 @@ const AddProduct = () => {
     formik.setFieldValue('images', updatedImages);
   };
 
-  const addImageInput = () => {
-    formik.setFieldValue('images', [...formik.values.images, null]);
-  };
   return (
     <Main meta={<Meta />}>
       <div className="relative mx-auto flex flex-col items-center justify-center px-6 py-8 md:h-auto lg:py-4">
@@ -303,52 +301,6 @@ const AddProduct = () => {
                   </div>
                 )}
               </div>
-              {/* 
-              <div>
-                <label
-                  htmlFor="images"
-                  className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Images
-                </label>
-                {formik.values.images.map((_, index) => (
-                  <div key={index} className="mb-2 flex items-center space-x-2">
-                    <input
-                      type="text"
-                      id={`images-${index}`}
-                      name={`images-${index}`}
-                      onChange={(e) => handleImageChange(index, e.target.value)}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.images[index]}
-                      className="block flex-1 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-primary-600 focus:ring-primary-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-sm"
-                      placeholder={`Image URL ${index + 1}`}
-                    />
-                    {index > 4 && (
-                      <button
-                        type="button"
-                        onClick={() => removeImageInput(index)}
-                        className="font-medium text-red-500 focus:outline-none"
-                      >
-                        Remove
-                      </button>
-                    )}
-                  </div>
-                ))}
-                {formik.values.images.length < 5 && (
-                  <button
-                    type="button"
-                    onClick={addImageInput}
-                    className="font-medium text-primary-600 focus:outline-none"
-                  >
-                    Add Image
-                  </button>
-                )}
-                {formik.touched.images && formik.errors.images && (
-                  <div className="text-sm text-red-500">
-                    {formik.errors.images}
-                  </div>
-                )}
-              </div> */}
 
               <div>
                 <label
@@ -378,15 +330,7 @@ const AddProduct = () => {
                     )}
                   </div>
                 ))}
-                {formik.values.images.length < 5 && (
-                  <button
-                    type="button"
-                    onClick={addImageInput}
-                    className="font-medium text-primary-600 focus:outline-none"
-                  >
-                    Add Image
-                  </button>
-                )}
+
                 {formik.touched.images && formik.errors.images && (
                   <div className="text-sm text-red-500">
                     {formik.errors.images}
@@ -415,6 +359,7 @@ const AddProduct = () => {
                   <option value="bundles">Bundles</option>
                   <option value="wheel-bases">Wheel Bases</option>
                   <option value="digital-dashes">Digital Dashes</option>
+                  <option value="cockpits">Cockpits</option>
                 </select>
                 {formik.touched.category && formik.errors.category && (
                   <div className="text-sm text-red-500">

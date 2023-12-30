@@ -38,7 +38,11 @@ const NewProductCard = ({ item, lang }: { item?: any; lang?: any }) => {
 
   // Get the language to use
   const languageToUse = determineLanguage();
-
+  const productStatus: any = {
+    'out-of-stock': 'out-of-stock',
+    'pre-order': 'pre-order',
+    'in-stock': 'add-to-cart',
+  };
   return (
     <div className="relative  ">
       <Card
@@ -50,7 +54,7 @@ const NewProductCard = ({ item, lang }: { item?: any; lang?: any }) => {
         <Skeleton isLoaded className="rounded-lg">
           <CardBody className=" md:h-68 relative flex  w-full items-center justify-center overflow-hidden rounded-xl">
             {item?.status === 'out-of-stock' && (
-              <div className="absolute left-2 top-2 z-50 flex   rounded-full ">
+              <div className="absolute left-2 top-2 z-30 flex   rounded-full ">
                 <Image
                   src="/images/sold-out.png"
                   alt="sold-out"
@@ -81,7 +85,7 @@ const NewProductCard = ({ item, lang }: { item?: any; lang?: any }) => {
                 </h5>
                 <div className="flex items-center justify-between">
                   {item?.old_price !== 0 && (
-                    <div className="absolute  right-1 top-1 z-50  rounded-full border-[0.5px] bg-orange-600 px-4 py-1 text-xs text-white">
+                    <div className="absolute  right-1 top-1 z-30  rounded-full border-[0.5px] bg-orange-600 px-4 py-1 text-xs text-white">
                       <p className="flex items-center gap-x-1">
                         <span>
                           <MdOutlineDiscount size={20} className="" />
@@ -105,6 +109,10 @@ const NewProductCard = ({ item, lang }: { item?: any; lang?: any }) => {
                   fullWidth
                   radius="lg"
                   type="button"
+                  disabled={
+                    item.status === 'out-of-stock' ||
+                    item.status === 'pre-order'
+                  }
                   onClick={() =>
                     dispatch(setProdctCart(item)) &&
                     toast.success(t('add-to-cart'))
@@ -114,7 +122,10 @@ const NewProductCard = ({ item, lang }: { item?: any; lang?: any }) => {
                 >
                   <span className=" flex w-full items-center  justify-center text-center    ">
                     <span className=" w-full   text-sm font-semibold uppercase text-black">
-                      {t('add-to-cart')}
+                      {/* {item.status === 'out-of-stock'
+                        ? t('out-of-stock')
+                        : t('add-to-cart')} */}
+                      {t(`${productStatus[item.status]}`)}
                     </span>
                     <BiCartAdd
                       size={20}
