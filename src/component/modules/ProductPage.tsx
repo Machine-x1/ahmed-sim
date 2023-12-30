@@ -128,7 +128,7 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
                   </div>
                 </div>
 
-                <div className=" mt-4 w-full overflow-y-auto overflow-x-hidden  bg-greyColor lg:order-1 lg:w-32  lg:shrink-0 ">
+                <div className=" mt-4 w-full  lg:order-1 lg:w-32  lg:shrink-0 ">
                   <div className="flex  w-full items-start justify-center gap-4 lg:flex-col">
                     {renderImageCards()}
                   </div>
