@@ -57,7 +57,7 @@ const ProductDataSwiper = ({
           </Container>
           <div className=" relative h-full w-full   ">
             <Swiper
-              slidesPerView={4}
+              slidesPerView={5}
               spaceBetween={30}
               navigation
               loop
@@ -69,11 +69,11 @@ const ProductDataSwiper = ({
               }}
               breakpoints={{
                 1024: {
-                  slidesPerView: 4,
+                  slidesPerView: 5,
                   spaceBetween: 30,
                 },
                 768: {
-                  slidesPerView: 3,
+                  slidesPerView: 4,
                   spaceBetween: 20,
                 },
                 640: {

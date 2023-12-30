@@ -25,7 +25,7 @@ import router from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 import type { Key } from 'react';
 import { useState } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import { AiOutlineStock } from 'react-icons/ai';
 import { IoMdCart } from 'react-icons/io';
 import { MdFreeCancellation, MdProductionQuantityLimits } from 'react-icons/md';
@@ -115,20 +115,21 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
           <div className="lg:col-gap-12  xl:col-gap-16 mt-8  grid grid-cols-1 gap-8  lg:mt-12 lg:grid-cols-5 lg:gap-16">
             <div className="  lg:col-span-3 lg:row-end-1 ">
               <div className=" lg:flex lg:items-start lg:gap-12">
-                <div className="lg:order-2 lg:ml-5">
-                  <div className="h-[450px] min-h-[450px] max-w-xl overflow-hidden rounded-lg ">
+                <div className=" lg:order-2 lg:ml-5">
+                  <div className=" h-[460px] min-h-[460px] w-full  overflow-hidden rounded-lg lg:w-[580px]  ">
                     <Image
-                      className="h-[450px]  w-full max-w-full object-cover object-center"
+                      className="w-xl h-[460px] min-w-full  object-contain  object-center"
                       src={`https://simrckw.s3.eu-north-1.amazonaws.com/${product?.images[currentImg]}`}
                       width="100%"
                       height="100%"
+                      removeWrapper
                       alt={product?.name[lang]}
                     />
                   </div>
                 </div>
 
-                <div className=" mt-4  w-full    lg:order-1 lg:w-32 lg:shrink-0">
-                  <div className="flex w-full items-start   justify-center  gap-2 lg:flex-col">
+                <div className=" mt-4 w-full overflow-y-auto overflow-x-hidden  bg-greyColor lg:order-1 lg:w-32  lg:shrink-0 ">
+                  <div className="flex  w-full items-start justify-center gap-4 lg:flex-col">
                     {renderImageCards()}
                   </div>
                 </div>
@@ -150,7 +151,17 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
               <div className="mt-10 flex flex-col items-center justify-between space-y-4 border-y py-4 md:flex-row md:space-y-0">
                 <div className="flex items-end">
                   <p className="text-xl font-semibold">
-                    <FormattedPrice amount={product?.price} />
+                    {/* <FormattedPrice amount={product?.price} /> */}
+                    <div className="flex items-center gap-x-2">
+                      {product.old_price !== 0 ? (
+                        <p className="text-sm text-slate-500 line-through">
+                          <FormattedPrice amount={product?.old_price} />
+                        </p>
+                      ) : null}
+                      <p className="font-semibold text-orange-600  ">
+                        <FormattedPrice amount={product?.price} />
+                      </p>
+                    </div>
                   </p>
                 </div>
                 {product?.status === 'in-stock' ? (
@@ -260,16 +271,6 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
             </div>
           </div>
         </div>
-        <Toaster
-          toastOptions={{
-            style: {
-              fontSize: '1rem',
-              fontWeight: 'bold',
-              padding: '0.5rem',
-              width: '20rem',
-            },
-          }}
-        />
       </section>
     </div>
   );

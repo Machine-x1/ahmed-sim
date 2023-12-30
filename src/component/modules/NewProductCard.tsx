@@ -45,7 +45,7 @@ const NewProductCard = ({ item, lang }: { item?: any; lang?: any }) => {
         shadow="none"
         // isPressable
         fullWidth
-        className=" relative flex   w-full flex-col overflow-hidden  "
+        className=" relative flex h-full  w-full flex-col overflow-hidden  "
       >
         <Skeleton isLoaded className="rounded-lg">
           <CardBody className=" md:h-68 relative flex  w-full items-center justify-center overflow-hidden rounded-xl">
@@ -63,7 +63,7 @@ const NewProductCard = ({ item, lang }: { item?: any; lang?: any }) => {
 
             <Link href={`/products/${item?.slug}`}>
               <Image
-                className=" h-full   w-full  object-cover object-center  "
+                className=" min-h-52 h-52 max-h-52  w-full min-w-full  object-cover object-center  "
                 src={`https://simrckw.s3.eu-north-1.amazonaws.com/${item?.images[0]}`}
                 alt={item?.name[languageToUse] || 'Product image'}
                 width="100%"
@@ -101,7 +101,6 @@ const NewProductCard = ({ item, lang }: { item?: any; lang?: any }) => {
                     </p>
                   </div>
                 </div>
-                {/* </p> */}
                 <Button
                   fullWidth
                   radius="lg"
