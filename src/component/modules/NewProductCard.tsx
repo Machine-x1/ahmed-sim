@@ -14,6 +14,7 @@ import useTranslation from 'next-translate/useTranslation';
 // import product from 'next-seo/lib/jsonld/product';
 import toast from 'react-hot-toast';
 import { BiCartAdd } from 'react-icons/bi';
+import { MdOutlineDiscount } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
 
 import { calculatePercentage } from '@/apps/helpers';
@@ -47,14 +48,14 @@ const NewProductCard = ({ item, lang }: { item?: any; lang?: any }) => {
         className=" relative flex   w-full flex-col overflow-hidden  "
       >
         <Skeleton isLoaded className="rounded-lg">
-          <CardBody className=" relative flex w-full  items-center justify-center overflow-hidden rounded-xl md:h-full">
-            {item?.stock === 'out-of-stock' && (
-              <div className="absolute left-2 top-2 flex   rounded-full ">
+          <CardBody className=" md:h-68 relative flex  w-full items-center justify-center overflow-hidden rounded-xl">
+            {item?.status === 'out-of-stock' && (
+              <div className="absolute left-2 top-2 z-50 flex   rounded-full ">
                 <Image
                   src="/images/sold-out.png"
                   alt="sold-out"
                   width="100%"
-                  className="h-16 w-16 object-contain object-center"
+                  className="h-20 w-20 object-contain object-center"
                   height="100%"
                 />
               </div>
@@ -62,7 +63,7 @@ const NewProductCard = ({ item, lang }: { item?: any; lang?: any }) => {
 
             <Link href={`/products/${item?.slug}`}>
               <Image
-                className=" h-52 max-h-52  w-96 object-cover  object-center"
+                className=" h-full   w-full  object-cover object-center  "
                 src={`https://simrckw.s3.eu-north-1.amazonaws.com/${item?.images[0]}`}
                 alt={item?.name[languageToUse] || 'Product image'}
                 width="100%"
@@ -81,7 +82,10 @@ const NewProductCard = ({ item, lang }: { item?: any; lang?: any }) => {
                 <div className="flex items-center justify-between">
                   {item?.old_price !== 0 && (
                     <div className="absolute  right-1 top-1 z-50  rounded-full border-[0.5px] bg-orange-600 px-4 py-1 text-xs text-white">
-                      <p>
+                      <p className="flex items-center gap-x-1">
+                        <span>
+                          <MdOutlineDiscount size={20} className="" />
+                        </span>
                         {calculatePercentage(item.old_price, item?.price)}% off
                       </p>
                     </div>
