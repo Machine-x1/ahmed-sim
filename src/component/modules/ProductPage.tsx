@@ -107,8 +107,8 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           <Breadcrumbs isDisabled>
-            <BreadcrumbItem>Home</BreadcrumbItem>
-            <BreadcrumbItem>product</BreadcrumbItem>
+            <BreadcrumbItem>{t(`Home`)}</BreadcrumbItem>
+            <BreadcrumbItem>{t(`Product`)}</BreadcrumbItem>
             <BreadcrumbItem> {product?.name[lang]}</BreadcrumbItem>
           </Breadcrumbs>
 
@@ -142,7 +142,7 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
                 <div className="mt-5 flex  flex-col  ">
                   <p className="flex  items-center text-xl  font-medium text-gray-500">
                     <span className="mr-2 h-5 w-5  rounded-full  bg-red-500" />
-                    <span className="ml-2"> {t('sold-out')}</span>
+                    <span className="ml-2"> {t('out-of-stock')}</span>
                   </p>
                 </div>
               )}

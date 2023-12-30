@@ -8,6 +8,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import * as Yup from 'yup';
 
 import { Meta } from '@/component/layouts/Meta';
+import SpinnerLoader from '@/component/modules/SpinnerLoader';
 import { Main } from '@/component/templates/Main';
 
 const UpdateProduct = ({ product }: { product: any }) => {
@@ -93,7 +94,9 @@ const UpdateProduct = ({ product }: { product: any }) => {
       <div className="relative mx-auto flex flex-col items-center justify-center px-6 py-8 md:h-auto lg:py-4">
         {loading ? (
           <div className="fixed left-0 top-0 flex h-screen w-screen items-center justify-center bg-black/70">
-            <div className="text-white">Loading</div>
+            <div className="">
+              <SpinnerLoader />
+            </div>
           </div>
         ) : null}
         <Toaster />
