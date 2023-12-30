@@ -11,7 +11,7 @@ export default async function handler(
       const { slug } = req.query;
       const { oldPrice, ...rest } = req.body;
       const updatedBody = { old_price: oldPrice, ...rest };
-      const updateProduct = await axios.put(
+      await axios.put(
         `${process.env.API_EXTRANL}/products/${slug}`,
         updatedBody
       );
