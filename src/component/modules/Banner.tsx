@@ -14,7 +14,8 @@ const Banner = () => {
       id="banner"
       className="relative h-screen  bg-cover bg-scroll bg-center md:bg-fixed lg:h-[750px]"
       style={{
-        backgroundImage: "url('/images/banner-img.jpg')",
+        backgroundImage:
+          "url('https://simrckw.s3.eu-north-1.amazonaws.com/images/banner/first-banner')",
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         // backgroundAttachment: 'fixed',
