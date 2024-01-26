@@ -39,7 +39,6 @@ const ProductPage = ({ product, lang }: { product: any; lang: any }) => {
   const { t } = useTranslation('common');
 
   const [preOrderStatus, setPreOrderStatus] = useState('Pre-Order'); // Initial button text
-
   const handlePreOrder = async (preOrderProduct: any) => {
     const totalPrice = preOrderProduct?.price;
 

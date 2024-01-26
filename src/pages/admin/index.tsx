@@ -152,8 +152,8 @@ const index = ({ products, lang, meta }: any) => {
                           E-mails
                         </span>
                       </Link>
-                    </li>{' '}
-                    <li>
+                    </li>
+                    {/* <li>
                       <Link
                         href="admin/banner"
                         className="group flex items-center rounded-lg p-2 text-base font-normal text-gray-900 hover:bg-gray-100 "
@@ -163,7 +163,7 @@ const index = ({ products, lang, meta }: any) => {
                           Banner
                         </span>
                       </Link>
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
               </div>

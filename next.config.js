@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable import/no-extraneous-dependencies */
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
@@ -21,6 +22,11 @@ module.exports = withBundleAnalyzer({
         hostname: 'images.unsplash.com',
         pathname: '/**',
       },
+      // {
+      //   protocol: 'https',
+      //   hostname: 'simrckw.s3.eu-north-1.amazonaws.com',
+      //   pathname: '/**',
+      // },
     ],
   },
   poweredByHeader: false,
