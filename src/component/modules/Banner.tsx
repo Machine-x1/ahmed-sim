@@ -13,10 +13,7 @@ import BannerText from './BannerText';
 const Banner = () => {
   const { t } = useTranslation('common');
   return (
-    <div
-      id="banner"
-      className="relative h-screen     md:bg-fixed lg:h-[750px] "
-    >
+    <div id="banner" className="relative h-screen md:bg-fixed lg:h-[750px] ">
       {/* <div
         className=" h-screen w-full  bg-cover bg-center md:bg-fixed lg:h-[750px]"
         // style={{

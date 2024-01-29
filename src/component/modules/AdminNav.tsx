@@ -6,12 +6,14 @@ import {
   NavbarItem,
   NavbarMenuToggle,
 } from '@nextui-org/react';
+import { useRouter } from 'next/router';
 import React from 'react';
 import { MdAdminPanelSettings, MdLanguage } from 'react-icons/md';
 
 import Logo from './Logo';
 
 const AdminNav = () => {
+  const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const lang = 'en';
   return (
@@ -34,33 +36,36 @@ const AdminNav = () => {
         </NavbarContent>
 
         <NavbarContent className=" pr-3" justify="center">
-          <NavbarBrand>
+          <NavbarBrand
+            className="cursor-pointer"
+            onClick={() => router.push('/')}
+          >
             <Logo />
             <p className="font-bold text-inherit" />
           </NavbarBrand>
         </NavbarContent>
 
         <NavbarContent justify="end">
-          <NavbarItem className=" flex">
+          <NavbarItem className=" flex" onClick={() => router.push('/admin')}>
             <div className="">
               <div className="relative flex items-center justify-center gap-x-1  rounded-full border-[1px] border-solid border-white bg-hoverTextColor px-3 py-1.5 text-slate-100  duration-200  hover:bg-white  hover:text-hoverTextColor ">
-                <MdAdminPanelSettings className="text-xl  " />
-                <h2 className="">Admin</h2>
+                <MdAdminPanelSettings className="cursor-pointer  text-xl " />
+                <h2 className="cursor-pointer">Admin</h2>
               </div>
             </div>
           </NavbarItem>
-          <NavbarItem className="flex">
-            <div className="relative flex items-center justify-center gap-x-1 rounded-full border-[1px] border-solid border-white bg-hoverTextColor  px-3 py-1.5  text-slate-100 duration-200 hover:cursor-pointer hover:bg-white  hover:text-hoverTextColor ">
+          <NavbarItem className="flex cursor-text ">
+            <div className=" relative flex cursor-text items-center justify-center gap-x-1 rounded-full border-[1px] border-solid border-white bg-hoverTextColor  px-3 py-1.5  text-slate-100 duration-200 hover:cursor-pointer hover:bg-white  hover:text-hoverTextColor ">
               {lang === 'en' ? (
-                <a href="/en">
-                  <h2 className=""> الإنجليزية</h2>
+                <a href="/en" className="cursor-text">
+                  <h2 className="cursor-text"> English</h2>
                 </a>
               ) : (
-                <a href="/ar">
-                  <h2 className="">Arabic</h2>
+                <a href="/ar" className="cursor-text">
+                  <h2 className="cursor-text">Arabic</h2>
                 </a>
               )}
-              <MdLanguage className="text-xl" />
+              <MdLanguage className="cursor-text text-xl" />
             </div>
           </NavbarItem>
         </NavbarContent>

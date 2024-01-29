@@ -6,7 +6,7 @@ import { getCookie } from 'cookies-next';
 import type { GetServerSidePropsContext } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BiAddToQueue } from 'react-icons/bi';
 import { MdEmail } from 'react-icons/md';
 
@@ -16,14 +16,12 @@ import getProducts from '@/apps/server/products/getProducts';
 import AdminNav from '@/component/modules/AdminNav';
 import { AdminProductSection } from '@/component/modules/AdminProductSection';
 import SearchBar from '@/component/modules/SearchBar';
-
 /* eslint-disable no-underscore-dangle */
 const index = ({ products, lang, meta }: any) => {
   const [value, setValue] = useState('All Products');
   const [serverData] = useState(products);
   const [productsData, setProductsData] = useState(serverData);
   const [searchValue, setSearchValue] = useState('');
-  // const [metaData, setMetaData] = useState(meta);
   const [metaData, setMetaData] = useState(meta);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -105,12 +103,15 @@ const index = ({ products, lang, meta }: any) => {
   const handlePageChange = (newPage: any) => {
     setCurrentPage(newPage);
   };
+  const handleAddProductClick = () => {
+    router.push('/admin/create');
+  };
 
   return (
     <>
       <AdminNav />
-      <div className="mx-auto w-full max-w-[1920px] bg-bodyColor">
-        <div className="flex overflow-hidden bg-bodyColor">
+      <div className="mx-auto h-full max-h-screen w-full max-w-[1920px] ">
+        <div className="flex h-full  overflow-hidden ">
           <aside
             id="sidebar"
             className="fixed left-0 top-0 z-20 hidden h-full w-64 shrink-0 flex-col pt-16 duration-75 transition-width lg:flex"
@@ -158,7 +159,7 @@ const index = ({ products, lang, meta }: any) => {
                         href="admin/banner"
                         className="group flex items-center rounded-lg p-2 text-base font-normal text-gray-900 hover:bg-gray-100 "
                       >
-                        <MdEmail className="h-6 w-6 shrink-0 text-gray-500 duration-75 transition group-hover:text-gray-900" />
+                        <BiImageAdd className="h-6 w-6 shrink-0 text-gray-500 duration-75 transition group-hover:text-gray-900" />
                         <span className="ml-3 flex-1 whitespace-nowrap">
                           Banner
                         </span>
@@ -175,18 +176,18 @@ const index = ({ products, lang, meta }: any) => {
           />
           <div
             id="main-content"
-            className="relative h-full w-full overflow-y-auto bg-gray-50 lg:ml-64"
+            className="relative h-full    w-full overflow-y-auto  lg:ml-64"
           >
             <main>
-              <div className="">
+              <section className="">
                 <div className="top-0 h-full w-full" />
                 <section className="flex w-full ">
-                  <div className=" mx-auto flex w-full max-w-screen-xl flex-col gap-4 py-10 ">
+                  <div className="  mx-auto flex w-full max-w-screen-2xl flex-col gap-4 py-10 ">
                     <div className=" w-full ">
                       <div className=" flex w-full items-center justify-center  gap-4 pb-5  ">
                         <SearchBar setSearchValue={setSearchValue} />
                         <Button
-                          onClick={() => router.push('/admin/create')}
+                          onClick={handleAddProductClick}
                           // fullWidth
                           color="success"
                           variant="flat"
@@ -213,7 +214,7 @@ const index = ({ products, lang, meta }: any) => {
                     ))}
                   </div>
                 </section>
-                <div className="flex w-full items-center justify-center py-12">
+                <div className="flex h-full max-h-screen w-full items-center justify-center py-12">
                   <Pagination
                     color="primary"
                     size="lg"
@@ -223,7 +224,7 @@ const index = ({ products, lang, meta }: any) => {
                     onChange={handlePageChange}
                   />
                 </div>
-              </div>
+              </section>
             </main>
           </div>
         </div>
