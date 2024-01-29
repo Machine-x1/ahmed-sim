@@ -16,8 +16,8 @@
     "commit": "cz",
     "cypress": "cypress open",
     "cypress:headless": "cypress run",
-    "e2e": "start-server-and-test dev http://localhost:3000 cypress",
-    "e2e:headless": "start-server-and-test dev http://localhost:3000 cypress:headless",
+    "e2e": "start-server-and-test dev https://simrckw.com cypress",
+    "e2e:headless": "start-server-and-test dev https://simrckw.com cypress:headless",
     "prepare": "husky install",
     "postbuild": "next-sitemap"
   },
