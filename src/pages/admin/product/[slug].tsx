@@ -64,7 +64,7 @@ const UpdateProduct = ({ product }: { product: any }) => {
       try {
         // const formData = {};
         const response = await axios.put(
-          `https://simrckw.com/api/admin/product/${product.slug}`,
+          `http://localhost:3000/api/admin/product/${product.slug}`,
           sendThis
         );
 
