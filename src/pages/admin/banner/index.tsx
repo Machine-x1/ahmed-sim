@@ -20,6 +20,8 @@ const BannerUpdate = () => {
   const formik: any = useFormik({
     initialValues: {
       images: [''],
+      title: '',
+      content: '',
     },
     validationSchema: Yup.object({
       images: Yup.array().of(Yup.string()),
@@ -126,6 +128,29 @@ const BannerUpdate = () => {
                     {formik.errors.images}
                   </div>
                 )}
+
+                <div className="mb-2 flex items-center space-x-2">
+                  <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    placeholder="title"
+                    onChange={(e) =>
+                      formik.setFieldValue(`title`, e.target.value)
+                    }
+                    className="block flex-1 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-primary-600 focus:ring-primary-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-sm"
+                  />
+                  <input
+                    type="text"
+                    id="content"
+                    placeholder="content"
+                    name="content"
+                    onChange={(e) =>
+                      formik.setFieldValue(`content`, e.target.value)
+                    }
+                    className="block flex-1 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-primary-600 focus:ring-primary-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-sm"
+                  />
+                </div>
               </div>
 
               <button

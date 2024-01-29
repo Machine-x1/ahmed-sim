@@ -81,7 +81,7 @@ const Adminproducts = ({ products, lang }: any) => {
                   variant="flat"
                   className="flex items-center justify-center "
                 >
-                  <span className=" text-lg font-medium  ">Add Product </span>
+                  <span className=" text-lg font-medium  ">Add Product</span>
                   <BiAddToQueue size={50} />
                 </Button>
                 {/* </div> */}

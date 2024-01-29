@@ -12,10 +12,21 @@ const Login = () => {
   const handleLogin = async (e: any) => {
     e.preventDefault(); // Prevent default form submission behavior
     // console.log(email, password);
-    const req = await internalrequestHandler('apiLogin', 'POST', {
-      email,
-      password,
-    });
+    const req = await internalrequestHandler(
+      'apiLogin',
+      'POST',
+      {
+        email,
+        password,
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          'Access-Control-Allow-Origin': '* ', // Required for CORS support to work
+        },
+      }
+    );
     if (req.status === 200) {
       router.push('/admin');
     } else {

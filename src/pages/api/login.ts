@@ -8,7 +8,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const { email, password } = req.body;
-  console.log(email, password);
+  // console.log(email, password);
   const request = await requestHandler('login', 'POST', { email, password });
   if (request) {
     setCookie('ad_token', request.data.token, { req, res });

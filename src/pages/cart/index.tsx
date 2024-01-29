@@ -20,7 +20,7 @@ const Index = () => {
   return (
     <Main meta={<Meta />}>
       <div className="mx-auto min-h-screen w-full max-w-screen-xl px-4   py-8   pb-24  xl:px-0">
-        {cart.products.length ? (
+        {cart.products.length > 0 ? (
           <div className=" w-full  xl:px-0">
             <div className="flex w-full  items-center justify-center gap-y-2 pb-8  ">
               <Divider className=" mx-auto  w-1/3" />
