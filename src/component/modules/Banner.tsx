@@ -5,7 +5,7 @@
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 // import Image from 'next/image';
-import { Image } from '@nextui-org/react';
+import Image from 'next/image';
 import useTranslation from 'next-translate/useTranslation';
 
 import BannerText from './BannerText';
@@ -24,16 +24,12 @@ const Banner = () => {
         // }}
       > */}
       <Image
-        radius="none"
-        className=" absolute  h-screen w-full rounded-none   bg-center object-cover object-center  lg:h-[750px]  "
-        // priority
-        placeholder="blur"
-        width="100%"
-        height="100%"
-        // layout="fill"
-        removeWrapper
-        src="/images/banner11.jpg"
-        alt="Banner Image"
+        className=" absolute   h-screen w-full rounded-none   bg-center object-cover object-center  lg:h-[750px]  "
+        priority
+        quality={100}
+        fill
+        src="/images/banner.jpg"
+        alt="Banner-Image"
       />
       <BannerText title={t('banner')} message={t('theword')} />
       {/* </div> */}
