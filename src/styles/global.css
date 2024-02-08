@@ -14,6 +14,9 @@
   background-position: center center;
   background-size: cover;
  } */
+ .react-icons {
+  vertical-align: middle;
+}
 .button {
   @apply rounded-md transition-all duration-150 ease-linear shadow-md hover:shadow-sm
 }
