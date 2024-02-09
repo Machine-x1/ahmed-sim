@@ -37,7 +37,7 @@ const BannerUpdate = () => {
         });
         // Make the API request with axios
         const response = await axios.post(
-          'https://simrckw.com/api/admin/settings',
+          'http://localhost:3000/api/admin/settings',
           formData,
           {
             headers: {

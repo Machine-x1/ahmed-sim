@@ -1,31 +1,36 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable no-console */
 /* eslint-disable tailwindcss/no-custom-classname */
-// import { Button,useDisclosure } from '@nextui-org/react';
-import { useFormik } from 'formik';
-import React from 'react';
-import { BiShield } from 'react-icons/bi';
+/* eslint-disable react/button-has-type */
+/* eslint-disable tailwindcss/migration-from-tailwind-2 */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import axios from "axios";
+import React from "react";
+import { BiShield } from "react-icons/bi";
 
-import { Meta } from '@/component/layouts/Meta';
-import CheckoutSummary from '@/component/modules/CheckoutSummary';
-import Container from '@/component/modules/Container';
-// import FailedModal from '@/component/modules/FailedModal';
-import Heading from '@/component/modules/Heading';
-import InputField from '@/component/modules/InputField';
-import TotalPrice from '@/component/modules/TotalPrice';
-import { Main } from '@/component/templates/Main';
+import { Meta } from "@/component/layouts/Meta";
+import Container from "@/component/modules/Container";
+import DateTime from "@/component/modules/DateTime";
+import HeadingAndPara from "@/component/modules/HeadingAndPara";
+import InputField from "@/component/modules/InputField";
+import TotalPrice from "@/component/modules/TotalPrice";
+import { Main } from "@/component/templates/Main";
 
-import { validationSchema } from '../../component/elements/Form/validationschema';
+import { validationSchema } from "../../component/elements/Form/validationschema";
+import CheckoutSummary from "@/component/modules/CheckoutSummary";
+import { useFormik } from "formik";
+import Heading from "@/component/modules/Heading";
 
 const index = () => {
   const formik = useFormik({
     initialValues: {
-      fullName: '',
-      phoneNo: '',
-      city: '',
-      email: '',
-      shippingAddress: '',
-      postcode: '',
+      fullName: "",
+      phoneNo: "",
+      city: "",
+      email: "",
+      shippingAddress: "",
+      postcode: "",
     },
     onSubmit: (values) => {
       console.log(values);
@@ -36,7 +41,17 @@ const index = () => {
 
   const { errors } = formik;
   // const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const handleCheckout = async () => {
+    const data = await axios.post("http://localhost:3000/api/checkout/", {
+      amount: 44,
+    });
+    const htmlBlob = new Blob([data.data], { type: "text/html" });
+    const url = URL.createObjectURL(htmlBlob);
 
+    // Open the HTML file in a new tab
+    window.open(url);
+    console.log(data.data);
+  };
   return (
     <Main meta={<Meta />}>
       <Container className="mx-auto mt-12 h-full min-h-screen w-full   max-w-[1920px] ">
@@ -131,11 +146,11 @@ const index = () => {
 
               <div>
                 <p className="text-primary-gray mb-3 text-xs">
-                  With payment, you agree to the general{' '}
+                  With payment, you agree to the general{" "}
                   <span className="text-[#1733B6]">
                     terms and conditions of website
-                  </span>{' '}
-                  & the{' '}
+                  </span>{" "}
+                  & the{" "}
                   <span className="text-[#1733B6]">activity provider.</span>
                 </p>
 
