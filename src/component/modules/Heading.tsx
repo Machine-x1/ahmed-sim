@@ -1,5 +1,5 @@
 /* eslint-disable tailwindcss/no-custom-classname */
-const HeadingAndPara = ({
+const Heading = ({
   title,
   para,
   className = '',
@@ -17,4 +17,4 @@ const HeadingAndPara = ({
     </div>
   );
 };
-export default HeadingAndPara;
+export default Heading;
