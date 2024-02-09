@@ -6,23 +6,47 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import axios from "axios";
-import React from "react";
+import { useFormik } from "formik";
+import React, { useState } from "react";
 import { BiShield } from "react-icons/bi";
+import { useSelector } from "react-redux";
 
+import type { RootState } from "@/apps/redux/store";
 import { Meta } from "@/component/layouts/Meta";
+import CheckoutSummary from "@/component/modules/CheckoutSummary";
 import Container from "@/component/modules/Container";
-import DateTime from "@/component/modules/DateTime";
-import HeadingAndPara from "@/component/modules/HeadingAndPara";
+import Heading from "@/component/modules/Heading";
 import InputField from "@/component/modules/InputField";
 import TotalPrice from "@/component/modules/TotalPrice";
 import { Main } from "@/component/templates/Main";
 
 import { validationSchema } from "../../component/elements/Form/validationschema";
-import CheckoutSummary from "@/component/modules/CheckoutSummary";
-import { useFormik } from "formik";
-import Heading from "@/component/modules/Heading";
+import { useRouter } from "next/router";
+import ModalPop from "@/component/modules/SuccefulModalPop";
+import FailedModal from "@/component/modules/FailedModal";
+import { useDisclosure } from "@nextui-org/react";
 
 const index = () => {
+  const { cart } = useSelector((state: RootState) => state.cart);
+  const [isPopup, setIsPopup] = useState(false);
+  const calculateTotalPrice = () => {
+    let totalPrice = 0;
+    for (const product of cart.products) {
+      totalPrice += product.price * product.purchased_quantity;
+    }
+    return totalPrice;
+  };
+  const total = calculateTotalPrice();
+  const handleCheckout = async () => {
+    const data = await axios.post("http://localhost:3000/api/checkout/", {
+      amount: total + 50,
+    });
+    const htmlBlob = new Blob([data.data], { type: "text/html" });
+    const url = URL.createObjectURL(htmlBlob);
+
+    // Open the HTML file in a new tab
+    window.open(url);
+  };
   const formik = useFormik({
     initialValues: {
       fullName: "",
@@ -32,8 +56,8 @@ const index = () => {
       shippingAddress: "",
       postcode: "",
     },
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async () => {
+      const d = await handleCheckout();
     },
 
     validationSchema,
@@ -41,17 +65,19 @@ const index = () => {
 
   const { errors } = formik;
   // const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const handleCheckout = async () => {
-    const data = await axios.post("http://localhost:3000/api/checkout/", {
-      amount: 44,
-    });
-    const htmlBlob = new Blob([data.data], { type: "text/html" });
-    const url = URL.createObjectURL(htmlBlob);
+  const router = useRouter();
+  const { is_valid } = router.query;
+  // const isValid = is_valid === "true" ? <ModalPop /> : <FailedModal />; // Assuming
 
-    // Open the HTML file in a new tab
-    window.open(url);
-    console.log(data.data);
+  const handleClose = () => {
+    const { pathname, query } = router;
+    delete query.is_valid; // Remove the is_valid parameter from the query object
+
+    router.push({ pathname, query });
   };
+
+  const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
+
   return (
     <Main meta={<Meta />}>
       <Container className="mx-auto mt-12 h-full min-h-screen w-full   max-w-[1920px] ">
@@ -60,7 +86,23 @@ const index = () => {
             <h1 className="text-dark-gray mb-16 hidden text-5xl font-semibold md:block">
               Confirm and pay
             </h1>
-
+            {is_valid !== undefined ? (
+              is_valid === "true" ? (
+                <ModalPop
+                  onClose={handleClose}
+                  isOpen={isOpen}
+                  onOpen={onOpen}
+                  onOpenChange={onOpenChange}
+                />
+              ) : (
+                <FailedModal
+                  onClose={handleClose}
+                  isOpen={isOpen}
+                  onOpen={onOpen}
+                  onOpenChange={onOpenChange}
+                />
+              )
+            ) : null}
             <form onSubmit={formik.handleSubmit}>
               <Heading
                 title="Enter your details"
@@ -135,14 +177,14 @@ const index = () => {
                 />
               </div>
 
-              <div className="mb-10">
+              {/* <div className="mb-10">
                 <h2 className="text-dark-gray mb-1 text-lg font-semibold md:text-2xl">
                   Total: 250 KWD
                 </h2>
                 <p className="text-primary-gray text-xs underline">
                   You will pay in KWD
                 </p>
-              </div>
+              </div> */}
 
               <div>
                 <p className="text-primary-gray mb-3 text-xs">

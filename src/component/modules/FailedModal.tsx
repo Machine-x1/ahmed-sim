@@ -1,8 +1,18 @@
-import { Modal, ModalBody, ModalContent, ModalHeader } from '@nextui-org/react';
-import Image from 'next/image';
-import React from 'react';
+import { Modal, ModalBody, ModalContent, ModalHeader } from "@nextui-org/react";
+import Image from "next/image";
+import React from "react";
 
-export default function FailedModal({ isOpen, onOpenChange }: any) {
+export default function FailedModal({
+  isOpen,
+  onOpenChange,
+  onOpen,
+  onClose,
+}: {
+  isOpen: any;
+  onOpenChange: any;
+  onOpen: any;
+  onClose: any;
+}) {
   // const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
@@ -12,7 +22,10 @@ export default function FailedModal({ isOpen, onOpenChange }: any) {
         closeButton
         // onClose={}
         backdrop="opaque"
-        isOpen={isOpen}
+        isOpen={true}
+        // size="4xl"
+        onClose={onClose}
+        defaultOpen
         placement="center"
         onOpenChange={onOpenChange}
         motionProps={{
@@ -22,7 +35,7 @@ export default function FailedModal({ isOpen, onOpenChange }: any) {
               opacity: 1,
               transition: {
                 duration: 0.3,
-                ease: 'easeOut',
+                ease: "easeOut",
               },
             },
             exit: {
@@ -30,7 +43,7 @@ export default function FailedModal({ isOpen, onOpenChange }: any) {
               opacity: 0,
               transition: {
                 duration: 0.2,
-                ease: 'easeIn',
+                ease: "easeIn",
               },
             },
           },
@@ -39,7 +52,7 @@ export default function FailedModal({ isOpen, onOpenChange }: any) {
         <ModalContent>
           <>
             <ModalHeader className="mb-4 flex flex-col gap-1 text-xl font-semibold text-red-600 ">
-              Payment Failed{' '}
+              Payment Failed{" "}
             </ModalHeader>
             <ModalBody>
               <div className="flex flex-col items-center justify-center gap-12">
@@ -55,6 +68,7 @@ export default function FailedModal({ isOpen, onOpenChange }: any) {
                   payment.
                 </p>
               </div>
+              <button>Close</button>
             </ModalBody>
           </>
         </ModalContent>

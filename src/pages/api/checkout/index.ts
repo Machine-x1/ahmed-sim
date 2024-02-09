@@ -8,10 +8,10 @@ export default async function handler(
 ) {
   const { amount } = req.body;
   const responseFromApi = await axios.post(
-    "https://1e16-41-232-70-110.ngrok-free.app/payment/request",
+    "https://c7df-41-236-213-66.ngrok-free.app/payment/request",
     { amount }
   );
-  console.log(responseFromApi.data);
+  // console.log(responseFromApi.data);
   // res.send(responseFromApi.data);
   res.status(200).send(responseFromApi.data);
 
