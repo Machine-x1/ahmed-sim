@@ -1,7 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-/* eslint-disable no-console */
-/* eslint-disable tailwindcss/no-custom-classname */
-// import { Button,useDisclosure } from '@nextui-org/react';
 import { useFormik } from 'formik';
 import React from 'react';
 import { BiShield } from 'react-icons/bi';
@@ -9,7 +5,6 @@ import { BiShield } from 'react-icons/bi';
 import { Meta } from '@/component/layouts/Meta';
 import CheckoutSummary from '@/component/modules/CheckoutSummary';
 import Container from '@/component/modules/Container';
-// import FailedModal from '@/component/modules/FailedModal';
 import Heading from '@/component/modules/Heading';
 import InputField from '@/component/modules/InputField';
 import TotalPrice from '@/component/modules/TotalPrice';
@@ -17,7 +12,7 @@ import { Main } from '@/component/templates/Main';
 
 import { validationSchema } from '../../component/elements/Form/validationschema';
 
-const index = () => {
+const Index = () => {
   const formik = useFormik({
     initialValues: {
       fullName: '',
@@ -28,6 +23,7 @@ const index = () => {
       postcode: '',
     },
     onSubmit: (values) => {
+      // eslint-disable-next-line no-console
       console.log(values);
     },
 
@@ -35,14 +31,13 @@ const index = () => {
   });
 
   const { errors } = formik;
-  // const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
     <Main meta={<Meta />}>
       <Container className="mx-auto mt-12 h-full min-h-screen w-full   max-w-[1920px] ">
-        <main className="border-gray  flex flex-col justify-between border border-solid  p-12 pb-6 shadow-sm md:mb-16 md:mt-12 md:flex-row md:border-r-[2.5px]">
-          <section className="md:border-grey mt-10 md:mt-0 md:border-r-[1.5px] md:border-solid md:pr-6">
-            <h1 className="text-dark-gray mb-16 hidden text-5xl font-semibold md:block">
+        <main className="flex  flex-col justify-between border border-solid border-slate-100  p-12 pb-6 shadow-sm md:mb-16 md:mt-12 md:flex-row md:border-r-[2px]">
+          <section className="mt-10 md:mt-0 md:border-r-[1.5px] md:border-solid md:border-slate-100 md:pr-6">
+            <h1 className=" mb-16 hidden text-5xl font-semibold md:block">
               Confirm and pay
             </h1>
 
@@ -58,10 +53,8 @@ const index = () => {
                   type="text"
                   label="Full Name"
                   placeholder="Enter your full name"
-                  // valid={!!(errors.fullName && touched.fullName)}
                   errmessage={errors.fullName}
                   name="fullName"
-                  // value={formik.values.fullName}
                   onChange={formik.handleChange}
                 />
 
@@ -69,7 +62,6 @@ const index = () => {
                   type="number"
                   label="Phone no"
                   placeholder="Enter your phone number."
-                  // valid={!!(errors.phoneNo && touched.phoneNo)}
                   errmessage={errors.phoneNo}
                   name="phoneNo"
                   onChange={formik.handleChange}
@@ -78,7 +70,6 @@ const index = () => {
                   type="text"
                   label="City"
                   placeholder="Shipping address city"
-                  // valid={!!(errors.city && touched.city)}
                   errmessage={errors.city}
                   name="city"
                   onChange={formik.handleChange}
@@ -87,7 +78,6 @@ const index = () => {
                   type="email"
                   label="email"
                   placeholder="Enter email"
-                  // valid={!!(errors.email && touched.email)}
                   errmessage={errors.email}
                   name="email"
                   onChange={formik.handleChange}
@@ -106,14 +96,12 @@ const index = () => {
                   placeholder="1411 Broadway Fl 34"
                   errmessage={errors.shippingAddress}
                   name="shippingAddress"
-                  // defaultvalue="Blg 21 /Street/Apt  "
                   onChange={formik.handleChange}
                 />
                 <InputField
                   type="number"
                   label="Postcode"
                   placeholder="Postal code"
-                  // valid={!!(errors.postcode && touched.postcode)}
                   errmessage={errors.postcode}
                   name="postcode"
                   onChange={formik.handleChange}
@@ -121,16 +109,14 @@ const index = () => {
               </div>
 
               <div className="mb-10">
-                <h2 className="text-dark-gray mb-1 text-lg font-semibold md:text-2xl">
+                <h2 className=" mb-1 text-lg font-semibold md:text-2xl">
                   Total: 250 KWD
                 </h2>
-                <p className="text-primary-gray text-xs underline">
-                  You will pay in KWD
-                </p>
+                <p className="text-xs text-lightText ">You will pay in KWD</p>
               </div>
 
               <div>
-                <p className="text-primary-gray mb-3 text-xs">
+                <p className=" mb-3 text-xs text-lightText">
                   With payment, you agree to the general{' '}
                   <span className="text-[#1733B6]">
                     terms and conditions of website
@@ -150,19 +136,17 @@ const index = () => {
             </form>
           </section>
 
-          <section className=" md:border-light-gray   flex flex-col gap-4 md:mt-0 md:border-r-[1.5px] md:border-solid md:pr-6  ">
-            <h1 className="text-dark-gray mb-10 text-3xl font-semibold md:hidden">
+          <section className=" flex   flex-col gap-4 md:mt-0 md:border-r-[1.5px] md:border-solid md:border-slate-100 md:pr-6  ">
+            <h1 className=" mb-10 text-3xl font-semibold md:hidden">
               Confirm and pay
             </h1>
             <CheckoutSummary values={formik.values} />
             <TotalPrice />
-            {/* <Button onPress={onOpen}>Open Modal</Button> */}
           </section>
-          {/* <FailedModal isOpen={isOpen} onOpenChange={onOpenChange} /> */}
         </main>
       </Container>
     </Main>
   );
 };
 
-export default index;
+export default Index;

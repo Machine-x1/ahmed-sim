@@ -1,13 +1,9 @@
-/* eslint-disable @typescript-eslint/no-shadow */
-/* eslint-disable no-console */
-/* eslint-disable unused-imports/no-unused-vars */
-/* eslint-disable no-underscore-dangle */
-
 import { Pagination } from '@nextui-org/react';
 import type { GetServerSidePropsContext } from 'next';
 import { useEffect, useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 
+import { categories } from '@/apps/constants/categories';
 import internalrequestHandler from '@/apps/helpers/InternalrequestHandler';
 import getProducts from '@/apps/server/products/getProducts';
 import { Meta } from '@/component/layouts/Meta';
@@ -71,24 +67,14 @@ const ProductsPage = ({
     getSearch(); // Call the async function
   }, [searchValue]);
 
-  const categories = [
-    { title: 'STEERING WHEELS', key: 'steer-wheels', id: 'steeringWheels' },
-    { title: 'PEDALS', key: 'paddle', id: 'pedals' },
-    { title: 'BUNDLES', key: 'bundles', id: 'Bundles' },
-    { title: 'WHEEL BASES', key: 'wheel-bases', id: 'wheelBases' },
-    { title: 'ACCESSORIES', key: 'accessories', id: 'accessories' },
-    { title: 'DIGITAL DASHES', key: 'digital-dashes', id: 'DigitalDashes' },
-    { title: 'COCKPITS', key: 'cockpits', id: 'cockpits' },
-  ];
-
-  const fetchPag = async (currentPage: any) => {
+  const fetchPag = async () => {
     try {
       const data = await internalrequestHandler(
         'apiProduct',
         'GET',
         {},
         {},
-        { page: currentPage, limit: metaData.limit }
+        { page: currentPage.toString(), limit: metaData.limit }
       );
       setProductsData(data.data.products);
       setMetaData(data.data.meta);
@@ -99,7 +85,7 @@ const ProductsPage = ({
   };
   useEffect(() => {
     const fetchProducts = async () => {
-      await fetchPag(currentPage);
+      await fetchPag();
     };
     if (currentPage !== 1) {
       fetchProducts();
@@ -114,21 +100,12 @@ const ProductsPage = ({
 
   return (
     <Main meta={<Meta />}>
-      {/* <Categories // value={value}
-        onClick={(value: string) => setValue(value)}
-        onChange={(value: {
-          target: { value: React.SetStateAction<string> };
-        }) => {
-          setValue(value.target.value);
-        }}
-      /> */}
       <div
         id="products"
         className="mx-auto mt-14 h-full min-h-screen w-full  max-w-[1920px] "
       >
         <div className="h-full w-full">
           <section className="mx-auto flex  max-w-screen-xl flex-col  justify-center gap-4 py-10 ">
-            {/* <div className=" mx-auto flex h-full w-full max-w-screen-xl flex-col  justify-center gap-4 py-10 "> */}
             <div className="mx-auto flex w-1/2 items-center justify-center">
               <SearchBar setSearchValue={setSearchValue} />
             </div>
@@ -143,7 +120,6 @@ const ProductsPage = ({
                 )}
               />
             ))}
-            {/* </div> */}
           </section>
           <div className="flex w-full items-center  justify-center pb-12 ">
             <Pagination
@@ -168,11 +144,10 @@ export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
   try {
-    const data = await getProducts(); // Assuming getProducts() retrieves data from the API
-    const getLang = context.locale || 'en'; // Set 'en' as default language if not provided
+    const data = await getProducts();
+    const getLang = context.locale || 'en';
 
     if (!data || !data.products || !data.meta) {
-      // Throw an error if data is missing or in an unexpected format
       throw new Error('Data from API is missing or in an unexpected format');
     }
 
@@ -186,7 +161,7 @@ export const getServerSideProps = async (
   } catch (error) {
     return {
       redirect: {
-        destination: '/500', // Redirect to a custom 500 error page
+        destination: '/500',
         permanent: false,
       },
     };

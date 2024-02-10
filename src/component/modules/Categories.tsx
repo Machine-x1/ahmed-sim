@@ -1,69 +1,9 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable no-console */
-/* eslint-disable tailwindcss/no-custom-classname */
-
 import { Button, Card, Image } from '@nextui-org/react';
 import Link from 'next/link';
 
+import { callouts } from '@/apps/json/callouts';
 import Container from '@/component/modules/Container';
 
-const callouts = [
-  {
-    name: 'STEERING WHEELS    ',
-    description: 'Work from home accessories',
-    imageSrc: '/images/RSV2R9.webp',
-    imageAlt:
-      'Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug.',
-    href: '#steerWheels',
-  },
-  {
-    name: 'ACCESSORIES    ',
-    description: 'Journals and note-taking',
-    imageSrc: '/images/Wireless-Technology.webp',
-    imageAlt:
-      'Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant.',
-    href: '#accessories',
-  },
-  {
-    name: 'PEDALS    ',
-    description: 'Daily commute essentials',
-    imageSrc: '/images/simagic-p1000-sim-racing-pedal-set-side.jpg',
-    imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
-    href: '#pedals',
-  },
-  {
-    name: ' BUNDLES',
-    description: 'Daily commute essentials',
-    imageSrc: '/images/R5-Bundle-1_1000x.webp',
-    imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
-    href: '#Bundles',
-  },
-  {
-    name: 'WHEEL BASES    ',
-    description: 'Daily commute essentials',
-    imageSrc: '/images/DD2_prime.png',
-    imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
-    href: '#wheelBasis',
-  },
-  {
-    name: 'DIGITAL DASHES    ',
-    description: 'Daily commute essentials',
-    imageSrc: '/images/IMG_0815.webp',
-    imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
-    href: '#DigitalDashes',
-    // href: '#cockfits',
-  },
-  // {
-  //   name: 'cockfits',
-  //   description: 'Daily commute essentials',
-  //   imageSrc: '/images/RSV2_R16_RM_280x315@2x.webp',
-  //   imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
-  //   href: '#cockfits',
-  // },
-];
 export default function Categories(props: any) {
   const { onChange, value, onClick } = props;
   // const router = useRouter();
@@ -95,7 +35,7 @@ export default function Categories(props: any) {
                       height="100%"
                       src={callout.imageSrc}
                       alt={callout.imageAlt}
-                      className=" object-fit h-full w-full"
+                      className="  h-full w-full"
                     />
                   </Link>
                 </Button>

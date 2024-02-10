@@ -1,6 +1,3 @@
-/* eslint-disable no-console */
-// eslint-disable-next-line import/no-extraneous-dependencies
-import type { CookieValueTypes } from 'cookies-next';
 import { getCookie, setCookie } from 'cookies-next';
 import type { GetServerSidePropsContext } from 'next';
 import useTranslation from 'next-translate/useTranslation';
@@ -21,7 +18,7 @@ const Index = ({
   lang,
 }: {
   productsData: ProductType;
-  lang: CookieValueTypes;
+  lang: string;
 }) => {
   const { t } = useTranslation('common');
 
@@ -67,6 +64,8 @@ export const getServerSideProps = async (
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
+        // Authorization: `Bearer ${getToken}`,
+        cache: 'no-store',
       },
     });
 

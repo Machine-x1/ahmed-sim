@@ -1,13 +1,8 @@
-/* eslint-disable @typescript-eslint/no-use-before-define */
-/* eslint-disable @typescript-eslint/no-shadow */
-/* eslint-disable tailwindcss/migration-from-tailwind-2 */
-/* eslint-disable tailwindcss/no-custom-classname */
 import { Button } from '@nextui-org/react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import useTranslation from 'next-translate/useTranslation';
-import toast from 'react-hot-toast'; // Add this line
+import toast from 'react-hot-toast';
 import { BiSolidCartAdd } from 'react-icons/bi';
 import { MdReadMore } from 'react-icons/md';
 
@@ -23,34 +18,7 @@ interface Props {
 const BannerText = ({ title, message }: Props) => {
   const router = useRouter();
   const { t } = useTranslation('common');
-  // const [preOrderStatus, setPreOrderStatus] = useState('Pre-Order'); // Initial button text
 
-  // const handlePreOrder = async (preOrderProduct: any) => {
-  //   const totalPrice = preOrderProduct?.price;
-
-  //   setPreOrderStatus('Processing...');
-
-  //   try {
-  //     // await new Promise((resolve) => setTimeout(resolve, 1000));
-
-  //     // make a whatsapp message with the products and total price
-  //     // const totalPrice = total.toFixed(2);
-  //     const purchasedProducts = preOrderProduct?.name.en;
-
-  //     const message = `pre-order Summary \n Total Price: $${totalPrice} \nProducts: ${purchasedProducts}`;
-  //     const phoneNumber = '+96569399851';
-  //     const whatsappLink = `https://wa.me/${phoneNumber}/?text=${encodeURIComponent(
-  //       message
-  //     )}`;
-
-  //     router.push(whatsappLink);
-  //     setPreOrderStatus('Pre-Ordered');
-  //     toast.success(t(`toast-pre-order`));
-  //   } catch (error) {
-  //     // setPreOrderStatus('Failed');
-  //     toast.error(t(`toast-pre-order-error`));
-  //   }
-  // };
   const handlePreOrder = () => {
     toast.success('available soon stay tuned');
   };

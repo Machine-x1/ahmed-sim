@@ -1,16 +1,3 @@
-/* eslint-disable tailwindcss/migration-from-tailwind-2 */
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable no-nested-ternary */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable no-console */
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable tailwindcss/no-custom-classname */
-/* eslint-disable no-return-assign */
-/* eslint-disable array-callback-return */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-
 import {
   Link,
   Navbar,
@@ -24,12 +11,12 @@ import {
 import { usePathname } from 'next/navigation';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
-// import Link from 'next/link';
 import React from 'react';
 import { IoMdCart } from 'react-icons/io';
 import { MdLanguage } from 'react-icons/md';
 import { useSelector } from 'react-redux';
 
+import { menuItems } from '@/apps/json/menuitems';
 import type { RootState } from '@/apps/redux/store';
 
 import FormattedPrice from './FormattedPrice';
@@ -38,48 +25,6 @@ import Logo from './Logo';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-  const menuItems = [
-    {
-      name: 'home',
-      key: 'home',
-      href: '/',
-    },
-    {
-      name: 'bundles',
-      key: 'bundles',
-      href: '/products/#Bundles',
-    },
-    {
-      name: 'wheel-Bases',
-      key: 'wheel-Bases',
-      href: '/products/#wheelBases',
-    },
-    {
-      name: 'steering-Wheels',
-      key: 'steer-Wheels',
-      href: '/products/#steeringWheels',
-    },
-    {
-      name: 'pedals',
-      key: 'pedals',
-      href: '/products/#pedals',
-    },
-    {
-      name: 'digital-Dashes',
-      key: 'digital-Dashes',
-      href: '/products/#DigitalDashes',
-    },
-    {
-      name: 'cockpits',
-      key: 'cockpits',
-      href: '/products/#cockpits',
-    },
-    {
-      name: 'accessories',
-      key: 'accessories',
-      href: '/products/#accessories',
-    },
-  ];
   const pathname = usePathname();
   const { cart } = useSelector((state: RootState) => state.cart);
   const router = useRouter();
@@ -105,9 +50,9 @@ const Header = () => {
       isBordered
       disableScrollHandler
       isBlurred
-      position="static"
+      position="sticky"
       aria-label="Main Navigation"
-      className="fixed top-0 z-50  flex w-full bg-hoverTextColor   bg-opacity-90 "
+      className=" fixed top-0 z-50 flex w-full   bg-hoverTextColor "
     >
       <NavbarContent className="text-slate-200 lg:hidden " justify="start">
         <NavbarMenuToggle
@@ -128,21 +73,24 @@ const Header = () => {
         {menuItems.map((item) => (
           <NavbarItem
             key={item.name}
-            className={`${'active font-bold   text-white '}`}
+            className={`${' font-bold   text-white '}`}
           >
-            <div
+            <button
+              aria-label={item.name}
+              disabled={pathname === item.href}
+              type="button"
               onClick={() => router.push(item.href)}
               className="cursor-pointer text-lg text-slate-200"
             >
               {t(item.name)}
-            </div>
+            </button>
           </NavbarItem>
         ))}
       </NavbarContent>
 
       <NavbarContent justify="end">
         <NavbarItem className=" flex">
-          <div onClick={handleCartClick}>
+          <button aria-label="cart" type="button" onClick={handleCartClick}>
             <div className="relative flex items-center justify-center gap-x-1  rounded-full border-[1px] border-solid border-white bg-hoverTextColor px-3 py-1.5 text-slate-100  duration-200 hover:cursor-pointer hover:bg-white  hover:text-hoverTextColor ">
               <IoMdCart className="text-xl  " />
               <p className="text-sm font-semibold">
@@ -152,27 +100,29 @@ const Header = () => {
                 {cart.products.length}
               </span>
             </div>
-          </div>
+          </button>
         </NavbarItem>
         <NavbarItem className="flex">
           <div className="relative flex items-center justify-center gap-x-1 rounded-full border-[1px] border-solid border-white bg-hoverTextColor  px-3 py-1.5  text-slate-100 duration-200 hover:cursor-pointer hover:bg-white  hover:text-hoverTextColor ">
-            {lang === 'ar' ? (
+            {lang === 'ar' && (
               <a href="/en">
-                <h2 className="font-poppins"> الإنجليزية</h2>
-              </a>
-            ) : (
-              <a href="/ar">
-                <h2 className="font-somar">Arabic</h2>
+                <h2> الإنجليزية</h2>
               </a>
             )}
+            {lang === 'en' && (
+              <a href="/ar">
+                <h2>Arabic</h2>
+              </a>
+            )}
+
             <MdLanguage className="text-xl" />
           </div>
         </NavbarItem>
       </NavbarContent>
 
       <NavbarMenu>
-        {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
+        {menuItems.map((item) => (
+          <NavbarMenuItem key={`${item.key}`}>
             <Link
               className="w-full"
               color={pathname === item.href ? 'primary' : 'foreground'}

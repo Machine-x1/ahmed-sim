@@ -1,6 +1,6 @@
-/* eslint-disable no-console */
 import { Pagination } from '@nextui-org/react';
 import React from 'react';
+import toast from 'react-hot-toast';
 
 import internalrequestHandler from '@/apps/helpers/InternalrequestHandler';
 
@@ -15,7 +15,6 @@ const PaginationProducts = ({
 }) => {
   const fetchProducts = async () => {
     try {
-      // Make an API request to fetch products for the specified page
       const data = await internalrequestHandler(
         'apiProduct',
         'GET',
@@ -23,20 +22,14 @@ const PaginationProducts = ({
         {},
         { page: metaData.nextPage, limit: metaData.limit }
       );
-      // setProducts(response.data.products);
-      // setCurrentPage(response.data.products.meta.current_page);
-      // setTotalPages(response.data.products.meta.totalPages);
-      // setLimit(response.data.products.meta.limit);
+
       setProductsData(data.data.products);
       setMetaData(data.data.meta);
     } catch (error) {
-      console.error('Error fetching products:', error);
+      // Handle error
+      toast.error('An error occurred');
     }
   };
-
-  // const handlePageChange = async (page: number) => {
-  //   await fetchProducts(page); // Fetch products for the selected page
-  // };
 
   return (
     <div className="flex w-full items-center justify-center py-12">
