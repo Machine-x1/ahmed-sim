@@ -1,6 +1,3 @@
-/* eslint-disable no-console */
-// eslint-disable-next-line import/no-extraneous-dependencies
-import type { CookieValueTypes } from 'cookies-next';
 import { getCookie, setCookie } from 'cookies-next';
 import type { GetServerSidePropsContext } from 'next';
 import useTranslation from 'next-translate/useTranslation';
@@ -21,28 +18,23 @@ const Index = ({
   lang,
 }: {
   productsData: ProductType;
-  lang: CookieValueTypes;
+  lang: string;
 }) => {
   const { t } = useTranslation('common');
 
   return (
     <Main meta={<Meta />}>
-      <div
-        id="home"
-        className="mx-auto w-full max-w-[1920px]  bg-secondaryBlack "
-      >
-        <Banner />
-        <ProductFeatures />
-        <ProductDataSwiper
-          msg={t('featured-products')}
-          textcolor="text-white"
-          product={productsData}
-          lang={lang}
-        />
-        <AboutUs />
-        <ContactForm />
-        <Sponsors />
-      </div>
+      <Banner />
+      <ProductFeatures />
+      <ProductDataSwiper
+        msg={t('featured-products')}
+        textcolor="text-white"
+        product={productsData}
+        lang={lang}
+      />
+      <AboutUs />
+      <ContactForm />
+      <Sponsors />
     </Main>
   );
 };
@@ -84,10 +76,9 @@ export const getServerSideProps = async (
       },
     };
   } catch (error) {
-    // console.error('Error in getServerSideProps:', error.message);
     return {
       redirect: {
-        destination: '/500', // Redirect to a custom 500 error page
+        destination: '/500',
         permanent: false,
       },
     };

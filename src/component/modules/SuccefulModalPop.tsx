@@ -1,16 +1,12 @@
-import { Modal, ModalBody, ModalContent, ModalHeader } from "@nextui-org/react";
-import Image from "next/image";
-import React from "react";
+import { Modal, ModalBody, ModalContent, ModalHeader } from '@nextui-org/react';
+import Image from 'next/image';
+import React from 'react';
 
 export default function ModalPop({
-  isOpen,
   onOpenChange,
-  onOpen,
   onClose,
 }: {
-  isOpen: any;
   onOpenChange: any;
-  onOpen: any;
 
   onClose: any;
 }) {
@@ -23,7 +19,7 @@ export default function ModalPop({
         closeButton
         // onClose={}
         backdrop="opaque"
-        isOpen={true}
+        isOpen
         // size="4xl"
         onClose={onClose}
         defaultOpen
@@ -36,7 +32,7 @@ export default function ModalPop({
               opacity: 1,
               transition: {
                 duration: 0.3,
-                ease: "easeOut",
+                ease: 'easeOut',
               },
             },
             exit: {
@@ -44,7 +40,7 @@ export default function ModalPop({
               opacity: 0,
               transition: {
                 duration: 0.2,
-                ease: "easeIn",
+                ease: 'easeIn',
               },
             },
           },
@@ -67,7 +63,9 @@ export default function ModalPop({
                   Thank you for your payment. Your transaction was successful
                 </p>
               </div>
-              <button onClick={onClose}>Close</button>
+              <button type="button" onClick={onClose}>
+                Close
+              </button>
             </ModalBody>
           </>
         </ModalContent>

@@ -11,7 +11,11 @@ const Status = ({ isValid }: { isValid: boolean }) => {
   return (
     <Main meta={<Meta />}>
       <Container className="mx-auto mt-12 h-full min-h-screen w-full   max-w-[1920px] ">
-        {isValid ? <ModalPop /> : <FailedModal />}
+        {isValid ? (
+          <ModalPop onOpenChange={undefined} onClose={undefined} />
+        ) : (
+          <FailedModal onOpenChange={undefined} onClose={undefined} />
+        )}
       </Container>
     </Main>
   );

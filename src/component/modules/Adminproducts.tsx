@@ -101,13 +101,6 @@ const Adminproducts = ({ products, lang }: any) => {
             ))}
           </div>
         </section>
-        {/* <div className="mt-5 flex w-full justify-center">
-         <PaginationProducts
-           metaData={metaData}
-           setMetaData={setMetaData}
-           setProductsData={setProductsData}
-         />
-       </div> */}
       </div>
     </Container>
   );

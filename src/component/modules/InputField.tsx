@@ -1,8 +1,5 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-
 import { Input } from '@nextui-org/react';
 
-/* eslint-disable tailwindcss/no-custom-classname */
 const InputField = ({
   label,
   placeholder,
@@ -37,8 +34,6 @@ const InputField = ({
         name={name}
         value={value}
         onChange={onChange}
-
-        // className="text-dark-gray px-1 text-sm outline-none md:text-base"
       />
       {/* {errmessage && (
         <p className="text-xs italic text-red-500">{errmessage}</p>

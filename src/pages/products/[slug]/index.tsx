@@ -1,9 +1,6 @@
-/* eslint-disable no-console */
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
-
 import type { GetServerSidePropsContext } from 'next';
 import useTranslation from 'next-translate/useTranslation';
+import React from 'react';
 
 import type { ProductType } from '@/apps/interface/types';
 import { Meta } from '@/component/layouts/Meta';
@@ -19,7 +16,7 @@ const Index = ({
 }: {
   product: ProductType;
   productsData: ProductType;
-  lang: any;
+  lang: string;
 }) => {
   const { t } = useTranslation('common');
   return (

@@ -1,14 +1,12 @@
-/* eslint-disable no-console */
-/* eslint-disable prefer-destructuring */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable prefer-destructuring */
 import axios from 'axios';
 import { getCookie } from 'cookies-next';
 import { useFormik } from 'formik';
 import type { GetServerSidePropsContext } from 'next';
 import React, { useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import * as Yup from 'yup';
 
 import { JwtGenerator } from '@/apps/helpers/JwtGenerator';
@@ -57,12 +55,10 @@ const AddProduct = () => {
       try {
         const formData = new FormData();
 
-        // Append images to the FormData
         values.images.forEach((image: any) => {
           formData.append('files', image);
         });
 
-        // Add other form fields to the FormData
         formData.append('name[en]', values.name.en);
         formData.append('name[ar]', values.name.ar);
         formData.append('description[en]', values.description.en);
@@ -73,9 +69,6 @@ const AddProduct = () => {
         formData.append('category', values.category);
         formData.append('status', values.status);
 
-        // console.log(formData);
-
-        // Make the API request with axios
         const response = await axios.post(
           'http://localhost:3000/api/admin/product/create',
           formData,
@@ -86,19 +79,15 @@ const AddProduct = () => {
           }
         );
 
-        // Check the response status and handle it accordingly
-        // console.log(response.status);
         if (response.status === 200) {
           setloading(false);
           toast.success('Done');
         } else {
           setloading(false);
           console.error('API request failed:', response.statusText);
-          // Handle errors, e.g., show an error message
         }
       } catch (error) {
         console.error('Error during API request:', error);
-        // Handle errors, e.g., show an error message
       }
     },
   });

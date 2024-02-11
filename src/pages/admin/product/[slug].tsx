@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useFormik } from 'formik';
 import type { GetServerSidePropsContext } from 'next';
 import React, { useState } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
+import { toast, Toaster } from 'react-hot-toast';
 import * as Yup from 'yup';
 
 import { Meta } from '@/component/layouts/Meta';
@@ -76,7 +76,7 @@ const UpdateProduct = ({ product }: { product: any }) => {
           // Handle errors, e.g., show an error message
         }
       } catch (error) {
-        console.error('Error during API request:', error);
+        toast.error('An error occurred');
         // Handle errors, e.g., show an error message
       }
     },

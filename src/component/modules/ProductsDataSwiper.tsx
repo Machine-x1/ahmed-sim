@@ -1,16 +1,3 @@
-/* eslint-disable @typescript-eslint/no-shadow */
-/* eslint-disable unused-imports/no-unused-vars */
-/* eslint-disable react/jsx-key */
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable tailwindcss/no-custom-classname */
-/* eslint-disable no-console */
-/* eslint-disable react/jsx-no-undef */
-/* eslint-disable array-callback-return */
-/* eslint-disable no-underscore-dangle */
-
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable react/no-unstable-nested-components */
 import 'swiper/css/bundle';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -19,17 +6,22 @@ import 'swiper/css/scrollbar';
 
 import { Divider } from '@nextui-org/react';
 import type { CookieValueTypes } from 'cookies-next';
+import React from 'react';
 import { Toaster } from 'react-hot-toast';
 import { Autoplay, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import type { ProductType } from '@/apps/interface/types';
 
+import { autoplay, breakpoints } from '../elements/carousel/BreakPoints';
 import Container from './Container';
 import NewProductCard from './NewProductCard';
 
+const MemoizedProductCard = React.memo(NewProductCard);
+
+const DefaultMsg = 'Introducing Our Latest Products';
 const ProductDataSwiper = ({
-  msg,
+  msg = DefaultMsg,
   textcolor,
   product,
   lang,
@@ -40,63 +32,41 @@ const ProductDataSwiper = ({
   lang: CookieValueTypes;
 }) => {
   return (
-    <div className="w-full   " style={{ backgroundColor: '' }}>
-      <Container className=" h-full w-full">
-        <div className=" h-full w-full ">
-          <Container className=" flex w-full gap-2 ">
-            <div className="mb-4 flex w-full ">
-              <div className="flex w-full flex-col justify-start gap-4">
-                <h2
-                  className={`  text-4xl font-semibold capitalize  ${textcolor}`}
-                >
-                  {msg || 'Introducing Our Latest Products'}
-                </h2>
-                <Divider className="  w-1/2 bg-hoverTextColor " />
-              </div>
+    <section className="  w-full bg-secondaryBlack ">
+      <Container className=" h-full   w-full ">
+        <Container className=" flex w-full gap-2 ">
+          <div className="mb-4 flex w-full ">
+            <div className="flex w-full flex-col justify-start gap-4">
+              <h2
+                className={`  text-4xl font-semibold capitalize  ${textcolor}`}
+              >
+                {msg}
+              </h2>
+              <Divider className="  w-1/2 bg-hoverTextColor " />
             </div>
-          </Container>
-          <div className=" relative h-full w-full   ">
-            <Swiper
-              slidesPerView={5}
-              spaceBetween={30}
-              navigation
-              loop
-              direction="horizontal"
-              modules={[Navigation, Autoplay]}
-              autoplay={{
-                delay: 2500,
-                disableOnInteraction: false,
-              }}
-              breakpoints={{
-                1024: {
-                  slidesPerView: 5,
-                  spaceBetween: 30,
-                },
-                768: {
-                  slidesPerView: 4,
-                  spaceBetween: 20,
-                },
-                640: {
-                  slidesPerView: 2,
-                  spaceBetween: 10,
-                },
-                320: {
-                  slidesPerView: 1,
-                  spaceBetween: 10,
-                },
-              }}
-            >
-              {product?.map((item: any) => (
-                <SwiperSlide key={item._id}>
-                  <NewProductCard lang={lang} item={item} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
           </div>
+        </Container>
+        <div className=" relative mx-auto h-full w-full">
+          <Swiper
+            slidesPerView={5}
+            spaceBetween={30}
+            navigation
+            loop
+            direction="horizontal"
+            modules={[Navigation, Autoplay]}
+            autoplay={autoplay}
+            breakpoints={breakpoints}
+          >
+            {product?.map((item: any) => (
+              <SwiperSlide key={item.id}>
+                <MemoizedProductCard lang={lang} item={item} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </Container>
       <Toaster position="top-center" reverseOrder={false} />
-    </div>
+    </section>
   );
 };
 
