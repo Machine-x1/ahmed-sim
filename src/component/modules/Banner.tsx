@@ -8,10 +8,11 @@ const Banner = () => {
   return (
     <div className="relative h-screen md:bg-fixed lg:h-[750px] ">
       <Image
-        className=" absolute   h-screen w-full rounded-none    object-cover object-center  lg:h-[750px]  "
+        className=" absolute   h-screen w-full rounded-none    object-cover object-center  xl:h-[750px]  "
         priority
-        quality={100}
+        quality={75}
         fill
+        placeholder="empty"
         src="/images/banner.jpg"
         alt="Banner-Image"
       />

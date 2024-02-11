@@ -27,7 +27,7 @@ const Sponsors = () => {
               className=" w-14 focus:outline-none sm:w-28"
               width={200}
               height={200}
-              src="/images/方形logo黑.webp"
+              src="/images/logo_50.webp"
               alt="moza racing logo"
             />
           </div>

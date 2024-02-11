@@ -1,17 +1,12 @@
-/* eslint-disable unused-imports/no-unused-vars */
 import { Modal, ModalBody, ModalContent, ModalHeader } from '@nextui-org/react';
 import Image from 'next/image';
 import React from 'react';
 
 export default function ModalPop({
-  isOpen,
   onOpenChange,
-  onOpen,
   onClose,
 }: {
-  isOpen?: any;
   onOpenChange: any;
-  onOpen?: any;
 
   onClose: any;
 }) {

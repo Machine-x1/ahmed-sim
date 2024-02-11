@@ -9,7 +9,7 @@ type IMainProps = {
 };
 
 const Main = (props: IMainProps) => (
-  <div className="overflow-hidden bg-bodyColor  ">
+  <div className="mx-auto w-full max-w-[1920px] overflow-hidden bg-bodyColor">
     {props.meta}
     <div className="bg-hoverTextColor">
       <Header />

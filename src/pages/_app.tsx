@@ -6,14 +6,12 @@ import { NextUIProvider } from '@nextui-org/react';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import { persistor, store } from '@/apps/redux/store';
 import SpinnerLoader from '@/component/modules/SpinnerLoader';
-
-// eslint-disable-next-line import/no-extraneous-dependencies
+import Transition from '@/component/modules/Transition';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const { locale } = useRouter();
@@ -24,15 +22,15 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   }, [dir]);
 
   return (
-    <Provider store={store}>
-      {/* <I18nextProvider i18n={i18n}> */}
-      <PersistGate loading={<SpinnerLoader />} persistor={persistor}>
-        <NextUIProvider>
-          <Component {...pageProps} />
-        </NextUIProvider>
-        {/* </I18nextProvider> */}
-      </PersistGate>
-    </Provider>
+    <NextUIProvider>
+      <Provider store={store}>
+        <PersistGate loading={<SpinnerLoader />} persistor={persistor}>
+          <Transition>
+            <Component {...pageProps} />
+          </Transition>
+        </PersistGate>
+      </Provider>
+    </NextUIProvider>
   );
 };
 

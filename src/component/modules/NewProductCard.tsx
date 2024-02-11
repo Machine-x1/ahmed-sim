@@ -40,7 +40,7 @@ const NewProductCard = ({ item, lang }: { item?: any; lang?: any }) => {
         shadow="none"
         // isPressable
         fullWidth
-        className=" relative flex h-full  w-full flex-col overflow-hidden  "
+        className=" relative flex h-full w-fit  flex-col overflow-hidden lg:w-full   "
       >
         <Skeleton isLoaded className="rounded-lg">
           <CardBody className="relative flex w-full items-center justify-center overflow-hidden rounded-xl">
@@ -49,9 +49,9 @@ const NewProductCard = ({ item, lang }: { item?: any; lang?: any }) => {
                 <Image
                   src="/images/sold-out.png"
                   alt="sold-out"
-                  width="100%"
-                  className="h-20 w-20 object-contain object-center"
-                  height="100%"
+                  width={80}
+                  height={80}
+                  className="fixed  h-20 w-20 object-contain object-center"
                 />
               </div>
             )}
@@ -61,9 +61,13 @@ const NewProductCard = ({ item, lang }: { item?: any; lang?: any }) => {
                 className="h-52 max-h-52 w-full min-w-full object-cover object-center"
                 src={`https://simrckw.s3.eu-north-1.amazonaws.com/${item?.images[0]}`}
                 alt={item?.name[languageToUse] || 'Product image'}
-                width="100%"
-                height="100%"
+                // width="100%"
+                // height="100%"
+                width={800}
+                isZoomed
+                height={600}
                 removeWrapper
+                sizes="(max-width: 768px) 100vw, (min-width: 769px) and (max-width: 1024px) 50vw, 33vw"
               />
             </Link>
           </CardBody>

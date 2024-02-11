@@ -23,7 +23,6 @@ import { validationSchema } from '../../component/elements/Form/validationschema
 
 const Index = () => {
   const { cart } = useSelector((state: RootState) => state.cart);
-  // const [isPopup, setIsPopup] = useState(false);
   const calculateTotalPrice = () => {
     let totalPrice = 0;
     for (const product of cart.products) {
@@ -69,11 +68,10 @@ const Index = () => {
     router.push({ pathname, query });
   };
 
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const { onOpenChange } = useDisclosure();
   const commonProps = {
     onClose: handleClose,
-    isOpen,
-    onOpen,
+
     onOpenChange,
   };
 

@@ -24,22 +24,17 @@ const Index = ({
 
   return (
     <Main meta={<Meta />}>
-      <div
-        id="home"
-        className="mx-auto w-full max-w-[1920px]  bg-secondaryBlack "
-      >
-        <Banner />
-        <ProductFeatures />
-        <ProductDataSwiper
-          msg={t('featured-products')}
-          textcolor="text-white"
-          product={productsData}
-          lang={lang}
-        />
-        <AboutUs />
-        <ContactForm />
-        <Sponsors />
-      </div>
+      <Banner />
+      <ProductFeatures />
+      <ProductDataSwiper
+        msg={t('featured-products')}
+        textcolor="text-white"
+        product={productsData}
+        lang={lang}
+      />
+      <AboutUs />
+      <ContactForm />
+      <Sponsors />
     </Main>
   );
 };
@@ -64,8 +59,6 @@ export const getServerSideProps = async (
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        // Authorization: `Bearer ${getToken}`,
-        cache: 'no-store',
       },
     });
 
@@ -83,10 +76,9 @@ export const getServerSideProps = async (
       },
     };
   } catch (error) {
-    // console.error('Error in getServerSideProps:', error.message);
     return {
       redirect: {
-        destination: '/500', // Redirect to a custom 500 error page
+        destination: '/500',
         permanent: false,
       },
     };

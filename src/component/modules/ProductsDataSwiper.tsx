@@ -32,43 +32,41 @@ const ProductDataSwiper = ({
   lang: CookieValueTypes;
 }) => {
   return (
-    <>
-      <Container className=" h-full w-full">
-        <div className=" h-full w-full ">
-          <Container className=" flex w-full gap-2 ">
-            <div className="mb-4 flex w-full ">
-              <div className="flex w-full flex-col justify-start gap-4">
-                <h2
-                  className={`  text-4xl font-semibold capitalize  ${textcolor}`}
-                >
-                  {msg}
-                </h2>
-                <Divider className="  w-1/2 bg-hoverTextColor " />
-              </div>
+    <section className="  w-full bg-secondaryBlack ">
+      <Container className=" h-full   w-full ">
+        <Container className=" flex w-full gap-2 ">
+          <div className="mb-4 flex w-full ">
+            <div className="flex w-full flex-col justify-start gap-4">
+              <h2
+                className={`  text-4xl font-semibold capitalize  ${textcolor}`}
+              >
+                {msg}
+              </h2>
+              <Divider className="  w-1/2 bg-hoverTextColor " />
             </div>
-          </Container>
-          <div className=" relative h-full w-full   ">
-            <Swiper
-              slidesPerView={5}
-              spaceBetween={30}
-              navigation
-              loop
-              direction="horizontal"
-              modules={[Navigation, Autoplay]}
-              autoplay={autoplay}
-              breakpoints={breakpoints}
-            >
-              {product?.map((item: any) => (
-                <SwiperSlide key={item.id}>
-                  <MemoizedProductCard lang={lang} item={item} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
           </div>
+        </Container>
+        <div className=" relative mx-auto h-full w-full">
+          <Swiper
+            slidesPerView={5}
+            spaceBetween={30}
+            navigation
+            loop
+            direction="horizontal"
+            modules={[Navigation, Autoplay]}
+            autoplay={autoplay}
+            breakpoints={breakpoints}
+          >
+            {product?.map((item: any) => (
+              <SwiperSlide key={item.id}>
+                <MemoizedProductCard lang={lang} item={item} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </Container>
       <Toaster position="top-center" reverseOrder={false} />
-    </>
+    </section>
   );
 };
 
