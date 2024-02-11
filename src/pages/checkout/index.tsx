@@ -1,18 +1,47 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-nested-ternary */
+import { useDisclosure } from '@nextui-org/react';
+import axios from 'axios';
 import { useFormik } from 'formik';
+import { useRouter } from 'next/router';
 import React from 'react';
 import { BiShield } from 'react-icons/bi';
+import { useSelector } from 'react-redux';
 
+import type { RootState } from '@/apps/redux/store';
 import { Meta } from '@/component/layouts/Meta';
 import CheckoutSummary from '@/component/modules/CheckoutSummary';
 import Container from '@/component/modules/Container';
+import FailedModal from '@/component/modules/FailedModal';
 import Heading from '@/component/modules/Heading';
 import InputField from '@/component/modules/InputField';
+import ModalPop from '@/component/modules/SuccefulModalPop';
 import TotalPrice from '@/component/modules/TotalPrice';
 import { Main } from '@/component/templates/Main';
 
 import { validationSchema } from '../../component/elements/Form/validationschema';
 
 const Index = () => {
+  const { cart } = useSelector((state: RootState) => state.cart);
+  // const [isPopup, setIsPopup] = useState(false);
+  const calculateTotalPrice = () => {
+    let totalPrice = 0;
+    for (const product of cart.products) {
+      totalPrice += product.price * product.purchased_quantity;
+    }
+    return totalPrice;
+  };
+  const total = calculateTotalPrice();
+  const handleCheckout = async () => {
+    const data = await axios.post('http://localhost:3000/api/checkout/', {
+      amount: total + 50,
+    });
+    const htmlBlob = new Blob([data.data], { type: 'text/html' });
+    const url = URL.createObjectURL(htmlBlob);
+
+    // Open the HTML file in a new tab
+    window.open(url);
+  };
   const formik = useFormik({
     initialValues: {
       fullName: '',
@@ -22,15 +51,31 @@ const Index = () => {
       shippingAddress: '',
       postcode: '',
     },
-    onSubmit: (values) => {
-      // eslint-disable-next-line no-console
-      console.log(values);
+    onSubmit: async () => {
+      await handleCheckout();
     },
 
     validationSchema,
   });
 
   const { errors } = formik;
+  const router = useRouter();
+  const { isValid } = router.query;
+
+  const handleClose = () => {
+    const { pathname, query } = router;
+    delete query.is_valid;
+
+    router.push({ pathname, query });
+  };
+
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const commonProps = {
+    onClose: handleClose,
+    isOpen,
+    onOpen,
+    onOpenChange,
+  };
 
   return (
     <Main meta={<Meta />}>
@@ -40,6 +85,14 @@ const Index = () => {
             <h1 className=" mb-16 hidden text-5xl font-semibold md:block">
               Confirm and pay
             </h1>
+
+            {isValid !== undefined ? (
+              isValid === 'true' ? (
+                <ModalPop {...commonProps} />
+              ) : (
+                <FailedModal {...commonProps} />
+              )
+            ) : null}
 
             <form onSubmit={formik.handleSubmit}>
               <Heading
@@ -114,14 +167,13 @@ const Index = () => {
                 </h2>
                 <p className="text-xs text-lightText ">You will pay in KWD</p>
               </div>
-
               <div>
                 <p className=" mb-3 text-xs text-lightText">
-                  With payment, you agree to the general{' '}
+                  With payment, you agree to the general
                   <span className="text-[#1733B6]">
                     terms and conditions of website
-                  </span>{' '}
-                  & the{' '}
+                  </span>
+                  & the
                   <span className="text-[#1733B6]">activity provider.</span>
                 </p>
 

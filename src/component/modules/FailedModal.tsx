@@ -1,8 +1,20 @@
+/* eslint-disable unused-imports/no-unused-vars */
+
 import { Modal, ModalBody, ModalContent, ModalHeader } from '@nextui-org/react';
 import Image from 'next/image';
 import React from 'react';
 
-export default function FailedModal({ isOpen, onOpenChange }: any) {
+export default function FailedModal({
+  isOpen,
+  onOpenChange,
+  onOpen,
+  onClose,
+}: {
+  isOpen?: any;
+  onOpenChange: any;
+  onOpen?: any;
+  onClose: any;
+}) {
   // const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
@@ -12,7 +24,10 @@ export default function FailedModal({ isOpen, onOpenChange }: any) {
         closeButton
         // onClose={}
         backdrop="opaque"
-        isOpen={isOpen}
+        isOpen
+        // size="4xl"
+        onClose={onClose}
+        defaultOpen
         placement="center"
         onOpenChange={onOpenChange}
         motionProps={{
@@ -55,6 +70,9 @@ export default function FailedModal({ isOpen, onOpenChange }: any) {
                   payment.
                 </p>
               </div>
+              <button type="button" onClick={onClose}>
+                Close
+              </button>
             </ModalBody>
           </>
         </ModalContent>

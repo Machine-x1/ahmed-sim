@@ -77,7 +77,7 @@ const AddProduct = () => {
 
         // Make the API request with axios
         const response = await axios.post(
-          'https://simrckw.com/api/admin/product/create',
+          'http://localhost:3000/api/admin/product/create',
           formData,
           {
             headers: {
