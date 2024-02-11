@@ -70,7 +70,7 @@ const AddProduct = () => {
         formData.append('status', values.status);
 
         const response = await axios.post(
-          'http://localhost:3000/api/admin/product/create',
+          `${process.env.NEXT_PUBLIC_API_INTERNAL}/api/admin/product/create`,
           formData,
           {
             headers: {

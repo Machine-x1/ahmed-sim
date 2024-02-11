@@ -31,7 +31,7 @@ const createProductApiHandler = async (
 
         // Make a request to your Node.js server
         const response = await axios.post(
-          'http://localhost:8000/products',
+          `${process.env.API_EXTRANL}/products`,
           formData,
           {
             headers: {
