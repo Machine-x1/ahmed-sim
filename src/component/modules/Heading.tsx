@@ -10,7 +10,7 @@ const Heading = ({
 }) => {
   return (
     <div className={className}>
-      <h2 className="mb-2 text-lg font-semibold text-white md:text-2xl">
+      <h2 className="mb-2 text-lg font-semibold text-secondaryBlack md:text-2xl">
         {title}
       </h2>
       <p className="text-sm text-hoverTextColor md:text-base">{para}</p>
