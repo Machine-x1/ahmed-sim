@@ -64,7 +64,7 @@ const UpdateProduct = ({ product }: { product: any }) => {
       try {
         // const formData = {};
         const response = await axios.put(
-          `http://localhost:3000/api/admin/product/${product.slug}`,
+          `${process.env.NEXT_PUBLIC_API_INTERNAL}/api/admin/product/${product.slug}`,
           sendThis
         );
 

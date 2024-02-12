@@ -31,7 +31,7 @@ const settingsApiHandler = async (
 
         // Make a request to your Node.js server
         const response = await axios.post(
-          'http://localhost:8000/settings',
+          `${process.env.API_EXTRANL}/settings`,
           formData,
           {
             headers: {

@@ -1,5 +1,14 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-nested-ternary */
+/* eslint-disable no-nested-ternary */
+/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable no-console */
+/* eslint-disable tailwindcss/no-custom-classname */
+/* eslint-disable react/button-has-type */
+/* eslint-disable tailwindcss/migration-from-tailwind-2 */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useDisclosure } from '@nextui-org/react';
 import axios from 'axios';
 import { useFormik } from 'formik';
@@ -23,6 +32,7 @@ import { validationSchema } from '../../component/elements/Form/validationschema
 
 const Index = () => {
   const { cart } = useSelector((state: RootState) => state.cart);
+  // const [isPopup, setIsPopup] = useState(false);
   const calculateTotalPrice = () => {
     let totalPrice = 0;
     for (const product of cart.products) {
@@ -32,9 +42,12 @@ const Index = () => {
   };
   const total = calculateTotalPrice();
   const handleCheckout = async () => {
-    const data = await axios.post('http://localhost:3000/api/checkout/', {
-      amount: total + 50,
-    });
+    const data = await axios.post(
+      `${process.env.NEXT_PUBLIC_API_INTERNAL}/api/checkout/`,
+      {
+        amount: total + 50,
+      }
+    );
     const htmlBlob = new Blob([data.data], { type: 'text/html' });
     const url = URL.createObjectURL(htmlBlob);
 
@@ -59,7 +72,7 @@ const Index = () => {
 
   const { errors } = formik;
   const router = useRouter();
-  const { isValid } = router.query;
+  const { is_valid } = router.query;
 
   const handleClose = () => {
     const { pathname, query } = router;
@@ -68,12 +81,8 @@ const Index = () => {
     router.push({ pathname, query });
   };
 
+  // const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const { onOpenChange } = useDisclosure();
-  const commonProps = {
-    onClose: handleClose,
-
-    onOpenChange,
-  };
 
   return (
     <Main meta={<Meta />}>
@@ -83,12 +92,21 @@ const Index = () => {
             <h1 className=" mb-16 hidden text-5xl font-semibold md:block">
               Confirm and pay
             </h1>
-
-            {isValid !== undefined ? (
-              isValid === 'true' ? (
-                <ModalPop {...commonProps} />
+            {is_valid !== undefined ? (
+              is_valid === 'true' ? (
+                <ModalPop
+                  onClose={handleClose}
+                  // isOpen={isOpen}
+                  // onOpen={onOpen}
+                  onOpenChange={onOpenChange}
+                />
               ) : (
-                <FailedModal {...commonProps} />
+                <FailedModal
+                  onClose={handleClose}
+                  // isOpen={isOpen}
+                  // onOpen={onOpen}
+                  onOpenChange={onOpenChange}
+                />
               )
             ) : null}
 
@@ -166,12 +184,12 @@ const Index = () => {
                 <p className="text-xs text-lightText ">You will pay in KWD</p>
               </div>
               <div>
-                <p className=" mb-3 text-xs text-lightText">
-                  With payment, you agree to the general
+                <p className="text-primary-gray mb-3 text-xs">
+                  With payment, you agree to the general{' '}
                   <span className="text-[#1733B6]">
                     terms and conditions of website
-                  </span>
-                  & the
+                  </span>{' '}
+                  & the{' '}
                   <span className="text-[#1733B6]">activity provider.</span>
                 </p>
 
