@@ -1,25 +1,32 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-nested-ternary */
-import { useDisclosure } from '@nextui-org/react';
-import axios from 'axios';
-import { useFormik } from 'formik';
-import { useRouter } from 'next/router';
-import React from 'react';
-import { BiShield } from 'react-icons/bi';
-import { useSelector } from 'react-redux';
+/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable no-console */
+/* eslint-disable tailwindcss/no-custom-classname */
+/* eslint-disable react/button-has-type */
+/* eslint-disable tailwindcss/migration-from-tailwind-2 */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import { useDisclosure } from "@nextui-org/react";
+import axios from "axios";
+import { useFormik } from "formik";
+import { useRouter } from "next/router";
+import React, { useEffect } from "react";
+import { BiShield } from "react-icons/bi";
+import { useSelector } from "react-redux";
 
-import type { RootState } from '@/apps/redux/store';
-import { Meta } from '@/component/layouts/Meta';
-import CheckoutSummary from '@/component/modules/CheckoutSummary';
-import Container from '@/component/modules/Container';
-import FailedModal from '@/component/modules/FailedModal';
-import Heading from '@/component/modules/Heading';
-import InputField from '@/component/modules/InputField';
-import ModalPop from '@/component/modules/SuccefulModalPop';
-import TotalPrice from '@/component/modules/TotalPrice';
-import { Main } from '@/component/templates/Main';
+import type { RootState } from "@/apps/redux/store";
+import { Meta } from "@/component/layouts/Meta";
+import CheckoutSummary from "@/component/modules/CheckoutSummary";
+import Container from "@/component/modules/Container";
+import FailedModal from "@/component/modules/FailedModal";
+import Heading from "@/component/modules/Heading";
+import InputField from "@/component/modules/InputField";
+import ModalPop from "@/component/modules/SuccefulModalPop";
+import TotalPrice from "@/component/modules/TotalPrice";
+import { Main } from "@/component/templates/Main";
 
-import { validationSchema } from '../../component/elements/Form/validationschema';
+import { validationSchema } from "../../component/elements/Form/validationschema";
 
 const Index = () => {
   const { cart } = useSelector((state: RootState) => state.cart);
@@ -38,7 +45,7 @@ const Index = () => {
         amount: total + 50,
       }
     );
-    const htmlBlob = new Blob([data.data], { type: 'text/html' });
+    const htmlBlob = new Blob([data.data], { type: "text/html" });
     const url = URL.createObjectURL(htmlBlob);
 
     // Open the HTML file in a new tab
@@ -46,15 +53,15 @@ const Index = () => {
   };
   const formik = useFormik({
     initialValues: {
-      fullName: '',
-      phoneNo: '',
-      city: '',
-      email: '',
-      shippingAddress: '',
-      postcode: '',
+      fullName: "",
+      phoneNo: "",
+      city: "",
+      email: "",
+      shippingAddress: "",
+      postcode: "",
     },
     onSubmit: async () => {
-      localStorage.setItem('customervalues', JSON.stringify(formik.values));
+      localStorage.setItem("customervalues", JSON.stringify(formik.values));
 
       await handleCheckout();
     },
@@ -64,7 +71,7 @@ const Index = () => {
 
   const { errors } = formik;
   const router = useRouter();
-  const { isValid } = router.query;
+  const { is_valid } = router.query;
 
   const handleClose = () => {
     const { pathname, query } = router;
@@ -74,12 +81,23 @@ const Index = () => {
   };
 
   const { onOpenChange } = useDisclosure();
-  const commonProps = {
-    onClose: handleClose,
-
-    onOpenChange,
+  const handleVerifyId = async (id: any) => {
+    const data = await axios.post(
+      `${process.env.NEXT_PUBLIC_API_INTERNAL}/api/checkout/verify`,
+      {
+        payId: transId,
+      }
+    );
+    return data;
   };
-
+  const { transaction_id: transId } = router.query;
+  console.log(transId);
+  useEffect(() => {
+    if (transId) {
+      const onSuccess = async () => await handleVerifyId(transId);
+      console.log(onSuccess());
+    }
+  }, [transId]);
   return (
     <Main meta={<Meta />}>
       <Container className="mx-auto mt-12 h-full min-h-screen w-full   max-w-[1920px] ">
@@ -88,12 +106,21 @@ const Index = () => {
             <h1 className=" mb-16 hidden text-5xl font-semibold md:block">
               Confirm and pay
             </h1>
-
-            {isValid !== undefined ? (
-              isValid === 'true' ? (
-                <ModalPop {...commonProps} />
+            {is_valid !== undefined ? (
+              is_valid === "true" ? (
+                <ModalPop
+                  onClose={handleClose}
+                  // isOpen={isOpen}
+                  // onOpen={onOpen}
+                  onOpenChange={onOpenChange}
+                />
               ) : (
-                <FailedModal {...commonProps} />
+                <FailedModal
+                  onClose={handleClose}
+                  // isOpen={isOpen}
+                  // onOpen={onOpen}
+                  onOpenChange={onOpenChange}
+                />
               )
             ) : null}
 
@@ -171,12 +198,12 @@ const Index = () => {
                 <p className="text-xs text-lightText ">You will pay in KWD</p>
               </div>
               <div>
-                <p className=" mb-3 text-xs text-lightText">
-                  With payment, you agree to the general
+                <p className="text-primary-gray mb-3 text-xs">
+                  With payment, you agree to the general{" "}
                   <span className="text-[#1733B6]">
                     terms and conditions of website
-                  </span>
-                  & the
+                  </span>{" "}
+                  & the{" "}
                   <span className="text-[#1733B6]">activity provider.</span>
                 </p>
 
