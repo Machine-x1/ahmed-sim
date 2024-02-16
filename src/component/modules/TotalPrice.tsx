@@ -28,9 +28,6 @@ const TotalPrice = () => {
             <span>
               <div className="flex flex-col flex-wrap items-center justify-center gap-4 font-medium text-gray-900 sm:flex-row">
                 <h3>{item?.name[lang] || item?.name.en}</h3>
-                {/* <p className="ml-4">
-                  <FormattedPrice amount={item.price} />
-                </p> */}
                 <div className="flex  items-center justify-between text-xs">
                   <p className="text-gray-500">
                     Qty: {item?.purchased_quantity}
@@ -46,8 +43,9 @@ const TotalPrice = () => {
           </div>
           <div className="mb-4 flex items-center justify-between">
             <span>shipment</span>
+
             <span>
-              <FormattedPrice amount={50} />
+              <FormattedPrice amount={3} />
             </span>
           </div>
           <div className="mb-1 flex items-center justify-between font-semibold">

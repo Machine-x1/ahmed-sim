@@ -54,6 +54,8 @@ const Index = () => {
       postcode: '',
     },
     onSubmit: async () => {
+      localStorage.setItem('customervalues', JSON.stringify(formik.values));
+
       await handleCheckout();
     },
 
@@ -189,12 +191,13 @@ const Index = () => {
             </form>
           </section>
 
-          <section className=" flex   flex-col gap-4 md:mt-0 md:border-r-[1.5px] md:border-solid md:border-slate-100 md:pr-6  ">
-            <h1 className=" mb-10 text-3xl font-semibold md:hidden">
-              Confirm and pay
-            </h1>
+          <section className=" flex  w-96 flex-col items-center justify-center  gap-4 md:mt-0 md:border-r-[1.5px] md:border-solid md:border-slate-100 md:pr-6  ">
             <CheckoutSummary values={formik.values} />
             <TotalPrice />
+            <span className="text-center text-sm font-light text-secondary-300">
+              Thank you for choosing SRC . Sit back, relax, and get ready to
+              receive your shipment on the very same day!
+            </span>
           </section>
         </main>
       </Container>

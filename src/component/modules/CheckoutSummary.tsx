@@ -26,12 +26,13 @@ const CheckoutSummary = ({ values }: { values: any }) => {
     <div className="text-dark-gray border-light-gray max-w-[360px] border-b border-solid font-semibold">
       <div className="mb-3 w-full">
         <Image
-          className="w-full rounded-xl"
+          className="w-full rounded-xl    "
           src="/images/logo.svg"
           alt="logo"
           width={100}
+          quality={100}
           height={100}
-          priority
+          sizes="(max-width: 768px) 100vw, (min-width: 769px) and (max-width: 1024px) 50vw, 33vw"
         />
       </div>
 
