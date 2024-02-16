@@ -84,10 +84,10 @@ const AddProduct = () => {
           toast.success('Done');
         } else {
           setloading(false);
-          console.error('API request failed:', response.statusText);
+          toast.error('Error');
         }
       } catch (error) {
-        console.error('Error during API request:', error);
+        toast.error('Error');
       }
     },
   });

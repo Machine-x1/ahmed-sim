@@ -1,14 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-nested-ternary */
-/* eslint-disable no-nested-ternary */
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable react-hooks/rules-of-hooks */
-/* eslint-disable no-console */
-/* eslint-disable tailwindcss/no-custom-classname */
-/* eslint-disable react/button-has-type */
-/* eslint-disable tailwindcss/migration-from-tailwind-2 */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useDisclosure } from '@nextui-org/react';
 import axios from 'axios';
 import { useFormik } from 'formik';
@@ -32,7 +23,6 @@ import { validationSchema } from '../../component/elements/Form/validationschema
 
 const Index = () => {
   const { cart } = useSelector((state: RootState) => state.cart);
-  // const [isPopup, setIsPopup] = useState(false);
   const calculateTotalPrice = () => {
     let totalPrice = 0;
     for (const product of cart.products) {
@@ -64,6 +54,8 @@ const Index = () => {
       postcode: '',
     },
     onSubmit: async () => {
+      localStorage.setItem('customervalues', JSON.stringify(formik.values));
+
       await handleCheckout();
     },
 
@@ -72,7 +64,7 @@ const Index = () => {
 
   const { errors } = formik;
   const router = useRouter();
-  const { is_valid } = router.query;
+  const { isValid } = router.query;
 
   const handleClose = () => {
     const { pathname, query } = router;
@@ -81,8 +73,12 @@ const Index = () => {
     router.push({ pathname, query });
   };
 
-  // const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const { onOpenChange } = useDisclosure();
+  const commonProps = {
+    onClose: handleClose,
+
+    onOpenChange,
+  };
 
   return (
     <Main meta={<Meta />}>
@@ -92,21 +88,12 @@ const Index = () => {
             <h1 className=" mb-16 hidden text-5xl font-semibold md:block">
               Confirm and pay
             </h1>
-            {is_valid !== undefined ? (
-              is_valid === 'true' ? (
-                <ModalPop
-                  onClose={handleClose}
-                  // isOpen={isOpen}
-                  // onOpen={onOpen}
-                  onOpenChange={onOpenChange}
-                />
+
+            {isValid !== undefined ? (
+              isValid === 'true' ? (
+                <ModalPop {...commonProps} />
               ) : (
-                <FailedModal
-                  onClose={handleClose}
-                  // isOpen={isOpen}
-                  // onOpen={onOpen}
-                  onOpenChange={onOpenChange}
-                />
+                <FailedModal {...commonProps} />
               )
             ) : null}
 
@@ -184,12 +171,12 @@ const Index = () => {
                 <p className="text-xs text-lightText ">You will pay in KWD</p>
               </div>
               <div>
-                <p className="text-primary-gray mb-3 text-xs">
-                  With payment, you agree to the general{' '}
+                <p className=" mb-3 text-xs text-lightText">
+                  With payment, you agree to the general
                   <span className="text-[#1733B6]">
                     terms and conditions of website
-                  </span>{' '}
-                  & the{' '}
+                  </span>
+                  & the
                   <span className="text-[#1733B6]">activity provider.</span>
                 </p>
 
@@ -204,12 +191,13 @@ const Index = () => {
             </form>
           </section>
 
-          <section className=" flex   flex-col gap-4 md:mt-0 md:border-r-[1.5px] md:border-solid md:border-slate-100 md:pr-6  ">
-            <h1 className=" mb-10 text-3xl font-semibold md:hidden">
-              Confirm and pay
-            </h1>
+          <section className=" flex  w-96 flex-col items-center justify-center  gap-4 md:mt-0 md:border-r-[1.5px] md:border-solid md:border-slate-100 md:pr-6  ">
             <CheckoutSummary values={formik.values} />
             <TotalPrice />
+            <span className="text-center text-sm font-light text-secondary-300">
+              Thank you for choosing SRC . Sit back, relax, and get ready to
+              receive your shipment on the very same day!
+            </span>
           </section>
         </main>
       </Container>
