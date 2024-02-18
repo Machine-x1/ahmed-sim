@@ -1,6 +1,5 @@
-/* eslint-disable unused-imports/no-unused-vars */
-import axios from "axios";
-import type { NextApiRequest, NextApiResponse } from "next";
+import axios from 'axios';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(
   req: NextApiRequest,
@@ -9,14 +8,15 @@ export default async function handler(
   const { payId } = req.body;
   const responseFromApi = await axios.post(
     // 'https://api.simrckw.com/payment/request',
-    "https://3448-41-232-59-125.ngrok-free.app/payment/verify",
+    'https://3448-41-232-59-125.ngrok-free.app/payment/verify',
     { payid: payId }
   );
 
+  // eslint-disable-next-line no-console
   console.log(responseFromApi.data);
-  if (responseFromApi.data.Status === "1") {
-    res.status(200).send({ verfied: "Done" });
+  if (responseFromApi.data.Status === '1') {
+    res.status(200).send({ verfied: 'Done' });
   } else {
-    res.status(422).send({ verfied: "No" });
+    res.status(422).send({ verfied: 'No' });
   }
 }

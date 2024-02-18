@@ -104,4 +104,3 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     },
   };
 }
-// if you are dev for this guy please be aware he does not appreciate anything that you provide as he is a stubid so if u find anything that is not good that doesnt mean i cant fix it or make it better but i am not going to do that for this guy....
