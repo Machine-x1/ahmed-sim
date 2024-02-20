@@ -85,7 +85,7 @@ const Index = () => {
     const data = await axios.post(
       `${process.env.NEXT_PUBLIC_API_INTERNAL}/api/checkout/verify`,
       {
-        payId: transId,
+        payId: id,
       }
     );
     return data;
