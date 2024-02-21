@@ -1,14 +1,6 @@
-/* eslint-disable @typescript-eslint/no-use-before-define */
-/* eslint-disable unused-imports/no-unused-vars */
 /* eslint-disable no-nested-ternary */
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable no-console */
-/* eslint-disable tailwindcss/no-custom-classname */
-/* eslint-disable react/button-has-type */
-/* eslint-disable tailwindcss/migration-from-tailwind-2 */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable @typescript-eslint/naming-convention */
 import { useDisclosure } from '@nextui-org/react';
 import axios from 'axios';
 import { useFormik } from 'formik';
@@ -224,7 +216,7 @@ const Index = () => {
                 <p className="text-xs text-lightText ">You will pay in KWD</p>
               </div>
               <div>
-                <p className="text-primary-gray mb-3 text-xs">
+                <p className="mb-3 text-xs text-lightText">
                   With payment, you agree to the general{' '}
                   <span className="text-[#1733B6]">
                     terms and conditions of website

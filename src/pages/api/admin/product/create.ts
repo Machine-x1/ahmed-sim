@@ -47,20 +47,23 @@ const createProductApiHandler = async (
           res.status(200).json(responseData);
         } else {
           res.status(500).json({
-            message: 'Internal server error',
+            message: 'Internal server error 1',
             success: false,
             data: {},
           });
         }
       } catch (error) {
-        res
-          .status(500)
-          .json({ message: 'Internal server error', success: false, data: {} });
+        console.log(error)
+        res.status(500).json({
+          message: 'Internal server error CLIENT 2',
+          success: false,
+          data: {},
+        });
       }
     });
   } catch (error) {
     res.status(500).json({
-      message: 'Internal server error',
+      message: 'Internal server error CLIENT 3',
       success: false,
       data: {},
     });
