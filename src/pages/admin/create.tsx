@@ -6,6 +6,7 @@ import axios from 'axios';
 import { getCookie } from 'cookies-next';
 import { useFormik } from 'formik';
 import type { GetServerSidePropsContext } from 'next';
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import * as Yup from 'yup';
@@ -15,6 +16,7 @@ import { Meta } from '@/component/layouts/Meta';
 import { Main } from '@/component/templates/Main';
 
 const AddProduct = () => {
+  const router = useRouter();
   const [loading, setloading] = useState(false);
   const formik: any = useFormik({
     initialValues: {
@@ -83,6 +85,7 @@ const AddProduct = () => {
         if (response.status === 200) {
           setloading(false);
           toast.success('Done');
+          router.push('/admin/');
         } else {
           setloading(false);
           toast.error('Error');
