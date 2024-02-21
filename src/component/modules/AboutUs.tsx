@@ -25,7 +25,7 @@ const AboutUs = () => {
           <div className=" flex w-full flex-col items-center justify-center  gap-20 pt-4 text-white md:flex-row ">
             <FeatureCard
               icon={<MdOutlineLocalShipping className="h-12 w-12" />}
-              textKey="about.quick-drop"
+              textKey="quick-drop"
             />
             <FeatureCard
               icon={
@@ -43,7 +43,7 @@ const AboutUs = () => {
                   />
                 </svg>
               }
-              textKey="about.expert-guidance"
+              textKey="expert-guidance"
             />
             <FeatureCard
               icon={

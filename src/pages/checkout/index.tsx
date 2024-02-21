@@ -57,10 +57,13 @@ const Index = () => {
     initialValues: {
       fullName: '',
       phoneNo: '',
-      city: '',
       email: '',
-      shippingAddress: '',
       postcode: '',
+      AddressLine1: '',
+      AddressLine2: '',
+      city: '',
+      governorate: '',
+      country: '',
     },
     onSubmit: async () => {
       localStorage.setItem('customervalues', JSON.stringify(formik.values));
@@ -151,14 +154,7 @@ const Index = () => {
                   name="phoneNo"
                   onChange={formik.handleChange}
                 />
-                <InputField
-                  type="text"
-                  label="City"
-                  placeholder="Shipping address city"
-                  errmessage={errors.city}
-                  name="city"
-                  onChange={formik.handleChange}
-                />
+
                 <InputField
                   type="email"
                   label="email"
@@ -167,28 +163,56 @@ const Index = () => {
                   name="email"
                   onChange={formik.handleChange}
                 />
-              </div>
-
-              <Heading
-                title="Additional information"
-                para="We need a few more details to complete your reservation."
-                className="mb-8"
-              />
-              <div className="mb-11 grid gap-6 py-2 xl:grid-cols-2">
-                <InputField
-                  type="text"
-                  label="Shipping address"
-                  placeholder="1411 Broadway Fl 34"
-                  errmessage={errors.shippingAddress}
-                  name="shippingAddress"
-                  onChange={formik.handleChange}
-                />
                 <InputField
                   type="number"
                   label="Postcode"
                   placeholder="Postal code"
                   errmessage={errors.postcode}
                   name="postcode"
+                  onChange={formik.handleChange}
+                />
+              </div>
+              <div className="mb-11 grid gap-6 py-2 xl:grid-cols-2">
+                <InputField
+                  type="text"
+                  label="Address Line 1"
+                  placeholder="House Number/Blg Street Address"
+                  errmessage={errors.AddressLine1}
+                  name="AddressLine1"
+                  onChange={formik.handleChange}
+                />
+                <InputField
+                  type="text"
+                  label="Address Line 2"
+                  placeholder="Apt,Suite,Floor,etc."
+                  errmessage={errors.AddressLine2}
+                  name="AddressLine2"
+                  onChange={formik.handleChange}
+                />
+
+                <InputField
+                  type="text"
+                  label="City"
+                  placeholder="Shipping address city"
+                  errmessage={errors.city}
+                  name="city"
+                  onChange={formik.handleChange}
+                />
+
+                <InputField
+                  type="text"
+                  label="Governorate"
+                  placeholder="Governorate Name, e.g., Al Asimah (Capital)"
+                  errmessage={errors.postcode}
+                  name="governorate"
+                  onChange={formik.handleChange}
+                />
+                <InputField
+                  type="text"
+                  label="Country"
+                  placeholder="Country Name"
+                  errmessage={errors.postcode}
+                  name="country"
                   onChange={formik.handleChange}
                 />
               </div>

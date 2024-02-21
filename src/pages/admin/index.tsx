@@ -109,17 +109,17 @@ const index = ({ products, lang, meta }: any) => {
   };
 
   return (
-    <>
+    <div className="min-h-screen max-w-[1920px]  ">
       <AdminNav />
-      <div className="mx-auto h-full max-h-screen w-full max-w-[1920px] ">
-        <div className="flex h-full  overflow-hidden ">
+      <div className="mx-auto h-full w-full   ">
+        <div className="flex h-full w-full ">
           <aside
-            id="sidebar"
-            className="fixed left-0 top-0 z-20 hidden h-full w-64 shrink-0 flex-col pt-16 duration-75 transition-width lg:flex"
+            className=" left-0 top-0 z-20 hidden min-h-screen  w-64 shrink-0 flex-col pt-16 duration-75 transition-width xl:flex"
             aria-label="Sidebar"
+            style={{ position: 'sticky' }}
           >
-            <div className="relative flex min-h-0 flex-1 flex-col border-r border-gray-200 bg-white pt-0">
-              <div className="flex flex-1 flex-col overflow-y-auto pb-4 pt-5">
+            <div className="relative flex min-h-0 flex-1 flex-col border-r  border-gray-200 bg-white pt-0">
+              <div className="flex flex-1 flex-col  pb-4 pt-5">
                 <div className="flex-1 space-y-1 divide-y bg-white px-3">
                   <ul className="space-y-2 pb-2">
                     <li>
@@ -173,64 +173,54 @@ const index = ({ products, lang, meta }: any) => {
           </aside>
           <div
             className="fixed inset-0 z-10 hidden bg-gray-900 opacity-50"
-            id="sidebarBackdrop"
+            style={{ position: 'sticky' }}
           />
-          <div
-            id="main-content"
-            className="relative h-full    w-full overflow-y-auto  lg:ml-64"
-          >
-            <main>
-              <section className="">
-                <div className="top-0 h-full w-full" />
-                <section className="flex w-full ">
-                  <div className="  mx-auto flex w-full max-w-screen-2xl flex-col gap-4 py-10 ">
-                    <div className=" w-full ">
-                      <div className=" flex w-full items-center justify-center  gap-4 pb-5  ">
-                        <SearchBar setSearchValue={setSearchValue} />
-                        <Button
-                          onClick={handleAddProductClick}
-                          // fullWidth
-                          color="success"
-                          variant="flat"
-                          className="flex items-center justify-center "
-                        >
-                          <button type="button" className="  font-medium  ">
-                            Add Product
-                          </button>
-                          <BiAddToQueue size={40} />
-                        </Button>
-                      </div>
-                    </div>
-                    {categories.map((category) => (
-                      <AdminProductSection
-                        key={category.key}
-                        id={category.id}
-                        setProductsData={setProductsData}
-                        lang={lang}
-                        title={category.title}
-                        productsData={productsData.filter(
-                          (d: any) => d.category === category.key
-                        )}
-                      />
-                    ))}
-                  </div>
-                </section>
-                <div className="flex h-full max-h-screen w-full items-center justify-center py-12">
-                  <Pagination
-                    color="primary"
-                    size="lg"
-                    showControls
-                    total={metaData.totalPages}
-                    initialPage={1}
-                    onChange={handlePageChange}
-                  />
+          <div className="relative h-full  w-full lg:ml-auto">
+            <div className="  mx-auto flex w-full max-w-screen-2xl flex-col gap-4 py-10 ">
+              <div className=" w-full ">
+                <div className=" flex w-full items-center justify-center  gap-4 pb-5  ">
+                  <SearchBar setSearchValue={setSearchValue} />
+                  <Button
+                    onClick={handleAddProductClick}
+                    // fullWidth
+                    color="success"
+                    variant="flat"
+                    className="flex items-center justify-center "
+                  >
+                    <button type="button" className="  font-medium  ">
+                      Add Product
+                    </button>
+                    <BiAddToQueue size={40} />
+                  </Button>
                 </div>
-              </section>
-            </main>
+              </div>
+              {categories.map((category) => (
+                <AdminProductSection
+                  key={category.key}
+                  id={category.id}
+                  setProductsData={setProductsData}
+                  lang={lang}
+                  title={category.title}
+                  productsData={productsData.filter(
+                    (d: any) => d.category === category.key
+                  )}
+                />
+              ))}
+            </div>
+            <div className="flex h-full  w-full items-center justify-center py-12">
+              <Pagination
+                color="primary"
+                size="lg"
+                showControls
+                total={metaData.totalPages}
+                initialPage={1}
+                onChange={handlePageChange}
+              />
+            </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
