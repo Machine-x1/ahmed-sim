@@ -1,5 +1,6 @@
 import { Pagination } from '@nextui-org/react';
 import type { GetServerSidePropsContext } from 'next';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 
@@ -27,7 +28,7 @@ const ProductsPage = ({
   const [searchValue, setSearchValue] = useState('');
   const [metaData, setMetaData] = useState(meta);
   const [currentPage, setCurrentPage] = useState(1);
-
+  const router = useRouter();
   useEffect(() => {
     const getCaggory = async () => {
       if (value !== 'All Products' && value.length > 1) {
@@ -96,6 +97,7 @@ const ProductsPage = ({
 
   const handlePageChange = (newPage: any) => {
     setCurrentPage(newPage);
+    router.push(`/products?page=${newPage}`);
   };
 
   return (
@@ -123,10 +125,11 @@ const ProductsPage = ({
           </section>
           <div className="flex w-full items-center  justify-center pb-12 ">
             <Pagination
-              color="primary"
+              color="default"
               size="lg"
               showControls
               total={metaData.totalPages}
+              showShadow
               initialPage={1}
               onChange={handlePageChange}
             />

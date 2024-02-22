@@ -34,7 +34,7 @@ export const callouts = [
     description: 'Daily commute essentials',
     imageSrc: '/images/DD2_prime.png',
     imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
-    href: '#wheelBasis',
+    href: '#wheelBases',
   },
   {
     name: 'DIGITAL DASHES    ',
@@ -43,4 +43,11 @@ export const callouts = [
     imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
     href: '#DigitalDashes',
   },
+  // {
+  //   name: 'DIGITAL DASHES    ',
+  //   description: 'Daily commute essentials',
+  //   imageSrc: '/images/IMG_0815.webp',
+  //   imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
+  //   href: '#DigitalDashes',
+  // },
 ];

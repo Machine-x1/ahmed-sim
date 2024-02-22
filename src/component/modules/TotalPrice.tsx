@@ -6,7 +6,7 @@ import type { RootState } from '@/apps/redux/store';
 import FormattedPrice from './FormattedPrice';
 
 /* eslint-disable tailwindcss/no-custom-classname */
-const TotalPrice = () => {
+const TotalPrice = ({ shipping }: { shipping: number }) => {
   const { cart } = useSelector((state: RootState) => state.cart);
   const router = useRouter();
   const lang: any = router.locale;
@@ -51,7 +51,7 @@ const TotalPrice = () => {
           <div className="mb-1 flex items-center justify-between font-semibold">
             <span>Total</span>
             <span>
-              <FormattedPrice amount={total + 50} />
+              <FormattedPrice amount={total + shipping} />
             </span>
           </div>
         </>

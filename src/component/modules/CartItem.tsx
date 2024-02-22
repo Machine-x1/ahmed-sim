@@ -9,9 +9,14 @@ import { useRouter } from 'next/router';
 import React from 'react';
 // import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { IoMdClose } from 'react-icons/io';
+import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { deleteProductCart } from '@/apps/redux/slice/cartSlice';
+import {
+  decreaseQuantity,
+  deleteProductCart,
+  increaseQuantity,
+} from '@/apps/redux/slice/cartSlice';
 import type { RootState } from '@/apps/redux/store';
 
 import FormattedPrice from './FormattedPrice';
@@ -57,6 +62,21 @@ const CartItem = () => {
                   <p className="text-gray-500">
                     Qty: {item?.purchased_quantity}
                   </p>
+                </div>
+                <div className="flex  items-center justify-between text-sm">
+                  <MdNavigateBefore
+                    size={30}
+                    color="red"
+                    className="mr-2"
+                    onClick={() => dispatch(decreaseQuantity(item))}
+                  />
+                  {item?.purchased_quantity}
+                  <MdNavigateNext
+                    className="ml-2"
+                    color="red"
+                    size={30}
+                    onClick={() => dispatch(increaseQuantity(item))}
+                  />
                 </div>
               </div>
             </div>

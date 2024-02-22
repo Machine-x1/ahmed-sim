@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import { Divider } from '@nextui-org/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -34,8 +35,6 @@ export const ProductSection = ({
           </div>
           <div className="grid w-full grid-cols-1 gap-12 px-8 md:grid-cols-3 md:px-0  xl:grid-cols-4">
             {productsData.map((item) => (
-              // <NewProductCard lang={lang} key={item._id} item={item} />
-              // eslint-disable-next-line no-underscore-dangle
               <MemoizedProductCard lang={lang} item={item} key={item._id} />
             ))}
           </div>

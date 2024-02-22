@@ -14,6 +14,7 @@ import { Meta } from '@/component/layouts/Meta';
 import CheckoutSummary from '@/component/modules/CheckoutSummary';
 import Container from '@/component/modules/Container';
 import FailedModal from '@/component/modules/FailedModal';
+import FormattedPrice from '@/component/modules/FormattedPrice';
 import Heading from '@/component/modules/Heading';
 import InputField from '@/component/modules/InputField';
 import ModalPop from '@/component/modules/SuccefulModalPop';
@@ -95,6 +96,7 @@ const Index = () => {
       console.log(onSuccess());
     }
   }, [transId]);
+  const shipping = 3;
   return (
     <Main meta={<Meta />}>
       <Container className="mx-auto mt-12 h-full min-h-screen w-full   max-w-[1920px] ">
@@ -140,8 +142,8 @@ const Index = () => {
 
                 <InputField
                   type="number"
-                  label="Phone no"
-                  placeholder="Enter your phone number."
+                  label="Phone number"
+                  placeholder="+965 70 000 0000"
                   errmessage={errors.phoneNo}
                   name="phoneNo"
                   onChange={formik.handleChange}
@@ -211,7 +213,7 @@ const Index = () => {
 
               <div className="mb-10">
                 <h2 className=" mb-1 text-lg font-semibold md:text-2xl">
-                  Total: 250 KWD
+                  Total: <FormattedPrice amount={total + shipping} />
                 </h2>
                 <p className="text-xs text-lightText ">You will pay in KWD</p>
               </div>
@@ -238,7 +240,7 @@ const Index = () => {
 
           <section className=" flex  w-96 flex-col items-center justify-center  gap-4 md:mt-0 md:border-r-[1.5px] md:border-solid md:border-slate-100 md:pr-6  ">
             <CheckoutSummary values={formik.values} />
-            <TotalPrice />
+            <TotalPrice shipping={shipping} />
             <span className="text-center text-sm font-light text-secondary-300">
               Thank you for choosing SRC . Sit back, relax, and get ready to
               receive your shipment on the very same day!
