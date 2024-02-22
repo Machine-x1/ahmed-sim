@@ -5,7 +5,7 @@ import axios from 'axios';
 import { endpoints } from '../helpers/endPoints';
 
 async function requestHandler(
-  endpoint: keyof typeof endpoints,
+  endpoint: any,
   method: 'GET' | 'POST' | 'PUT' | 'DELETE',
   data?: any,
   headers?: Record<string, any>,
@@ -16,6 +16,7 @@ async function requestHandler(
     : '';
   const requestUrl = `${process.env.API_EXTRANL}/${endpoints[endpoint]}${queryString}`;
 
+  console.log(requestUrl)
   const axiosConfig: AxiosRequestConfig = {
     method,
     headers: headers || {},

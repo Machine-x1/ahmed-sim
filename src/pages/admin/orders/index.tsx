@@ -23,6 +23,9 @@ import AdminNav from '@/component/modules/AdminNav';
 import Container from '@/component/modules/Container';
 
 import { columns, users } from '../../../apps/constants/dataorder';
+import getProducts, { getOrder } from '@/apps/server/products/getProducts';
+import { GetServerSidePropsContext } from 'next';
+import axios from 'axios';
 
 export default function index() {
   const renderCell = React.useCallback(
@@ -131,3 +134,27 @@ export default function index() {
     </div>
   );
 }
+
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
+  try {
+    const data = await axios.get(`${process.env.API_EXTRANL}/orders`)
+    console.log(data)
+    const getLang = context.locale || 'en';
+
+
+    return {
+      props: {
+        lang: getLang || 'en',
+      },
+    };
+  } catch (error) {
+    return {
+      redirect: {
+        destination: '/500',
+        permanent: false,
+      },
+    };
+  }
+};

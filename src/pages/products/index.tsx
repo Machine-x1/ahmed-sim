@@ -148,6 +148,7 @@ export const getServerSideProps = async (
 ) => {
   try {
     const data = await getProducts();
+    console.log(data)
     const getLang = context.locale || 'en';
 
     if (!data || !data.products || !data.meta) {

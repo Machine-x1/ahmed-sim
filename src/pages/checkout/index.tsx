@@ -88,13 +88,32 @@ const Index = () => {
     );
     return data;
   };
+  const handleOrder = async () => {
+    const vals =
+      localStorage.getItem('customervalues') &&
+      JSON.parse(localStorage.getItem('customervalues')!);
+    console.log(vals);
+    const data = await axios.post(
+      `${process.env.NEXT_PUBLIC_API_INTERNAL}/api/orders`,
+      {
+        ...vals,
+      }
+    );
+    return data;
+  };
   const { transaction_id: transId } = router.query;
-  console.log(transId);
   useEffect(() => {
     if (transId) {
-      const onSuccess = async () => handleVerifyId(transId);
-      console.log(onSuccess());
+      const onSuccess = async () => {
+        const val = await handleVerifyId(transId);
+        console.log(val)
+        if(val.status === 200) {
+          handleOrder()
+        }
+      }
+      onSuccess()
     }
+  
   }, [transId]);
   const shipping = 3;
   return (

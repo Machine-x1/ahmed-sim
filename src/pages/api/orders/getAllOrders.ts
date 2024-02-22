@@ -3,9 +3,7 @@ import axios from 'axios';
 
 export default async function getAllOrders(_req: any, res: any) {
   try {
-    const response = await axios.get(
-      `http://${process.env.NEXT_PUBLIC_API_INTERNAL}/orders`
-    );
+    const response = await axios.get(`${process.env.API_EXTRANL}/orders`);
     res.status(200).json(response.data);
   } catch (error) {
     console.error('Error fetching orders:', error);

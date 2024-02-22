@@ -8,13 +8,14 @@ export default async function handler(
 ) {
   const { payId } = req.body;
   const responseFromApi = await axios.post(
-    // 'https://api.simrckw.com/payment/request',
-    'https://3448-41-232-59-125.ngrok-free.app/payment/verify',
+    `${process.env.API_EXTRANL}/payment/verify`,
     { payid: payId }
   );
 
   // eslint-disable-next-line no-console
-  console.log(responseFromApi.data);
+  console.log("===============================");
+  console.log(responseFromApi);
+  console.log("===============================");
   if (responseFromApi.data.Status === '1') {
     res.status(200).send({ verfied: 'Done' });
   } else {

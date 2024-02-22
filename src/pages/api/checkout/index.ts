@@ -8,8 +8,7 @@ export default async function handler(
 ) {
   const { amount } = req.body;
   const responseFromApi = await axios.post(
-    // 'https://api.simrckw.com/payment/request',
-    'https://3448-41-232-59-125.ngrok-free.app/payment/request',
+    `${process.env.API_EXTRANL}/payment/request`,
     { amount }
   );
 
