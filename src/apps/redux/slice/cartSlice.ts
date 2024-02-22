@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-param-reassign */
 import type { PayloadAction } from '@reduxjs/toolkit';
@@ -40,31 +41,34 @@ const cartSlice = createSlice({
       state.cart.products = updatedProducts;
     },
 
-    // increaseQuantity: (state, action) => {
-    //   const { products } = state.cart;
+    increaseQuantity: (state, action) => {
+      const { products } = state.cart;
+      const existingProduct = products.find(
+        (product) => product._id === action.payload._id
+      );
 
-    //   const { _id } = action.payload;
-    //   const existingProduct = products.find(product => product._id === _id);
-    //   if (existingProduct) {
-    //     state.cart.products = products.map(product =>
-    //       product._id === _id ? { ...product, quantity: product.quantity + 1 } : product
-    //     );
-    //   }
-    // },
+      if (existingProduct) {
+        existingProduct.purchased_quantity += 1;
+      }
+    },
 
-    // decreaseQuantity: (state, action) => {
-    //   const { products } = state.cart;
+    decreaseQuantity: (state, action) => {
+      const { products } = state.cart;
+      const existingProduct = products.find(
+        (product) => product._id === action.payload._id
+      );
 
-    //   const { _id } = action.payload;
-    //   const existingProduct = products.find(product => product._id === _id);
-    //   if (existingProduct && existingProduct.quantity > 1) {
-    //     state.cart.products = products.map(product =>
-    //       product._id === _id ? { ...product, quantity: product.quantity - 1 } : product
-    //     );
-    //   }
-    // },
+      if (existingProduct && existingProduct.purchased_quantity > 1) {
+        existingProduct.purchased_quantity -= 1;
+      }
+    },
   },
 });
-export const { setProdctCart, deleteProductCart } = cartSlice.actions;
+export const {
+  setProdctCart,
+  deleteProductCart,
+  increaseQuantity,
+  decreaseQuantity,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

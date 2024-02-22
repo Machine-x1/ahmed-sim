@@ -3,7 +3,9 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import 'swiper/css/autoplay';
 
+// import 'swiper-button-next';
 import { Divider } from '@nextui-org/react';
 import type { CookieValueTypes } from 'cookies-next';
 import React from 'react';
@@ -50,7 +52,7 @@ const ProductDataSwiper = ({
           <Swiper
             slidesPerView={5}
             spaceBetween={30}
-            navigation
+            // navigation
             loop
             direction="horizontal"
             modules={[Navigation, Autoplay]}

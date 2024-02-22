@@ -35,21 +35,17 @@ const CheckoutSummary = ({ values }: { values: any }) => {
           sizes="(max-width: 768px) 100vw, (min-width: 769px) and (max-width: 1024px) 50vw, 33vw"
         />
       </div>
-
-      {/* Building Number | Street Number/Name | Apartment Number
-City Name, State Abbreviation | Zip Code */}
-
-      <h3 className="text-lg">{values?.fullName} </h3>
-
+      <h3 className="text-lg">{values?.fullName || 'recipient name'} </h3>
       <div className="my-6 flex flex-col gap-3">
         <div className="flex items-center gap-4">
-          {`${values?.shippingAddress} / ${values?.city} / ${values?.postcode}`}
+          {`${values?.AddressLine1 || 'shipping address line'} / ${
+            values?.AddressLine2
+          } / ${values?.postcode}`}
         </div>
         <div className="flex items-center gap-4">
           <span>{values?.email}</span>
           <span>{values?.phoneNo}</span>
         </div>
-
         <div className="flex items-center gap-4">
           <span>Order Date</span>
           <div className="flex items-center gap-2">

@@ -59,13 +59,11 @@ const Header = () => {
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
         />
       </NavbarContent>
-
       <NavbarContent className=" pr-3" justify="center">
         <NavbarBrand>
           <Logo />
         </NavbarBrand>
       </NavbarContent>
-
       <NavbarContent
         className="hidden items-center gap-10  text-xl    xl:flex "
         justify="center"

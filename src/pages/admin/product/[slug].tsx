@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { useFormik } from 'formik';
 import type { GetServerSidePropsContext } from 'next';
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { toast, Toaster } from 'react-hot-toast';
 import * as Yup from 'yup';
@@ -10,6 +11,7 @@ import { Meta } from '@/component/layouts/Meta';
 import { Main } from '@/component/templates/Main';
 
 const UpdateProduct = ({ product }: { product: any }) => {
+  const router = useRouter();
   const [loading, setloading] = useState(false);
   const getChangedValues = (values: any, initialValues: any) => {
     return Object.entries(values).reduce((acc: any, [key, value]) => {
@@ -18,7 +20,6 @@ const UpdateProduct = ({ product }: { product: any }) => {
       if (hasChanged) {
         acc[key] = value;
       }
-
       return acc;
     }, {});
   };
@@ -71,6 +72,7 @@ const UpdateProduct = ({ product }: { product: any }) => {
         if (response.status === 200) {
           setloading(false);
           toast.success('Done');
+          router.push('/admin/');
         } else {
           setloading(false);
           // Handle errors, e.g., show an error message

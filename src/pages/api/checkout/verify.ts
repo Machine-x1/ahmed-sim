@@ -13,6 +13,7 @@ export default async function handler(
     { payid: payId }
   );
 
+  // eslint-disable-next-line no-console
   console.log(responseFromApi.data);
   if (responseFromApi.data.Status === '1') {
     res.status(200).send({ verfied: 'Done' });

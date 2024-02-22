@@ -1,12 +1,6 @@
 /* eslint-disable no-nested-ternary */
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable no-console */
-/* eslint-disable tailwindcss/no-custom-classname */
-/* eslint-disable react/button-has-type */
-/* eslint-disable tailwindcss/migration-from-tailwind-2 */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable @typescript-eslint/naming-convention */
 import { useDisclosure } from '@nextui-org/react';
 import axios from 'axios';
 import { useFormik } from 'formik';
@@ -20,6 +14,7 @@ import { Meta } from '@/component/layouts/Meta';
 import CheckoutSummary from '@/component/modules/CheckoutSummary';
 import Container from '@/component/modules/Container';
 import FailedModal from '@/component/modules/FailedModal';
+import FormattedPrice from '@/component/modules/FormattedPrice';
 import Heading from '@/component/modules/Heading';
 import InputField from '@/component/modules/InputField';
 import ModalPop from '@/component/modules/SuccefulModalPop';
@@ -55,10 +50,13 @@ const Index = () => {
     initialValues: {
       fullName: '',
       phoneNo: '',
-      city: '',
       email: '',
-      shippingAddress: '',
       postcode: '',
+      AddressLine1: '',
+      AddressLine2: '',
+      city: '',
+      governorate: '',
+      country: '',
     },
     onSubmit: async () => {
       localStorage.setItem('customervalues', JSON.stringify(formik.values));
@@ -81,11 +79,11 @@ const Index = () => {
   };
 
   const { onOpenChange } = useDisclosure();
-  const handleVerifyId = async (id: any) => {
+  const handleVerifyId = async (transId: any) => {
     const data = await axios.post(
       `${process.env.NEXT_PUBLIC_API_INTERNAL}/api/checkout/verify`,
       {
-        payId: id,
+        payId: transId,
       }
     );
     return data;
@@ -98,6 +96,7 @@ const Index = () => {
       console.log(onSuccess());
     }
   }, [transId]);
+  const shipping = 3;
   return (
     <Main meta={<Meta />}>
       <Container className="mx-auto mt-12 h-full min-h-screen w-full   max-w-[1920px] ">
@@ -143,42 +142,19 @@ const Index = () => {
 
                 <InputField
                   type="number"
-                  label="Phone no"
-                  placeholder="Enter your phone number."
+                  label="Phone number"
+                  placeholder="+965 70 000 0000"
                   errmessage={errors.phoneNo}
                   name="phoneNo"
                   onChange={formik.handleChange}
                 />
-                <InputField
-                  type="text"
-                  label="City"
-                  placeholder="Shipping address city"
-                  errmessage={errors.city}
-                  name="city"
-                  onChange={formik.handleChange}
-                />
+
                 <InputField
                   type="email"
                   label="email"
                   placeholder="Enter email"
                   errmessage={errors.email}
                   name="email"
-                  onChange={formik.handleChange}
-                />
-              </div>
-
-              <Heading
-                title="Additional information"
-                para="We need a few more details to complete your reservation."
-                className="mb-8"
-              />
-              <div className="mb-11 grid gap-6 py-2 xl:grid-cols-2">
-                <InputField
-                  type="text"
-                  label="Shipping address"
-                  placeholder="1411 Broadway Fl 34"
-                  errmessage={errors.shippingAddress}
-                  name="shippingAddress"
                   onChange={formik.handleChange}
                 />
                 <InputField
@@ -190,15 +166,59 @@ const Index = () => {
                   onChange={formik.handleChange}
                 />
               </div>
+              <div className="mb-11 grid gap-6 py-2 xl:grid-cols-2">
+                <InputField
+                  type="text"
+                  label="Address Line 1"
+                  placeholder="House Number/Blg Street Address"
+                  errmessage={errors.AddressLine1}
+                  name="AddressLine1"
+                  onChange={formik.handleChange}
+                />
+                <InputField
+                  type="text"
+                  label="Address Line 2"
+                  placeholder="Apt,Suite,Floor,etc."
+                  errmessage={errors.AddressLine2}
+                  name="AddressLine2"
+                  onChange={formik.handleChange}
+                />
+
+                <InputField
+                  type="text"
+                  label="City"
+                  placeholder="Shipping address city"
+                  errmessage={errors.city}
+                  name="city"
+                  onChange={formik.handleChange}
+                />
+
+                <InputField
+                  type="text"
+                  label="Governorate"
+                  placeholder="Governorate Name, e.g., Al Asimah (Capital)"
+                  errmessage={errors.postcode}
+                  name="governorate"
+                  onChange={formik.handleChange}
+                />
+                <InputField
+                  type="text"
+                  label="Country"
+                  placeholder="Country Name"
+                  errmessage={errors.postcode}
+                  name="country"
+                  onChange={formik.handleChange}
+                />
+              </div>
 
               <div className="mb-10">
                 <h2 className=" mb-1 text-lg font-semibold md:text-2xl">
-                  Total: 250 KWD
+                  Total: <FormattedPrice amount={total + shipping} />
                 </h2>
                 <p className="text-xs text-lightText ">You will pay in KWD</p>
               </div>
               <div>
-                <p className="text-primary-gray mb-3 text-xs">
+                <p className="mb-3 text-xs text-lightText">
                   With payment, you agree to the general{' '}
                   <span className="text-[#1733B6]">
                     terms and conditions of website
@@ -220,7 +240,7 @@ const Index = () => {
 
           <section className=" flex  w-96 flex-col items-center justify-center  gap-4 md:mt-0 md:border-r-[1.5px] md:border-solid md:border-slate-100 md:pr-6  ">
             <CheckoutSummary values={formik.values} />
-            <TotalPrice />
+            <TotalPrice shipping={shipping} />
             <span className="text-center text-sm font-light text-secondary-300">
               Thank you for choosing SRC . Sit back, relax, and get ready to
               receive your shipment on the very same day!

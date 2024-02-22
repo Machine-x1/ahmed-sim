@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import { AiOutlineCustomerService } from 'react-icons/ai';
 import { MdEmail } from 'react-icons/md';
 
 const Adminaside = () => {
@@ -46,6 +47,17 @@ const Adminaside = () => {
                       <MdEmail className="h-6 w-6 shrink-0 text-gray-500 duration-75 transition group-hover:text-gray-900" />
                       <span className="ml-3 flex-1 whitespace-nowrap">
                         E-mails
+                      </span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="admin/orders"
+                      className="group flex items-center rounded-lg p-2 text-base font-normal text-gray-900 hover:bg-gray-100 "
+                    >
+                      <AiOutlineCustomerService className="h-6 w-6 shrink-0 text-gray-500 duration-75 transition group-hover:text-gray-900" />
+                      <span className="ml-3 flex-1 whitespace-nowrap">
+                        Orders
                       </span>
                     </Link>
                   </li>

@@ -44,21 +44,9 @@ const NewProductCard = ({ item, lang }: { item?: any; lang?: any }) => {
       >
         <Skeleton isLoaded className="rounded-lg">
           <CardBody className="relative flex w-full items-center justify-center overflow-hidden rounded-xl">
-            {item?.status === 'out-of-stock' && (
-              <div className="absolute left-2 top-2 z-30 flex   rounded-full ">
-                <Image
-                  src="/images/sold-out.png"
-                  alt="sold-out"
-                  width={80}
-                  height={80}
-                  className="fixed  h-20 w-20 object-contain object-center"
-                />
-              </div>
-            )}
-
             <Link href={`/products/${item?.slug}`}>
               <Image
-                className="h-52 max-h-52 w-full min-w-full object-cover object-center"
+                className="h-52 min-h-fit w-full min-w-full object-cover object-center"
                 src={`https://simrckw.s3.eu-north-1.amazonaws.com/${item?.images[0]}`}
                 alt={item?.name[languageToUse] || 'Product image'}
                 // width="100%"
@@ -69,6 +57,17 @@ const NewProductCard = ({ item, lang }: { item?: any; lang?: any }) => {
                 removeWrapper
                 sizes="(max-width: 768px) 100vw, (min-width: 769px) and (max-width: 1024px) 50vw, 33vw"
               />
+              {item?.status === 'out-of-stock' && (
+                <div className="absolute left-1 top-1 z-10 flex    rounded-full ">
+                  <Image
+                    src="/images/sold-out.png"
+                    alt="sold-out"
+                    width={80}
+                    height={80}
+                    className="sticky  h-20 w-20"
+                  />
+                </div>
+              )}
             </Link>
           </CardBody>
 

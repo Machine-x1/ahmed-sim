@@ -1,10 +1,12 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable prefer-destructuring */
+
 import axios from 'axios';
 import { getCookie } from 'cookies-next';
 import { useFormik } from 'formik';
 import type { GetServerSidePropsContext } from 'next';
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import * as Yup from 'yup';
@@ -14,6 +16,7 @@ import { Meta } from '@/component/layouts/Meta';
 import { Main } from '@/component/templates/Main';
 
 const AddProduct = () => {
+  const router = useRouter();
   const [loading, setloading] = useState(false);
   const formik: any = useFormik({
     initialValues: {
@@ -82,6 +85,7 @@ const AddProduct = () => {
         if (response.status === 200) {
           setloading(false);
           toast.success('Done');
+          router.push('/admin/');
         } else {
           setloading(false);
           toast.error('Error');
@@ -92,7 +96,18 @@ const AddProduct = () => {
     },
   });
 
+  const MAX_FILE_SIZE_MB = 1; // Set your maximum file size limit in megabytes
+
   const handleImageChange = (index: any, files: any) => {
+    const file = files[0];
+    const fileSizeInMB = file.size / (1024 * 1024); // Convert bytes to MB
+    if (fileSizeInMB > MAX_FILE_SIZE_MB) {
+      toast.error(
+        `image size exceeds the limit of ${MAX_FILE_SIZE_MB} MB allowed for upload provide a smaller image . `
+      );
+      return;
+    }
+
     const updatedImages = [...formik.values.images];
     updatedImages[index] = files[0];
     formik.setFieldValue(`images-${index}`, files[0]);
