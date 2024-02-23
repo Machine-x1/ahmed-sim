@@ -61,7 +61,8 @@ const Index = () => {
       country: '',
     },
     onSubmit: async () => {
-      localStorage.setItem('customervalues', JSON.stringify(formik.values));
+      const data = { ...formik.values, total };
+      localStorage.setItem('customervalues', JSON.stringify(data));
       await handleCheckout();
     },
 
@@ -71,6 +72,14 @@ const Index = () => {
   const { errors } = formik;
   const router = useRouter();
   const { is_valid } = router.query;
+  const { transaction_id: transId } = router.query;
+  const currentDate = new Date();
+
+  const year = currentDate.getFullYear();
+  const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+  const day = String(currentDate.getDate()).padStart(2, '0');
+
+  const formattedDate = `${year}-${month}-${day}`;
 
   const handleClose = () => {
     const { pathname, query } = router;
@@ -78,13 +87,50 @@ const Index = () => {
 
     router.push({ pathname, query });
   };
+  const handleDownload = async () => {
+    const getUserData =
+      localStorage.getItem('customervalues') &&
+      JSON.parse(localStorage.getItem('customervalues')!);
+    const invoiceData = {
+      invoiceNumber: transId,
+      date: formattedDate,
+      customer: {
+        name: getUserData.fullName,
+        email: getUserData.email,
+        address: `${`${getUserData.country}-${getUserData.city}-${getUserData.AddressLine1}-${getUserData.postcode}`}`,
+      },
+      items: cart.products.map((i) => {
+        return { name: i.name.en, price: i.price };
+      }),
+      total,
+    };
+    console.log(invoiceData);
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_INTERNAL}/api/invoice`,
+      {
+        method: 'POST',
+        body: JSON.stringify({ invoiceData }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+
+    const { fileName } = await response.json();
+    const downloadUrl = `/${fileName}`;
+
+    const link = document.createElement('a');
+    link.href = downloadUrl;
+    link.download = fileName;
+    link.click();
+  };
 
   const { onOpenChange } = useDisclosure();
-  const handleVerifyId = async (transId: any) => {
+  const handleVerifyId = async (id: any) => {
     const data = await axios.post(
       `${process.env.NEXT_PUBLIC_API_INTERNAL}/api/checkout/verify`,
       {
-        payId: transId,
+        payId: id,
       }
     );
     return data;
@@ -102,7 +148,6 @@ const Index = () => {
     );
     return data;
   };
-  const { transaction_id: transId } = router.query;
   useEffect(() => {
     if (transId) {
       const onSuccess = async () => {
@@ -110,6 +155,7 @@ const Index = () => {
         console.log(val);
         if (val.status === 200) {
           handleOrder();
+          handleDownload();
         }
       };
       onSuccess();
