@@ -27,6 +27,7 @@ const Index = ({
       <Banner />
       <ProductFeatures />
       <ProductDataSwiper
+        backgroundcolor="bg-secondaryBlack"
         msg={t('featured-products')}
         textcolor="text-white"
         product={productsData}

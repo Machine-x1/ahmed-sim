@@ -16,7 +16,7 @@ async function requestHandler(
     : '';
   const requestUrl = `${process.env.API_EXTRANL}/${endpoints[endpoint]}${queryString}`;
 
-  console.log(requestUrl)
+  // console.log(requestUrl);
   const axiosConfig: AxiosRequestConfig = {
     method,
     headers: headers || {},

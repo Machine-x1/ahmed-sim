@@ -207,9 +207,9 @@ const index = ({ products, lang, meta }: any) => {
                 />
               ))}
             </div>
-            <div className="flex h-full  w-full items-center justify-center py-12">
+            <div className=" mx-auto flex h-full w-full max-w-screen-2xl items-center justify-center pb-10 ">
               <Pagination
-                color="primary"
+                color="default"
                 size="lg"
                 showControls
                 total={metaData.totalPages}

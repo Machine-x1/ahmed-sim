@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Pagination } from '@nextui-org/react';
 import type { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
@@ -148,7 +149,7 @@ export const getServerSideProps = async (
 ) => {
   try {
     const data = await getProducts();
-    console.log(data)
+    console.log(data);
     const getLang = context.locale || 'en';
 
     if (!data || !data.products || !data.meta) {

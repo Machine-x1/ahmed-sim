@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable unused-imports/no-unused-vars */
 import axios from 'axios';
 import type { NextApiRequest, NextApiResponse } from 'next';
@@ -12,10 +13,9 @@ export default async function handler(
     { payid: payId }
   );
 
-  // eslint-disable-next-line no-console
-  console.log("===============================");
-  console.log(responseFromApi);
-  console.log("===============================");
+  // console.log('===============================');
+  // console.log(responseFromApi);
+  // console.log('===============================');
   if (responseFromApi.data.Status === '1') {
     res.status(200).send({ verfied: 'Done' });
   } else {
