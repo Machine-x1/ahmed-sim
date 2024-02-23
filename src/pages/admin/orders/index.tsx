@@ -1,9 +1,9 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable unused-imports/no-unused-vars */
 /* eslint-disable no-console */
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable tailwindcss/no-custom-classname */
 import {
-  Chip,
   Pagination,
   Table,
   TableBody,
@@ -11,66 +11,106 @@ import {
   TableColumn,
   TableHeader,
   TableRow,
-  Tooltip,
   User,
 } from '@nextui-org/react';
-import React from 'react';
-import { BiEdit } from 'react-icons/bi';
-import { FiDelete, FiEye } from 'react-icons/fi';
+import axios from 'axios';
+import type { GetServerSidePropsContext } from 'next';
+import React, { useEffect, useState } from 'react';
 
+import requestHandler from '@/apps/helpers/requestHandler';
 import AdminLayout from '@/component/modules/AdminAside';
 import AdminNav from '@/component/modules/AdminNav';
 import Container from '@/component/modules/Container';
 
-import { columns, users } from '../../../apps/constants/dataorder';
-import getProducts, { getOrder } from '@/apps/server/products/getProducts';
-import { GetServerSidePropsContext } from 'next';
-import axios from 'axios';
+import { columns } from '../../../apps/constants/dataorder';
 
-export default function index() {
+export default function index({ orders, meta }: { orders: any; meta: any }) {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [ordersData, setOrdersData] = useState(orders);
+  const [metaData, setMetaData] = useState(meta);
+  const fetchPag = async (currentPage: any) => {
+    try {
+      const data = await requestHandler(
+        'orders',
+        'GET',
+        {},
+        {},
+        { page: currentPage, limit: metaData.limit }
+      );
+
+      setOrdersData(data.data.orders);
+      setMetaData(data.data.meta);
+      return true;
+    } catch (error) {
+      return error;
+    }
+  };
+  useEffect(() => {
+    const fetchOrders = async () => {
+      await fetchPag(currentPage);
+    };
+    if (currentPage !== 1) {
+      fetchOrders();
+    } else {
+      setOrdersData(orders);
+    }
+  }, [currentPage]);
+  const handlePageChange = (newPage: any) => {
+    setCurrentPage(newPage);
+  };
   const renderCell = React.useCallback(
-    (user: any, columnKey: string | number) => {
-      const cellValue = user[columnKey];
-
+    (order: any, columnKey: string | number) => {
+      const cellValue = order[columnKey];
       switch (columnKey) {
         case 'name':
           return (
-            <User description={user.email} name={cellValue}>
-              {user.email}
+            <User description={order.email} name={cellValue}>
+              {order.email}
             </User>
           );
-        case 'phone':
+        case 'phoneNumber':
           return (
             <div className="flex flex-col">
               <p className="text-bold text-sm capitalize">{cellValue}</p>
             </div>
           );
-        case 'status':
+        case 'addressLine1':
           return (
-            <Chip className="capitalize" size="sm" variant="flat">
-              {cellValue}
-            </Chip>
-          );
-        case 'actions':
-          return (
-            <div className="relative flex items-center gap-2">
-              <Tooltip content="Details">
-                <span className="cursor-pointer text-lg text-default-400 active:opacity-50">
-                  <FiEye />
-                </span>
-              </Tooltip>
-              <Tooltip content="Edit user" onClick={() => console.log('edit')}>
-                <span className="cursor-pointer text-lg text-default-400 active:opacity-50">
-                  <BiEdit />
-                </span>
-              </Tooltip>
-              <Tooltip color="danger" content="Delete user">
-                <span className="cursor-pointer text-lg text-danger active:opacity-50">
-                  <FiDelete />
-                </span>
-              </Tooltip>
+            <div className="flex flex-col ">
+              <p className="text-bold text-sm capitalize">{cellValue}</p>
             </div>
           );
+        case 'addressLine2':
+          return (
+            <div className="flex flex-col ">
+              <p className="text-bold text-sm capitalize">{cellValue}</p>
+            </div>
+          );
+        case 'city':
+          return (
+            <div className="flex flex-col ">
+              <p className="text-bold text-sm capitalize">{cellValue}</p>
+            </div>
+          );
+        case 'governorate':
+          return (
+            <div className="flex flex-col ">
+              <p className="text-bold text-sm capitalize">{cellValue}</p>
+            </div>
+          );
+        case 'country':
+          return (
+            <div className="flex flex-col ">
+              <p className="text-bold text-sm capitalize">{cellValue}</p>
+            </div>
+          );
+        case 'postcode':
+          return (
+            <div className="flex flex-col ">
+              <p className="text-bold text-sm capitalize">{cellValue}</p>
+            </div>
+          );
+
         default:
           return cellValue;
       }
@@ -78,9 +118,6 @@ export default function index() {
     []
   );
 
-  const rowsPerPage = 10;
-  const page = 1;
-  const pages = Math.ceil(20 / rowsPerPage);
   return (
     <div className="h-full w-full">
       <AdminNav />
@@ -90,22 +127,25 @@ export default function index() {
       <div className=" mx-auto mr-52  w-full pt-10 xl:mx-auto   xl:w-2/3">
         <main>
           <Container className="flex  w-full flex-col py-10 ">
-            <h1 className="mb-4 text-3xl font-bold">orders</h1>
             <Table
+              className="w-full"
+              topContent={
+                <div className="text-xl font-bold  capitalize"> Orders</div>
+              }
               aria-label="orders table"
               bottomContent={
-                pages > 0 ? (
-                  <div className="flex w-full justify-center">
-                    <Pagination
-                      isCompact
-                      showControls
-                      showShadow
-                      color="primary"
-                      page={page}
-                      total={pages}
-                    />
-                  </div>
-                ) : null
+                <div className="flex w-full justify-center">
+                  <Pagination
+                    isCompact
+                    showControls
+                    showShadow
+                    color="default"
+                    // page={metaData.currentPage}
+                    total={metaData.totalPages}
+                    initialPage={1}
+                    onChange={handlePageChange}
+                  />
+                </div>
               }
             >
               <TableHeader columns={columns}>
@@ -118,9 +158,9 @@ export default function index() {
                   </TableColumn>
                 )}
               </TableHeader>
-              <TableBody items={users}>
-                {(item) => (
-                  <TableRow key={item.id}>
+              <TableBody items={ordersData}>
+                {(item: any) => (
+                  <TableRow key={item.name}>
                     {(columnKey) => (
                       <TableCell>{renderCell(item, columnKey)}</TableCell>
                     )}
@@ -139,14 +179,15 @@ export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
   try {
-    const data = await axios.get(`${process.env.API_EXTRANL}/orders`)
-    console.log(data)
+    const data = await axios.get(`${process.env.API_EXTRANL}/orders`);
+    // console.log(data, 'orders');
     const getLang = context.locale || 'en';
-
 
     return {
       props: {
         lang: getLang || 'en',
+        orders: data.data.data.orders || [],
+        meta: data.data.data.meta,
       },
     };
   } catch (error) {

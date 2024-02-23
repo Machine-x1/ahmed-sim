@@ -1,4 +1,4 @@
-const endpoints:any = {
+const endpoints: any = {
   createToken: 'oauth/token',
   refreshToken: 'oauth/token/refresh',
   products: 'products',

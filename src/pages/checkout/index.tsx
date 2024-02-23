@@ -25,6 +25,8 @@ import { validationSchema } from '../../component/elements/Form/validationschema
 
 const Index = () => {
   const { cart } = useSelector((state: RootState) => state.cart);
+  const shipping = 3;
+
   const calculateTotalPrice = () => {
     let totalPrice = 0;
     for (const product of cart.products) {
@@ -37,7 +39,7 @@ const Index = () => {
     const data = await axios.post(
       `${process.env.NEXT_PUBLIC_API_INTERNAL}/api/checkout/`,
       {
-        amount: total + 50,
+        amount: total + shipping,
       }
     );
     const htmlBlob = new Blob([data.data], { type: 'text/html' });
@@ -60,7 +62,6 @@ const Index = () => {
     },
     onSubmit: async () => {
       localStorage.setItem('customervalues', JSON.stringify(formik.values));
-
       await handleCheckout();
     },
 
@@ -106,16 +107,14 @@ const Index = () => {
     if (transId) {
       const onSuccess = async () => {
         const val = await handleVerifyId(transId);
-        console.log(val)
-        if(val.status === 200) {
-          handleOrder()
+        console.log(val);
+        if (val.status === 200) {
+          handleOrder();
         }
-      }
-      onSuccess()
+      };
+      onSuccess();
     }
-  
   }, [transId]);
-  const shipping = 3;
   return (
     <Main meta={<Meta />}>
       <Container className="mx-auto mt-12 h-full min-h-screen w-full   max-w-[1920px] ">

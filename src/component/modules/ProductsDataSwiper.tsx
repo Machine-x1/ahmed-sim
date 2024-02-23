@@ -27,15 +27,17 @@ const ProductDataSwiper = ({
   textcolor,
   product,
   lang,
+  backgroundcolor,
 }: {
   msg?: string;
   textcolor?: string;
   product?: ProductType;
   lang: CookieValueTypes;
+  backgroundcolor?: string;
 }) => {
   return (
-    <section className="w-full">
-      <Container className=" h-full   w-full ">
+    <section className={`w-full ${backgroundcolor}  `}>
+      <Container className=" h-full w-full ">
         <Container className=" flex w-full gap-2 ">
           <div className="mb-4 flex w-full ">
             <div className="flex w-full flex-col justify-start gap-4">

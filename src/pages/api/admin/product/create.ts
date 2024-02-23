@@ -53,7 +53,7 @@ const createProductApiHandler = async (
           });
         }
       } catch (error) {
-        console.log(error)
+        // console.log(error);
         res.status(500).json({
           message: 'Internal server error CLIENT 2',
           success: false,
